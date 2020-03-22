@@ -1,0 +1,11 @@
+<html>
+	<body>
+		<h2>Car owner №{{ id }}</h2>
+		<ul>
+		{% for o in owner %}
+			<li>Name: {{ o.name }} {{ o.surname }}</li>
+			<li>Birth date: {{ o.birth_date }}</li>
+		{% endfor %}
+		</ul>
+	</body>
+</html>

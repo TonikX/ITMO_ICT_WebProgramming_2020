@@ -1,0 +1,11 @@
+<body>
+    Name: <b>{{ owner.first_name }}</b> <br>
+    Surname: <b>{{ owner.last_name }}</b> <br>
+    License number and type: <b>{{ license.number }}, {{ license.type }}</b> <br>
+    Has/had cars:
+    <ul>
+    {%for owns_one in owns%}
+        <li><b>{{owns_one.car.make}} {{owns_one.car.model}}</b></li>
+    {%endfor%}
+    </ul>
+</body>

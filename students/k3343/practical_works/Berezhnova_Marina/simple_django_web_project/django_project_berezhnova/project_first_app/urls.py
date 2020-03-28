@@ -4,5 +4,5 @@ from . import views
 
 urlpatterns = [
         path('owner/<int:driver_id>', views.get_driver),
-        path('auto/<int:auto_id>', views.CarView.as_view())
+        path('auto/', views.CarView.as_view())
 ]

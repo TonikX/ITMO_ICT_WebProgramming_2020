@@ -2,13 +2,20 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Car Info</title>
+	<title></title>
 </head>
 <body>
+	
 	<ul>
+		{% for car in cars %}
 		<li><b>Car:</b> {{ car }}</li>
 		<li><b>Color:</b> {{ car.color }}</li>
 		<li><b>Government number:</b> {{ car.gosnumber }}</li>
+		<br/>
+		{% endfor %}
 	</ul>
+	
+	
 </body>
 </html>
+

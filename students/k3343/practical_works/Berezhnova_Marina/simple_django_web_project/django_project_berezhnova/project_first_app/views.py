@@ -15,10 +15,13 @@ def get_driver(request, driver_id):
 
 
 class CarView(View):
-    def get(self, request, auto_id):
+    model = Auto
+    def get(self, request):
+        context = {}
+
         try:
-            car = Auto.objects.get(pk=auto_id)
+            context["cars"] = Auto.objects.all()
         except Auto.DoesNotExist:
             raise Http404("Car does not exist")
  
-        return render(request, 'car.html', {'car': car})
+        return render(request, 'car.html', context)

@@ -15,10 +15,12 @@ def owner_info(request, owner_id):
 
 
 class AboutAutoView(View):
-    def get(self, request, auto_id):
+    model = Auto
+    def get(self, request):
+        context = {}
         try:
-            auto = Auto.objects.get(pk=auto_id)
+            context["auto"] = Auto.objects.all()
         except Auto.DoesNotExist:
             raise Http404("Auto does not exist")
  
-        return render(request, 'auto.html', {'auto': auto})
+        return render(request, 'auto.html', context)

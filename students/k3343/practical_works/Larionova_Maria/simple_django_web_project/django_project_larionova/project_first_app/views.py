@@ -14,6 +14,16 @@ def get_owner_info(request, owner_id):
     return render(request, 'owner.html', {'owner': owner})
 
 
+def get_owners_info(request):
+    context = {}
+    try:
+        context["owners"] = Owner.objects.all()
+    except Owner.DoesNotExist:
+        raise Http404("Owner does not exist")
+
+    return render(request, 'owners.html', context)
+
+
 class AutoInfoView(View):
     model = Auto
     def get(self, request):

@@ -1,0 +1,12 @@
+<body>
+    {%for object in object_list%}
+        {{ object.make }} <br>
+        {{ object.model }} <br>
+        {{ object.get_colour_display }} <br>
+        {{ object.reg_plate }} <br>
+        <hr>
+
+        {%empty%}
+            No objects!
+    {%endfor%}
+</body>

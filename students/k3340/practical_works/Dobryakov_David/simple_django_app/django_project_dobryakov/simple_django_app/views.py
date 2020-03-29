@@ -23,3 +23,12 @@ def show_owner(request, owner_id):
 
     return render(request, 'owner.html', {'owner': owner})
 
+
+def show_owners(request):
+    context = {}
+    try:
+        context["owners"] = Owner.objects.all()
+    except Owner.DoesNotExist:
+        raise Http404("Owner does not exist")
+
+    return render(request, 'owners.html', context)

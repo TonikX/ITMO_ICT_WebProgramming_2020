@@ -24,3 +24,13 @@ class AboutAutoView(View):
             raise Http404("Auto does not exist")
  
         return render(request, 'auto.html', context)
+
+
+def owners_info(request):
+    context = {}
+    try:
+        context["owners"] = Owner.objects.get(pk=owner_id)
+    except Owner.DoesNotExist:
+        raise Http404("Owner does not exist")
+
+    return render(request, 'owners.html', context)

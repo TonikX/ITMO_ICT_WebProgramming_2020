@@ -25,3 +25,13 @@ class CarView(View):
             raise Http404("Car does not exist")
  
         return render(request, 'car.html', context)
+
+
+def get_drivers(request):
+    context = {}
+    try:
+        context["drivers"] = Driver.objects.all()
+    except Driver.DoesNotExist:
+        raise Http404("Owner does not exist")
+
+    return render(request, 'driver.html', context)

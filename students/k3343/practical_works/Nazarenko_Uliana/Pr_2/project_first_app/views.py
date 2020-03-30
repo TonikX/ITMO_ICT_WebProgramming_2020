@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from project_first_app.models import Owner, Car
 from django.http import Http404
-from django.views import ListView
+import datetime
+from django.views.generic.list import ListView
 
 
 def owner_info(request, owner_id):

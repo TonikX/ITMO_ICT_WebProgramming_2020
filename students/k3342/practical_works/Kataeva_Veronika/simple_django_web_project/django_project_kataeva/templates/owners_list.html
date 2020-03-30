@@ -1,0 +1,14 @@
+<body>
+    <div class="main">
+  
+        {% for owner in owners %}
+  
+        {{ owner.first_name }} 
+        {{ owner.last_name }}<br/>
+        {{ owner.date_of_birth }}<br/>
+        <hr/>
+  
+        {% endfor %}
+  
+    </div>
+</body>

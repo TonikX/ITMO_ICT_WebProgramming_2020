@@ -62,7 +62,3 @@ class Ownership(models.Model):
     car = models.ForeignKey(Car, on_delete=models.CASCADE)
     start_date = models.DateField()
     end_date = models.DateField()
-
-
-
-

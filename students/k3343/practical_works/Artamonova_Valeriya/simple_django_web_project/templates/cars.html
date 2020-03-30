@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Auto view</title>
+</head>
+<body>
+    <ul>
+        {% for auto in autos %}
+        <li>{{auto.car_make}}</li>
+        <li>{{auto.car_model}}</li>
+        <li>{{auto.car_color}}</li>
+        <li>{{auto.id_car}}</li>
+
+        <hr/>
+        {% empty %}
+        <li> No automobiles yet.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

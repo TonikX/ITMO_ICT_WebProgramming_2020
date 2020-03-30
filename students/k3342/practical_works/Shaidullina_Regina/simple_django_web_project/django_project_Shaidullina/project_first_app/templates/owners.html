@@ -1,0 +1,12 @@
+<html>
+	<body>
+		<h2>Owners</h2>
+		<ul>
+		{% for owner in owners %}
+			<li>Name: {{ owner.name }} {{ owner.surname }}</li>
+			<li>Birth date: {{ owner.birth_date }}</li>
+			<hr/>
+		{% endfor %}
+		</ul>
+	</body>
+</html>

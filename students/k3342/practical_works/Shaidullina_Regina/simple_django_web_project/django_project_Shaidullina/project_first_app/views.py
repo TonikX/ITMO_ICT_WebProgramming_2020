@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import Http404, HttpResponse
 from project_first_app.models import Owner, Car, Ownership, DriversLicense
+from django.views.generic.list import ListView
 
 
 # Create your views here.
@@ -23,3 +24,17 @@ def output(request, owner_id):
 	except Owner.DoesNotExist:
 		raise Http404('Owner does not exist.')
 	return render(request, 'output.html', {'owner': owner, 'id': owner_id})
+
+
+# Task 2.1
+def all_owners(request):
+	try:
+		owners = Owner.objects.all()
+	except Owner.DoesNotExist:
+		raise Http404('Owner does not exist.')
+	return render(request, 'owners.html', {'owners': owners})
+
+
+# Task 2.2
+class CarsList(ListView):
+	model = Car

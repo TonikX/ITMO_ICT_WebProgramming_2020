@@ -40,6 +40,9 @@ class Ownership(models.Model):
     date_start_own = models.DateField()
     date_end_own = models.DateField()
 
+    def __str__(self):
+        return self.owner.name + ' ' + self.owner.surname + ': ' + self.car.brand + ' ' + self.car.model
+
 
 class DriversLicense(models.Model):
 
@@ -68,3 +71,6 @@ class DriversLicense(models.Model):
     date_issue = models.DateField()
     category = models.CharField(max_length=3, choices=DL_TYPES)
     owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.owner.name + ' ' + self.owner.surname

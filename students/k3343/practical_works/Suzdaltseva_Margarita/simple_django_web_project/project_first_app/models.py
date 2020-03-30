@@ -32,4 +32,10 @@ class Ownership(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
 
+class ExampleModel(models.Model):
+  title = models.CharField(max_length=200)
+  description = models.TextField()
+
+  def __str__(self):
+    return self.title
 

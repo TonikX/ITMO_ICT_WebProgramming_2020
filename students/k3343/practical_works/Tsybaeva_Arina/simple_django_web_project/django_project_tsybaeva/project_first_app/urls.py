@@ -1,8 +1,7 @@
 from django.urls import path
 from . import views
-from .views import AutoList
-
+from .views import AutoCreate
 urlpatterns = [
     path('owner/<int:owner_id>/', views.detail),
-    path('', views.AutoList.as_view())
+    path('', AutoCreate.as_view())
 ]

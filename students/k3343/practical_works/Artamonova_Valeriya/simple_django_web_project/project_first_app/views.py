@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.http import Http404
 from django.views.generic.list import ListView
+from django.views.generic.edit import CreateView
 from .models import Auto_owner, Automobile, Driver_license, Owning
+from .forms import Auto_ownerForm, AutomobileForm
 
 
 def detail(request,owner_id):
@@ -26,4 +28,24 @@ class Show_auto(ListView):
         autos["autos"] = Automobile.objects.all()
         return render(request, 'cars.html', autos)
 
+
+def create_view_owners(request):
+    context = {}
+    form = Auto_ownerForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+    context['form'] = form
+    return render (request,"create_view_owners.html", context)
+
+
+class AutomobilesCreate(CreateView):
+    model = Automobile
+    fields = ['car_make','car_model','car_color','id_car']
+    def as_view(request):
+        autos = {}
+        form = AutomobileForm(request.POST or None)
+        if form.is_valid():
+            form.save()
+        autos['form'] = form
+        return render(request, 'create_view_cars.html', autos)
 # Create your views here.

@@ -9,7 +9,7 @@ class Car(models.Model):
     name = models.CharField(max_length=30)
     type = models.CharField(max_length=50)
     colour = models.CharField(max_length=20)
-    number = models.IntegerField
+    number = models.CharField(max_length=20)
 
 class Owning(models.Model):
     own_name = models.ForeignKey(Owner, on_delete=models.CASCADE)

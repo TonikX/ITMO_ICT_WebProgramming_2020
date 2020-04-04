@@ -1,46 +1,61 @@
 from django.db import models
 
+# Create your models here.
+
 
 class Owner(models.Model):
-    name = models.CharField(max_length=30)
-    surname = models.CharField(max_length=30)
+    name = models.CharField(max_length=50)
+    surname = models.CharField(max_length=50)
     birth_date = models.DateField()
 
     def __str__(self):
-        return "{} {}".format(self.name, self.surname)
+        return self.name
+
+    def __str__(self):
+        return self.surname
+
+
+class License(models.Model):
+    TYPE_LICENSE = (
+        ('A', 'type_A'),
+        ('B', 'type_B'),
+        ('C', 'type_C'),
+        ('D', 'type_D'),
+    )
+    lic_num = models.CharField(max_length=10)
+    start_date = models.DateField()
+    type = models.CharField(max_length=6, choices=TYPE_LICENSE)
+    owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.lic_num
+
+    def __str__(self):
+        return self.type
 
 
 class Car(models.Model):
-    mark = models.CharField(max_length=30)
-    model = models.CharField(max_length=30)
-    color = models.CharField(max_length=30)
-    gov_number = models.CharField(max_length=30)
+    mark = models.CharField(max_length=50)
+    model = models.CharField(max_length=50)
+    color = models.CharField(max_length=50)
+    number = models.CharField(max_length=10)
+    own = models.ManyToManyField(Owner, through='Ownership')
 
     def __str__(self):
-        return "{} {}".format(self.mark, self.model)
+        return self.mark
+
+    def __str__(self):
+        return self.model
+
+    def __str__(self):
+        return self.color
+
+    def __str__(self):
+        return self.number
 
 
 class Ownership(models.Model):
     owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
     car = models.ForeignKey(Car, on_delete=models.CASCADE)
-    start_date = models.DateField()
-    end_date = models.DateField()
-
-    def __str__(self):
-        return "{} - {}".format(self.owner, self.car)
-
-
-class Drivers_license(models.Model):
-    LICENSE_TYPES = [
-        ('A', 'Type_A'),
-        ('B', 'Type_B'),
-        ('C', 'Type_C'),
-    ]
-
-    license_number = models.CharField(max_length=30)
-    start_date = models.DateField()
-    license_type = models.CharField(choices=LICENSE_TYPES, max_length=30)
-    owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return "{} - {}".format(self.owner, self.license_type)
+    start = models.DateField()
+    end = models.DateField()

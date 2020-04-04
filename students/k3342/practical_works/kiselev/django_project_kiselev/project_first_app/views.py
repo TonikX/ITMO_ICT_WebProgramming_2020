@@ -5,6 +5,17 @@ import datetime
 from django.views.generic.list import ListView
 
 
+from django.shortcuts import render
+from django.views.generic.list import ListView
+from django.views.generic.edit import CreateView
+# Create your views here.
+from django.http import Http404
+from .models import Owner
+from .models import Car
+from .forms import OwnerForm
+
+
+
 def detail(request, owner_id):
     try:
         o = Owner.objects.get(pk=owner_id)
@@ -34,3 +45,31 @@ def owners_list(request):
 
 class CarList(ListView):
     model = Car
+    template_name = 'form_cars.html'
+#----------------------------
+
+def list_view(request):
+    context={}
+
+    context["dataset"] = Owner.objects.all()
+    return render(request, "owners.html", context)
+
+def create_view(request):
+    context = {}
+    form = OwnerForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+    context['form'] = form
+    return render(request, "form_owners.html", context)
+
+class CarCreate(CreateView):
+    model = Car
+    fields = [
+        'mark',
+        'model',
+        'color',
+        'number'
+    ]
+    template_name = 'form_cars.html'
+
+

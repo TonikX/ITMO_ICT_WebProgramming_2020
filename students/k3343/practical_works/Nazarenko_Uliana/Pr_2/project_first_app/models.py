@@ -21,6 +21,7 @@ class License(models.Model):
         ('B', 'type_B'),
         ('C', 'type_C'),
         ('D', 'type_D'),
+        ('M', 'type_M'),
     )
     lic_num = models.CharField(max_length=10)
     start_date = models.DateField()

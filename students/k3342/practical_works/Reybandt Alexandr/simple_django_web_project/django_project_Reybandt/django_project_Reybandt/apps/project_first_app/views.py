@@ -1,10 +1,22 @@
 from django.http import Http404
 from django.shortcuts import render
 from django.views.generic.list import ListView
+from django.views.generic.edit import CreateView
 from .models import CarOwner, Ownership, Car
+from .forms import OwnerForm
 
 class CarList(ListView):
 	model = Car
+
+class CreateCar(CreateView):
+	model = Car
+	success_url = 'car_model'  
+	fields = [
+	'make',
+	'model',
+	'color',
+	'state_number',
+	]
 
 def info(request):
 	try:
@@ -28,3 +40,13 @@ def owners_list(request):
 		raise Http404("Список пуст")
 	
 	return render(request, "project_first_app/owners_list.html", context)
+
+def create_view(request):
+	context = {}
+	form = OwnerForm(request.POST or None)
+
+	if form.is_valid():
+		form.save()
+
+	context['form'] = form
+	return render(request, "project_first_app/create_view.html", context)

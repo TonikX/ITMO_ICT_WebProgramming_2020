@@ -3,18 +3,18 @@ from django.db import models
 # Create your models here.
 
 
+class Car(models.Model):
+    name = models.CharField(max_length=30)
+    type = models.CharField(max_length=50)
+    colour = models.CharField(max_length=20)
+    number = models.IntegerField()
+
+
 class Owner(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     date_birth = models.DateField()
-
-
-class Car(models.Model):
-    owner_dog = models.ForeignKey(Owner, on_delete=models.CASCADE)
-    name = models.CharField(max_length=30)
-    type = models.CharField(max_length=50)
-    colour = models.CharField(max_length=20)
-    number = models.IntegerField
+    car = models.ManyToManyField(Car, through='Owning')
 
 
 class Owning(models.Model):

@@ -31,7 +31,7 @@ class Car(models.Model):
     owned_by = models.ManyToManyField(Owner, through='Ownership')
 
     def __str__(self):
-        return self.model
+        return f"{self.make} {self.model}"
 
 class Driver_license(models.Model):
     TYPES = (

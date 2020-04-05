@@ -2,46 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bb1229b6-dea6-4b11-8ff8-168b77688812" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/django_project_koshkareva/.idea/django_project_koshkareva.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/django_project_koshkareva/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/django_project_koshkareva/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/django_project_koshkareva/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/django_project_koshkareva/manage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/django_project_koshkareva/project_first_app/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/django_project_koshkareva/project_first_app/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/django_project_koshkareva/project_first_app/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/django_project_koshkareva/project_first_app/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/django_project_koshkareva/project_first_app/migrations/0002_auto_20200323_2357.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/django_project_koshkareva/project_first_app/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/django_project_koshkareva/project_first_app/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/django_project_koshkareva/project_first_app/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/django_project_koshkareva/project_first_app/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/django_project_koshkareva/project_first_app/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/car_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/owner_info.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/owners_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/django_project_koshkareva.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_project_koshkareva/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_project_koshkareva/django_project_koshkareva/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_project_koshkareva/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_project_koshkareva/django_project_koshkareva/asgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_project_koshkareva/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_project_koshkareva/django_project_koshkareva/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_project_koshkareva/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_project_koshkareva/django_project_koshkareva/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_project_koshkareva/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_project_koshkareva/django_project_koshkareva/wsgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_first_app/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_first_app/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_first_app/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_first_app/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_first_app/migrations/0002_auto_20200323_2357.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_first_app/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_first_app/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_first_app/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_first_app/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_first_app/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/project_first_app/owner_list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_project_koshkareva/project_first_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_project_koshkareva/project_first_app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_project_koshkareva/project_first_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_project_koshkareva/project_first_app/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_project_koshkareva/project_first_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_project_koshkareva/project_first_app/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -89,45 +53,47 @@
     <session id="2019101481">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.5" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="html" value="4" />
-          <entry key="py" value="4" />
+          <entry key="html" value="8" />
+          <entry key="py" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="4" />
-          <entry key="Python" value="4" />
+          <entry key="HTML" value="8" />
+          <entry key="Python" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="175" />
-          <entry key="py" value="367" />
+          <entry key="html" value="320" />
+          <entry key="py" value="1138" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="175" />
-          <entry key="Python" value="367" />
+          <entry key="HTML" value="320" />
+          <entry key="Python" value="1138" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/django_project_koshkareva/project_first_app/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="23" column="24" lean-forward="true" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+            <state relative-caret-position="340">
+              <caret line="29" column="13" selection-start-line="26" selection-start-column="4" selection-end-line="29" selection-end-column="13" />
               <folding>
-                <marker date="1584996820784" expanded="true" signature="1944:1949" ph="..." />
+                <marker date="1586123923672" expanded="true" signature="1961:1966" ph="..." />
               </folding>
             </state>
           </provider>
@@ -136,8 +102,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/django_project_koshkareva/project_first_app/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+            <state relative-caret-position="180">
+              <caret line="9" column="46" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -146,24 +112,26 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/car_list.html">
+        <entry file="file://$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/car_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+            <state>
+              <caret column="32" selection-start-column="32" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/django_project_koshkareva/project_first_app/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
+            <state relative-caret-position="531">
+              <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
-                <marker date="1585493090265" expanded="true" signature="218:223" ph="..." />
-                <marker date="1585493090265" expanded="true" signature="744:882" ph="..." />
-                <marker date="1585493090265" expanded="true" signature="909:914" ph="..." />
+                <marker date="1586124761462" expanded="true" signature="304:309" ph="..." />
+                <marker date="1586124761462" expanded="true" signature="850:988" ph="..." />
+                <marker date="1586124761462" expanded="true" signature="1015:1020" ph="..." />
+                <marker date="1586124761462" expanded="true" signature="1071:1076" ph="..." />
+                <marker date="1586124761462" expanded="true" signature="1308:1313" ph="..." />
               </folding>
             </state>
           </provider>
@@ -189,21 +157,25 @@
         <option value="$PROJECT_DIR$/django_project_koshkareva/django_project_koshkareva/admin.py" />
         <option value="$PROJECT_DIR$/django_project_koshkareva/project_first_app/admin.py" />
         <option value="$PROJECT_DIR$/django_project_koshkareva/django_project_koshkareva/urls.py" />
-        <option value="$PROJECT_DIR$/django_project_koshkareva/project_first_app/models.py" />
         <option value="$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/owner_list.html" />
         <option value="$PROJECT_DIR$/django_project_koshkareva/django_project_koshkareva/settings.py" />
         <option value="$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/owners_list.html" />
-        <option value="$PROJECT_DIR$/django_project_koshkareva/project_first_app/urls.py" />
         <option value="$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/cars_list.html" />
-        <option value="$PROJECT_DIR$/django_project_koshkareva/project_first_app/views.py" />
         <option value="$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/car_list.html" />
+        <option value="$PROJECT_DIR$/django_project_koshkareva/project_first_app/1.py" />
+        <option value="$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/create_owner.html" />
+        <option value="$PROJECT_DIR$/django_project_koshkareva/project_first_app/forms.py" />
+        <option value="$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/car_form.html" />
+        <option value="$PROJECT_DIR$/django_project_koshkareva/project_first_app/models.py" />
+        <option value="$PROJECT_DIR$/django_project_koshkareva/project_first_app/urls.py" />
+        <option value="$PROJECT_DIR$/django_project_koshkareva/project_first_app/views.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="952" />
-    <option name="width" value="977" />
-    <option name="height" value="1038" />
+    <option name="x" value="950" />
+    <option name="width" value="979" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -273,6 +245,34 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="1" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="folder_for_project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/django_project_koshkareva/project_first_app" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/django_project_koshkareva/project_first_app/1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.1" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -287,20 +287,20 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="762" y="0" width="781" height="830" extended-state="0" />
+    <frame x="760" y="0" width="783" height="832" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.05645161" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.010723861" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32998565" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3295129" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32904148" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" />
@@ -356,6 +356,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/owners_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="7" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/django_project_koshkareva/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/project_first_app/1.py" />
+    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/car_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/django_project_koshkareva/django_project_koshkareva/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -370,49 +388,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/owners_list.html">
+    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/create_owner.html">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret selection-end-line="7" selection-end-column="7" />
+          <caret selection-end-line="4" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/car_list.html">
+    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/project_first_app/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/project_first_app/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
+        <state relative-caret-position="40">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
-            <marker date="1585493090265" expanded="true" signature="218:223" ph="..." />
-            <marker date="1585493090265" expanded="true" signature="744:882" ph="..." />
-            <marker date="1585493090265" expanded="true" signature="909:914" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/project_first_app/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#0#24#0" expanded="true" />
+            <marker date="1586121110133" expanded="true" signature="86:91" ph="..." />
+            <marker date="1586121110133" expanded="true" signature="102:107" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/django_project_koshkareva/project_first_app/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="23" column="24" lean-forward="true" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+        <state relative-caret-position="340">
+          <caret line="29" column="13" selection-start-line="26" selection-start-column="4" selection-end-line="29" selection-end-column="13" />
           <folding>
-            <marker date="1584996820784" expanded="true" signature="1944:1949" ph="..." />
+            <marker date="1586123923672" expanded="true" signature="1961:1966" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/project_first_app/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="46" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/car_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="32" selection-start-column="32" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/project_first_app/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="531">
+          <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <marker date="1586124761462" expanded="true" signature="304:309" ph="..." />
+            <marker date="1586124761462" expanded="true" signature="850:988" ph="..." />
+            <marker date="1586124761462" expanded="true" signature="1015:1020" ph="..." />
+            <marker date="1586124761462" expanded="true" signature="1071:1076" ph="..." />
+            <marker date="1586124761462" expanded="true" signature="1308:1313" ph="..." />
           </folding>
         </state>
       </provider>

@@ -32,3 +32,6 @@ class Certificate(models.Model):
     date_of_getting=models.DateField()
     type=models.CharField(max_length=1,choices=types)
     owner=models.ForeignKey(Owner,on_delete=models.CASCADE)
+    def __str__(self):
+        return self.cert_number
+

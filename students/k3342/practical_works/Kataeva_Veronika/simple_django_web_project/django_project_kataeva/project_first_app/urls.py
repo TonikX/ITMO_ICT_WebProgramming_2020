@@ -21,5 +21,7 @@ from project_first_app import views
 urlpatterns = [
     path('owner/<int:c_id>', views.get_owner),
     path('owners/', views.list_owners),
-    path('cars/', views.ListCars.as_view())
+    path('cars/', views.ListCars.as_view()),
+    path('create_owner/', views.create_owner),
+    path('create_car/', views.CreateCars.as_view())
 ]

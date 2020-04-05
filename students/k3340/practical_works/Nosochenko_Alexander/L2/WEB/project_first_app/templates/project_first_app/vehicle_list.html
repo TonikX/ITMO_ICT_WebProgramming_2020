@@ -1,0 +1,12 @@
+<ul>
+    <!-- Iterate over object_list -->
+    {% for object in object_list %}
+    <!-- Display Objects -->
+    {{ object.manufacturer }} {{ object.model }} {{ object.vehicle_number }} {{ object.color }}
+  
+    <hr/>
+    <!-- If objet_list is empty  -->
+    {% empty %}
+    <li>No objects yet.</li>
+    {% endfor %}
+</ul>

@@ -7,4 +7,6 @@ urlpatterns = [
     path('time/', views.geeks_view),
     path('all_owners/', views.owners_list),
     path('all_cars/', views.CarList.as_view(template_name="Cars_View.html")),
+    path('create_owner/', views.create_owner),
+    path('create_car/', views.CreateCar.as_view(template_name="Create_Car.html")),
 ]

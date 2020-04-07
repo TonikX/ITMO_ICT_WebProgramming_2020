@@ -3,5 +3,5 @@
 config.py
 *.*~
 *.sqlite3
-/.idea
-/tutorial-env
+.idea
+tutorial-env

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All owners</title>
+</head>
+<body>
+    <div class="main">
+    	{% for owner in dataset %}.
+
+    	{{ owner.first_name }} <br/>
+    	{{ owner.last_name }} <br/>
+    	{{ owner.birth_date }} <br/>
+    	<hr/>
+
+    	{% endfor %}
+
+    </div>
+</body>
+</html> 

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Пример веб-страницы</title>
+ </head>
+ <body>
+<h1>Список научных конференций</h1>
+ <ul class="sidebar-nav">
+<li><a href="{% url 'index' %}">Главная страниица</a></li>
+<li><a href="{% url 'all_conferences' %}">Конференции</a></li>
+<li><a href="{% url 'account_login' %}">Войти</a></li>
+<li><a href="{% url 'account_logout' %}">Выйти</a></li>
+</ul>
+ </body>
+</html>

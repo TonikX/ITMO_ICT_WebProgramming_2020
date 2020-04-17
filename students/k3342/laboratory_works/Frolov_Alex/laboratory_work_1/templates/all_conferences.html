@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Конференции</title>
+</head>
+<body>
+<li><a href="{% url 'index' %}">Главная страниица</a></li>
+<li><a href="{% url 'account_login' %}">Войти</a></li>
+<li><a href="{% url 'all_comments' %}">Комментарии</a></li>
+<li><a href="{% url 'add_comment' %}">Новый комментарий</a></li>
+<li><a href="{% url 'account_logout' %}">Выйти</a></li>
+<h1>Список научных конференций</h1>
+    <table>
+        {% for conference in conferences %}
+       <tr>
+           <td><H1>Название конференции: </H1></td>
+           <td>{{conference.name}}</td>
+       </tr>
+        <tr>
+            <td>Тема</td>
+            <td>{{conference.type_of_topics}}</td>
+        </tr>
+        <tr>
+            <td>Место проведения</td>
+            <td>{{conference.place}}</td>
+        </tr>
+        <tr>
+            <td>Дата начала конференции</td>
+            <td>{{conference.start}}</td>
+        </tr>
+        <tr>
+            <td>Дата окончания конференции</td>
+            <td>{{conference.finish}}</td>
+        </tr>
+        <tr>
+            <td>Описание конференции</td>
+            <td>{{conference.text_of_conference}}</td>
+        </tr>
+        <tr>
+            <td>Описание маста проведения</td>
+            <td>{{conference.text_of_place}}</td>
+        </tr>
+        <tr>
+            <td>Условия участия</td>
+            <td>{{conference.terms}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

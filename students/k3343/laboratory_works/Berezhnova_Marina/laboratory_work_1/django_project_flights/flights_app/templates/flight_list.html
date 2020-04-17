@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flight list</title>
+</head>
+
+<body style="padding: 0.75rem 1.25rem">
+    <h1>Flights:</h1>
+    <small>Just click on flight for adding your comment</small>
+    <ul style="list-style-type: none; padding: 0; margin: 1rem 0">
+        <li>
+            {% for flight in flights %}
+            <a href="/flights/{{ flight.id }}">{{ flight }}</a>
+            {% endfor %}
+        </li>
+    </ul>
+</body>
+
+</html>

@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Companies(models.Model):
@@ -48,4 +49,4 @@ class FlightComments(models.Model):
 
 	com_type = models.CharField(choices=COMMENT_TYPE, default='0', max_length=1)
 	com_text = models.CharField(max_length=1024)
-	author = models.EmailField(max_length=254)
+	author = models.ForeignKey(User, on_delete=models.CASCADE)

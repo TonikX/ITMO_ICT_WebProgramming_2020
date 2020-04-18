@@ -21,6 +21,7 @@
     <div style="border: 1px solid; padding: 0.5rem; margin: 2rem">
         <form action="/flights/{{ flight.id }}/" method="post">
             {% csrf_token %}
+            <input type="text" name="author_id" hidden value="{{ user.id }}">
             {{ form.as_p }}
             <input type="submit">
         </form>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+
+<body>
+    {% if not registered %}
+    <form method="post">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        <input type="submit" name="" value="Register">
+    </form>
+    {% else %}
+    <h1>Thanks for registration you can <a href="/accounts/login">login</a> now</h1>
+    {% endif %}
+</body>
+
+</html>

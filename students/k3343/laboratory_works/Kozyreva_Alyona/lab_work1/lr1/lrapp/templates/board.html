@@ -1,0 +1,17 @@
+{% block title %}<title>Доска с домашними заданиями</title>{% endblock %}
+{% block content %}
+	<h1><p align ="center" style="font-family:'Courier New'">Доска с домашними заданиями</p></h1>
+	<p align ="center" style="font-family:'Courier New'">Здесь ты можешь посмотреть все домашние задания и информацию о них!</p></br>
+<table>
+    	{% for homework in homeworks %}
+        <b><p style="font-family:'Courier New'">Предмет:</b> {{ homework.subject }} <br/>
+        <b><p style="font-family:'Courier New'">Фамилия преподавателя:</b>: {{ homework.teacher }} <br/>
+	<b><p style="font-family:'Courier New'">Дата выдачи:</b> {{ homework.givingdate}} <br/>
+        <b><p style="font-family:'Courier New'">Срок выполнения:</b> {{ homework.deadline}} <br/>
+	<b><p style="font-family:'Courier New'">Штрафные санкции:</b> {{ homework.fines}} <br/>
+	<b><p style="font-family:'Courier New'">Текст задания:</b> {{ homework.text}} <br/>
+        <hr/>
+        {% endfor %}
+    </table>
+{% endblock%}
+

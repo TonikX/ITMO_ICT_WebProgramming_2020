@@ -1,0 +1,17 @@
+{% block title %}<title>Комментарии</title>{% endblock %}
+{% block content %}
+	<h1><p align ="center" style="font-family:'Courier New'">Комментарии</p></h1>
+	<p align ="center" style="font-family:'Courier New'">Здесь ты можешь посмотреть все комментарии своих коллег!</p></br>
+<table>
+    	{% for comment in comments %}
+        <b><p style="font-family:'Courier New'">К заданию:</b> {{ comment.task }} <br/>
+	<b><p style="font-family:'Courier New'">Автор комментария:</b> {{ comment.user }} <br/>
+	<b><p style="font-family:'Courier New'">Важность:</b> {{ comment.importance}} <br/>
+        <b><p style="font-family:'Courier New'">Дата:</b> {{ comment.date}} <br/>
+	<b><p style="font-family:'Courier New'">Тип комментария:</b> {{ comment.type}} <br/>
+	<b><p style="font-family:'Courier New'">Текст:</b> {{ comment.text}} <br/>
+        <hr/>
+        {% endfor %}
+    </table>
+{% endblock%}
+

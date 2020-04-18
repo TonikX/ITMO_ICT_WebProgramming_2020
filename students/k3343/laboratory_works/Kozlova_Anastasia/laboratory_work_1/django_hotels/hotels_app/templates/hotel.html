@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ hotel }}</title>
+</head>
+
+<body>
+    <h1>Hotel:</h1>
+    <p>{{ hotel }}</p>
+    <h4>Rooms:</h4>
+    <div>
+        {% for room in rooms %}
+        <p>{{ room }}</p>
+        {% endfor %}
+    </div>
+    {% for comment in comments %}
+    <hr>
+    <div>
+        <p><b>Rating:</b> {{ comment.rating }}/10</p>
+        <p><b>Period:</b> {{ comment.period_start }} - {{ comment.period.end }}</p>
+        <p><b>Authored by: {{ comment.user }}</b></p>
+        <p>{{ comment.text }}</p>
+    </div>
+    <hr>
+    {% endfor %}
+    <br>
+    <br>
+    <br>
+    <div>
+        <h4>Add new comment:</h4>
+        <form action="/hotels/{{ hotel.id }}/" method="post">
+            {% csrf_token %}
+            <input type="text" name="user" hidden value="{{ user.id }}">
+            {{ form.as_p }}
+            <input type="submit">
+        </form>
+    </div>
+</body>
+
+</html>

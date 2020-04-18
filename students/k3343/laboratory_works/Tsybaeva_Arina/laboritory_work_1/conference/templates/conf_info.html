@@ -1,0 +1,26 @@
+<html>
+{% extends "welcome_page.html" %}
+	<head>
+		<title>Conferences</title>
+		<meta charset="utf-8" />
+		{% load static %}
+		<link rel="icon" href="data:;base64,=">
+
+	</head>
+{% block content %}
+<div class="features">
+{% for c in conf %}
+    <p><b><font color="#dc143c"> Конференция :</font> {{ c.conference_name }}</b></p>
+    <p>Страна: {{ c.country_location }}</p>
+    <p>Город: {{ c.town_location }}</p>
+    <p>Адрес: {{ c.address }}</p>
+    <p>Дата: {{ c.conference_date }}</p>
+    <p><font color="blue">Секции:</font></p>
+    {% for section in c.conference.all %}
+        <p><li>{{ section.section_name }} : {{ section.section_time }}</li></p>
+    {% endfor %}
+
+{% endfor %}
+</div>
+{% endblock %}
+</html>

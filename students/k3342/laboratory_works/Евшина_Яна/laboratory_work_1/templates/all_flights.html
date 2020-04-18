@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Табло прилетов и отлетов</title>
+		<meta charset="utf-8" />
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'main.css' %}" />
+
+	</head>
+	<body>
+        <div>
+            {% if request.user.is_authenticated %}
+            <h2>Добро пожаловать, {{request.user.first_name}} {{request.user.last_name}}</h2>
+            {% endif%}
+            {% block register %}{% endblock %}
+            <div class="main">
+                {% for data in dataset %}
+                    <b><p> Номер рейса: {{data.number}}</p></b>
+                    <p> Название авиакомпании: {{data.flight_company}}</p>
+                    <p> Дата и время отправления: {{data.departure}}</p>
+                    <p> Дата и время прибытия: {{data.arrival}}</p>
+                    <p> Тип: {{data.type}}</p>
+                    <p> Номер выхода: {{data.gate_num}}</p>
+                {% endfor %}
+            </div>
+        </div>
+	</body>
+</html>

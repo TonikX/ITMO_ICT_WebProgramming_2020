@@ -1,0 +1,24 @@
+{% extends "main_menu.html" %}
+
+{% block content %}
+
+<h2>Leaderboard</h2>
+<ul>
+{% for race, winner, car in info %}
+	<li><b>Race: </b>{{ race.name }}</li>
+	<ul>
+		<li>Category: {{ race.category }}</li>
+		<li>Date: {{ race.date }}</li>
+	</ul>
+	<li><b>Winner: </b>{{ winner.name }} {{ winner.surname }} {{ winner.middlename }}. {{ winner.description }}</li>
+	<li><b>Experience: </b>{{ winner.experience }}</li>
+	<li><b>Class: </b>{{ winner.racer_class }}</li>
+	<li><b>Team: </b>{{ winner.team_name }}</li>
+	<li><b>Car: </b>{{ winner.car }}</li>
+	<li><b>Car number: </b>{{ car.car_number }}</li>
+	<ul></ul>
+	<br>
+{% endfor %}
+</ul>
+
+{% endblock %}

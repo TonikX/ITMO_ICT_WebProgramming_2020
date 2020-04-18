@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ tour }}</title>
+</head>
+
+<body>
+    <h1>Tour:</h1>
+    <h3>{{ tour }}</h3>
+    <b>Tour description:</b>
+    <br>
+    {{ tour.desc }}
+    {% for comment in comments %}
+    <br>
+    <br>
+    <p><b>Question type:</b> {{ comment.get_question_type_display }}</p>
+    <p>{{ comment.comment_text }}</p>
+    <p><small><b>Authored by: {{ comment.author }}</b></small></p>
+    <br>
+    <br>
+    {% endfor %}
+    <br>
+    <br>
+    <div>
+        <h3>Add new comment:</h3>
+        <form action="/tours/{{ tour.id }}/" method="post">
+            {% csrf_token %}
+            <input type="text" name="user_id" hidden value="{{ user.id }}">
+            {{ form.as_p }}
+            <input type="submit" value="Add comment">
+        </form>
+    </div>
+</body>
+
+</html>

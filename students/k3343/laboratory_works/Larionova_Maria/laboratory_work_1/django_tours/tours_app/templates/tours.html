@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tours</title>
+</head>
+
+<body>
+    {% if user.is_authenticated %}
+    <h1>Tours:</h1>
+    <div>
+        {% for tour in tours %}
+        <p>
+            {{ tour }}
+            <br />
+            <a href="/tours/{{ tour.id }}">Show more information</a>
+        </p>
+        {% endfor %}
+    </div>
+    {% else %}
+    Sorry! You should <a href="/accounts/register">Register</a> or <a href="/accounts/login">Login</a> before adding your own comment.
+    {% endif %}
+</body>
+
+</html>

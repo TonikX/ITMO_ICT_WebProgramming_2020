@@ -1,0 +1,42 @@
+{% extends "main.html" %}
+{% block title %}<title>HOMEWORK BOARD: Комментарии</title>{% endblock %}
+{% block content %}
+    <div class="p-3 mb-2 bg-info text-white">
+        <br><h1><p class="text-center">Комментарии к домашним заданиям</p></h1></br>
+    </div>
+    <table>
+        {% for comment in comments %}
+       <tr>
+           <td><h3><p class="text-info">Задание:</p></h3></td>
+           <td><h3><p class="text-info">{{comment.hometask.hw_title}}</p></h3></td>
+       </tr>
+            <td>Автор комментария:</td>
+            <td><b>{{comment.student.user_profile}}, {{comment.student.user_profile.group_number}}</b></td>
+        </tr>
+        <tr>
+            <td>Тип комментария:</td>
+            <td><b>{{comment.type_of_comment}}</b></td>
+        </tr>
+        <tr>
+            <td>Важность комментария:</td>
+            <td><b>{{comment.type_of_importance}}</b></td>
+        </tr>
+        <tr>
+            <td>Комментарий:</td>
+            <td><b><i>{{comment.comment}}</i></b></td>
+        </tr>
+        <tr>
+            <td>Дата публикации:</td>
+            <td><b>{{comment.date_of_comment}}</b></td>
+        </tr>
+        {% endfor %}
+    </table>
+<style>
+   table {
+    width: 100%; /* Ширина таблицы в процентах */
+   }
+   .col1 {
+    width: 100px; /* Ширина ячейки */
+   }
+  </style>
+{% endblock %}

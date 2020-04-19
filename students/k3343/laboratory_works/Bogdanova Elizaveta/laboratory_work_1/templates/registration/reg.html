@@ -1,0 +1,21 @@
+{% extends  'based.html' %}
+{% load crispy_forms_tags %}
+
+{% block main %}
+<h3 class="text-center" style="color:#696969">Регистрация нового пользователя</h3>
+<div class="card">
+<div class="card-body">
+<h5 class="card-title" style="color:#808080">Пожалуйста, заполните все поля</h5>
+
+<form method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+<input type="hidden" name="next" value="{{ next }}">
+
+    <!-- Using the formset -->
+    {{ form.as_p }}
+
+    <button type="submit" class="btn">Зарегистрироваться</button>
+</form>
+</div>
+</div>
+{% endblock %}

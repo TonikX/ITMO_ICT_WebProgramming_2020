@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}<title>Добавление комментария</title>{% endblock %}
+{% block content %}
+<h1>Новый комментарий</h1>
+    <form method="POST" enctype="multipart/form-data">
+
+    <!-- Security token -->
+    {% csrf_token %}
+
+    <!-- Using the formset -->
+    {{ form.as_p }}
+
+    <input type="submit" value="Отправить" >
+    </form>
+{% endblock %}

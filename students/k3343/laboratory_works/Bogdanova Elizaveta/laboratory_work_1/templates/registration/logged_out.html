@@ -1,0 +1,8 @@
+{% extends 'based.html' %}
+{% load crispy_forms_tags %}
+{% block main %}
+
+<p>Вы неавторизованы</p>
+<a  href="{% url 'login' %}">Войти снова</a>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}<title>Описание туров</title>{% endblock %}
+{% block content %}
+<h1>Туры</h1>
+    <table>
+        {% for tour in tours %}
+       <tr>
+           <td><H1>Тур номер: {{tour.id}}</H1></td>
+       </tr>
+        <tr>
+            <td><b>Название тура:</b></td>
+            <td>{{tour.tour}}</td>
+        </tr>
+        <tr>
+            <td><b>Турагентство:</b></td>
+            <td>{{tour.agency}}</td>
+        </tr>
+        <tr>
+            <td><b>Страна направления:</b></td>
+            <td>{{tour.country}}</td>
+        </tr>
+        <tr>
+            <td><b>Период поездки с:</b> </td>
+            <td>{{tour.period_s}}</td>
+        </tr>
+        <tr>
+            <td><b>Период поездки по:</b> </td>
+            <td>{{tour.period_po}}</td>
+        </tr>
+        <tr>
+            <td><b>Описание тура:</b></td>
+            <td>{{tour.text_of_tour}}</td>
+        </tr>
+        <tr>
+            <td><b>Стоимость тура:</b></td>
+            <td>{{tour.summa}}</td>
+        </tr>
+        <tr>
+            <td><b>Условия оплаты:</b></td>
+            <td>{{tour.conditions}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock%}

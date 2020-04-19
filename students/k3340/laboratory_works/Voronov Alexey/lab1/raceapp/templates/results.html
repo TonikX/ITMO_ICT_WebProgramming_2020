@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Результаты Нюрбургринг</title>
+</head>
+<body>
+
+<a href="accounts/signup">Регистрация</a>
+<a href="accounts/login">Авторизация</a>
+
+
+<ul>
+    <!-- Iterate over object_list -->
+    {% for result in results %}
+    <!-- Display Objects -->
+    <li><h4>{{ result.name }}</h4> </li>
+    <li>Дата: {{ result.date }}</li>
+    <li>Авто: {{ result.vehicle }}</li>
+    <li>Пилот: {{ result.driver }}</li>
+    <li>Время: {{ result.result }}</li>
+    <li>Комменты: {{ result.count }}</li>
+    <li><a href="result/{{ result.id }}">Подробнее</a></li>
+
+
+    <hr/>
+    <!-- If objet_list is empty  -->
+    {% empty %}
+    <li>No objects yet.</li>
+    {% endfor %}
+</ul>
+</body>
+</html>

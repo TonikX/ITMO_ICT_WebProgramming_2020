@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Результат</title>
+</head>
+    <li><h4>{{ result.name }}</h4> </li>
+    <li>Дата: {{ result.date }}</li>
+    <li>Авто: {{ result.vehicle }}</li>
+    <li>Пилот: {{ result.driver }}</li>
+    <li>Время: {{ result.result }}</li>
+    <li>Описание: {{ result.description }}</li>
+
+    <h4>Комментарии</h4>
+     {% for comment in comments %}
+        Пользователь - {{ comment.user }}<br>
+        {{ comment.text }} <br>
+        {{ comment.type }}<br><br>
+     {% endfor %}
+    {% if user.is_active %}
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Отправить</button>
+        </form>
+    {% else %}
+        <h4>Что бы оставить комментарий авторизуйтесь</h4>
+    {% endif %}
+</html>

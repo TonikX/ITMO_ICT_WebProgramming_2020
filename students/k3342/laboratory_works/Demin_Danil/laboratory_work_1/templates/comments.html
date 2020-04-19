@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Comment Board{% endblock %}
+{% block content %}
+<h1>Comment Board</h1>
+{% for comment in comments %}
+    <table>
+        <tr>
+            <td>Author:{{comment.username}}</td>
+        </tr>
+        <tr>
+            <td>Hotel: {{comment.hotel}}</td>
+        </tr>
+        <tr>
+            <td>Rating: {{comment.rating}}</td>
+        <tr>
+            <td><h3>{{comment.comment}}</h3></td>
+        </tr>
+        <tr>
+            <td>Arrived on:{{comment.start_date}} Departed on:{{comment.end_date}}</td>
+        </tr>
+        <tr>
+            <td>Posted on:{{comment.post_date}}</td>
+        </tr>
+    </table>
+    <hr>
+    <hr>
+{% endfor %}
+<a class="btn btn-primary" href="new_comment" role="button">Add Comment</a>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Hotels{% endblock %}
+{% block content %}
+<h1>List of Hotels</h1>
+{% for hotel in hotels %}
+<table>
+       <tr>
+           <td><H3>{{hotel.name}}</H3></td>
+       </tr>
+        <tr>
+            <td>{{hotel.address}}</td>
+        </tr>
+        <tr>
+            <td>Size:</td>
+            <td>{{hotel.size}}</td>
+        </tr>
+        <tr>
+            <td>Owned by:</td>
+            <td>{{hotel.owner}}</td>
+        </tr>
+        <tr>
+            <td>Rooms:</td>
+            <td>{{hotel.rooms}}</td>
+        </tr>
+        <tr>
+            <td>Amenities:</td>
+            <td>{{hotel.amenities}}</td>
+        </tr>
+</table>
+</br>
+<div>{{hotel.description}}</div>
+</br>
+{% endfor %}
+{% endblock %}
+

@@ -1,0 +1,53 @@
+{% extends 'main.html' %}
+{% block content %}
+    <div>
+    <h2>{{ hotel.name }}</h2>
+    <p>{{ hotel.description }}</p>
+    <p>{{ hotel.address }}</p><hr>
+
+        <b>Вместимость</b> – {{ hotel.capacity }} номеров<br><br>
+
+        <b>Удобства</b>
+        {% for fac in hotel.facilities.all %}
+        <ul class="hr">
+            <li>{{ fac.title }}</li>
+        </ul>
+        {% endfor %} <br>
+
+        <b>Типы номеров</b>
+        {% for type in hotel.room_types.all %}
+        <ul class="hr">
+            <li>{{ type.title }}</li>
+        </ul>
+        {% endfor %} <br>
+
+        <b>Владелец</b> – {{ hotel.owner }}
+        <hr>
+
+        <h3>Комментарии</h3>
+        {% for com in comment %}
+        <div class="outline">
+            <b>Автор</b> – {{ com.user }}<br><br>
+            <em>{{ com.text }}</em><br><br>
+            <b>Период проживания:</b> {{ com.start_living }} – {{ com.end_living }}<br>
+            <b>Оценка – </b> {{ com.rating }}<br>
+        </div>
+        {% endfor %}
+
+        <h4>Оставить комментарий</h4>
+        {% if user.is_active %}
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Отправить</button>
+            </form>
+        {% else %}
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+            </form>
+            <b>Комментарии могут оставлять только авторизованные пользователи.</b>
+            <p><a href="/accounts/login" class="btn">Авторизоваться</a></p>
+        {% endif %}
+    </div>
+{% endblock content %}

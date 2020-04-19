@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+{% block content %}
+    {% for data in dataset %}
+    <div>
+        <h2><a href="{% url 'hotel_single' pk=data.id %}">{{ data.name }}</a></h2>
+        <p>{{ data.description }}</p>
+        <p>Отель располагается по адресу {{ data.address }}</p>
+    </div>
+    <hr/>
+
+    {% endfor %}
+{% endblock content %}

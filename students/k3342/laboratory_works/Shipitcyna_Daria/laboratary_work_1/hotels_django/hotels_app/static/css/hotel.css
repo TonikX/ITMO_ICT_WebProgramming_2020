@@ -1,0 +1,42 @@
+div {
+    margin: 20px;
+}
+
+ul.hr {
+    margin: 0;
+    padding: 4px;
+}
+
+ul.hr li {
+    display: inline;
+    margin-right: 5px;
+    border: 1px solid #000;
+    padding: 3px;
+}
+
+.page-header {
+    background-color: #c5aed6;
+    margin-top: 0;
+    padding: 20px 20px 20px 40px;
+}
+
+.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
+    color: #ffffff;
+    font-size: 36pt;
+    text-decoration: none;
+}
+
+.btn {
+    display: inline-block;
+    background: #c5aed6;
+    color: #fff;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    border-radius: 3px;
+   }
+
+.outline {
+    border-color: #c5aed6; /* Цвет границы */
+    border-style: solid;
+    padding: 10px;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/hotel.css' %}">
+</head>
+<body>
+
+<div class="page-header">
+    <h1><a href="/">Отели в Санкт-Петербурге</a></h1>
+    {% if user.is_active %}
+        <p>Добро пожаловать, {{ user }}</p>
+        <a href="/accounts/logout">Выйти</a>
+    {% else %}
+        <p><a href="/accounts/login">Войти</a> | <a href="/accounts/signup">Зарегистрироваться</a></p>
+    {% endif %}
+</div>
+
+{% block content %}
+
+{% endblock content %}
+
+</body>
+</html>

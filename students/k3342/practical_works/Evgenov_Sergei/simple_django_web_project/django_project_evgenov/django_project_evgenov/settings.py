@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'q^73#_j&(e9nrd9)*_m3taxug0rzib1tq*nny+^=#i%1xiee0o'
+SECRET_KEY = ')lljowhf9ke9%8jutaht&6_#5(l4jmla%rbocrm)r!gkxdyde='
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'project_first_app'
 ]
 
 MIDDLEWARE = [
@@ -54,8 +55,7 @@ ROOT_URLCONF = 'django_project_evgenov.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

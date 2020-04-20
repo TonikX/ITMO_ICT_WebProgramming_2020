@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from django.http import Http404, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
-from .models import Teacher, UserProfile, Hometask, Comment
-from .forms import AddComment, Student_reg, RegisterUserForm
+from .models import UserProfile, Hometask, Comment
+from .forms import AddCommentForm, StudentRegistrationForm, RegisterUserForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
@@ -39,7 +39,7 @@ class RegisterUserView(CreateView):
         return form_valid
 
 
-class StudentReg(CreateView):
+class StudentRegistrationView(CreateView):
     model = UserProfile
     fields = [
         "surname",
@@ -50,7 +50,7 @@ class StudentReg(CreateView):
     success_msg = 'Профиль пользователя успешно заполнен'
     def as_view(request):
         students = {}
-        form = Student_reg(request.POST or None)
+        form = StudentRegistrationForm(request.POST or None)
         if form.is_valid():
             form = form.save(commit=False)
             form.isu = request.user
@@ -61,7 +61,7 @@ class StudentReg(CreateView):
 
 
 @login_required
-class Add_Comment(CreateView):
+class AddCommentView(CreateView):
     model = Comment
     fields = [
             "hometask",
@@ -71,7 +71,7 @@ class Add_Comment(CreateView):
         ]
     def as_view(request):
         comments = {}
-        form = AddComment(request.POST or None)
+        form = AddCommentForm(request.POST or None)
         if form.is_valid():
             form = form.save(commit=False)
             form.student = request.user

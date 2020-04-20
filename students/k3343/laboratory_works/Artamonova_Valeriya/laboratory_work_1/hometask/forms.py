@@ -20,7 +20,7 @@ class RegisterUserForm(forms.ModelForm):
         return user
 
 
-class Student_reg(forms.ModelForm):
+class StudentRegistrationForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = [
@@ -31,7 +31,7 @@ class Student_reg(forms.ModelForm):
         ]
 
 
-class AddComment(forms.ModelForm):
+class AddCommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = [

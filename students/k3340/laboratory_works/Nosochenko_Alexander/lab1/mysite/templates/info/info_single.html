@@ -1,0 +1,28 @@
+{% if user.is_active %}
+    <a href=/accounts/logout/>Выйти</a>
+{% else %}
+    <a href=accounts/login>Авторизация</a>
+{% endif %}
+
+<h1>Номер полета: {{ info.flight_number }} Компания: {{ info.flight_company }}</h1>
+<p>Отправление: {{ info.departure }} Прибытие: {{ info.arrival }}</p>
+<p>Тип: {{ info.flight_type }} Номер ворот: {{ info.gate_number }}</p>
+<p><a href="{% url 'list_info' %}">Назад</a></p> <hr>
+
+    {% if user.is_active %}
+         <form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Отправить</button>
+            </form>
+    {% else %}
+        <h4>Чтобы оставить комментарий авторизуйтесь</h4>
+    {% endif %}
+
+{% for comment in comments %}
+    <br>Пользователь - {{ comment.client }}<br>
+    {{ comment.text }}<br>
+    Категория: {{ comment.category }}<br><br>
+
+
+{% endfor %}

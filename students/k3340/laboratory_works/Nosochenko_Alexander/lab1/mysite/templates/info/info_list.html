@@ -1,0 +1,14 @@
+{% if user.is_active %}
+    <a href=/accounts/logout/>Выйти</a>
+{% else %}
+    <a href=accounts/login>Авторизация</a>
+{% endif %}
+
+{% for inf in info %}
+    <hr>
+    <p>Номер полета: {{ inf.flight_number }} Компания: {{ inf.flight_company }}</p>
+    <p>Отправление: {{ inf.departure }} Прибытие: {{ inf.arrival }}</p>
+    <p>Тип: {{ inf.flight_type }} Номер ворот: {{ inf.gate_number }}</p>
+    <p><a href="{% url 'single_info' pk=inf.id %}">Комментарии</a></p>
+    </hr>
+{% endfor %}

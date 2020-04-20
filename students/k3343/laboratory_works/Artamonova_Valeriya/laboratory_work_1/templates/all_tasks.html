@@ -2,10 +2,10 @@
 {% block title %}<title>HometaskDesk: домашние задания</title>{% endblock %}
 {% block content %}
 <h1>Доска домашних заданий</h1>
-    <table>
+    <table class="table table-striped">
         {% for task in tasks %}
        <tr>
-           <td><H1>Домашнее задание номер: {{task.id}}</H1></td>
+           <td colspan="2"><H2>Домашнее задание номер: {{task.id}}</H2></td>
        </tr>
         <tr>
             <td>Дисциплина</td>

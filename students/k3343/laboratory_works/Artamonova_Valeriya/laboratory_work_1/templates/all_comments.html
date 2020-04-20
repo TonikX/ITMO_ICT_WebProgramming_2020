@@ -2,14 +2,22 @@
 {% block title %}<title>HometaskDesk: комментарии</title>{% endblock %}
 {% block content %}
 <h1>Комментарии к домашним заданиям</h1>
-    <table>
-        {% for comment in comments %}
+    {% for comment in comments %}
+    <table class="table table-striped" >
        <tr>
-           <td><H2>Комментарий к домашнему заданию: {{comment.hometask.task_name}}</H2></td>
+           <td colspan="2"><H3>Комментарий к домашнему заданию: {{comment.hometask.task_name}}</H3></td>
        </tr>
         <tr>
-            <td>Автор комментария</td>
+            <td width="250">Автор комментария</td>
             <td>{{comment.student.userprofile}}, {{comment.student.userprofile.group}}</td>
+        </tr>
+        <tr>
+            <td>Текст комментария</td>
+            <td><h4>{{comment.text}}</h4></td>
+        </tr>
+        <tr>
+            <td>Дата</td>
+            <td>{{comment.post_date}}</td>
         </tr>
         <tr>
             <td>Тип комментария</td>
@@ -19,14 +27,6 @@
             <td>Важность комментария</td>
             <td>{{comment.importance_of_comment}}</td>
         </tr>
-        <tr>
-            <td>Текст комментария</td>
-            <td>{{comment.text}}</td>
-        </tr>
-        <tr>
-            <td>Дата</td>
-            <td>{{comment.post_date}}</td>
-        </tr>
-        {% endfor %}
     </table>
+{% endfor %}
 {% endblock %}

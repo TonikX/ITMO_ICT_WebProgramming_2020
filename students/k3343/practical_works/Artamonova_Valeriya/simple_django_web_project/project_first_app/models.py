@@ -1,10 +1,11 @@
 from django.db import models
 
 
-class Auto_owner(models.Model):
+class AutoOwner(models.Model):
     owner_name = models.CharField(max_length=50)
     owner_surname = models.CharField(max_length=50)
     date_of_birth = models.DateField()
+    autos = models.ManyToManyField(Automobile, through='Owning')
 
 
 class Automobile(models.Model):
@@ -14,7 +15,7 @@ class Automobile(models.Model):
     id_car = models.CharField(max_length=50, primary_key=True)
 
 
-class Driver_license(models.Model):
+class DriverLicense(models.Model):
     id_license = models.CharField(max_length=50, primary_key=True)
     date_of_issue = models.DateField()
     CategoryType = models.TextChoices('CategoryType','A A1 B B1 C')

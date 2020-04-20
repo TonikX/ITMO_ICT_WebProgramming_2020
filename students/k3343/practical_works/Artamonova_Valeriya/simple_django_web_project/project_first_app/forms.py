@@ -1,10 +1,10 @@
 from django import forms
-from .models import Auto_owner, Automobile
+from .models import AutoOwner, Automobile
 
 
-class Auto_ownerForm(forms.ModelForm):
+class AutoOwnerForm(forms.ModelForm):
     class Meta:
-        model = Auto_owner
+        model = AutoOwner
         fields = [
             "owner_name",
             "owner_surname",

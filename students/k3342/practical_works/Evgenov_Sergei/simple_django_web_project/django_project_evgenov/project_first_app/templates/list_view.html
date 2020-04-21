@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Owners list view</title>
+</head>
+<body>
+    <div class="main">
+
+        {% for data in dataset %}
+
+        Имя: {{data.first_name}}, Фамилия: {{data.last_name}} <br>
+        Дата рождения: {{data.birth_date}}.
+
+        <hr/>
+
+        {% endfor %}
+
+    </div>
+</body>
+</html>

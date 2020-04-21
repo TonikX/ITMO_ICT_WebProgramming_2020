@@ -3,10 +3,18 @@ from django.db import models
 # Create your models here.
 
 
+class Car(models.Model):
+    producer = models.CharField(max_length=40)
+    model = models.CharField(max_length=25)
+    color = models.CharField(max_length=40)
+    state_num = models.CharField(max_length=17)
+
+
 class CarOwner(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     birth_date = models.DateField()
+    cars = models.ManyToManyField(Car, through='Ownership')
 
 
 class DrivingLicense(models.Model):
@@ -18,13 +26,6 @@ class DrivingLicense(models.Model):
     issue_date = models.DateField()
     type = models.CharField(choices=DLType, max_length=7)
     owner = models.ForeignKey(CarOwner, on_delete=models.CASCADE)
-
-
-class Car(models.Model):
-    producer = models.CharField(max_length=40)
-    model = models.CharField(max_length=25)
-    color = models.CharField(max_length=40)
-    state_num = models.CharField(max_length=17)
 
 
 class Ownership(models.Model):

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:upstream" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9858ea65-3249-4d5a-8edd-283795b03bcb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/templates/create_view.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/templates/list_view.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/templates/project_first_app/car_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/templates/project_first_app/car_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/templates/success.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_project_evgenov/project_first_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_project_evgenov/project_first_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_project_evgenov/project_first_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/views.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../.." />
+  </component>
+  <component name="ProjectId" id="1akuMfM3AqbDNwl9zWUP0JMqPLF" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\University\2020_03_to_07_Semester_6\Web\GitHub\ITMO_ICT_WebProgramming_2020\students\k3342\practical_works\Evgenov_Sergei\simple_django_web_project\django_project_evgenov\project_first_app\templates" />
+      <recent name="D:\University\2020_03_to_07_Semester_6\Web\GitHub\ITMO_ICT_WebProgramming_2020\students\k3342\practical_works\Evgenov_Sergei\simple_django_web_project\django_project_evgenov\project_first_app\templates\project_first_app" />
+      <recent name="D:\University\2020_03_to_07_Semester_6\Web\GitHub\ITMO_ICT_WebProgramming_2020\students\k3342\practical_works\Evgenov_Sergei\simple_django_web_project\django_project_evgenov\project_first_app" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9858ea65-3249-4d5a-8edd-283795b03bcb" name="Default Changelist" comment="" />
+      <created>1587291865940</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1587291865940</updated>
+      <workItem from="1587291870539" duration="7582000" />
+      <workItem from="1587374844084" duration="1522000" />
+      <workItem from="1587457831548" duration="5953000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="309" y="42" key="#Inspections" timestamp="1587459481980">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="309" y="42" key="#Inspections/0.0.1366.728@0.0.1366.728" timestamp="1587459481980" />
+    <state x="184" y="9" key="SettingsEditor" timestamp="1587292495615">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="184" y="9" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1587292495615" />
+  </component>
+</project>

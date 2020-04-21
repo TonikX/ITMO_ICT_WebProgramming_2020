@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from .models import Hotel, Comment
@@ -11,9 +11,10 @@ def hotels(request):
     hotels = {'hotels': Hotel.objects.all()}
     return render(request, 'hotels.html', hotels)
 
-def comments(request):
-    comments = {'comments': Comment.objects.all()}
-    return render(request, 'comments.html', comments)
+def comments(request, key):
+    hotel = get_object_or_404(Hotel, id=key)
+    data = {'hotel': hotel, 'comments': Comment.objects.filter(hotel=key)}
+    return render(request, 'comments.html', data)
 
 class RegisterView(CreateView):
     form_class = UserCreationForm

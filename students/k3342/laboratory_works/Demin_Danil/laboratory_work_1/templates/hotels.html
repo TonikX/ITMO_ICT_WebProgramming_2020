@@ -30,6 +30,7 @@
 </table>
 </br>
 <div>{{hotel.description}}</div>
+<a class="btn btn-primary" href="{% url 'comments' key=hotel.id %}" role="button">Comments</a>
 </br>
 {% endfor %}
 {% endblock %}

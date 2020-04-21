@@ -2,14 +2,11 @@
 
 {% block title %}Comment Board{% endblock %}
 {% block content %}
-<h1>Comment Board</h1>
+<h1>Comment Board for {{hotel.name}}</h1>
 {% for comment in comments %}
     <table>
         <tr>
             <td>Author:{{comment.username}}</td>
-        </tr>
-        <tr>
-            <td>Hotel: {{comment.hotel}}</td>
         </tr>
         <tr>
             <td>Rating: {{comment.rating}}</td>
@@ -26,5 +23,5 @@
     <hr>
     <hr>
 {% endfor %}
-<a class="btn btn-primary" href="new_comment" role="button">Add Comment</a>
+<a class="btn btn-primary" href="/new_comment" role="button">Add Comment</a>
 {% endblock %}

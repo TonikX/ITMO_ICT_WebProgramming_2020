@@ -1,0 +1,37 @@
+{% load i18n %}
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <title>Вход</title>
+</head>
+
+<div class="main-signin">
+    <div class="main-signin__head">
+        <h1>{% trans "Sign In" %}</h1>
+<p>{% blocktrans %}If you have not created an account yet, then please
+<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+</div>
+
+<div class="main-signin__middle">
+<div class="middle__form">
+<form class="login" method="POST" action="{% url 'account_login' %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+  {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
+  {% endif %}
+    <input class="primaryAction" type="submit" value="{% trans "Sign In" %}">
+</form>
+</div>
+</div>
+</div>
+
+<script src="{% static 'js/jquery.js'%}"></script>
+<script src="{% static 'js/bootstrap.min.js'%}"></script>
+<script src="{% static 'js/jquery.backstretch.min.js'%}"></script>
+<script src="{% static 'js/custom.js'%}"></script>

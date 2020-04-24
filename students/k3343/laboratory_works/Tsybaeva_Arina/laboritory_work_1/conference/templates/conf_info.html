@@ -1,26 +1,49 @@
-<html>
 {% extends "welcome_page.html" %}
-	<head>
-		<title>Conferences</title>
-		<meta charset="utf-8" />
-		{% load static %}
-		<link rel="icon" href="data:;base64,=">
-
-	</head>
 {% block content %}
-<div class="features">
-{% for c in conf %}
-    <p><b><font color="#dc143c"> Конференция :</font> {{ c.conference_name }}</b></p>
-    <p>Страна: {{ c.country_location }}</p>
-    <p>Город: {{ c.town_location }}</p>
-    <p>Адрес: {{ c.address }}</p>
-    <p>Дата: {{ c.conference_date }}</p>
-    <p><font color="blue">Секции:</font></p>
-    {% for section in c.conference.all %}
-        <p><li>{{ section.section_name }} : {{ section.section_time }}</li></p>
-    {% endfor %}
+<style>
+.comment, .conference {
+    border: 2px solid black;
+    padding: 0.25rem 0.75rem;
+    margin: 1rem auto;
+}
 
+.accent {
+    color: #dc143c;
+}
+
+.primary {
+    color: blue;
+}
+
+.secondary {
+    color: #6495ed;
+}
+</style>
+{% for c in conf %}
+<div class="conference">
+<p><b><span class="accent"> Конференция :</span> {{ c.conference_name }}</b></p>
+<p>Страна: {{ c.country_location }}</p>
+<p>Город: {{ c.town_location }}</p>
+<p>Адрес: {{ c.address }}</p>
+<p>Дата: {{ c.conference_date }}</p>
+<p><span class="primary">Секции:</span></p>
+{% for section in c.conference.all %}
+<p>
+    <li>{{ section.section_name }} : {{ section.section_time }}</li>
+</p>
+{% endfor %}
+{% for comment in c.conf_com.all %}
+<div class="comment">
+    <p class="info">
+        Comment by <span class="accent">{{ comment.name }}</span>
+        {{ comment.created }}
+    </p>
+    <p class="secondary">{{ comment.body|linebreaks }}</p>
+</div>
+{% empty %}
+<p>There are no comments yet.</p>
+{% endfor %}
+</div>
 {% endfor %}
 </div>
 {% endblock %}
-</html>

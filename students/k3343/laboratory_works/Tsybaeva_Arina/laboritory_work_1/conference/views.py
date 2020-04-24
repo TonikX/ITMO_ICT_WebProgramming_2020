@@ -3,7 +3,7 @@ from django.views.generic.edit import FormView
 from .forms import Registration,  CommentForm
 from django.contrib.auth.forms import AuthenticationForm
 from .models import Comment, Conference
-from django.http import HttpResponseRedirect
+from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
@@ -12,6 +12,19 @@ from django.contrib.auth import authenticate, login, logout
 def detail(request):
     conf = Conference.objects.all()
     return render(request, 'conf_info.html', {'conf': conf})
+
+
+def about_conf(request, conf_id):
+
+    try:
+        conference = Conference.objects.get(pk=conf_id)
+
+    except Conference.DoesNotExist:
+        raise Http404("Tour does not exist")
+
+    return render(request, 'conf_info.html', {'conference': conference})
+
+
 
 
 def show_conferences(request):

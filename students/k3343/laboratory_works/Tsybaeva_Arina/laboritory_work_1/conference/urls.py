@@ -7,5 +7,6 @@ urlpatterns =[
     path('logout/', LogoutFormView.as_view(), name='logout'),
     path('all_comments', views.comments, name='all_comments'),
     path('all_sections/', views.detail, name='all_sections'),
-    path('register/', views.register, name='register')
+    path('register/', views.register, name='register'),
+    path('conference/<int:conf_id>/', views.about_conf, name='more_about_conf'),
 ]

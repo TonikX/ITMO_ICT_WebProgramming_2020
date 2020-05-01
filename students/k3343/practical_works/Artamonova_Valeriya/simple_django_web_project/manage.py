@@ -5,7 +5,7 @@ import sys
 
 
 def main():
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_project_Artamonova.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'simple_django_web_project.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

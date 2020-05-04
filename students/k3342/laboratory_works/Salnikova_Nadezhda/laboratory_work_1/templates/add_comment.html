@@ -1,0 +1,15 @@
+{% extends "base_view.html" %}
+{% block title %}<title>Flights - add comment</title>{% endblock %}
+{% block content %}
+<h1>Add your comment</h1>
+    <form method="POST" enctype="multipart/form-data">
+
+    <!-- Security token -->
+    {% csrf_token %}
+
+    <!-- Using the formset -->
+    {{ form.as_p }}
+
+    <input type="submit" value="submit" >
+    </form>
+{% endblock %}

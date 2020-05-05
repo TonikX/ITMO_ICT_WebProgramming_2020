@@ -1,0 +1,61 @@
+{% extends 'hw/base_hw.html' %}
+
+{% block title %}
+    {{ detailed_hw.subject }} - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <h1 class="mt-5">
+        {{ detailed_hw.subject }}
+    </h1>
+    <p>
+        <h5>Задание:</h5> {{ detailed_hw.body }}
+    </p>
+    <p>
+        {% if detailed_hw.fines %}
+            <p class=="card-text" style="color:slategray">Комментарий: {{ detailed_hw.fines }}</p>
+        {% endif %}
+    </p>
+    <hr>
+    {% if user.is_active %}
+        <form action="" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group mb-4">
+                    {% if field.errors %}
+                        <div class="alert alert-danger">
+                            {{ field.errors }}
+                        </div>
+                    {% endif %}
+                    {{ field.label }} <br>
+                    {{ field }}
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary mb-4">Оставить комментарий</button>
+        </form>
+    {% else %}
+        <div class="alert alert-danger">
+            Вы должны быть авторизованы, чтобы оставлять комментарии.
+        </div>
+    {% endif %}
+    <div class="mb-5">
+        <h5 class="mb-4">Комментарии пользователей:</h5>
+            {% if comments %}
+                {% for comment in comments %}
+                    <div class="card pd-5 mb-3">
+                        <div class="card-body">
+                            <small>
+                                Автор: <strong><i>{{ comment.commentator }}</i></strong> <br>
+                                Важность: <strong><i>{{ comment.comment_importance }}</i></strong> <br>
+                                Тип комментария: <strong><i>{{ comment.comment_type }}</i></strong> <br>
+                            </small>
+                            <big>{{ comment.text|linebreaksbr }}</big> <br>
+                            <small>Добавлен: <i>{{ comment.created }}</i></small>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                Будьте первым!
+            {% endif %}
+    </div>
+{% endblock %}

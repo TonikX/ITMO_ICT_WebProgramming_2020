@@ -7,5 +7,6 @@ admin.site.register(Section)
 admin.site.register(Speaker)
 admin.site.register(Lecture)
 admin.site.register(Speech)
+admin.site.register(Comment)
 
 # Register your models here.

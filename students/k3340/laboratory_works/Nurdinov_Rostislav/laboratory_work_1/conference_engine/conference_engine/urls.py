@@ -18,6 +18,8 @@ from django.urls import path, include
 from .views import *
 
 urlpatterns = [
+    path('', include('conference.urls')),
     path('admin/', admin.site.urls),
+    path('accounts/', include('allauth.urls')),
     path('conference/', include('conference.urls'))
 ]

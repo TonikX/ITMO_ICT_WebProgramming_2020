@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.urls import reverse
 
 
@@ -54,3 +55,16 @@ class Speech(models.Model):
     section = models.ForeignKey(Section, on_delete=models.CASCADE)
     speaker = models.ForeignKey(Speaker, on_delete=models.CASCADE)
     lecture = models.OneToOneField(Lecture, on_delete=models.CASCADE)
+
+
+class Comment(models.Model):
+    conference = models.ForeignKey(Conference, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    body = models.TextField(null=True)
+    created = models.DateTimeField(auto_now_add=True, null=True)
+
+    class Meta:
+        ordering = ('created',)
+
+    def __str__(self):
+        return 'Comment by {} on {}'.format(self.user.first_name, self.conference)

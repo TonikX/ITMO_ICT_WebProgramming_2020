@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    base conference
+{% endblock %}
+
+{% block content %}
+    <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">Conference engine</h1>
+      <p> Conference engine является одной из ведущей компанией по проведению научных конференций и тд ... </p>
+      <p><a class="btn btn-primary btn-lg" href="{% url 'about_url' %}" role="button"> Узнать больше &raquo;</a></p>
+    </div>
+  </div>
+    <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+        {% for conf in confs %}
+              <div class="col-md-4">
+                <h2>{{ conf.conference_name }}</h2>
+                <p>Дата: {{ conf.date_start }}</p>
+                <p>Место проведения: {{ conf.location }}</p>
+                <p><a class="btn btn-secondary" href="{% url 'conf_detail_url' cid=conf.id %}" role="button">Подробнее &raquo;</a></p>
+              </div>
+        {% endfor %}
+    </div>
+        <hr>
+
+  </div> <!-- /container -->
+{% endblock %}

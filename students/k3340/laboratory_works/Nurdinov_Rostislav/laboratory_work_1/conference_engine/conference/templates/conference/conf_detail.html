@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    conference detail
+{% endblock %}
+
+
+{% block content %}
+    {% for key, value in speech.items %}
+    <div class="list-group">
+        <a class="list-group-item">
+            <h4 class="list-group-item-heading">{{ key.date_start|time:"H:i" }} - {{ key.date_end|time:"H:i" }}</h4>
+            <h5 class="list-group-item-text">{{ key.name }}</h5>
+            {% for sp in value %}
+                <p> Спикер: {{ sp.0 }}</p>
+                <p> Тема доклада: {{ sp.1 }}</p>
+            {% endfor %}
+        </a>
+    </div>
+    {% endfor %}
+{% endblock %}

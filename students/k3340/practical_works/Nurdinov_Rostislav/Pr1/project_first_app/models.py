@@ -2,15 +2,6 @@ from django.db import models
 from django.urls import reverse
 
 
-class Owner(models.Model):
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    date_of_birth = models.DateField()
-
-    def __str__(self):
-        return "{} {}".format(self.first_name, self.last_name)
-
-
 class Auto(models.Model):
     mark = models.CharField(max_length=50)
     model = models.CharField(max_length=50)
@@ -18,11 +9,22 @@ class Auto(models.Model):
     gos_number = models.CharField(max_length=50)
 
 
+class Owner(models.Model):
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    date_of_birth = models.DateField()
+    members = models.ManyToManyField(Auto, through='Ownership')
+
+    def __str__(self):
+        return "{} {}".format(self.first_name, self.last_name)
+
+
 class Ownership(models.Model):
     owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
     auto = models.ForeignKey(Auto, on_delete=models.CASCADE)
     data_start_owner = models.DateField()
     data_finish_owner = models.DateField()
+
 
 
 class License(models.Model):

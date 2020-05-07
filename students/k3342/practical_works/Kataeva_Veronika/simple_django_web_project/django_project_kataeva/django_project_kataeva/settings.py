@@ -122,3 +122,5 @@ STATIC_URL = '/static/'
 
 #SETTINGS_PATH = os.path.normpath(os.path.dirname(__file__))
 #TEMPLATE_DIR = (os.path.join(SETTINGS_PATH, 'templates'))
+
+AUTH_USER_MODEL = 'project_first_app.Owner'

@@ -2,7 +2,6 @@ from django import forms
 from .models import Owner
 
 
-# creating a form
 class OwnerForm(forms.ModelForm):
     # create meta class
     class Meta:
@@ -13,5 +12,8 @@ class OwnerForm(forms.ModelForm):
         fields = [
             "first_name",
             "last_name",
-            "date_of_birth"
+            "date_of_birth",
+            "passport",
+            "address",
+            "nationality"
         ]

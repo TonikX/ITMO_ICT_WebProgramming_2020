@@ -19,12 +19,18 @@ class Owner(models.Model):
         return "{} {}".format(self.first_name, self.last_name)
 
 
+class AdditionalData(models.Model):
+    owner = models.OneToOneField(Owner, on_delete=models.CASCADE, primary_key=True)
+    passport_num = models.CharField(max_length=50)
+    home_address = models.CharField(max_length=50)
+    nationality = models.CharField(max_length=50)
+
+
 class Ownership(models.Model):
     owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
     auto = models.ForeignKey(Auto, on_delete=models.CASCADE)
     data_start_owner = models.DateField()
     data_finish_owner = models.DateField()
-
 
 
 class License(models.Model):

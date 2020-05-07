@@ -2,7 +2,7 @@
 
 ***Рабочие ссылки:***
 
-http://127.0.0.1:8000/owner_list/ - Информация обо всех владельцах. Template: owners.html
+http://127.0.0.1:8000/owner_list/ - Информация обо всех владельцах. Template: owner_list.html
 
 http://127.0.0.1:8000/car_list/ - Информация обо всех автомобилях. Template: car_list.html
 

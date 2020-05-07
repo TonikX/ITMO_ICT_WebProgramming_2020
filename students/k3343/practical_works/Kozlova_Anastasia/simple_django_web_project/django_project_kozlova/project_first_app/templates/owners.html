@@ -7,11 +7,16 @@
 </head>
 
 <body>
-	{% for owner in owners %}
+    {% for owner in owners %}
     <u>Owner:</u> {{ owner }}
     <br>
     <u>Birthdate:</u> {{ owner.birthdate }}
     <br>
+    <u>Passport:</u> {{ owner.passport_num }}
+    <br>
+    <u>Nationality:</u> {{ owner.nationality }}
+    <br>
+    <u>Address:</u> {{ owner.address }}
     {% endfor %}
 </body>
 

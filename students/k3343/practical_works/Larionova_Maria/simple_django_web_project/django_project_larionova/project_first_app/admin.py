@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Owner
+from .models import User as Owner
 from .models import Auto
 from .models import Ownership
 from .models import OwnerLicense

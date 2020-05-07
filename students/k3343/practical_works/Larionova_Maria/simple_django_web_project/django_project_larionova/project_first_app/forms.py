@@ -1,5 +1,5 @@
 from django import forms
-from .models import Owner
+from .models import User as Owner
 
 
 class CreateOwner(forms.ModelForm):
@@ -9,5 +9,8 @@ class CreateOwner(forms.ModelForm):
 		fields = [
 			"name",
 			"surname",
-			"birthdate"
+			"birthdate",
+			"address",
+			"nationality",
+			"passport_number"
 		]

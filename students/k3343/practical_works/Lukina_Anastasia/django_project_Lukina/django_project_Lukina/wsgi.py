@@ -1,5 +1,5 @@
 """
-WSGI config for django_project_Lukina project.
+WSGI config for simple_django_web_project project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

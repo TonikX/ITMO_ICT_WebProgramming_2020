@@ -4,7 +4,11 @@
 		<ul>
 		{% for o in owner %}
 			<li>Name: {{ o.name }} {{ o.surname }}</li>
+			<li>Username: {{ o.username }}</li>
 			<li>Birth date: {{ o.birth_date }}</li>
+			<li>Passport number: {{ o.passport }}</li>
+			<li>Address: {{ o.address }}</li>
+			<li>Ethnicity: {{ o.ethnicity }}</li>
 		{% endfor %}
 		</ul>
 	</body>

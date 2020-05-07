@@ -22,9 +22,9 @@ from project_first_app.views import CarsList, CarCreate
 urlpatterns = [
     path('', include('project_first_app.urls')),
     path('admin/', admin.site.urls),
-    path('query/', views.query),
+    path('owners_the_car/', views.query),
     path('owners/', views.all_owners),
     path('cars/', CarsList.as_view()),
-    path('func_form/', views.input_owners),
-    path('class_form/', CarCreate.as_view(success_url="/class_form/"))
+    path('add_owners/', views.input_owners),
+    path('add_cars/', CarCreate.as_view(success_url="/class_form/"))
 ]

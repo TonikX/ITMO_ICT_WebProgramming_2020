@@ -7,6 +7,7 @@ from django.views.generic.edit import CreateView
 
 
 # Create your views here.
+
 def query(request, car_id=2):
 	try:
 		car = Car.objects.filter(id=car_id).first()

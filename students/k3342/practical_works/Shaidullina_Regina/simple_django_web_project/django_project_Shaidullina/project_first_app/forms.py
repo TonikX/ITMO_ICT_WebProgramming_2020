@@ -6,4 +6,5 @@ class OwnerForm(forms.ModelForm):
 
 	class Meta:
 		model = Owner
-		fields = "__all__"
+		fields = ['username', 'name', 'surname', 'birth_date', 'passport', 'address', 'ethnicity']
+		#fields = '__all__'

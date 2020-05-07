@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from project_first_app.models import Owner, Auto
+from project_first_app.models import User as Owner, Auto
 from django.http import Http404
 from django.views import View
 from django.views.generic.edit import CreateView

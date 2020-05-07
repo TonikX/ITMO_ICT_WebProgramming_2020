@@ -7,9 +7,12 @@
 <body>
     <div class="main">
         {% for owner in owners_data %}
-        Имя: {{ owner.first_name }} <br/>
-        Фамилия: {{ owner.last_name }} <br/>
-        Дата рождения: {{ owner.birth_date}} <br/>
+            Имя: {{ owner.first_name }} <br/>
+            Фамилия: {{ owner.last_name }} <br/>
+            Дата рождения: {{ owner.birth_date}} <br/>
+            Паспорт: {{ owner.passport}} <br/>
+            Адрес: {{ owner.address}} <br/>
+            Национальность: {{ owner.nationality}} <br/>
         <hr/>
         {% endfor %}
     </div>

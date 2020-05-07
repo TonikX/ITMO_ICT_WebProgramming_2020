@@ -1,5 +1,5 @@
 """
-ASGI config for django_project_Zhabrovets project.
+ASGI config for django_project_Zhabrovets2 project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_project_Zhabrovets.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_project_Zhabrovets2.settings')
 
 application = get_asgi_application()

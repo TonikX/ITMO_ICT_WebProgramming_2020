@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+from django.conf import settings
 
 class Car(models.Model):
     mark = models.CharField(max_length=50)
@@ -27,10 +29,10 @@ class DriversLicense(models.Model):
     number = models.CharField(max_length=50)
     date_given = models.DateField()
     type = models.CharField(max_length=1, choices=TYPES)
-    owner = models.ForeignKey(CarOwner, on_delete=models.CASCADE)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
 class Ownership(models.Model):
-    owner = models.ForeignKey(CarOwner, on_delete=models.CASCADE)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     car = models.ForeignKey(Car, on_delete=models.CASCADE)
     start_date = models.DateField()
     end_date = models.DateField()

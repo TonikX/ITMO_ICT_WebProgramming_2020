@@ -1,7 +1,7 @@
 from django.http import Http404, HttpResponse
 import datetime
 from django.shortcuts import render
-from .models import CarOwner, ExampleModel, Car
+from .models import CarOwner, Car
 from django.views.generic.list import ListView
 from .forms import OwnerForm
 from django.views.generic.edit import CreateView
@@ -17,19 +17,6 @@ def time_info(request):
     now = datetime.datetime.now()
     html = "Time is {}".format(now)
     return HttpResponse(html)
-
-def list_view(request):
-    context = {}
-    context["dataset"] = ExampleModel.objects.all()
-    return render(request, "list_view.html", context)
-
-class ExampleList(ListView):
-    model = ExampleModel
-
-    def get(self, request):
-        context = {}
-        context["object_list"] = ExampleModel.objects.all()
-        return render(request, "examplemodel_list.html", context)
 
 def ownerlist(request):
     context = {}

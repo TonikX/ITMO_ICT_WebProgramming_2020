@@ -9,9 +9,13 @@
 
         {% for data in dataset %}
 
-        {{ data.first_name }}<br/>
+        {{ data.first_name }}
         {{ data.last_name }}<br/>
         {{ data.birth_date }}<br/>
+        {{ data.passport }}<br/>
+        {{ data.address }}<br/>
+        {{ data.nationality }}<br/>
+
         <hr/>
 
         {% endfor %}

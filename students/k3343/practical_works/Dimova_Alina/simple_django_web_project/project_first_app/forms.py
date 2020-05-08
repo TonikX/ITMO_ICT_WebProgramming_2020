@@ -8,7 +8,12 @@ class OwnersForm(forms.ModelForm):
         model = Owner
 
         fields = [
+            "username",
             "first_name",
             "last_name",
             "birth_date",
+            "passport",
+            "address",
+            "nationality",
+            "password",
         ]

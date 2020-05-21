@@ -13,4 +13,7 @@ class OwnerForm(forms.ModelForm):
             "first_name",
             "last_name",
             "date_birth",
+            "passsport",
+            "username",
+            "nation"
         ]

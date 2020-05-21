@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from django.http import Http404
 
-from project_first_app.models import Owner
+from project_first_app.models import Owner, Car
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView
 from .forms import OwnerForm

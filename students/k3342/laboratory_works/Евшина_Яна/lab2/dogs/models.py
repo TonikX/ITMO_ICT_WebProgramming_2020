@@ -5,23 +5,24 @@ from django.conf import settings
 
 # Create your models here.
 
+
 class Club(models.Model):
     club_name = models.CharField(max_length=25)
     town_club = models.CharField(max_length=25)
 
-    def __srt__(self):
+    def __str__(self):
         return self.club_name
 
 
 class User(AbstractUser):
     first_name = models.CharField(max_length=25)
     last_name = models.CharField(max_length=25)
-    phone = models.IntegerField
+    phone_num = models.IntegerField(null=True)
     town = models.CharField(max_length=25)
     passsport = models.CharField(max_length=25)
     expert = models.BooleanField(verbose_name='Expert', default=False)
 
-    def __srt__(self):
+    def __str__(self):
         return self.last_name
 
 
@@ -40,7 +41,7 @@ class Dog(models.Model):
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     club = models.ForeignKey(Club, on_delete=models.CASCADE)
 
-    def __srt__(self):
+    def __str__(self):
         return self.dog_name
 
 
@@ -55,7 +56,7 @@ class Show(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
 
-    def __srt__(self):
+    def __str__(self):
         return self.show_name
 
 
@@ -66,7 +67,7 @@ class Ring(models.Model):
     ex2 = models.CharField(max_length=25)
     ex3 = models.CharField(max_length=25)
 
-    def __srt__(self):
+    def __str__(self):
         return self.number
 
 
@@ -77,7 +78,7 @@ class Registration(models.Model):
     show = models.ForeignKey(Show, on_delete=models.CASCADE)
     fee = models.BooleanField(verbose_name='Fee paid', default=False)
 
-    def __srt__(self):
+    def __str__(self):
         return self.num
 
 

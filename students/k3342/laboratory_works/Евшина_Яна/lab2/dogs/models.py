@@ -1,7 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+from django.contrib.auth import get_user_model
+from django.conf import settings
 
 # Create your models here.
-
 
 class Club(models.Model):
     club_name = models.CharField(max_length=25)
@@ -11,19 +13,13 @@ class Club(models.Model):
         return self.club_name
 
 
-class User(models.Model):
+class User(AbstractUser):
     first_name = models.CharField(max_length=25)
     last_name = models.CharField(max_length=25)
-    phone = models.CharField(max_length=15)
-    login = models.CharField(max_length=20)
-    password = models.CharField(max_length=20)
+    phone = models.IntegerField
     town = models.CharField(max_length=25)
-    passport = models.CharField(max_length=25)
-    expert_choice = [
-        ('exp', 'expert'),
-        ('part', 'participant'),
-    ]
-    expert = models.CharField(max_length=4, choices=expert_choice)
+    passsport = models.CharField(max_length=25)
+    expert = models.BooleanField(verbose_name='Expert', default=False)
 
     def __srt__(self):
         return self.last_name
@@ -32,19 +28,16 @@ class User(models.Model):
 class Dog(models.Model):
     dog_name = models.CharField(max_length=25)
     breed = models.CharField(max_length=25)
-    age = models.CharField(max_length=10)
+    age = models.IntegerField()
     gender_choice = [
         ('M', 'Male'),
         ('F', 'Female'),
     ]
     gender = models.CharField(max_length=2, choices=gender_choice)
-    date_of_medicine = models.CharField(max_length=10)
-    inspect_choice = [
-        ('yes', 'everything is ok'),
-        ('no', 'the dog is ill'),
-    ]
-    inspectation = models.CharField(max_length=3, choices=inspect_choice, default='no')
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    date_of_medicine = models.DateField()
+    inspection = models.BooleanField(
+        verbose_name='Medicine inspection done', default=False)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     club = models.ForeignKey(Club, on_delete=models.CASCADE)
 
     def __srt__(self):
@@ -80,14 +73,9 @@ class Ring(models.Model):
 class Registration(models.Model):
     num = models.CharField(max_length=10)
     dog = models.ForeignKey(Dog, on_delete=models.CASCADE)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     show = models.ForeignKey(Show, on_delete=models.CASCADE)
-    fee_choice = [
-        ('yes', 'fee paid'),
-        ('no', 'not paid'),
-    ]
-    fee = models.CharField(max_length=3, choices=fee_choice,
-                           default='no')
+    fee = models.BooleanField(verbose_name='Fee paid', default=False)
 
     def __srt__(self):
         return self.num
@@ -99,9 +87,9 @@ class Perform(models.Model):
 
 
 class Grade(models.Model):
-    expert = models.ForeignKey(User, on_delete=models.CASCADE)
+    expert = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     perform = models.ForeignKey(Perform, on_delete=models.CASCADE)
-    points1 = models.CharField(max_length=5)
-    points2 = models.CharField(max_length=5)
-    points3 = models.CharField(max_length=5)
+    points1 = models.IntegerField()
+    points2 = models.IntegerField()
+    points3 = models.IntegerField()
 

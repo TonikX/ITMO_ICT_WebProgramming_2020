@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'dogs',
 ]
 
+AUTH_USER_MODEL = 'dogs.User'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

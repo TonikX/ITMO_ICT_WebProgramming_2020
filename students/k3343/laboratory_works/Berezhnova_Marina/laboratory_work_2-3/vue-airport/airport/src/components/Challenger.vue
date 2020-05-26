@@ -15,6 +15,30 @@
         <v-btn @click="clear">clear</v-btn>
       </form>
     </v-col>
+    <v-dialog
+      v-model="success"
+      max-width="290"
+    >
+      <v-card>
+        <v-card-title class="headline">Спасибо!</v-card-title>
+
+        <v-card-text>
+          Как только мы рассмотрим Вашу заявку, мы свяжемся с Вами.
+        </v-card-text>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+
+          <v-btn
+            color="green darken-1"
+            text
+            @click="success = false"
+          >
+            Ок
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </main>
 </template>
 <script>
@@ -33,7 +57,8 @@ export default {
       passport: '',
       position: '',
       email: '',
-      company: ''
+      company: '',
+      success: false
     }
   },
   mounted () {
@@ -54,18 +79,18 @@ export default {
     submit () {
       this.axios
         .post(this.url, { challenger: {
-            company: this.companies.indexOf(this.company) + 1,
-            last_name: this.last_name,
-            first_name: this.first_name,
-            middle_name: this.middle_name,
-            age: this.age,
-            experience: this.experience,
-            passport: this.passport,
-            position: this.position,
-            email: this.email
-          }
+          company: this.companies.indexOf(this.company) + 1,
+          last_name: this.last_name,
+          first_name: this.first_name,
+          middle_name: this.middle_name,
+          age: this.age,
+          experience: this.experience,
+          passport: this.passport,
+          position: this.position,
+          email: this.email
+        }
         })
-        .then(response => { console.log(response) })
+        .then(response => { this.clear(); this.success = true })
     },
     clear () {
       this.last_name = ''

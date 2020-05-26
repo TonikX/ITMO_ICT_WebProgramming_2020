@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<ul>
+    <!-- Iterate over object_list -->
+    {% for object in object_list %}
+    <!-- Display Objects -->
+    <li>{{object.marka}}</li>
+    <li>{{object.model}}</li>
+    <li>{{object.colour}}</li>
+    <li>{{object.number}}</li>
+    <hr/>
+    <!-- If object_list is empty -->
+    {% empty %}}
+    <li>Lo objects yet.</li>
+    {% endfor %}
+</ul>
+</body>
+</html>

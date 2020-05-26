@@ -30,7 +30,7 @@ class Tip(models.Model):
 
 
 class Answer(models.Model):
-    quest = models.ForeignKey(Quest, on_delete=models.CASCADE, related_name='answers')
+    task = models.ForeignKey(Task, on_delete=models.CASCADE, related_name='answers')
     answer = models.CharField(max_length=200)
 
     def __str__(self):

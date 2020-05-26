@@ -19,7 +19,7 @@ class Category(models.Model):
 class Client(models.Model):
     """Клиент"""
     name = models.CharField("ФИО", max_length=100)
-    age = models.PositiveSmallIntegerField("Возраст", default=0)
+    age = models.IntegerField("Возраст")
     email = models.EmailField("Email")
     telephone = models.CharField("Телефон", max_length=15)
     address = models.TextField("Адрес", max_length=100)
@@ -39,7 +39,7 @@ class Driver(models.Model):
     telephone = models.CharField("Телефон", max_length=15)
     car_model = models.CharField("Модель и марка машины", max_length=30)
     car_number = models.CharField("Номер машины", max_length=10)
-    image = models.ImageField("Изображение", upload_to="drivers/")
+    image = models.ImageField("Изображение", upload_to="drivers/", default="drivers/водитель1.jpeg")
 
     def __str__(self):
         return self.name
@@ -52,7 +52,7 @@ class Driver(models.Model):
 class Order(models.Model):
     driver = models.ForeignKey("Driver", verbose_name="Водитель", on_delete=models.CASCADE)
     client = models.ForeignKey("Client", verbose_name="Клиент", on_delete=models.CASCADE)
-    category = models.ManyToManyField("Category", verbose_name="Мусор")
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     mass = models.FloatField("Масса мусора в кг")
     cost = models.IntegerField()
     complete = models.BooleanField("Исполнен", default=True)
@@ -68,7 +68,7 @@ class Order(models.Model):
 
 class Storage(models.Model):
 
-    order = models.ManyToManyField("Order", verbose_name="Заказ: ")
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = "Заказ"

@@ -1,19 +1,25 @@
 import datetime
-from django.db import models
-from django_filters import rest_framework as filters
-from django.shortcuts import render
 from django.db.models import Count, Sum
-from .models import Driver, Order, Client, Storage
+from .models import Driver, Order, Client, Storage, Category
 from .serializers import (DriverDetailSerializer, DriverListSerializer, OrderCreateSerializer,
                           OrderDetailSerializer, YoungClientSerializer, DriverOrderSerializer,
                           WeekOrderSerializer, TopCategorySerializer, StorageSerializer,
-                          TotalTrashSerializer, StorageCreateOrderSerializer)
+                          TotalTrashSerializer, StorageCreateOrderSerializer, ClientSerializer, CategorySerializer)
 from rest_framework import generics, permissions
 from django_filters.rest_framework import DjangoFilterBackend
 from .filters import ClientFilter, OrderFilter
-from rest_framework.filters import SearchFilter, OrderingFilter
-from django.utils import timezone
+from rest_framework import viewsets, filters
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 # Create your views here.
+
+class Logout(APIView):
+
+    def get(self, request, format=None):
+        request.user.auth_token.delete()
+        return Response(status=status.HTTP_200_OK)
 
 
 class DriverListView(generics.ListAPIView):
@@ -33,14 +39,14 @@ class DriverDetailView(generics.RetrieveAPIView):
 class OrderCreateView(generics.CreateAPIView):
     """Добавление нового заказа"""
     serializer_class = OrderCreateSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    #permission_classes = [permissions.IsAuthenticated]
 
 
-class OrderDetailView(generics.RetrieveAPIView):
-    """Вывод заказа"""
+class OrderListView(generics.ListAPIView):
+    """Вывод заказов"""
     queryset = Order.objects.all()
     serializer_class = OrderDetailSerializer
-    permission_classes = [permissions.IsAdminUser]
+    #permission_classes = [permissions.IsAdminUser]
 
 
 class YoungListView(generics.ListAPIView):
@@ -56,11 +62,9 @@ class DriverOrderView(generics.ListAPIView):
     """Заказы определенного водителя за указанную дату"""
     queryset = Order.objects.all()
     serializer_class = DriverOrderSerializer
-    filterset_class = OrderFilter
-    filter_backends = (DjangoFilterBackend,)
-    permission_classes = [permissions.IsAdminUser]
-    #filter_backends = (SearchFilter, OrderingFilter)
-    #search_fields = ('data', 'driver__name')
+    #permission_classes = [permissions.IsAdminUser]
+    filter_backends = (filters.SearchFilter, )
+    search_fields = ('data', 'driver__name')
 
 
 class WeekDayOrderView(generics.ListAPIView):
@@ -85,16 +89,16 @@ class TopCategoryView(generics.ListAPIView):
 class StorageClientView(generics.ListAPIView):
     """Объем мусора, забранный у клиентов"""
     def get_queryset(self):
-        trash = Order.objects.values('category__name').annotate(amount=Sum('mass'))
+        trash = Storage.objects.values('order__category').annotate(amount=Sum('order__mass'))
         return trash
     serializer_class = TopCategorySerializer
-    permission_classes = [permissions.IsAdminUser]
+    #permission_classes = [permissions.IsAdminUser]
 
 
 class StorageView(generics.ListAPIView):
     """Объем мусора на складе"""
     def get_queryset(self):
-        trash = Storage.objects.values('order__category').annotate(amount=Sum('order__mass'))
+        trash = Storage.objects.values('order__category').annotate(amount=Sum('order__mass')).order_by('-amount')
         return trash
     serializer_class = StorageSerializer
     permission_classes = [permissions.IsAdminUser]
@@ -109,7 +113,7 @@ class ToFabricTrashView(generics.ListAPIView):
         trash_storage = Storage.objects.filter(order__data__month=today.month).aggregate(total=Sum('order__mass'))
         total_client = Order.objects.filter(data__month=today.month).count()
         total_money = Order.objects.filter(data__month=today.month).aggregate(money=Sum('cost'))
-        passed = trash_client['total']-trash_storage['total']
+        passed = trash_client['total'] - trash_storage['total']
         trash = [{"total_to_fabric": passed, "total_from_client": trash_client['total'], "total_client": total_client, "total_money" :total_money['money']}]
         return trash
     serializer_class = TotalTrashSerializer
@@ -134,10 +138,30 @@ class OrderStorageCreateView(generics.CreateAPIView):
     serializer_class = StorageCreateOrderSerializer
     permission_classes = [permissions.IsAdminUser]
 
-class OrderStorageDeleteView(generics.DestroyAPIView):
-    """Списание заказа со склада"""
-    queryset = Storage.objects.all()
+
+class TotalStorageView(generics.ListAPIView):
+    """Заказы, присутствующие на складе"""
+    queryset = Storage.objects.all().order_by('order_id')
     serializer_class = StorageCreateOrderSerializer
     permission_classes = [permissions.IsAdminUser]
 
 
+class DriverViewSet(viewsets.ModelViewSet):
+    queryset = Driver.objects.all()
+    serializer_class = DriverDetailSerializer
+    permission_classes = [permissions.IsAdminUser]
+
+
+class OrderViewset(viewsets.ModelViewSet):
+    queryset = Storage.objects.all()
+    serializer_class = StorageCreateOrderSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+class ClientView(generics.CreateAPIView):
+    serializer_class = ClientSerializer
+
+
+class CategoryView(generics.ListAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer

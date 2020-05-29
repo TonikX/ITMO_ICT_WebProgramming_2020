@@ -21,7 +21,7 @@ class GetAllApplicationView(generics.ListAPIView):
 		exam = params.get('exam', None)
 
 		if specialization:
-			queryset = queryset.filter(specialization__name=specialization)
+			queryset = queryset.filter(specialization__id=specialization)
 
 		if date:
 			queryset = queryset.filter(date=date)
@@ -42,5 +42,15 @@ class GetAllApplicationView(generics.ListAPIView):
 
 
 class GetAllSpecializationView(generics.ListAPIView):
+	queryset = Specialization.objects.all()
+	serializer_class = SpecializationSerializer
+
+
+class GetApplicationView(generics.RetrieveAPIView):
+	queryset = Application.objects.all()
+	serializer_class = ApplicationSerializer
+
+
+class GetSpecializationView(generics.RetrieveAPIView):
 	queryset = Specialization.objects.all()
 	serializer_class = SpecializationSerializer

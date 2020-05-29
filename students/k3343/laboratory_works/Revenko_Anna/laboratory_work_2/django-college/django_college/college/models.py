@@ -6,7 +6,7 @@ class Document(models.Model):
 	passport_num = models.IntegerField() # пасспорт
 
 	def __str__(self):
-		return f'Certificate {certificate_num} Passport {passport_num}'
+		return f'Certificate {self.certificate_num} Passport {self.passport_num}'
 
 
 class Exam(models.Model):
@@ -14,14 +14,14 @@ class Exam(models.Model):
 	common_points = models.IntegerField() # общие
 
 	def __str__(self):
-		return f'Proile points {profile_points} Common points {common_points}'
+		return f'Proile points {self.profile_points} Common points {self.common_points}'
 
 
 class Certificate(models.Model):
 	avg_mark = models.IntegerField() # средний балл аттестата
 
 	def __str__(self):
-		return self.avg_mark
+		return f'{self.avg_mark}'
 
 
 class Enrollee(models.Model):

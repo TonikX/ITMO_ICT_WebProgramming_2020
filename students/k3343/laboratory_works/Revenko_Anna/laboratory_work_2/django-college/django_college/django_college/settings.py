@@ -25,7 +25,7 @@ SECRET_KEY = 'ykixdhk*9_bzau))=t8^3%9%*ef81*=_vabci%nqozhhwm%_jl'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -82,8 +82,8 @@ WSGI_APPLICATION = 'django_college.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'college',
     }
 }
 
@@ -107,7 +107,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 CORS_ORIGIN_WHITELIST = [
-    "http://localhost:8080"
+    "http://localhost:8080",
+    "http://127.0.0.1:8080"
 ]
 
 CORS_ALLOW_METHODS = [

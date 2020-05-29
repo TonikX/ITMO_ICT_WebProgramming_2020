@@ -2,8 +2,19 @@ from rest_framework import generics
 
 from quests.api.serializers import QuestListSerializer, QuestDetailSerializer, TaskCreateSerializer, \
     TaskDetailSerializer, \
-    AnswerCreateSerializer, AnswerDetailSerializer, TipCreateSerializer, TipDetailSerializer
-from quests.models import Quest, Task, Answer, Tip
+    AnswerCreateSerializer, AnswerDetailSerializer, TipCreateSerializer, TipDetailSerializer, \
+    PenaltyTimeCreateSerializer, PenaltyTimeDetailSerializer
+from quests.models import Quest, Task, Answer, Tip, PenaltyTime
+
+
+class PenaltyTimeCreateView(generics.CreateAPIView):
+    queryset = PenaltyTime.objects.all()
+    serializer_class = PenaltyTimeCreateSerializer
+
+
+class PenaltyTimeDetailView(generics.CreateAPIView):
+    queryset = PenaltyTime.objects.all()
+    serializer_class = PenaltyTimeDetailSerializer
 
 
 class TipCreateView(generics.CreateAPIView):

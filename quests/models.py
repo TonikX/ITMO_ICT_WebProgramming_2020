@@ -35,3 +35,11 @@ class Answer(models.Model):
 
     def __str__(self):
         return self.answer
+
+
+class PenaltyTime(models.Model):
+    quest = models.ForeignKey(Quest, on_delete=models.CASCADE, related_name='penalty_times')
+    penalty = models.TimeField()
+
+    def __str__(self):
+        return self.penalty

@@ -1,6 +1,19 @@
 from rest_framework import serializers
 
-from quests.models import Quest, Task, Answer, Tip
+from quests.models import Quest, Task, Answer, Tip, PenaltyTime
+
+
+class PenaltyTimeCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PenaltyTime
+        fields = '__all__'
+
+
+class PenaltyTimeDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PenaltyTime
+        fields = '__all__'
+        read_only_fields = ['task']
 
 
 class TipCreateSerializer(serializers.ModelSerializer):
@@ -65,11 +78,15 @@ class TaskListSerializer(serializers.ModelSerializer):
 
 class QuestDetailSerializer(serializers.ModelSerializer):
     tasks = TaskListSerializer(many=True, required=False)
+    penalty_times = serializers.SerializerMethodField()
 
     class Meta:
         model = Quest
         fields = '__all__'
-        read_only_fields = ['tasks', 'answers']
+        read_only_fields = ['tasks', 'answers', 'penalty_times']
+
+    def get_penalty_times(self, obj):
+        return [pt.penalty for pt in obj.penalty_times.all()]
 
 
 class QuestListSerializer(serializers.ModelSerializer):

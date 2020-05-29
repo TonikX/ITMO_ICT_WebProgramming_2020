@@ -1,8 +1,19 @@
 from rest_framework import generics
 
-from quests.api.serializers import QuestListSerializer, QuestDetailSerializer, TaskCreateSerializer, TaskDetailSerializer, \
-    AnswerCreateSerializer, AnswerDetailSerializer
-from quests.models import Quest, Task, Answer
+from quests.api.serializers import QuestListSerializer, QuestDetailSerializer, TaskCreateSerializer, \
+    TaskDetailSerializer, \
+    AnswerCreateSerializer, AnswerDetailSerializer, TipCreateSerializer, TipDetailSerializer
+from quests.models import Quest, Task, Answer, Tip
+
+
+class TipCreateView(generics.CreateAPIView):
+    queryset = Tip.objects.all()
+    serializer_class = TipCreateSerializer
+
+
+class TipDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Tip.objects.all()
+    serializer_class = TipDetailSerializer
 
 
 class AnswerCreateView(generics.CreateAPIView):

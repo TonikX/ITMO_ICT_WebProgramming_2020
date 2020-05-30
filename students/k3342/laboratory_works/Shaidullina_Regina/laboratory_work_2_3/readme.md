@@ -6,6 +6,7 @@
 - http://127.0.0.1:8000/school/rooms/ - Кабинеты.
 - http://127.0.0.1:8000/school/rooms_sub/?subject=english - Кабинеты с фильтром по предмету.
 - http://127.0.0.1:8000/school/teachers/ - Учителя.
+- http://127.0.0.1:8000/school/teacher/ - Один учитель (передается параметр)
 - http://127.0.0.1:8000/school/pupils/ - Ученики.
 - http://127.0.0.1:8000/school/classes/ - Классы.
 - http://127.0.0.1:8000/school/assessments/ - Оценки.

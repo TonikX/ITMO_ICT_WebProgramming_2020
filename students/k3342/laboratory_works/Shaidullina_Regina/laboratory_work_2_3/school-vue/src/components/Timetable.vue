@@ -20,6 +20,7 @@
                     <td class="is-left">{{ scope.row.teacher.name }}</td>
                 </template>
             </mu-data-table>
+            <br><br>
         </mu-paper>
     </mu-container>
 </template>

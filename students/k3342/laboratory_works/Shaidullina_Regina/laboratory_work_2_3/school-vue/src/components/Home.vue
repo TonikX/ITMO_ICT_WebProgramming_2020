@@ -1,13 +1,20 @@
 <template>
     <div>
-        <h1>School</h1>
         <mu-container>
             <mu-row>
+                <mu-col span="4"><div class="grid-cell"></div></mu-col>
+                <mu-col span="4"><div class="grid-cell">
+                    <h1>School</h1>
+                </div></mu-col>
+                <mu-col span="4"><div class="grid-cell">
+                    <mu-button v-if="!auth" color="#4db6ac" @click="goLogin">Log in</mu-button>
+                    <mu-button v-if="auth" color="#4db6ac" @click="logout">Log out</mu-button>
+                </div></mu-col>
+            </mu-row>
+            <mu-row>
                 <mu-container>
-                    <mu-button v-if="!auth" color="#4db6ac" @click="goLogin">Log in</mu-button><!-- <br v-if="!auth"><br v-if="!auth"> -->
                     <mu-button v-if="auth" color="#4db6ac" @click="">Queries</mu-button>
-                    <mu-button v-if="auth" color="#4db6ac" @click="">Report</mu-button>
-                    <mu-button v-if="auth" color="#4db6ac" @click="logout">Log out</mu-button><br v-if="auth"><br v-if="auth">
+                    <mu-button v-if="auth" color="#4db6ac" @click="">Report</mu-button><br><br>
                     <mu-button v-if="auth" color="#4db6ac" @click="getTimetable">Timetable</mu-button>
                     <mu-button v-if="auth" color="#4db6ac" @click="getTeachers">Teachers</mu-button>
                     <mu-button v-if="auth" color="#4db6ac" @click="getPupils">Pupils</mu-button>

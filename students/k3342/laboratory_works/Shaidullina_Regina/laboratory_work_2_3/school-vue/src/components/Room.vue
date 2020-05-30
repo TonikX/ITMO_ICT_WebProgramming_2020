@@ -8,8 +8,8 @@
             <mu-paper>
                 <p v-for='room in rooms' v-bind:key="room.number">
                     Room {{ room.number }} is located on the floor {{ room.floor }}.<br>
-                    It is the primary room for {{ room.subject.name }}, a {{ room.subject.sub_type }} subject.<br>
-                    Assigned teacher: <span v-if="room.teacher">{{ room.teacher.name }}</span><span v-else>None</span>
+                    It is the primary room for {{ room.subject }}.<br>
+                    Assigned teacher: <span v-if="room.teacher">{{ room.teacher }}</span><span v-else>None</span>
                 </p>
             </mu-paper>
         </mu-container>

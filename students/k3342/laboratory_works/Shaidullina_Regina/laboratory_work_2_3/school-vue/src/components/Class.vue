@@ -8,7 +8,7 @@
             <mu-paper>
                 <p v-for='c in classes' v-bind:key='c.id'>
                     Class: {{ c.name }}<br>
-                    Guiding teacher: <span v-if="c.guiding_teacher">{{ c.guiding_teacher.name }}</span><span v-else>None</span><br>
+                    Guiding teacher: <span v-if="c.guiding_teacher">{{ c.guiding_teacher }}</span><span v-else>None</span><br>
                 </p>
             </mu-paper>
         </mu-container>

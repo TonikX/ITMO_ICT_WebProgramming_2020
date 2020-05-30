@@ -11,36 +11,34 @@ from school.serializers import SubjectSerializers, RoomSerializers, TeacherSeria
 class Subjects(APIView):
 
     permission_classes = [permissions.IsAuthenticated, ]
+    #permission_classes = [permissions.AllowAny, ]
 
     def get(self, request):
         subjects = Subject.objects.all()
         serializer = SubjectSerializers(subjects, many=True)
-        #return Response(serializer.data)
         return Response({'data': serializer.data})
 
 
 class Rooms(APIView):
 
     permission_classes = [permissions.IsAuthenticated, ]
-    #permission_classes = [permissions.AllowAny, ]
 
     def get(self, request):
         rooms = Room.objects.all()
         serializer = RoomSerializers(rooms, many=True)
         return Response({'data': serializer.data})
 
-    def get_edited_object(self, pk):
-        try:
-            return Room.objects.get(number=pk)
-        except Room.DoesNotExist:
-            raise Http404
-
     def put(self, request):
-        params = QueryDict(request.body)
-        teacher = Teacher.objects.get(name=params['teacher'])
-        room = self.get_edited_object(params['number'])
-        actual_room = Room.objects.get(number=params['number'])
-        updated_room = Room(number=room, floor=actual_room.floor, subject=actual_room.subject, teacher=teacher)
+        tname = request.POST.get('teacher')
+        rnum = request.POST.get('number')
+        teacher = Teacher.objects.get(name=tname)
+        actual_room = Room.objects.get(number=rnum)
+        if Room.objects.filter(teacher=teacher):
+            prev_rnum = request.POST.get('old_room')
+            previous_room = Room.objects.get(number=prev_rnum)
+            updated_room = Room(number=prev_rnum, floor=previous_room.floor, subject=previous_room.subject, teacher=None)
+            updated_room.save()
+        updated_room = Room(number=rnum, floor=actual_room.floor, subject=actual_room.subject, teacher=teacher)
         updated_room.save()
         return Response(status=201)
 
@@ -73,9 +71,9 @@ class Teachers(APIView):
         else:
             return Response(status=400)
 
-    def get_object(self, parameter):
+    def get_object(self, pk):
         try:
-            return Teacher.objects.get(name=parameter)
+            return Teacher.objects.get(pk=pk)
         except Teacher.DoesNotExist:
             raise Http404
 
@@ -85,15 +83,9 @@ class Teachers(APIView):
         teacher.delete()
         return Response(status=204)
 
-    def get_edited_object(self, pk):
-        try:
-            return Teacher.objects.get(pk=pk)
-        except Teacher.DoesNotExist:
-            raise Http404
-
     def put(self, request):
         params = QueryDict(request.body)
-        teacher = self.get_edited_object(params['id'])
+        teacher = self.get_object(params['name'])
         serializer = TeacherSerializers(teacher, data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -130,9 +122,9 @@ class Pupils(APIView):
         else:
             return Response(status=400)
 
-    def get_object(self, parameter):
+    def get_object(self, pk):
         try:
-            return Pupil.objects.get(name=parameter)
+            return Pupil.objects.get(pk=pk)
         except Pupil.DoesNotExist:
             raise Http404
 
@@ -142,15 +134,9 @@ class Pupils(APIView):
         pupil.delete()
         return Response(status=204)
 
-    def get_edited_object(self, pk):
-        try:
-            return Pupil.objects.get(pk=pk)
-        except Pupil.DoesNotExist:
-            raise Http404
-
     def put(self, request):
         params = QueryDict(request.body)
-        pupil = self.get_edited_object(params['id'])
+        pupil = self.get_object(params['name'])
         serializer = PupilSerializers(pupil, data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -179,17 +165,23 @@ class Classes(APIView):
         serializer = ClassSerializers(classes, many=True)
         return Response({'data': serializer.data})
 
-    def get_edited_object(self, pk):
+    def get_object(self, pk):
         try:
-            return Class.objects.get(name=pk)
+            return Class.objects.get(pk=pk)
         except Class.DoesNotExist:
             raise Http404
 
     def put(self, request):
-        params = QueryDict(request.body)
-        teacher = Teacher.objects.get(name=params['guiding_teacher'])
-        clas = self.get_edited_object(params['name'])
-        updated_class = Class(name=clas, guiding_teacher=teacher)
+        tname = request.POST.get('guiding_teacher')
+        clas = request.POST.get('name')
+        teacher = Teacher.objects.get(name=tname)
+        actual_class = Class.objects.get(name=clas)
+        if Class.objects.filter(guiding_teacher=teacher):
+            prev_clas = request.POST.get('old_class')
+            # previous_class = Class.objects.get(name=prev_clas)
+            updated_class = Class(name=prev_clas, guiding_teacher=None)
+            updated_class.save()
+        updated_class = Class(name=actual_class, guiding_teacher=teacher)
         updated_class.save()
         return Response(status=201)
 
@@ -201,6 +193,45 @@ class Assessments(APIView):
     def get(self, request):
         asses = Assessment.objects.all()
         serializer = AssessmentSerializers(asses, many=True)
+        return Response({'data': serializer.data})
+
+    def post(self, request):
+        a = AssessmentSerializers(data=request.data)
+        if a.is_valid():
+            a.save()
+            return Response({'data': a.data}, status=201)
+        else:
+            return Response(status=400)
+
+    def delete(self, request):
+        params = QueryDict(request.body)
+        asse = Assessment.objects.filter(term=params['term'], pupil=params['pupil'], subject=params['subject'])
+        asse.delete()
+        return Response(status=204)
+
+    def put(self, request):
+        t = request.POST.get('term')
+        p = Pupil.objects.get(name=request.POST.get('pupil'))
+        s = Subject.objects.get(name=request.POST.get('subject'))
+        g = request.POST.get('grade')
+        old_g = request.POST.get('old_grade')
+        grade = Assessment.objects.get(term=t, pupil=p, subject=s, grade=old_g)
+        grade.delete()
+        grade = Assessment(term=t, pupil=p, subject=s, grade=g)
+        grade.save()
+        return Response(status=201)
+
+
+class AssessmentOne(APIView):
+
+    permission_classes = [permissions.IsAuthenticated, ]
+
+    def get(self, request):
+        t = request.GET.get('term')
+        p = request.GET.get('pupil')
+        s = request.GET.get('subject')
+        grade = Assessment.objects.get(term=t, pupil=p, subject=s)
+        serializer = AssessmentSerializers(grade)
         return Response({'data': serializer.data})
 
 

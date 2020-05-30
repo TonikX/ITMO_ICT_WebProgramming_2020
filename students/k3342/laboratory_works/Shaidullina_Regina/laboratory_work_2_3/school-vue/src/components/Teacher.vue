@@ -9,7 +9,7 @@
             <mu-button color="#4db6ac" v-if="!auth" @click="goLogin">Log in</mu-button><br v-if="!auth"><br v-if="!auth">
             <mu-button color="#4db6ac" v-if="auth" @click="logout">Log out</mu-button><br v-if="auth"><br v-if="auth">
             <mu-paper>
-                <p v-for='teacher in teachers' v:bind-key="teacher.id">
+                <p v-for='teacher in teachers' v:bind-key="teacher.name">
                     Teacher: {{ teacher.name }}<br>
                     Gender: {{ teacher.gender }}<br>
                     Has total experience of {{ teacher.experience }}<br>

@@ -121,7 +121,7 @@ export default {
                 url: "http://127.0.0.1:8000/school/pupils/",
                 type: "PUT",
                 data: {
-                    id: this.the_pupil.id,
+                    // id: this.the_pupil.id,
                     name: this.name,
                     gender: this.gender,
                     study_class: this.study_class,

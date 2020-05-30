@@ -12,6 +12,7 @@ urlpatterns = [
     path('pupil/', PupilOne.as_view()),
     path('classes/', Classes.as_view()),
     path('assessments/', Assessments.as_view()),
+    path('assessment/', AssessmentOne.as_view()),
     path('timetable/', Timetables.as_view()),
     path('teaching/', Teachings.as_view()),
 ]

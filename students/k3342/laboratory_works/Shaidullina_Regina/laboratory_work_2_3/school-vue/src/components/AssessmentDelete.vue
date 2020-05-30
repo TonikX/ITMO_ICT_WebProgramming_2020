@@ -1,29 +1,29 @@
 <template>
     <div>
-        <h2>Add information about a new pupil</h2>
+        <h2>Delete a grade</h2>
         <mu-container>
             <mu-button color="#4db6ac" @click="returnHome">Home</mu-button>
-            <mu-button color="#4db6ac" @click="previous">Back to Pupils list</mu-button>
+            <mu-button color="#4db6ac" @click="previous">Back to Assessment Table</mu-button>
             <mu-button color="#4db6ac" v-if="!auth" @click="goLogin">Log in</mu-button><br v-if="!auth"><br v-if="!auth">
             <mu-button color="#4db6ac" v-if="auth" @click="logout">Log out</mu-button><br v-if="auth"><br v-if="auth">
             <mu-row>
                 <mu-form :model="form" class="mu-demo-form" :label-position="labelPosition" label-width="100">
-                    <mu-form-item prop="input" label="Name:">
-                        <mu-text-field v-model="form.name"></mu-text-field>
+                    <mu-form-item prop="input" label="Term:">
+                        <mu-text-field v-model="form.term"></mu-text-field>
                     </mu-form-item>
-                    <mu-form-item prop="radio" label="Gender:">
-                        <mu-radio v-model="form.gender" value="male" label="Male"></mu-radio>
-                        <mu-radio v-model="form.gender" value="female" label="Female"></mu-radio>
-                        <mu-radio v-model="form.gender" value="non-binary" label="Non-binary"></mu-radio>
+                    <mu-form-item prop="select" label="Pupil:">
+                        <mu-select v-model="form.pupil">
+                            <mu-option v-for="option,index in this.all_pupils" :key="option" :label="option" :value="option"></mu-option>
+                        </mu-select>
                     </mu-form-item>
-                    <mu-form-item prop="select" label="Class:">
-                        <mu-select v-model="form.selectCls">
-                            <mu-option v-for="option,index in this.classes" :key="option" :label="option" :value="option"></mu-option>
+                    <mu-form-item prop="select" label="Subject:">
+                        <mu-select v-model="form.subject">
+                            <mu-option v-for="option,index in this.all_subjects" :key="option" :label="option" :value="option"></mu-option>
                         </mu-select>
                     </mu-form-item>
                 </mu-form>
             </mu-row>
-            <mu-button color="#4db6ac" @click="sendPupil">Add</mu-button>
+            <mu-button color="#4db6ac" @click="deleteGrade">Delete</mu-button>
         </mu-container>
     </div>
 </template>
@@ -32,16 +32,16 @@
 /* eslint-disable */
 
 export default {
-    name: 'Pupil',
+    name: 'Assessment',
     data() {
         return {
-            pupils: '',
-            classes: '',
+            all_pupils: '',
+            all_subjects: '',
             labelPosition: 'left',
             form: {
-                name: '',
-                gender: '',
-                selectCls: '',
+                term: '',
+                pupil: '',
+                subject: '',
             },
         }
     },
@@ -56,8 +56,8 @@ export default {
         $.ajaxSetup({
             headers: {'Authorization': "Token " + sessionStorage.getItem('auth_token')},
         });
-        this.loadPupil()
-        this.loadClass()
+        this.loadPupils()
+        this.loadSubjects()
     },
     methods: {
         goLogin() {
@@ -71,39 +71,40 @@ export default {
             window.location = '/'
         },
         previous() {
-            this.$router.push({name: "pupils"})
+            this.$router.push({name: "assessments"})
         },
-        loadPupil() {
+        loadPupils() {
             $.ajax({
                 url: "http://127.0.0.1:8000/school/pupils/",
                 type: "GET",
                 success: (response) => {
-                    this.pupils = response.data.data
+                    this.pupils_list = response.data.data
+                    this.all_pupils = this.pupils_list.map(function (item) { return item.name })
                 }
             })
         },
-        loadClass() {
+        loadSubjects() {
             $.ajax({
-                url: "http://127.0.0.1:8000/school/classes/",
+                url: "http://127.0.0.1:8000/school/subjects/",
                 type: "GET",
                 success: (response) => {
-                    this.classes_list = response.data.data
-                    this.classes = this.classes_list.map(function (item) { return item.name })
+                    this.subjects_list = response.data.data
+                    this.all_subjects = this.subjects_list.map(function (item) { return item.name })
                 }
             })
         },
-        sendPupil() {
+        deleteGrade() {
             $.ajax({
-                url: "http://127.0.0.1:8000/school/pupils/",
-                type: "POST",
+                url: "http://127.0.0.1:8000/school/assessments/",
+                type: "DELETE",
                 data: {
-                    name: this.form.name,
-                    gender: this.form.gender,
-                    study_class: this.form.selectCls,
+                    term: this.form.term,
+                    pupil: this.form.pupil,
+                    subject: this.form.subject,
                 },
                 success: (response) => {
-                    alert("New record added successfully.")
-                    this.$router.push({name: "pupils"})
+                    alert("Record deleted successfully.")
+                    this.$router.push({name: "assessments"})
                 }
             })
         }
@@ -119,6 +120,6 @@ export default {
         color: #004d40;
     },
     p {
-        font-size: 16px; font-weight: 400;
+        font-size: 16px; font-weight: 400; text-align: center;
     }
 </style>

@@ -11,7 +11,7 @@ class SubjectSerializers(serializers.ModelSerializer):
 class TeacherSerializers(serializers.ModelSerializer):
     class Meta:
         model = Teacher
-        fields = ('id', 'name', 'gender', 'experience', 'subjects', 'class', 'room')
+        fields = ('name', 'gender', 'experience', 'subjects', 'class', 'room')
 
 
 class TeachingSerializer(serializers.ModelSerializer):
@@ -23,36 +23,28 @@ class TeachingSerializer(serializers.ModelSerializer):
 
 
 class RoomSerializers(serializers.ModelSerializer):
-    subject = SubjectSerializers()
-    teacher = TeacherSerializers()
+    #subject = SubjectSerializers()
+    #teacher = TeacherSerializers()
     class Meta:
         model = Room
         fields = ('number', 'floor', 'subject', 'teacher')
 
 
 class ClassSerializers(serializers.ModelSerializer):
-    guiding_teacher = TeacherSerializers()
+    #guiding_teacher = TeacherSerializers()
     class Meta:
         model = Class
         fields = ('name', 'guiding_teacher')
 
 
 class PupilSerializers(serializers.ModelSerializer):
-    #study_class = ClassSerializers()
     class Meta:
         model = Pupil
-        fields = ('id', 'name', 'gender', 'study_class')
-
-
-# class PupilPostSerializers(serializers.ModelSerializer):
-#     class Meta:
-#         model = Pupil
-#         fields = ('name', 'gender', 'study_class')
+        fields = ('name', 'gender', 'study_class')
 
 
 class AssessmentSerializers(serializers.ModelSerializer):
-    subject = SubjectSerializers()
-    pupil = PupilSerializers()
+    #pupil = PupilSerializers()
     class Meta:
         model = Assessment
         fields = ('id', 'term', 'grade', 'pupil', 'subject')

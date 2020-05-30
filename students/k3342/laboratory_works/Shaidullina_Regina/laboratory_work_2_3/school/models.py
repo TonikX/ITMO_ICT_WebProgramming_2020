@@ -19,7 +19,7 @@ class Teacher(models.Model):
 		('female', 'female'),
 		('non-binary', 'non-binary')
 	)
-	name = models.CharField(max_length=50)
+	name = models.CharField(max_length=50, primary_key=True)
 	gender = models.CharField(max_length=10, choices=GENDERS)
 	experience = models.CharField(max_length=50)
 	subjects = models.ManyToManyField(Subject, through='Teaching')
@@ -43,7 +43,7 @@ class Room(models.Model):
 	teacher = models.OneToOneField(Teacher, on_delete=models.SET_NULL, null=True, blank=True)
 
 	def __str__(self):
-		return self.number  #+ ' ' + self.subject.name + ' ' + self.teacher.name
+		return self.number  #+ ' ' + self.subject.name  #+ ' ' + self.teacher.name  # убрать все кроме нумера
 
 
 class Class(models.Model):
@@ -60,12 +60,12 @@ class Pupil(models.Model):
 		('female', 'female'),
 		('non-binary', 'non-binary')
 	)
-	name = models.CharField(max_length=50)
+	name = models.CharField(max_length=50, primary_key=True)
 	gender = models.CharField(max_length=10, choices=GENDERS)
 	study_class = models.ForeignKey(Class, on_delete=models.SET_NULL, null=True, blank=True)
 
 	def __str__(self):
-		return self.name + ' ' + self.study_class.name
+		return self.name  #+ ' ' + self.study_class.name
 
 
 class Assessment(models.Model):

@@ -17,7 +17,6 @@
             </mu-row>
             <mu-button color="#4db6ac" @click="loadOneTeacher">Edit</mu-button>
             <mu-row v-if="the_teacher">
-                <br>{{ the_teacher }}<br>
                 <mu-form :model="form" class="mu-demo-form" :label-position="labelPosition" label-width="100">
                     <mu-form-item prop="input" label="Name:">
                         <mu-text-field v-model="name"></mu-text-field>
@@ -28,11 +27,11 @@
                     <mu-form-item prop="input" label="Experience:">
                         <mu-text-field v-model="experience"></mu-text-field>
                     </mu-form-item>
-                    <mu-form-item prop="select" label="Subjects:">
+<!--                     <mu-form-item prop="select" label="Subjects:">
                         <mu-select filterable multiple v-model="filterable" full-width>
                             <mu-option v-for="option,i in this.all_subjects" :key="option" :label="option" :value="option"></mu-option>
                         </mu-select>
-                    </mu-form-item>
+                    </mu-form-item> -->
                     <mu-form-item prop="select" label="Guide class:">
                         <mu-select v-model="classs">
                             <mu-option v-for="option,index in this.classes" :key="option" :label="option" :value="option"></mu-option>
@@ -64,7 +63,7 @@ export default {
         return {
             teachers: '',
             the_name: '',
-            all_subjects: '',
+            // all_subjects: '',
             classes: '',
             rooms: '',
             the_teacher: '',
@@ -74,6 +73,8 @@ export default {
             filterable: [],
             classs: '',
             room: '',
+            prev_room: '',
+            prev_class: '',
             labelPosition: 'left',
         }
     },
@@ -89,7 +90,7 @@ export default {
             headers: {'Authorization': "Token " + sessionStorage.getItem('auth_token')},
         });
         this.loadTeacher()
-        this.loadSubject()
+        // this.loadSubject()
         this.loadClass()
         this.loadRoom()
     },
@@ -132,19 +133,21 @@ export default {
                     this.filterable = response.data.data.subjects
                     this.classs = response.data.data.class
                     this.room = response.data.data.room
+                    this.prev_room = this.room
+                    this.prev_class = this.classs
                 }
             })
         },
-        loadSubject() {
-            $.ajax({
-                url: "http://127.0.0.1:8000/school/subjects/",
-                type: "GET",
-                success: (response) => {
-                    this.subjects_list = response.data.data
-                    this.all_subjects = this.subjects_list.map(function (item) { return item.name })
-                }
-            })
-        },
+        // loadSubject() {
+        //     $.ajax({
+        //         url: "http://127.0.0.1:8000/school/subjects/",
+        //         type: "GET",
+        //         success: (response) => {
+        //             this.subjects_list = response.data.data
+        //             this.all_subjects = this.subjects_list.map(function (item) { return item.name })
+        //         }
+        //     })
+        // },
         loadClass() {
             $.ajax({
                 url: "http://127.0.0.1:8000/school/classes/",
@@ -170,7 +173,7 @@ export default {
                 url: "http://127.0.0.1:8000/school/teachers/",
                 type: "PUT",
                 data: {
-                    id: this.the_teacher.id,
+                    // id: this.the_teacher.id,
                     name: this.name,
                     gender: this.gender,
                     experience: this.experience,
@@ -190,7 +193,8 @@ export default {
                 type: "PUT",
                 data: {
                     name: this.classs,
-                    guiding_teacher: this.name
+                    guiding_teacher: this.name,
+                    old_class: this.prev_class
                 },
                 // success: (response) => {
                 //     alert("Class edited successfully.")
@@ -203,32 +207,35 @@ export default {
                 type: "PUT",
                 data: {
                     number: this.room,
-                    teacher: this.name
-                },
-                // success: (response) => {
-                //     alert("Room edited successfully.")
-                // }
-            })
-        },
-        editTeaching() {
-            $.ajax({
-                url: "http://127.0.0.1:8000/school/teaching/",
-                type: "PUT",
-                data: {
                     teacher: this.name,
-                    subject: this.filterable
+                    old_room: this.prev_room
                 },
                 success: (response) => {
-                    // alert("Teaching edited successfully.")
+                    // alert("Room edited successfully.")
                     alert("Record edited successfully.")
                     this.$router.push({name: "teachers"})
                 }
             })
         },
+        // editTeaching() {
+        //     $.ajax({
+        //         url: "http://127.0.0.1:8000/school/teaching/",
+        //         type: "PUT",
+        //         data: {
+        //             teacher: this.name,
+        //             subject: this.filterable
+        //         },
+        //         success: (response) => {
+        //             // alert("Teaching edited successfully.")
+        //             alert("Record edited successfully.")
+        //             this.$router.push({name: "teachers"})
+        //         }
+        //     })
+        // },
         editDependencies() {
             this.editClass()
             this.editRoom()
-            this.editTeaching()
+            // this.editTeaching()
         },
     }
 }

@@ -19,6 +19,9 @@ import Subject from '@/components/Subject'
 import Room from '@/components/Room'
 
 import Assessment from '@/components/Assessment'
+import AssessmentAdd from '@/components/AssessmentAdd'
+import AssessmentEdit from '@/components/AssessmentEdit'
+import AssessmentDelete from '@/components/AssessmentDelete'
 
 import Timetable from '@/components/Timetable'
 
@@ -97,6 +100,21 @@ export default new Router({
       path: '/assessments',
       name: 'assessments',
       component: Assessment
+    },
+    {
+      path: '/assessments_add',
+      name: 'assessments_add',
+      component: AssessmentAdd
+    },
+    {
+      path: '/assessments_edit',
+      name: 'assessments_edit',
+      component: AssessmentEdit
+    },
+    {
+      path: '/assessments_delete',
+      name: 'assessments_delete',
+      component: AssessmentDelete
     },
     {
       path: '/timetable',

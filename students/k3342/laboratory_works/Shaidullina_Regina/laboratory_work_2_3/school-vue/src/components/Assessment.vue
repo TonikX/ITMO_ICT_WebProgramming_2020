@@ -1,9 +1,9 @@
 <template>
     <mu-container>
         <h2>Assessments</h2>
-        <mu-button v-if="auth" color="#4db6ac" @click="">Update</mu-button>
-        <mu-button v-if="auth" color="#4db6ac" @click="">Add</mu-button>
-        <mu-button v-if="auth" color="#4db6ac" @click="">Delete</mu-button><br><br>
+        <mu-button v-if="auth" color="#4db6ac" @click="upd">Update</mu-button>
+        <mu-button v-if="auth" color="#4db6ac" @click="add">Add</mu-button>
+        <mu-button v-if="auth" color="#4db6ac" @click="del">Delete</mu-button><br><br>
         <mu-container>
             <mu-button color="#4db6ac" @click="returnHome">Home</mu-button>
             <mu-button v-if="!auth" color="#4db6ac" @click="goLogin">Log in</mu-button><br v-if="!auth"><br v-if="!auth">
@@ -11,13 +11,19 @@
         </mu-container>
         <mu-paper>
             <mu-data-table border :columns="columns" :data="assessment" :min-col-width="200">
+                <!-- <template slot="expand" slot-scope="prop">
+                    <div style="padding: 24px;">
+                        <mu-button v-if="auth" color="#4db6ac" @click="upd">Update assessment</mu-button>
+                    </div>
+                </template> -->
                 <template slot-scope="scope">
                     <td class="is-left">{{ scope.row.term }}</td>
-                    <td class="is-left">{{ scope.row.pupil.name }}</td>
-                    <td class="is-left">{{ scope.row.subject.name }}</td>
+                    <td class="is-left">{{ scope.row.pupil }}</td>
+                    <td class="is-left">{{ scope.row.subject }}</td>
                     <td class="is-left">{{ scope.row.grade }}</td>
                 </template>
             </mu-data-table>
+            <br><br>
         </mu-paper>
     </mu-container>
 </template>
@@ -61,6 +67,15 @@ export default {
         },
         returnHome() {
             window.location = '/'
+        },
+        add() {
+            this.$router.push({name: "assessments_add"})
+        },
+        upd() {
+            this.$router.push({name: "assessments_edit"})
+        },
+        del() {
+            this.$router.push({name: "assessments_delete"})
         },
         loadAss() {
             $.ajax({

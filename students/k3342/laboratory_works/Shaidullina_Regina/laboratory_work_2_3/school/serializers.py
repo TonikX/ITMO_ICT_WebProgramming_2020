@@ -1,24 +1,28 @@
 from rest_framework import serializers
-from school.models import Subject, Room, Teacher, Pupil, Class, Assessment, Timetable
+from school.models import Subject, Room, Teacher, Pupil, Class, Assessment, Timetable, Teaching
 
 
 class SubjectSerializers(serializers.ModelSerializer):
-
     class Meta:
         model = Subject
         fields = ('name', 'sub_type')
 
 
 class TeacherSerializers(serializers.ModelSerializer):
-
-    #subjects = SubjectSerializers()
     class Meta:
         model = Teacher
-        fields = ('name', 'gender', 'experience', 'room', 'subjects', 'class')
+        fields = ('id', 'name', 'gender', 'experience', 'subjects', 'class', 'room')
+
+
+class TeachingSerializer(serializers.ModelSerializer):
+    subject = SubjectSerializers()
+    teacher = TeacherSerializers()
+    class Meta:
+        model = Teaching
+        fields = ('id', 'teacher', 'subject')
 
 
 class RoomSerializers(serializers.ModelSerializer):
-
     subject = SubjectSerializers()
     teacher = TeacherSerializers()
     class Meta:
@@ -27,7 +31,6 @@ class RoomSerializers(serializers.ModelSerializer):
 
 
 class ClassSerializers(serializers.ModelSerializer):
-
     guiding_teacher = TeacherSerializers()
     class Meta:
         model = Class
@@ -35,28 +38,31 @@ class ClassSerializers(serializers.ModelSerializer):
 
 
 class PupilSerializers(serializers.ModelSerializer):
-
     study_class = ClassSerializers()
+    class Meta:
+        model = Pupil
+        fields = ('id', 'name', 'gender', 'study_class')
+
+
+class PupilPostSerializers(serializers.ModelSerializer):
     class Meta:
         model = Pupil
         fields = ('name', 'gender', 'study_class')
 
 
 class AssessmentSerializers(serializers.ModelSerializer):
-
     subject = SubjectSerializers()
     pupil = PupilSerializers()
     class Meta:
         model = Assessment
-        fields = ('term', 'grade', 'pupil', 'subject')
+        fields = ('id', 'term', 'grade', 'pupil', 'subject')
 
 
 class TimetableSerializers(serializers.ModelSerializer):
-
     study_class = ClassSerializers()
     subject = SubjectSerializers()
     room = RoomSerializers()
     teacher = TeacherSerializers()
     class Meta:
         model = Timetable
-        fields = ('day_of_week', 'study_class', 'lesson_num', 'subject', 'room', 'teacher')
+        fields = ('id', 'day_of_week', 'study_class', 'lesson_num', 'subject', 'room', 'teacher')

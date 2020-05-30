@@ -28,16 +28,6 @@ class Teacher(models.Model):
 		return self.name
 
 
-class Room(models.Model):
-	number = models.CharField(max_length=4, primary_key=True)
-	floor = models.IntegerField()
-	subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
-	teacher = models.OneToOneField(Teacher, on_delete=models.CASCADE, null=True, blank=True)
-
-	def __str__(self):
-		return self.number + ' ' + self.subject.name  # + ' ' + self.teacher.name
-
-
 class Teaching(models.Model):
 	teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
 	subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
@@ -46,9 +36,19 @@ class Teaching(models.Model):
 		return self.teacher.name + ': ' + self.subject.name
 
 
+class Room(models.Model):
+	number = models.CharField(max_length=4, primary_key=True)
+	floor = models.IntegerField()
+	subject = models.ForeignKey(Subject, on_delete=models.SET_NULL, null=True, blank=True)
+	teacher = models.OneToOneField(Teacher, on_delete=models.SET_NULL, null=True, blank=True)
+
+	def __str__(self):
+		return self.number  #+ ' ' + self.subject.name + ' ' + self.teacher.name
+
+
 class Class(models.Model):
 	name = models.CharField(max_length=3, primary_key=True)
-	guiding_teacher = models.OneToOneField(Teacher, on_delete=models.CASCADE)
+	guiding_teacher = models.OneToOneField(Teacher, on_delete=models.SET_NULL, null=True, blank=True)
 
 	def __str__(self):
 		return self.name
@@ -62,7 +62,7 @@ class Pupil(models.Model):
 	)
 	name = models.CharField(max_length=50)
 	gender = models.CharField(max_length=10, choices=GENDERS)
-	study_class = models.ForeignKey(Class, on_delete=models.CASCADE)
+	study_class = models.ForeignKey(Class, on_delete=models.SET_NULL, null=True, blank=True)
 
 	def __str__(self):
 		return self.name + ' ' + self.study_class.name

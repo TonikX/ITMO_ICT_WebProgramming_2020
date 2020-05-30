@@ -1,20 +1,21 @@
 <template>
     <div>
-        <h2>Pupils</h2>
-        <mu-button v-if="auth" color="#4db6ac" @click="upd">Update</mu-button>
-        <mu-button v-if="auth" color="#4db6ac" @click="add">Add</mu-button>
-        <mu-button v-if="auth" color="#4db6ac" @click="del">Delete</mu-button><br><br>
+        <h2>Choose the pupil to delete info about</h2>
         <mu-container>
             <mu-button color="#4db6ac" @click="returnHome">Home</mu-button>
+            <mu-button color="#4db6ac" @click="previous">Back to Pupils list</mu-button>
             <mu-button color="#4db6ac" v-if="!auth" @click="goLogin">Log in</mu-button><br v-if="!auth"><br v-if="!auth">
             <mu-button color="#4db6ac" v-if="auth" @click="logout">Log out</mu-button><br v-if="auth"><br v-if="auth">
-            <mu-paper>
-                <p v-for='pupil in pupils' v-bind:key='pupil.id'>
-                    Pupil: {{ pupil.name }}<br>
-                    Gender: {{ pupil.gender }}<br>
-                    Class: <span v-if="pupil.study_class">{{ pupil.study_class.name }}</span><span v-else>None</span><br>
-                </p>
-            </mu-paper>
+            <mu-row>
+                <mu-form :model="form" class="mu-demo-form" :label-position="labelPosition" label-width="100">
+                    <mu-form-item prop="select" label="Name:">
+                        <mu-select v-model="form.name">
+                            <mu-option v-for="option,index in this.pupils" :key="option" :label="option" :value="option"></mu-option>
+                        </mu-select>
+                    </mu-form-item>
+                </mu-form>
+            </mu-row>
+            <mu-button color="#4db6ac" @click="deletePupil">Delete</mu-button>
         </mu-container>
     </div>
 </template>
@@ -27,6 +28,10 @@ export default {
     data() {
         return {
             pupils: '',
+            labelPosition: 'left',
+            form: {
+                name: '',
+            }
         }
     },
     computed: {
@@ -53,21 +58,29 @@ export default {
         returnHome() {
             window.location = '/'
         },
-        add() {
-            this.$router.push({name: "pupils_add"})
-        },
-        upd() {
-            this.$router.push({name: "pupils_edit"})
-        },
-        del() {
-            this.$router.push({name: "pupils_delete"})
+        previous() {
+            this.$router.push({name: "pupils"})
         },
         loadPupil() {
             $.ajax({
                 url: "http://127.0.0.1:8000/school/pupils/",
                 type: "GET",
                 success: (response) => {
-                    this.pupils = response.data.data
+                    this.pupils_list = response.data.data
+                    this.pupils = this.pupils_list.map(function (item) { return item.name })
+                }
+            })
+        },
+        deletePupil() {
+            $.ajax({
+                url: "http://127.0.0.1:8000/school/pupils/",
+                type: "DELETE",
+                data: {
+                    name: this.form.name
+                },
+                success: (response) => {
+                    alert("Record deleted successfully.")
+                    this.$router.push({name: "pupils"})
                 }
             })
         }
@@ -83,6 +96,6 @@ export default {
         color: #004d40;
     },
     p {
-        font-size: 16px; font-weight: 400;
+        font-size: 16px; font-weight: 400; text-align: center;
     }
 </style>

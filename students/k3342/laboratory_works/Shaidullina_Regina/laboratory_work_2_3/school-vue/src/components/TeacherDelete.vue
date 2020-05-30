@@ -1,23 +1,21 @@
 <template>
     <div>
-        <h2>Teachers</h2>
-        <mu-button v-if="auth" color="#4db6ac" @click="upd">Update</mu-button>
-        <mu-button v-if="auth" color="#4db6ac" @click="add">Add</mu-button>
-        <mu-button v-if="auth" color="#4db6ac" @click="del">Delete</mu-button><br><br>
+        <h2>Choose the teacher to delete info about</h2>
         <mu-container>
             <mu-button color="#4db6ac" @click="returnHome">Home</mu-button>
+            <mu-button color="#4db6ac" @click="previous">Back to Teachers list</mu-button>
             <mu-button color="#4db6ac" v-if="!auth" @click="goLogin">Log in</mu-button><br v-if="!auth"><br v-if="!auth">
             <mu-button color="#4db6ac" v-if="auth" @click="logout">Log out</mu-button><br v-if="auth"><br v-if="auth">
-            <mu-paper>
-                <p v-for='teacher in teachers' v:bind-key="teacher.id">
-                    Teacher: {{ teacher.name }}<br>
-                    Gender: {{ teacher.gender }}<br>
-                    Has total experience of {{ teacher.experience }}<br>
-                    Subjects: | <span v-for='s in teacher.subjects' v-bind:key='s.name'>{{ s }} | </span><br>
-                    Guided class: <span v-if="teacher.class">{{ teacher.class }}</span><span v-else>None</span><br>
-                    Room: <span v-if="teacher.room">{{ teacher.room }}</span><span v-else>None</span><br>
-                </p>
-            </mu-paper>
+            <mu-row>
+                <mu-form :model="form" class="mu-demo-form" :label-position="labelPosition" label-width="100">
+                    <mu-form-item prop="select" label="Name:">
+                        <mu-select v-model="form.name">
+                            <mu-option v-for="option,index in this.teachers" :key="option" :label="option" :value="option"></mu-option>
+                        </mu-select>
+                    </mu-form-item>
+                </mu-form>
+            </mu-row>
+            <mu-button color="#4db6ac" @click="deleteTeacher">Delete</mu-button>
         </mu-container>
     </div>
 </template>
@@ -30,6 +28,10 @@ export default {
     data() {
         return {
             teachers: '',
+            labelPosition: 'left',
+            form: {
+                name: '',
+            }
         }
     },
     computed: {
@@ -56,21 +58,29 @@ export default {
         returnHome() {
             window.location = '/'
         },
-        add() {
-            this.$router.push({name: "teachers_add"})
-        },
-        upd() {
-            this.$router.push({name: "teachers_edit"})
-        },
-        del() {
-            this.$router.push({name: "teachers_delete"})
+        previous() {
+            this.$router.push({name: "teachers"})
         },
         loadTeacher() {
             $.ajax({
                 url: "http://127.0.0.1:8000/school/teachers/",
                 type: "GET",
                 success: (response) => {
-                    this.teachers = response.data.data
+                    this.teachers_list = response.data.data
+                    this.teachers = this.teachers_list.map(function (item) { return item.name })
+                }
+            })
+        },
+        deleteTeacher() {
+            $.ajax({
+                url: "http://127.0.0.1:8000/school/teachers/",
+                type: "DELETE",
+                data: {
+                    name: this.form.name
+                },
+                success: (response) => {
+                    alert("Record deleted successfully.")
+                    this.$router.push({name: "teachers"})
                 }
             })
         }

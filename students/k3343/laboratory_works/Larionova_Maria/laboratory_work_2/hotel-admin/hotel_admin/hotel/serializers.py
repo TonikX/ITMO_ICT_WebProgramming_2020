@@ -2,6 +2,12 @@ from rest_framework import serializers
 from .models import *
 
 
+class EmployeeSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Employee
+		fields = '__all__'
+
+
 class FloorSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Floor
@@ -16,7 +22,7 @@ class CreateRoomSerializer(serializers.ModelSerializer):
 
 class RoomSerializer(serializers.ModelSerializer):
 	room_type = serializers.CharField(source='get_room_type_display')
-	room_state = serializers.CharField(source='get_room_state_display')
+	#room_state = serializers.CharField(source='get_room_state_display')
 
 	class Meta:
 		model = Room
@@ -30,9 +36,6 @@ class ClientSerializer(serializers.ModelSerializer):
 
 
 class CreateClientRoomSerializer(serializers.ModelSerializer):
-	client = ClientSerializer()
-	room = CreateRoomSerializer()
-
 	class Meta:
 		model = ClientRoom
 		fields = '__all__'
@@ -48,6 +51,8 @@ class ClientRoomSerializer(serializers.ModelSerializer):
 
 
 class CleaningSerializer(serializers.ModelSerializer):
+	employee = EmployeeSerializer()
+	floor = FloorSerializer()
 	class Meta:
 		model = Cleaning
 		fields = '__all__'

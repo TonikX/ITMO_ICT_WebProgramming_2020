@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 class Floor(models.Model):
@@ -59,6 +61,7 @@ class Employee(models.Model):
 	middle_name = models.CharField(max_length=50)
 	passport = models.IntegerField()
 	position = models.CharField(choices=POSITIONS, default='2', max_length=1)
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 	def __str__(self):
 		return '{} {} {}, {}'.format(self.surname, self.name, self.middle_name, self.get_position_display())

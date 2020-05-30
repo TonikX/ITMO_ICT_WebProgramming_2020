@@ -25,7 +25,7 @@ class CreateRoomView(generics.CreateAPIView):
 	serializer_class = CreateRoomSerializer
 
 
-class RetrieveRoomView(generics.RetrieveAPIView):
+class RetrieveRoomView(generics.RetrieveUpdateAPIView):
 	queryset = Room.objects.all()
 	serializer_class = RoomSerializer
 
@@ -76,8 +76,17 @@ class RetrieveCleaningView(generics.RetrieveAPIView):
 
 
 class ListCleaningView(generics.ListAPIView):
-	queryset = Cleaning.objects.all()
 	serializer_class = CleaningSerializer
+
+	def get_queryset(self):
+		queryset = Cleaning.objects.all()
+
+		worker = self.request.query_params.get('worker', None)
+
+		if worker:
+			queryset = queryset.filter(employee__user__username=worker)
+		
+		return queryset
 
 
 class CreateChallengerView(generics.CreateAPIView):

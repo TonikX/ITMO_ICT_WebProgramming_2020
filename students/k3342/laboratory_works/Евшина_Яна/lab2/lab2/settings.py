@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'dogs',
+    'rest_framework',
 ]
 
 AUTH_USER_MODEL = 'dogs.User'

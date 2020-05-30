@@ -38,8 +38,10 @@ class Dog(models.Model):
     date_of_medicine = models.DateField()
     inspection = models.BooleanField(
         verbose_name='Medicine inspection done', default=False)
-    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    club = models.ForeignKey(Club, on_delete=models.CASCADE)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT,
+                              null=True)
+    club = models.ForeignKey(Club, on_delete=models.PROTECT,
+                             null=True)
 
     def __str__(self):
         return self.dog_name
@@ -62,7 +64,7 @@ class Show(models.Model):
 
 class Ring(models.Model):
     number = models.CharField(max_length=10)
-    show = models.ForeignKey(Show, on_delete=models.CASCADE)
+    show = models.ForeignKey(Show, on_delete=models.PROTECT, null=True)
     ex1 = models.CharField(max_length=25)
     ex2 = models.CharField(max_length=25)
     ex3 = models.CharField(max_length=25)
@@ -73,9 +75,9 @@ class Ring(models.Model):
 
 class Registration(models.Model):
     num = models.CharField(max_length=10)
-    dog = models.ForeignKey(Dog, on_delete=models.CASCADE)
+    dog = models.ForeignKey(Dog, on_delete=models.PROTECT)
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    show = models.ForeignKey(Show, on_delete=models.CASCADE)
+    show = models.ForeignKey(Show, on_delete=models.PROTECT)
     fee = models.BooleanField(verbose_name='Fee paid', default=False)
 
     def __str__(self):
@@ -83,13 +85,15 @@ class Registration(models.Model):
 
 
 class Perform(models.Model):
-    ring = models.ForeignKey(Ring, on_delete=models.CASCADE)
-    dog = models.ForeignKey(Dog, on_delete=models.CASCADE)
+    ring = models.ForeignKey(Ring, on_delete=models.PROTECT)
+    dog = models.ForeignKey(Dog, on_delete=models.PROTECT)
 
 
 class Grade(models.Model):
-    expert = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    perform = models.ForeignKey(Perform, on_delete=models.CASCADE)
+    expert = models.ForeignKey(settings.AUTH_USER_MODEL,
+                               on_delete=models.PROTECT, null=True)
+    perform = models.ForeignKey(Perform, on_delete=models.PROTECT,
+                                null=True)
     points1 = models.IntegerField()
     points2 = models.IntegerField()
     points3 = models.IntegerField()

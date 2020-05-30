@@ -11,8 +11,8 @@
                     <mu-button v-if="auth" color="#4db6ac" @click="getTimetable">Timetable</mu-button>
                     <mu-button v-if="auth" color="#4db6ac" @click="getTeachers">Teachers</mu-button>
                     <mu-button v-if="auth" color="#4db6ac" @click="getPupils">Pupils</mu-button>
-                    <mu-button v-if="auth" color="#4db6ac" @click="getClasses">Classes</mu-button>
                     <mu-button v-if="auth" color="#4db6ac" @click="getAssessments">Assessments</mu-button>
+                    <mu-button v-if="auth" color="#4db6ac" @click="getClasses">Classes</mu-button>
                     <mu-button v-if="auth" color="#4db6ac" @click="getSubjects">Subjects</mu-button>
                     <mu-button v-if="auth" color="#4db6ac" @click="getRooms">Rooms</mu-button>
                 </mu-container>

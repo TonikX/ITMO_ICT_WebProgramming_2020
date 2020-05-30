@@ -12,7 +12,7 @@
                 <p v-for='pupil in pupils' v-bind:key='pupil.id'>
                     Pupil: {{ pupil.name }}<br>
                     Gender: {{ pupil.gender }}<br>
-                    Class: <span v-if="pupil.study_class">{{ pupil.study_class.name }}</span><span v-else>None</span><br>
+                    Class: <span v-if="pupil.study_class">{{ pupil.study_class }}</span><span v-else>None</span><br>
                 </p>
             </mu-paper>
         </mu-container>

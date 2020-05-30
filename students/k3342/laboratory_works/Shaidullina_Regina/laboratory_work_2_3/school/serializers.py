@@ -38,16 +38,16 @@ class ClassSerializers(serializers.ModelSerializer):
 
 
 class PupilSerializers(serializers.ModelSerializer):
-    study_class = ClassSerializers()
+    #study_class = ClassSerializers()
     class Meta:
         model = Pupil
         fields = ('id', 'name', 'gender', 'study_class')
 
 
-class PupilPostSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = Pupil
-        fields = ('name', 'gender', 'study_class')
+# class PupilPostSerializers(serializers.ModelSerializer):
+#     class Meta:
+#         model = Pupil
+#         fields = ('name', 'gender', 'study_class')
 
 
 class AssessmentSerializers(serializers.ModelSerializer):

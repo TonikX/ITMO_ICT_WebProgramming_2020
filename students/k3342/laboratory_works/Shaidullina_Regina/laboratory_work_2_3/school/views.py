@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import permissions
 from school.models import Subject, Room, Teacher, Pupil, Class, Assessment, Timetable, Teaching
-from school.serializers import SubjectSerializers, RoomSerializers, TeacherSerializers, PupilSerializers, PupilPostSerializers, \
+from school.serializers import SubjectSerializers, RoomSerializers, TeacherSerializers, PupilSerializers, \
                                 ClassSerializers, AssessmentSerializers, TimetableSerializers, TeachingSerializer
 
 
@@ -123,7 +123,7 @@ class Pupils(APIView):
         return Response({'data': serializer.data})
 
     def post(self, request):
-        pupil = PupilPostSerializers(data=request.data)
+        pupil = PupilSerializers(data=request.data)
         if pupil.is_valid():
             pupil.save()
             return Response({'data': pupil.data}, status=201)
@@ -151,7 +151,7 @@ class Pupils(APIView):
     def put(self, request):
         params = QueryDict(request.body)
         pupil = self.get_edited_object(params['id'])
-        serializer = PupilPostSerializers(pupil, data=request.data)
+        serializer = PupilSerializers(pupil, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response({'data': serializer.data}, status=201)

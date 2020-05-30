@@ -28,11 +28,6 @@
                     <mu-form-item prop="input" label="Experience:">
                         <mu-text-field v-model="experience"></mu-text-field>
                     </mu-form-item>
-<!--                     <mu-form-item prop="select" label="Subjects:">
-                        <mu-select v-model="subjects">
-                            <mu-option v-for="option,i in this.all_subjects" :key="option" :label="option" :value="option"></mu-option>
-                        </mu-select>
-                    </mu-form-item> -->
                     <mu-form-item prop="select" label="Subjects:">
                         <mu-select filterable multiple v-model="filterable" full-width>
                             <mu-option v-for="option,i in this.all_subjects" :key="option" :label="option" :value="option"></mu-option>

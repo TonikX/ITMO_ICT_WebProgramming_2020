@@ -99,10 +99,10 @@ export default {
                     name: this.the_name,
                 },
                 success: (response) => {
-                    this.the_pupil = response.data
-                    this.name = response.data.attributes.name
-                    this.gender = response.data.attributes.gender
-                    this.study_class = response.data.relationships.study_class.data.id
+                    this.the_pupil = response.data.data
+                    this.name = response.data.data.name
+                    this.gender = response.data.data.gender
+                    this.study_class = response.data.data.study_class
                 }
             })
         },

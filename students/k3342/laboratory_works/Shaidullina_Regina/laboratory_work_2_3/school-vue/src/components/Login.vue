@@ -1,13 +1,15 @@
 <template>
     <div>
+        <mu-container class="button-wrapper">
+            <mu-button color="#5c6bc0" textColor="white" @click="returnHome">Home</mu-button>
+        </mu-container>
         <h2>Log in</h2>
-        <mu-container>
+        <mu-container class="button-wrapper2">
             <mu-text-field v-model="login" label="Username" type="text" label-float></mu-text-field><br>
             <mu-text-field v-model="password" label="Password" type="password" label-float error-text="Please enter password"></mu-text-field><br>
         </mu-container>
         <br>
-        <mu-container>
-            <mu-button color="#5c6bc0" textColor="white" @click="returnHome">Home</mu-button>
+        <mu-container class="button-wrapper2">
             <mu-button color="#5c6bc0" textColor="white" @click="setLogin">Log in</mu-button>
         </mu-container>
     </div>
@@ -58,5 +60,17 @@ export default {
         font-weight: 400;
         text-align: center;
         color: #1a237e;
+    },
+    .button-wrapper {
+        text-align: right;
+        .mu-button{
+            margin: 8px;
+        }
+    },
+    .button-wrapper2 {
+        text-align: center;
+        .mu-button{
+            margin: 8px;
+        }
     }
 </style>

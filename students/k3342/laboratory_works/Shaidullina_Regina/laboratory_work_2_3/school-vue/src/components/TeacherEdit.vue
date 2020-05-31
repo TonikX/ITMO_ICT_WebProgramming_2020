@@ -5,10 +5,6 @@
         </mu-container>
         <h2>Change information about a teacher</h2>
         <mu-container>
-            <!-- <mu-button color="#5c6bc0" textColor="white" @click="returnHome">Home</mu-button><br> -->
-            <!-- <mu-button color="#5c6bc0" textColor="white" @click="previous">Back to Teachers list</mu-button>
-            <mu-button color="#5c6bc0" textColor="white" v-if="!auth" @click="goLogin">Log in</mu-button><br v-if="!auth"><br v-if="!auth">
-            <mu-button color="#5c6bc0" textColor="white" v-if="auth" @click="logout">Log out</mu-button><br v-if="auth"><br v-if="auth"> -->
             <mu-row>
                 <mu-form :model="form" class="mu-demo-form" :label-position="labelPosition" label-width="100">
                     <mu-form-item prop="select" label="Name:">
@@ -51,10 +47,6 @@
                 <mu-button v-if="the_teacher" color="#5c6bc0" textColor="white" @click="sendTeacher">Confirm</mu-button>
                 <mu-button v-if="the_teacher" color="#5c6bc0" textColor="white" @click="editDependencies">update teacher</mu-button><br><br>
             </mu-container>
-            <!-- <mu-button v-if="the_teacher" color="#5c6bc0" textColor="white" @click="editTeacher">Update Teacher info</mu-button> -->
-            <!-- <mu-button v-if="the_teacher" color="#5c6bc0" textColor="white" @click="editClass">Update Classes table</mu-button> -->
-            <!-- <mu-button v-if="the_teacher" color="#5c6bc0" textColor="white" @click="editRoom">Update Rooms table</mu-button> -->
-            <!-- <mu-button v-if="the_teacher" color="#5c6bc0" textColor="white" @click="editTeaching">Update Teaching table</mu-button> -->
         </mu-container>
     </div>
 </template>
@@ -100,19 +92,9 @@ export default {
         this.loadRoom()
     },
     methods: {
-        // goLogin() {
-        //     this.$router.push({name: "login"})
-        // },
-        // logout() {
-        //     sessionStorage.removeItem("auth_token")
-        //     window.location = '/'
-        // },
         returnHome() {
             window.location = '/'
         },
-        // previous() {
-        //     this.$router.push({name: "teachers"})
-        // },
         loadTeacher() {
             $.ajax({
                 url: "http://127.0.0.1:8000/school/teachers/",
@@ -253,9 +235,6 @@ export default {
         font-weight: 400;
         text-align: center;
         color: #1a237e;
-    },
-    p {
-        font-size: 16px; font-weight: 400; text-align: center;
     },
     .button-wrapper {
         text-align: right;

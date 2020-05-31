@@ -5,10 +5,6 @@
         </mu-container>
         <h2>Change information about a pupil</h2>
         <mu-container>
-            <!-- <mu-button color="#5c6bc0" textColor="white" @click="returnHome">Home</mu-button>
-            <mu-button color="#5c6bc0" textColor="white" @click="previous">Back to Pupils list</mu-button>
-            <mu-button color="#5c6bc0" textColor="white" v-if="!auth" @click="goLogin">Log in</mu-button><br v-if="!auth"><br v-if="!auth">
-            <mu-button color="#5c6bc0" textColor="white" v-if="auth" @click="logout">Log out</mu-button><br v-if="auth"><br v-if="auth"> -->
             <mu-row>
                 <mu-form :model="form" class="mu-demo-form" :label-position="labelPosition" label-width="100">
                     <mu-form-item prop="select" label="Name:">
@@ -73,19 +69,9 @@ export default {
         this.loadClass()
     },
     methods: {
-        // goLogin() {
-        //     this.$router.push({name: "login"})
-        // },
-        // logout() {
-        //     sessionStorage.removeItem("auth_token")
-        //     window.location = '/'
-        // },
         returnHome() {
             window.location = '/'
         },
-        // previous() {
-        //     this.$router.push({name: "pupils"})
-        // },
         loadPupil() {
             $.ajax({
                 url: "http://127.0.0.1:8000/school/pupils/",
@@ -126,7 +112,6 @@ export default {
                 url: "http://127.0.0.1:8000/school/pupils/",
                 type: "PUT",
                 data: {
-                    // id: this.the_pupil.id,
                     name: this.name,
                     gender: this.gender,
                     study_class: this.study_class,
@@ -148,9 +133,6 @@ export default {
         font-weight: 400;
         text-align: center;
         color: #1a237e;
-    },
-    p {
-        font-size: 16px; font-weight: 400; text-align: center;
     },
     .button-wrapper {
         text-align: right;

@@ -1,14 +1,10 @@
 <template>
-    <mu-container>
-        <br><!-- <h2>Pupils</h2> -->
+    <mu-container><br>
         <mu-container class="button-wrapper2">
             <mu-button v-if="auth" color="#5c6bc0" textColor="white" @click="upd">Update</mu-button>
             <mu-button v-if="auth" color="#5c6bc0" textColor="white" @click="add">Add</mu-button>
             <mu-button v-if="auth" color="#5c6bc0" textColor="white" @click="del">Delete</mu-button><br><br>
         </mu-container>
-<!--             <mu-button color="#5c6bc0" textColor="white" @click="returnHome">Home</mu-button>
-            <mu-button color="#5c6bc0" textColor="white" v-if="!auth" @click="goLogin">Log in</mu-button><br v-if="!auth"><br v-if="!auth">
-            <mu-button color="#5c6bc0" textColor="white" v-if="auth" @click="logout">Log out</mu-button><br v-if="auth"><br v-if="auth"> -->
         <mu-container>
             <mu-paper>
                 <mu-data-table border :columns="columns" :data="pupils">
@@ -53,13 +49,6 @@ export default {
         this.loadPupil()
     },
     methods: {
-        // goLogin() {
-        //     this.$router.push({name: "login"})
-        // },
-        // logout() {
-        //     sessionStorage.removeItem("auth_token")
-        //     window.location = '/'
-        // },
         returnHome() {
             window.location = '/'
         },
@@ -86,12 +75,6 @@ export default {
 </script>
 
 <style scoped>
-    h2 {
-        font-size: 48px; 
-        font-weight: 400;
-        text-align: center;
-        color: #1a237e;
-    },
     .button-wrapper2 {
         text-align: center;
         .mu-button{

@@ -5,10 +5,6 @@
         </mu-container>
         <h2>Change a grade</h2>
         <mu-container>
-<!--             <mu-button color="#5c6bc0" textColor="white" @click="returnHome">Home</mu-button>
-            <mu-button color="#5c6bc0" textColor="white" @click="previous">Back to Assessment Table</mu-button>
-            <mu-button color="#5c6bc0" textColor="white" v-if="!auth" @click="goLogin">Log in</mu-button><br v-if="!auth"><br v-if="!auth">
-            <mu-button color="#5c6bc0" textColor="white" v-if="auth" @click="logout">Log out</mu-button><br v-if="auth"><br v-if="auth"> -->
             <mu-row>
                 <mu-form :model="form" class="mu-demo-form" :label-position="labelPosition" label-width="100">
                     <mu-form-item prop="input" label="Term:">
@@ -73,13 +69,6 @@ export default {
         this.loadSubjects()
     },
     methods: {
-        // goLogin() {
-        //     this.$router.push({name: "login"})
-        // },
-        // logout() {
-        //     sessionStorage.removeItem("auth_token")
-        //     window.location = '/'
-        // },
         returnHome() {
             window.location = '/'
         },
@@ -150,9 +139,6 @@ export default {
         font-weight: 400;
         text-align: center;
         color: #1a237e;
-    },
-    p {
-        font-size: 16px; font-weight: 400; text-align: center;
     },
     .button-wrapper {
         text-align: right;

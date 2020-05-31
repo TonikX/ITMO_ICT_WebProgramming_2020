@@ -1,12 +1,10 @@
 <template>
     <div>
         <mu-container class="button-wrapper">
+            <mu-button v-if="!auth" color="#5c6bc0" textColor="white" @click="goLogin">Log in</mu-button>
             <mu-button v-if="auth" color="#5c6bc0" textColor="white" @click="logout">Log out</mu-button>
         </mu-container>
-        <h1>SCHOOL ADMINISTRATION</h1>
-        <mu-container class="button-wrapper2">
-            <mu-button v-if="!auth" color="#5c6bc0" textColor="white" @click="goLogin">Log in</mu-button>
-        </mu-container>
+        <h1>School administration</h1>
         <mu-container v-if="auth">
             <mu-tabs :value.sync="active1" inverse color="#5c6bc0" textColor="white" indicator-color="#5c6bc0" center>
                 <mu-tab>Timetable</mu-tab>
@@ -34,45 +32,26 @@
                 <assessment></assessment>
             </div>
             <div class="demo-text" v-if="active1 === 4">
+                <br><p>Information about classes.</p>
                 <class></class>
             </div>
             <div class="demo-text" v-if="active1 === 5">
+                <br><p>Information about subjects.</p>
                 <subject></subject>
             </div>
             <div class="demo-text" v-if="active1 === 6">
+                <br><p>Information about study rooms.</p>
                 <room></room>
             </div>
+            <div class="demo-text" v-if="active1 === -1">
+                <!-- <br><br><img width="350" src="https://cdn.shopify.com/s/files/1/2562/6932/articles/teacher-tired-humor-teacher-memes-funny_1200x679_crop_top.jpg?v=1518395627"> -->
+                <br><br><img width="350" src="https://edu.tatar.ru/2018/img/girl.png">
+            </div>
         </mu-container>
-<!--         <mu-container>
-            <mu-row>
-                <mu-col span="4"><div class="grid-cell"></div></mu-col>
-                <mu-col span="4"><div class="grid-cell">
-                    <h1>School</h1>
-                </div></mu-col>
-                <mu-col span="4"><div class="grid-cell">
-                    <mu-button v-if="!auth" color="#5c6bc0" textColor="white" @click="goLogin">Log in</mu-button>
-                    <mu-button v-if="auth" color="#5c6bc0" textColor="white" @click="logout">Log out</mu-button>
-                </div></mu-col>
-            </mu-row>
-            <mu-row>
-                <mu-container>
-                    <mu-button v-if="auth" color="#5c6bc0" textColor="white" @click="">Queries</mu-button>
-                    <mu-button v-if="auth" color="#5c6bc0" textColor="white" @click="">Report</mu-button><br><br>
-                    <mu-button v-if="auth" color="#5c6bc0" textColor="white" @click="getTimetable">Timetable</mu-button>
-                    <mu-button v-if="auth" color="#5c6bc0" textColor="white" @click="getTeachers">Teachers</mu-button>
-                    <mu-button v-if="auth" color="#5c6bc0" textColor="white" @click="getPupils">Pupils</mu-button>
-                    <mu-button v-if="auth" color="#5c6bc0" textColor="white" @click="getAssessments">Assessments</mu-button>
-                    <mu-button v-if="auth" color="#5c6bc0" textColor="white" @click="getClasses">Classes</mu-button>
-                    <mu-button v-if="auth" color="#5c6bc0" textColor="white" @click="getSubjects">Subjects</mu-button>
-                    <mu-button v-if="auth" color="#5c6bc0" textColor="white" @click="getRooms">Rooms</mu-button>
-                </mu-container>
-            </mu-row>
-            <mu-row>
-                <mu-container>
-                    <br><br><img width="350" src="https://cdn.shopify.com/s/files/1/2562/6932/articles/teacher-tired-humor-teacher-memes-funny_1200x679_crop_top.jpg?v=1518395627">
-                </mu-container>
-            </mu-row>
-        </mu-container> -->
+        <mu-container v-if="!auth">
+            <!-- <br><img width="350" src="https://cdn.shopify.com/s/files/1/2562/6932/articles/teacher-tired-humor-teacher-memes-funny_1200x679_crop_top.jpg?v=1518395627"> -->
+            <br><br><img width="350" src="https://edu.tatar.ru/2018/img/girl.png">
+        </mu-container>
     </div>
 </template>
 
@@ -100,7 +79,7 @@ export default {
     },
     data () {
         return {
-            active1: 0
+            active1: -1
         };
     },
     computed: {
@@ -117,27 +96,6 @@ export default {
         logout() {
             sessionStorage.removeItem("auth_token")
             window.location = '/'
-        },
-        getTeachers() {
-            this.$router.push({name: "teachers"})
-        },
-        getPupils() {
-            this.$router.push({name: "pupils"})
-        },
-        getClasses() {
-            this.$router.push({name: "classes"})
-        },
-        getSubjects() {
-            this.$router.push({name: "subjects"})
-        },
-        getRooms() {
-            this.$router.push({name: "rooms"})
-        },
-        getAssessments() {
-            this.$router.push({name: "assessments"})
-        },
-        getTimetable() {
-            this.$router.push({name: "timetable"})
         }
     }
 }

@@ -21,13 +21,26 @@ class FlightsView(generics.ListAPIView):
 		tickets_saled = query_params.get('tickets', None)
 		price = query_params.get('price', None)
 
-		is_transit = True is is_transit else False
+		print('IS TRANSIT', is_transit)
 
-		queryset = queryset.filter(arrival_point=arrival) if arrival else queryset
-		queryset = queryset.filter(departure_point=departure) if departure else queryset
-		queryset = queryset.filter(is_transit=is_transit) if is_transit not None else queryset
-		queryset = queryset.filter(saled_tickets_amount__lte=tickets_saled) if tickets_saled else queryset
-		queryset = queryset.filter(price__lte=price) if price else queryset
+		# is_transit = True if is_transit else False
+
+		if arrival:
+			queryset = queryset.filter(arrival_point=arrival)
+
+		if departure:
+			queryset = queryset.filter(departure_point=departure)
+
+		if is_transit == '1':
+			queryset = queryset.filter(is_transit=True)
+		else:
+			queryset = queryset.filter(is_transit=False)
+
+		if tickets_saled:
+			queryset = queryset.filter(saled_tickets_amount__lte=tickets_saled)
+
+		if price:
+			queryset = queryset.filter(price__lte=price)
 
 		return queryset
 

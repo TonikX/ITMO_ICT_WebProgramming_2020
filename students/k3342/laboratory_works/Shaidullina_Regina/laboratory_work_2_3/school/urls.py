@@ -15,4 +15,9 @@ urlpatterns = [
     path('assessment/', AssessmentOne.as_view()),
     path('timetable/', Timetables.as_view()),
     path('teaching/', Teachings.as_view()),
+    path('query1/', Query1.as_view()),
+    path('query2/', Query2.as_view()),
+    path('query3/', Query3.as_view()),
+    path('query4/', Query4.as_view()),
+    path('query5/', Query5.as_view()),
 ]

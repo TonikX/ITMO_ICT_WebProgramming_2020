@@ -30,6 +30,13 @@ class RoomSerializers(serializers.ModelSerializer):
         fields = ('number', 'floor', 'subject', 'teacher')
 
 
+class RoomQuerySerializers(serializers.ModelSerializer):
+    subject = SubjectSerializers()
+    class Meta:
+        model = Room
+        fields = ('number', 'subject')
+
+
 class ClassSerializers(serializers.ModelSerializer):
     #guiding_teacher = TeacherSerializers()
     class Meta:

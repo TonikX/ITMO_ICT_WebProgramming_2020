@@ -4,8 +4,10 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import permissions
 from school.models import Subject, Room, Teacher, Pupil, Class, Assessment, Timetable, Teaching
-from school.serializers import SubjectSerializers, RoomSerializers, TeacherSerializers, PupilSerializers, \
+from school.serializers import SubjectSerializers, RoomSerializers, RoomQuerySerializers, TeacherSerializers, PupilSerializers, \
                                 ClassSerializers, AssessmentSerializers, TimetableSerializers, TeachingSerializer
+from collections import Counter
+from django.db.models import Count
 
 
 class Subjects(APIView):
@@ -298,3 +300,72 @@ class Teachings(APIView):
             new_t = Teaching(teacher=teacher, subject=s_instance)
             new_t.save()
         return Response(status=201)
+
+
+class Query1(APIView):
+    """ Какой предмет будет в заданном классе в заданный день недели на заданном уроке? """
+
+    permission_classes = [permissions.IsAuthenticated, ]
+
+    def get(self, request):
+        c = request.GET.get('study_class')
+        d = request.GET.get('day_of_week')
+        l = request.GET.get('lesson_num')
+        tt = Timetable.objects.get(day_of_week=d, study_class=c, lesson_num=l)
+        serializer = TimetableSerializers(tt, many=False)
+        return Response({'data': serializer.data})
+
+
+class Query2(APIView):
+    """ Сколько учителей преподает каждую из дисциплин в школе? """
+
+    permission_classes = [permissions.IsAuthenticated, ]
+
+    def get(self, request):
+        tg = Teaching.objects.all()
+        subs = dict(Counter([t.subject.name for t in tg]))
+        return Response({'data': subs})
+
+
+class Query3(APIView):
+    """ Список учителей, преподающих те же предметы, что и учитель, ведущий информатику в заданном классе. """
+
+    permission_classes = [permissions.IsAuthenticated, ]
+
+    def get(self, request):
+        # Note: for one teacher only
+        c = request.GET.get('study_class')
+        s = 'informatics'
+        tt = Timetable.objects.filter(study_class=c, subject=s)
+        tname = tt[0].teacher
+        subjects = Teaching.objects.filter(teacher=tname)
+        subs = [s.subject.name for s in subjects]
+        tts = Teaching.objects.filter(subject__in=subs)
+        teachers = set([t.teacher.name for t in tts])
+        return Response({'data': teachers})
+
+
+class Query4(APIView):
+    """ Сколько мальчиков и девочек в каждом классе? """
+
+    permission_classes = [permissions.IsAuthenticated, ]
+
+    def get(self, request):
+        results = Pupil.objects.values('study_class', 'gender').order_by('study_class').annotate(Count('gender'))
+        return Response({'data': results})
+
+
+class Query5(APIView):
+    """ Сколько кабинетов в школе для базовых и профильных дисциплин? """
+
+    permission_classes = [permissions.IsAuthenticated, ]
+
+    def get(self, request):
+        r = Room.objects.all()
+        minors = Subject.objects.filter(sub_type='minor')
+        majors = Subject.objects.filter(sub_type='major')
+        minors, majors = [m.name for m in minors], [m.name for m in majors]
+        rooms_minor = Room.objects.filter(subject__in=minors).count()
+        rooms_major = Room.objects.filter(subject__in=majors).count()
+        results = {'Minor subjects': rooms_minor, 'Major subjects': rooms_major}
+        return Response({'data': results})

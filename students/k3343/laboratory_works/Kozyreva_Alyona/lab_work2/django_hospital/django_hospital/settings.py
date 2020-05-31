@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'hospital',
     'corsheaders',
     'rest_framework',
-    'djoser'
+    'djoser',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -106,7 +107,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 CORS_ORIGIN_WHITELIST = [
-    "http://localhost:8080"
+    "http://localhost:8080",
+    "http://127.0.0.1:8080"
 ]
 
 CORS_ALLOW_METHODS = [

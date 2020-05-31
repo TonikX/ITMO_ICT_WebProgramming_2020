@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Patient(models.Model):
-	user = models.ForeignKey(User, on_delete=models.CASCADE)
 	fullname = models.CharField(max_length=250)
 	phone_number = models.IntegerField()
 	birthdate = models.DateField()

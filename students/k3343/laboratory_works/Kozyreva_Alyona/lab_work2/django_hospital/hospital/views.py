@@ -25,8 +25,20 @@ class GetAllDoctorView(generics.ListAPIView):
 
 
 class GetAllAppointmentView(generics.ListAPIView):
-	queryset = Appointment.objects.all()
 	serializer_class = AppointmentSerializer
+
+	def get_queryset(self):
+		queryset = Appointment.objects.all()
+
+		params = self.request.query_params
+
+		app_date = params.get('date', None)
+		doctor = params.get('doctor', None)
+
+		if app_date and doctor:
+			queryset = queryset.filter(Q(doctor__user__username=doctor) & Q(date=app_date))
+
+		return queryset
 
 
 class GetAllPaymentView(generics.ListAPIView):
@@ -35,16 +47,16 @@ class GetAllPaymentView(generics.ListAPIView):
 	def get_queryset(self):
 		queryset = Payment.objects.all()
 
-		params = request.query_params
+		params = self.request.query_params
 		
-		date = params.get('date', None)
+		app_date = params.get('date', None)
 		doctor = params.get('doctor', None)
 		patient = params.get('patient', None)
 		patient_birthdate = params.get('patient_birthdate', None)
 		is_paid = params.get('is_paid', None)
 
-		if date:
-			queryset = queryset.filter(appointment__date=date)
+		if app_date:
+			queryset = queryset.filter(appointment__date=app_date)
 
 		if doctor:
 			queryset = queryset.filter(appointment__doctor=doctor)
@@ -56,7 +68,7 @@ class GetAllPaymentView(generics.ListAPIView):
 			queryset = queryset.filter(appointment__patient__birthdate=patient_birthdate)
 
 		if is_paid:
-			queryset = queryset.filter(payment_date__gte=date.today)
+			queryset = queryset.filter(payment_date__gte=date.today())
 
 		return queryset
 
@@ -104,7 +116,7 @@ class CreateAppointmentView(generics.CreateAPIView):
 
 class CreatePaymentView(generics.CreateAPIView):
 	queryset = Payment.objects.all()
-	serializer_class = PaymentSerializer
+	serializer_class = CreatePaymentSerializer
 
 
 class CreatePatientView(generics.CreateAPIView):

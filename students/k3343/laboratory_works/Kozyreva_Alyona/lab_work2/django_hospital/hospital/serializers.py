@@ -26,7 +26,7 @@ class DoctorSerializer(serializers.ModelSerializer):
 
 class AppointmentSerializer(serializers.ModelSerializer):
 	patient = PatientSerializer()
-	doctor = Doctor()
+	doctor = DoctorSerializer()
 
 	class Meta:
 		model = Appointment
@@ -40,8 +40,14 @@ class CreateAppointmentSerializer(serializers.ModelSerializer):
 
 
 class PaymentSerializer(serializers.ModelSerializer):
-	appointment = Appointment()
+	appointment = AppointmentSerializer()
 
+	class Meta:
+		model = Payment
+		fields = '__all__'
+
+
+class CreatePaymentSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Payment
 		fields = '__all__'

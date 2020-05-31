@@ -51,10 +51,10 @@ class AssessmentSerializers(serializers.ModelSerializer):
 
 
 class TimetableSerializers(serializers.ModelSerializer):
-    study_class = ClassSerializers()
-    subject = SubjectSerializers()
-    room = RoomSerializers()
-    teacher = TeacherSerializers()
+    # study_class = ClassSerializers()
+    # subject = SubjectSerializers()
+    # room = RoomSerializers()
+    # teacher = TeacherSerializers()
     class Meta:
         model = Timetable
         fields = ('id', 'day_of_week', 'study_class', 'lesson_num', 'subject', 'room', 'teacher')

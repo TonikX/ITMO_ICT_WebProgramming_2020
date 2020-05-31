@@ -244,6 +244,41 @@ class Timetables(APIView):
         serializer = TimetableSerializers(tt, many=True)
         return Response({'data': serializer.data})
 
+    def post(self, request):
+        a = TimetableSerializers(data=request.data)
+        if a.is_valid():
+            a.save()
+            return Response({'data': a.data}, status=201)
+        else:
+            return Response(status=400)
+
+    def delete(self, request):
+        params = QueryDict(request.body)
+        t = Timetable.objects.filter(
+            day_of_week=params['day_of_week'], 
+            study_class=params['study_class'], 
+            lesson_num=params['lesson_num'], 
+            subject=params['subject'], 
+            room=params['room'], 
+            teacher=params['teacher']
+        )
+        t.delete()
+        return Response(status=204)
+
+    # def put(self, request):
+    #     d = request.POST.get('day_of_week')
+    #     c = Class.objects.get(name=request.POST.get('study_class'))
+    #     ln = request.POST.get('lesson_num')
+    #     s = Subject.objects.get(name=request.POST.get('subject'))
+    #     r = Room.objects.get(name=request.POST.get('room'))
+    #     t = Teacher.objects.get(name=request.POST.get('teacher'))
+    #     # old_g = request.POST.get('old_grade')
+    #     # grade = Assessment.objects.get(term=t, pupil=p, subject=s, grade=old_g)
+    #     # grade.delete()
+    #     # grade = Assessment(term=t, pupil=p, subject=s, grade=g)
+    #     # grade.save()
+    #     # return Response(status=201)
+
 
 class Teachings(APIView):
 

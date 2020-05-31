@@ -60,7 +60,8 @@ export default {
   mounted() {
     this.axios
       .get(`http://${window.location.hostname}:8000/api/flights/`)
-      .then(response => { console.log(response); this.showFlights(response.data) })
+      .then(response => { console.log(response);
+        this.showFlights(response.data) })
       .catch(err => { console.error(err) })
   },
   methods: {
@@ -88,7 +89,22 @@ export default {
       let transit = this.transit === true ? '1' : '0'
       this.axios
         .get(`http://${window.location.hostname}:8000/api/flights/?arrival=${this.arrival}&departure=${this.departure}&tickets=${this.tickets}&price=${this.price}&is_transit=${transit}`)
-        .then(response => { console.log(response); this.showFlights(response.data) })
+        .then(response => { console.log(response);
+          this.showFlights(response.data) })
+        .catch(err => { console.error(err) })
+    },
+    clear() {
+      this.arrival = ''
+      this.tickets = ''
+      this.price = ''
+      this.departure = ''
+      this.date = ''
+      this.transit = false
+
+      this.axios
+        .get(`http://${window.location.hostname}:8000/api/flights/`)
+        .then(response => { console.log(response);
+          this.showFlights(response.data) })
         .catch(err => { console.error(err) })
     }
 

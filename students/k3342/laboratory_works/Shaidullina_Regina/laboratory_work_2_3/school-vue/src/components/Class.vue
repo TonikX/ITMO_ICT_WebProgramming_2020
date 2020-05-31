@@ -1,5 +1,5 @@
 <template>
-    <mu-container><br>
+    <mu-container><h2>Classes</h2>
         <mu-container>
             <mu-paper>
                 <mu-data-table border :columns="columns" :data="classes">
@@ -59,4 +59,10 @@ export default {
 </script>
 
 <style scoped>
+    h2 {
+        font-size: 48px; 
+        font-weight: 400;
+        text-align: center;
+        color: #1a237e;
+    }
 </style>

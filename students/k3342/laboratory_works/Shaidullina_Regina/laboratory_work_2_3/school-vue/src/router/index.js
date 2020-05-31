@@ -27,6 +27,8 @@ import AssessmentDelete from '@/components/AssessmentDelete'
 import TimetableAdd from '@/components/TimetableAdd'
 import TimetableDelete from '@/components/TimetableDelete'
 
+// import Queries from '@/components/Queries'
+
 import 'typeface-roboto'
 
 Vue.use(Router)

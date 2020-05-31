@@ -1,13 +1,13 @@
 #from django.shortcuts import render
+from collections import Counter
+from django.db.models import Count, Avg
 from django.http import QueryDict, Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import permissions
 from school.models import Subject, Room, Teacher, Pupil, Class, Assessment, Timetable, Teaching
-from school.serializers import SubjectSerializers, RoomSerializers, RoomQuerySerializers, TeacherSerializers, PupilSerializers, \
-                                ClassSerializers, AssessmentSerializers, AssessmentQuerySerializers, TimetableSerializers, TeachingSerializer
-from collections import Counter
-from django.db.models import Count, Avg
+from school.serializers import SubjectSerializers, RoomSerializers, TeacherSerializers, PupilSerializers, \
+                                ClassSerializers, AssessmentSerializers, TimetableSerializers, TeachingSerializer
 
 
 class Subjects(APIView):

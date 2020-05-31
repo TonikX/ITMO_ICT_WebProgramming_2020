@@ -30,13 +30,6 @@ class RoomSerializers(serializers.ModelSerializer):
         fields = ('number', 'floor', 'subject', 'teacher')
 
 
-class RoomQuerySerializers(serializers.ModelSerializer):
-    subject = SubjectSerializers()
-    class Meta:
-        model = Room
-        fields = ('number', 'subject')
-
-
 class ClassSerializers(serializers.ModelSerializer):
     #guiding_teacher = TeacherSerializers()
     class Meta:
@@ -52,13 +45,6 @@ class PupilSerializers(serializers.ModelSerializer):
 
 class AssessmentSerializers(serializers.ModelSerializer):
     #pupil = PupilSerializers()
-    class Meta:
-        model = Assessment
-        fields = ('id', 'term', 'grade', 'pupil', 'subject')
-
-
-class AssessmentQuerySerializers(serializers.ModelSerializer):
-    pupil = PupilSerializers()
     class Meta:
         model = Assessment
         fields = ('id', 'term', 'grade', 'pupil', 'subject')

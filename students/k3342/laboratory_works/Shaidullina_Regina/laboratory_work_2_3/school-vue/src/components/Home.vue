@@ -12,8 +12,6 @@
                 <mu-tab>Pupils</mu-tab>
                 <mu-tab>Assessments</mu-tab>
                 <mu-tab>Classes, Subjects, Rooms</mu-tab>
-                <!-- <mu-tab>Subjects</mu-tab> -->
-                <!-- <mu-tab>Rooms</mu-tab> -->
                 <mu-tab>Queries</mu-tab>
                 <mu-tab>Report</mu-tab>
             </mu-tabs>
@@ -43,6 +41,10 @@
                 <br><p>Click to find out this information.</p>
                 <queries></queries>
             </div>
+            <div class="demo-text" v-if="active1 === 6">
+                <br><p>Click to get academic performance for the specified class.</p>
+                <report></report>
+            </div>
             <div class="demo-text" v-if="active1 === -1">
                 <!-- <br><br><img width="350" src="https://cdn.shopify.com/s/files/1/2562/6932/articles/teacher-tired-humor-teacher-memes-funny_1200x679_crop_top.jpg?v=1518395627"> -->
                 <br><br><img width="350" src="https://edu.tatar.ru/2018/img/girl.png">
@@ -66,18 +68,12 @@ import Subject from '@/components/Subject'
 import Room from '@/components/Room'
 import Assessment from '@/components/Assessment'
 import Queries from '@/components/Queries'
+import Report from '@/components/Report'
 
 export default {
     name: 'Home',
     components: {
-        Timetable, 
-        Teacher, 
-        Pupil, 
-        Class, 
-        Subject, 
-        Room, 
-        Assessment,
-        Queries
+        Timetable, Teacher, Pupil, Class, Subject, Room, Assessment, Queries, Report
     },
     data () {
         return {

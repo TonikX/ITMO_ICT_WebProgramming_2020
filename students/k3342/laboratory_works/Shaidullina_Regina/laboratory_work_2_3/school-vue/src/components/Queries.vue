@@ -30,7 +30,7 @@
 
         <mu-expansion-panel :expand="panel === 'panel2'" @change="toggle('panel2')">
             <div slot="header" style="color: #1a237e">How many teachers teach each of the subjects in the school?</div>
-            <mu-container><span>Teachers:</span><br><span v-for="k,v in subs">{{v}}: {{k}}<br></span></mu-container>
+            <mu-container><span><b>Teachers:</b></span><br><span v-for="k,v in subs">{{v}}: {{k}}<br></span></mu-container>
         </mu-expansion-panel>
 
         <mu-expansion-panel :expand="panel === 'panel3'" @change="toggle('panel3')">
@@ -52,7 +52,7 @@
 
         <mu-expansion-panel :expand="panel === 'panel4'" @change="toggle('panel4')">
             <div slot="header" style="color: #1a237e">How many boys and girls are there in each class?</div>
-            <mu-container><span v-for="c in genders">{{c.study_class}} - {{c.gender}}: {{c.gender__count}}<br></span></mu-container>
+            <mu-container><span><b>Class - gender: number of pupils:</b><br></span><span v-for="c in genders">{{c.study_class}} - {{c.gender}}: {{c.gender__count}}<br></span></mu-container>
         </mu-expansion-panel>
 
         <mu-expansion-panel :expand="panel === 'panel5'" @change="toggle('panel5')">
@@ -102,6 +102,13 @@ export default {
             // 5
             rooms: '',
         };
+    },
+    computed: {
+        auth() {
+            if (sessionStorage.getItem("auth_token")) {
+                return true
+            }
+        }
     },
     created() {
         $.ajaxSetup({

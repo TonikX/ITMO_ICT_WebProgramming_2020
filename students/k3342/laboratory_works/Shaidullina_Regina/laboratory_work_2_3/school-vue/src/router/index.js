@@ -28,6 +28,7 @@ import TimetableAdd from '@/components/TimetableAdd'
 import TimetableDelete from '@/components/TimetableDelete'
 
 // import Queries from '@/components/Queries'
+// import Report from '@/components/Report'
 
 import 'typeface-roboto'
 

@@ -1,30 +1,29 @@
-<template>
+    <template>
     <mu-container>
-        <h2>Assessments</h2>
-        <mu-button v-if="auth" color="#4db6ac" @click="upd">Update</mu-button>
-        <mu-button v-if="auth" color="#4db6ac" @click="add">Add</mu-button>
-        <mu-button v-if="auth" color="#4db6ac" @click="del">Delete</mu-button><br><br>
-        <mu-container>
-            <mu-button color="#4db6ac" @click="returnHome">Home</mu-button>
-            <mu-button v-if="!auth" color="#4db6ac" @click="goLogin">Log in</mu-button><br v-if="!auth"><br v-if="!auth">
-            <mu-button v-if="auth" color="#4db6ac" @click="logout">Log out</mu-button><br v-if="auth"><br v-if="auth">
+        <br><!-- <h2>Assessments</h2> -->
+        <mu-container class="button-wrapper2">
+            <mu-button v-if="auth" color="#5c6bc0" textColor="white" @click="upd">Update</mu-button>
+            <mu-button v-if="auth" color="#5c6bc0" textColor="white" @click="add">Add</mu-button>
+            <mu-button v-if="auth" color="#5c6bc0" textColor="white" @click="del">Delete</mu-button><br><br>
         </mu-container>
-        <mu-paper>
-            <mu-data-table border :columns="columns" :data="assessment" :min-col-width="200">
-                <!-- <template slot="expand" slot-scope="prop">
-                    <div style="padding: 24px;">
-                        <mu-button v-if="auth" color="#4db6ac" @click="upd">Update assessment</mu-button>
-                    </div>
-                </template> -->
-                <template slot-scope="scope">
-                    <td class="is-left">{{ scope.row.term }}</td>
-                    <td class="is-left">{{ scope.row.pupil }}</td>
-                    <td class="is-left">{{ scope.row.subject }}</td>
-                    <td class="is-left">{{ scope.row.grade }}</td>
-                </template>
-            </mu-data-table>
+<!--         <mu-container>
+            <mu-button color="#5c6bc0" textColor="white" @click="returnHome">Home</mu-button>
+            <mu-button v-if="!auth" color="#5c6bc0" textColor="white" @click="goLogin">Log in</mu-button><br v-if="!auth"><br v-if="!auth">
+            <mu-button v-if="auth" color="#5c6bc0" textColor="white" @click="logout">Log out</mu-button><br v-if="auth"><br v-if="auth">
+        </mu-container> -->
+        <mu-container>
+            <mu-paper>
+                <mu-data-table border :columns="columns" :data="assessment">
+                    <template slot-scope="scope">
+                        <td class="is-left">{{ scope.row.term }}</td>
+                        <td class="is-left">{{ scope.row.pupil }}</td>
+                        <td class="is-left">{{ scope.row.subject }}</td>
+                        <td class="is-left">{{ scope.row.grade }}</td>
+                    </template>
+                </mu-data-table>
+            </mu-paper>
             <br><br>
-        </mu-paper>
+        </mu-container>
     </mu-container>
 </template>
 
@@ -58,13 +57,13 @@ export default {
         this.loadAss()
     },
     methods: {
-        goLogin() {
-            this.$router.push({name: "login"})
-        },
-        logout() {
-            sessionStorage.removeItem("auth_token")
-            window.location = '/'
-        },
+        // goLogin() {
+        //     this.$router.push({name: "login"})
+        // },
+        // logout() {
+        //     sessionStorage.removeItem("auth_token")
+        //     window.location = '/'
+        // },
         returnHome() {
             window.location = '/'
         },
@@ -95,6 +94,12 @@ export default {
         font-size: 48px; 
         font-weight: 400;
         text-align: center;
-        color: #004d40;
+        color: #1a237e;
+    },
+    .button-wrapper2 {
+        text-align: center;
+        .mu-button{
+            margin: 8px;
+        }
     }
 </style>

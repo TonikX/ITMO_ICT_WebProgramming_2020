@@ -1,18 +1,21 @@
 <template>
-    <div>
-        <h2>Subjects</h2>
+    <mu-container>
+        <br><!-- <h2>Subjects</h2> -->
         <mu-container>
-            <mu-button color="#4db6ac" @click="returnHome">Home</mu-button>
-            <mu-button color="#4db6ac" v-if="!auth" @click="goLogin">Log in</mu-button><br v-if="!auth"><br v-if="!auth">
-            <mu-button color="#4db6ac" v-if="auth" @click="logout">Log out</mu-button><br v-if="auth"><br v-if="auth">
+<!--             <mu-button color="#5c6bc0" textColor="white" @click="returnHome">Home</mu-button>
+            <mu-button color="#5c6bc0" textColor="white" v-if="!auth" @click="goLogin">Log in</mu-button><br v-if="!auth"><br v-if="!auth">
+            <mu-button color="#5c6bc0" textColor="white" v-if="auth" @click="logout">Log out</mu-button><br v-if="auth"><br v-if="auth"> -->
             <mu-paper>
-                <p v-for='s in subjects' v-bind:key="s.name">
-                    Subject: {{ s.name }}<br>
-                    Type: {{ s.sub_type }}<br>
-                </p>
+                <mu-data-table border :columns="columns" :data="subjects">
+                    <template slot-scope="scope">
+                        <td class="is-left">{{ scope.row.name }}</td>
+                        <td class="is-left">{{ scope.row.sub_type }}</td>
+                    </template>
+                </mu-data-table>
             </mu-paper>
+            <br><br>
         </mu-container>
-    </div>
+    </mu-container>
 </template>
 
 <script>
@@ -23,6 +26,10 @@ export default {
     data() {
         return {
             subjects: '',
+            columns: [
+                { title: 'Subject', name: 'subject', align: 'center', width: '491' },
+                { title: 'Type', name: 'type', align: 'center', width: '600' },
+            ]
         }
     },
     computed: {
@@ -67,9 +74,6 @@ export default {
         font-size: 48px; 
         font-weight: 400;
         text-align: center;
-        color: #004d40;
-    },
-    p {
-        font-size: 16px; font-weight: 400;
+        color: #1a237e;
     }
 </style>

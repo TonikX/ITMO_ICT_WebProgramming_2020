@@ -1,19 +1,30 @@
 <template>
-    <div>
-        <h2>Rooms</h2>
+    <mu-container>
+        <br><!-- <h2>Rooms</h2> -->
         <mu-container>
-            <mu-button color="#4db6ac" @click="returnHome">Home</mu-button>
-            <mu-button color="#4db6ac" v-if="!auth" @click="goLogin">Log in</mu-button><br v-if="!auth"><br v-if="!auth">
-            <mu-button color="#4db6ac" v-if="auth" @click="logout">Log out</mu-button><br v-if="auth"><br v-if="auth">
+<!--             <mu-button color="#5c6bc0" textColor="white" @click="returnHome">Home</mu-button>
+            <mu-button color="#5c6bc0" textColor="white" v-if="!auth" @click="goLogin">Log in</mu-button><br v-if="!auth"><br v-if="!auth">
+            <mu-button color="#5c6bc0" textColor="white" v-if="auth" @click="logout">Log out</mu-button><br v-if="auth"><br v-if="auth"> -->
             <mu-paper>
+                <mu-data-table border :columns="columns" :data="rooms">
+                    <template slot-scope="scope">
+                        <td class="is-left">{{ scope.row.number }}</td>
+                        <td class="is-left">{{ scope.row.floor }}</td>
+                        <td class="is-left">{{ scope.row.subject }}</td>
+                        <td class="is-left"><p v-if="scope.row.teacher">{{ scope.row.teacher }}</p><p v-else>None</p></td>
+                    </template>
+                </mu-data-table>
+            </mu-paper>
+            <br><br>
+<!--             <mu-paper>
                 <p v-for='room in rooms' v-bind:key="room.number">
                     Room {{ room.number }} is located on the floor {{ room.floor }}.<br>
                     It is the primary room for {{ room.subject }}.<br>
                     Assigned teacher: <span v-if="room.teacher">{{ room.teacher }}</span><span v-else>None</span>
                 </p>
-            </mu-paper>
+            </mu-paper> -->
         </mu-container>
-    </div>
+    </mu-container>
 </template>
 
 <script>
@@ -24,6 +35,12 @@ export default {
     data() {
         return {
             rooms: '',
+            columns: [
+                { title: 'Room', name: 'room', align: 'center', width: '200' },
+                { title: 'Floor', name: 'floor', align: 'center', width: '150' },
+                { title: 'Subject', name: 'subject', align: 'center', width: '340' },
+                { title: 'Teacher', name: 'subject', align: 'center', width: '401' },
+            ]
         }
     },
     computed: {
@@ -68,9 +85,6 @@ export default {
         font-size: 48px; 
         font-weight: 400;
         text-align: center;
-        color: #004d40;
-    },
-    p {
-        font-size: 16px; font-weight: 400;
+        color: #1a237e;
     }
 </style>

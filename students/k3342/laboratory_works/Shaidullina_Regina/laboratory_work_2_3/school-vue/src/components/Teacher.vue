@@ -1,25 +1,30 @@
 <template>
-    <div>
-        <h2>Teachers</h2>
-        <mu-button v-if="auth" color="#4db6ac" @click="upd">Update</mu-button>
-        <mu-button v-if="auth" color="#4db6ac" @click="add">Add</mu-button>
-        <mu-button v-if="auth" color="#4db6ac" @click="del">Delete</mu-button><br><br>
-        <mu-container>
-            <mu-button color="#4db6ac" @click="returnHome">Home</mu-button>
-            <mu-button color="#4db6ac" v-if="!auth" @click="goLogin">Log in</mu-button><br v-if="!auth"><br v-if="!auth">
-            <mu-button color="#4db6ac" v-if="auth" @click="logout">Log out</mu-button><br v-if="auth"><br v-if="auth">
-            <mu-paper>
-                <p v-for='teacher in teachers' v:bind-key="teacher.name">
-                    Teacher: {{ teacher.name }}<br>
-                    Gender: {{ teacher.gender }}<br>
-                    Has total experience of {{ teacher.experience }}<br>
-                    Subjects: | <span v-for='s in teacher.subjects' v-bind:key='s.name'>{{ s }} | </span><br>
-                    Guided class: <span v-if="teacher.class">{{ teacher.class }}</span><span v-else>None</span><br>
-                    Room: <span v-if="teacher.room">{{ teacher.room }}</span><span v-else>None</span><br>
-                </p>
-            </mu-paper>
+    <mu-container>
+        <br><!-- <h2>Teachers</h2> -->
+        <mu-container class="button-wrapper2">
+            <mu-button v-if="auth" color="#5c6bc0" textColor="white" @click="upd">Update</mu-button>
+            <mu-button v-if="auth" color="#5c6bc0" textColor="white" @click="add">Add</mu-button>
+            <mu-button v-if="auth" color="#5c6bc0" textColor="white" @click="del">Delete</mu-button><br><br>
         </mu-container>
-    </div>
+<!--             <mu-button color="#5c6bc0" textColor="white" @click="returnHome">Home</mu-button>
+            <mu-button color="#5c6bc0" textColor="white" v-if="!auth" @click="goLogin">Log in</mu-button><br v-if="!auth"><br v-if="!auth">
+            <mu-button color="#5c6bc0" textColor="white" v-if="auth" @click="logout">Log out</mu-button><br v-if="auth"><br v-if="auth"> -->
+        <mu-container>
+            <mu-paper>
+                <mu-data-table border :columns="columns" :data="teachers">
+                    <template slot-scope="scope">
+                        <td class="is-left">{{ scope.row.name }}</td>
+                        <td class="is-left">{{ scope.row.gender }}</td>
+                        <td class="is-left">{{ scope.row.experience }}</td>
+                        <td class="is-left"><p v-for='s in scope.row.subjects'>{{ s }}</p></td>
+                        <td class="is-left"><p v-if="scope.row.class">{{ scope.row.class }}</p><p v-else>None</p></td>
+                        <td class="is-left"><p v-if="scope.row.room">{{ scope.row.room }}</p><p v-else>None</p></td>
+                    </template>
+                </mu-data-table>
+            </mu-paper>
+            <br><br>
+        </mu-container>
+    </mu-container>
 </template>
 
 <script>
@@ -30,6 +35,14 @@ export default {
     data() {
         return {
             teachers: '',
+            columns: [
+                { title: 'Name', name: 'name', align: 'center', width: '280' },
+                { title: 'Gender', name: 'gender', align: 'center' },
+                { title: 'Experience', name: 'experience', align: 'center' },
+                { title: 'Subjects', name: 'subjects', align: 'center', width: '190' },
+                { title: 'Guided class', name: 'class', align: 'center' },
+                { title: 'Room', name: 'room', align: 'center' }
+            ]
         }
     },
     computed: {
@@ -46,13 +59,13 @@ export default {
         this.loadTeacher()
     },
     methods: {
-        goLogin() {
-            this.$router.push({name: "login"})
-        },
-        logout() {
-            sessionStorage.removeItem("auth_token")
-            window.location = '/'
-        },
+        // goLogin() {
+        //     this.$router.push({name: "login"})
+        // },
+        // logout() {
+        //     sessionStorage.removeItem("auth_token")
+        //     window.location = '/'
+        // },
         returnHome() {
             window.location = '/'
         },
@@ -83,9 +96,12 @@ export default {
         font-size: 48px; 
         font-weight: 400;
         text-align: center;
-        color: #004d40;
+        color: #1a237e;
     },
-    p {
-        font-size: 16px; font-weight: 400; text-align: center;
+    .button-wrapper2 {
+        text-align: center;
+        .mu-button{
+            margin: 8px;
+        }
     }
 </style>

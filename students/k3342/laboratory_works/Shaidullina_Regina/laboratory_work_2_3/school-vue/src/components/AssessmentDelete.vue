@@ -1,11 +1,14 @@
 <template>
     <div>
+        <mu-container class="button-wrapper">
+            <mu-button color="#5c6bc0" textColor="white" @click="returnHome">Home</mu-button><br>
+        </mu-container>
         <h2>Delete a grade</h2>
         <mu-container>
-            <mu-button color="#4db6ac" @click="returnHome">Home</mu-button>
-            <mu-button color="#4db6ac" @click="previous">Back to Assessment Table</mu-button>
-            <mu-button color="#4db6ac" v-if="!auth" @click="goLogin">Log in</mu-button><br v-if="!auth"><br v-if="!auth">
-            <mu-button color="#4db6ac" v-if="auth" @click="logout">Log out</mu-button><br v-if="auth"><br v-if="auth">
+<!--             <mu-button color="#5c6bc0" textColor="white" @click="returnHome">Home</mu-button>
+            <mu-button color="#5c6bc0" textColor="white" @click="previous">Back to Assessment Table</mu-button>
+            <mu-button color="#5c6bc0" textColor="white" v-if="!auth" @click="goLogin">Log in</mu-button><br v-if="!auth"><br v-if="!auth">
+            <mu-button color="#5c6bc0" textColor="white" v-if="auth" @click="logout">Log out</mu-button><br v-if="auth"><br v-if="auth"> -->
             <mu-row>
                 <mu-form :model="form" class="mu-demo-form" :label-position="labelPosition" label-width="100">
                     <mu-form-item prop="input" label="Term:">
@@ -23,7 +26,7 @@
                     </mu-form-item>
                 </mu-form>
             </mu-row>
-            <mu-button color="#4db6ac" @click="deleteGrade">Delete</mu-button>
+            <mu-button color="#5c6bc0" textColor="white" @click="deleteGrade">Delete</mu-button>
         </mu-container>
     </div>
 </template>
@@ -60,13 +63,13 @@ export default {
         this.loadSubjects()
     },
     methods: {
-        goLogin() {
-            this.$router.push({name: "login"})
-        },
-        logout() {
-            sessionStorage.removeItem("auth_token")
-            window.location = '/'
-        },
+        // goLogin() {
+        //     this.$router.push({name: "login"})
+        // },
+        // logout() {
+        //     sessionStorage.removeItem("auth_token")
+        //     window.location = '/'
+        // },
         returnHome() {
             window.location = '/'
         },
@@ -104,7 +107,8 @@ export default {
                 },
                 success: (response) => {
                     alert("Record deleted successfully.")
-                    this.$router.push({name: "assessments"})
+                    // this.$router.push({name: "assessments"})
+                    window.location = '/'
                 }
             })
         }
@@ -117,9 +121,21 @@ export default {
         font-size: 48px; 
         font-weight: 400;
         text-align: center;
-        color: #004d40;
+        color: #1a237e;
     },
     p {
         font-size: 16px; font-weight: 400; text-align: center;
+    },
+    .button-wrapper {
+        text-align: right;
+        .mu-button{
+            margin: 8px;
+        }
+    },
+    .button-wrapper2 {
+        text-align: center;
+        .mu-button{
+            margin: 8px;
+        }
     }
 </style>

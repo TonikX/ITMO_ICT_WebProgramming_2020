@@ -7,8 +7,8 @@
         </mu-container>
         <br>
         <mu-container>
-            <mu-button color="#4db6ac" @click="returnHome">Home</mu-button>
-            <mu-button color="#4db6ac" @click="setLogin">Log in</mu-button>
+            <mu-button color="#5c6bc0" textColor="white" @click="returnHome">Home</mu-button>
+            <mu-button color="#5c6bc0" textColor="white" @click="setLogin">Log in</mu-button>
         </mu-container>
     </div>
 </template>
@@ -57,6 +57,6 @@ export default {
         font-size: 48px; 
         font-weight: 400;
         text-align: center;
-        color: #004d40;
+        color: #1a237e;
     }
 </style>

@@ -48,7 +48,7 @@ class Employee(models.Model):
 	phone = models.CharField(max_length=14)
 
 	def __str__(self):
-		return '{} {} {}, {}'.format(self.surname, self.name, self.patronymic, self.get_position_display())
+		return '{} {}, {}'.format(self.user, self.patronymic, self.get_position_display())
 
 
 class Request(models.Model):

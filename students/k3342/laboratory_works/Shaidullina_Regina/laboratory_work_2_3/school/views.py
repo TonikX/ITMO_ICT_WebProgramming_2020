@@ -5,9 +5,9 @@ from rest_framework.response import Response
 from rest_framework import permissions
 from school.models import Subject, Room, Teacher, Pupil, Class, Assessment, Timetable, Teaching
 from school.serializers import SubjectSerializers, RoomSerializers, RoomQuerySerializers, TeacherSerializers, PupilSerializers, \
-                                ClassSerializers, AssessmentSerializers, TimetableSerializers, TeachingSerializer
+                                ClassSerializers, AssessmentSerializers, AssessmentQuerySerializers, TimetableSerializers, TeachingSerializer
 from collections import Counter
-from django.db.models import Count
+from django.db.models import Count, Avg
 
 
 class Subjects(APIView):
@@ -369,3 +369,32 @@ class Query5(APIView):
         rooms_major = Room.objects.filter(subject__in=majors).count()
         results = {'Minor subjects': rooms_minor, 'Major subjects': rooms_major}
         return Response({'data': results})
+
+
+class Report(APIView):
+    """
+    Отчет об успеваемости заданного класса.
+    Отчет включает сведения об успеваемости за четверть по каждому предмету.
+    Необходимо подсчитать средний балл по каждому предмету, по классу в целом, указать общее количество учеников в классе.
+    Для класса указать классного руководителя.
+    """
+    permission_classes = [permissions.IsAuthenticated, ]
+
+    def get(self, request):
+        c = request.GET.get('class')
+        guiding_teacher = Class.objects.get(name=c).guiding_teacher.name
+        pupils = Pupil.objects.filter(study_class=c)
+        pupils_cnt = pupils.count()
+        pupils = [p.name for p in pupils]
+        grades = Assessment.objects.filter(pupil__in=pupils)
+        avg_grade = round(grades.aggregate(Avg('grade'))['grade__avg'],2)
+        avg_sub_grades = grades.values('subject').annotate(Avg('grade'))
+        results = {
+            'Average grade per each subject': avg_sub_grades,
+            'results': {
+                'Average grade in class': avg_grade,
+                'Total pupls in class' : pupils_cnt,
+                'Guiding teacher': guiding_teacher
+            }
+        }
+        return Response({'data': AssessmentSerializers(grades, many=True).data, 'results': results})

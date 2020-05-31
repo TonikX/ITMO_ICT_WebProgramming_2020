@@ -20,4 +20,5 @@ urlpatterns = [
     path('query3/', Query3.as_view()),
     path('query4/', Query4.as_view()),
     path('query5/', Query5.as_view()),
+    path('assessments_reports/', Report.as_view())
 ]

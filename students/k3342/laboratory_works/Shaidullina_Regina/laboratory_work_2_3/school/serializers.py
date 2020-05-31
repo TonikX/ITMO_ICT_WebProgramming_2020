@@ -57,6 +57,13 @@ class AssessmentSerializers(serializers.ModelSerializer):
         fields = ('id', 'term', 'grade', 'pupil', 'subject')
 
 
+class AssessmentQuerySerializers(serializers.ModelSerializer):
+    pupil = PupilSerializers()
+    class Meta:
+        model = Assessment
+        fields = ('id', 'term', 'grade', 'pupil', 'subject')
+
+
 class TimetableSerializers(serializers.ModelSerializer):
     # study_class = ClassSerializers()
     # subject = SubjectSerializers()

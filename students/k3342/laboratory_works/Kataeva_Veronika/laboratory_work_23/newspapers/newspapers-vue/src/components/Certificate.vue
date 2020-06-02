@@ -1,7 +1,13 @@
 <template>
   <div>
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+
+    <mu-container class="button-wrapper4" style="margin-bottom: 50px ">
+      <mu-button color="#e6ddde" textColor="black" @click="goHome">Home</mu-button>
+    </mu-container>
+
     <h1>CERTIFICATE</h1>
+
     <mu-container>
       <mu-paper :z-depth="2">
         <mu-text-field v-model="name" placeholder="Please, enter newspaper's name" solo full-width class="demo-divider-form"></mu-text-field>
@@ -83,7 +89,10 @@ export default {
         }
       })
     },
-  },
+    goHome() {
+      this.$router.push({name: "home"})
+    }
+  }
 }
 </script>
 
@@ -94,10 +103,11 @@ body {
 
 h1 {
   font-size: 180%;
-  line-height: 100px;
+  line-height: 0px;
   color: #000000;
   font-family: 'Questrial', sans-serif;
   text-align: center;
+  margin-bottom: 100px;
 }
 
 .demo-divider-form {
@@ -111,5 +121,12 @@ h1 {
 .table-wrapper {
   text-align: center;
   margin-left: 250px;
+}
+
+.button-wrapper4 {
+  text-align: left;
+  .mu-button{
+    margin: 8px;
+  }
 }
 </style>

@@ -1,6 +1,9 @@
 <template>
   <div>
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+    <mu-container class="button-wrapper4" style="margin-bottom: 50px ">
+      <mu-button color="#e6ddde" textColor="black" @click="goHome">Home</mu-button>
+    </mu-container>
     <h1>In-Stocks</h1>
 
     <mu-container class="table-wrapper">
@@ -270,6 +273,9 @@ export default {
           this.options = ''
         }
       })
+    },
+    goHome() {
+      this.$router.push({name: "home"})
     }
   }
 }
@@ -282,10 +288,11 @@ body {
 
 h1 {
   font-size: 180%;
-  line-height: 100px;
+  line-height: 0px;
   color: #000000;
   font-family: 'Questrial', sans-serif;
   text-align: center;
+  margin-bottom: 60px;
 }
 
 p {

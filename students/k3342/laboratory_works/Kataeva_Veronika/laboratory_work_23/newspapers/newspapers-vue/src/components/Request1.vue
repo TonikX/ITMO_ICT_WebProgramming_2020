@@ -1,6 +1,11 @@
 <template>
   <div>
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+
+    <mu-container class="button-wrapper4" style="margin-bottom: 50px ">
+      <mu-button color="#e6ddde" textColor="black" @click="goHome">Home</mu-button>
+    </mu-container>
+
     <h1>At what addresses are newspapers of the given name printed?</h1>
     
     <mu-select v-model="name">
@@ -60,6 +65,9 @@ export default {
           this.answers = response.data
           }
       })
+    },
+    goHome() {
+      this.$router.push({name: "home"})
     }
   }
 }
@@ -69,6 +77,7 @@ export default {
 body {
   background-color: #f4f4f4;
 }
+
 h1 {
   font-size: 180%;
   line-height: 100px;
@@ -90,6 +99,13 @@ h1 {
 .mu-demo-form {
   width: 100%;
   max-width: 460px;
+}
+
+.button-wrapper4 {
+  text-align: left;
+  .mu-button{
+    margin: 8px;
+  }
 }
 
 </style>

@@ -13,6 +13,7 @@ from newspapersapp.serializers import (PostOfficeSerializer,
 
 
 class PostOfficeView(APIView):
+    permission_classes = [permissions.IsAuthenticated, ]
     def get(self, request, format=None):
         post_offices = PostOffice.objects.all()
         serializer = PostOfficeSerializer(post_offices, many=True)
@@ -48,6 +49,7 @@ class PostOfficeView(APIView):
 
 
 class EditorsView(APIView):
+    permission_classes = [permissions.IsAuthenticated, ]
     def get(self, request, format=None):
         editors = Editor.objects.all()
         serializer = EditorSerializer(editors, many=True)
@@ -83,6 +85,7 @@ class EditorsView(APIView):
 
 
 class PrintingHouses(APIView):
+    permission_classes = [permissions.IsAuthenticated, ]
     def get(self, request, format=None):
         houses = PrintingHouse.objects.all()
         serializer = PrintingHouseSerializer(houses, many=True)
@@ -118,6 +121,7 @@ class PrintingHouses(APIView):
 
 
 class Papers(APIView):
+    permission_classes = [permissions.IsAuthenticated, ]
     def get(self, request, format=None):
         papers = Newspaper.objects.all().values_list('id',
                                                      'name',
@@ -183,6 +187,7 @@ class Papers(APIView):
 
 
 class InStockView(APIView):
+    permission_classes = [permissions.IsAuthenticated, ]
     def get(self, request, format=None):
         stocks = InStock.objects.all().values_list('id',
                                                    'print_run',
@@ -251,14 +256,6 @@ class InStockView(APIView):
         data['printing_house'] = house.id
         stock = self.get_object(put_params['id'])
         serializer = InStockSerializer(stock, data=data)
-        # full_name = put_params['editor'].split()
-        # editor = Editor.objects.get(Q(first_name=full_name[0]), 
-        #                             Q(middle_name=full_name[1]),
-        #                             Q(last_name=full_name[2]))
-        # data = request.data.copy()
-        # data['editor'] = editor.id
-        # newspaper = self.get_object(put_params['id'])
-        # serializer = NewspaperSerializer(newspaper, data=data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
@@ -266,6 +263,7 @@ class InStockView(APIView):
 
 
 class OfficeView(APIView):
+    permission_classes = [permissions.IsAuthenticated, ]
     def get(self, request, format=None):
         try:
             office_id = request.GET.get("id")
@@ -277,6 +275,7 @@ class OfficeView(APIView):
 
 
 class EditorView(APIView):
+    permission_classes = [permissions.IsAuthenticated, ]
     def get(self, request, format=None):
         try:
             editor_id = request.GET.get("id")
@@ -288,6 +287,7 @@ class EditorView(APIView):
 
 
 class Paper(APIView):
+    permission_classes = [permissions.IsAuthenticated, ]
     def get(self, request, format=None):
         try:
             paper_id = request.GET.get("id")
@@ -304,6 +304,7 @@ class Paper(APIView):
 
 
 class StockView(APIView):
+    permission_classes = [permissions.IsAuthenticated, ]
     def get(self, request, format=None):
         try:
             stock_id = request.GET.get("id")
@@ -322,6 +323,7 @@ class StockView(APIView):
 
 
 class PrintingHouseView(APIView):
+    permission_classes = [permissions.IsAuthenticated, ]
     def get(self, request, format=None):
         try:
             house_id = request.GET.get("id")
@@ -333,6 +335,7 @@ class PrintingHouseView(APIView):
 
 
 class CertificateView(APIView):
+    permission_classes = [permissions.IsAuthenticated, ]
     def get(self, request, format=None):
         name = request.GET.get("name")
         index = Newspaper.objects.filter(name=name)
@@ -343,6 +346,7 @@ class CertificateView(APIView):
 
 
 class Request1View(APIView):
+    permission_classes = [permissions.IsAuthenticated, ]
     def get(self, request, format=None):
         name = request.GET.get("name")
         newspaper = Newspaper.objects.get(name=name)
@@ -355,6 +359,7 @@ class Request1View(APIView):
 
 
 class Request2View(APIView):
+    permission_classes = [permissions.IsAuthenticated, ]
     def get(self, request, format=None):
         printhouse_name = request.GET.get("name")
         printhouse = PrintingHouse.objects.get(name=printhouse_name)
@@ -373,6 +378,7 @@ class Request2View(APIView):
 
 
 class Request3View(APIView):
+    permission_classes = [permissions.IsAuthenticated, ]
     def get(self, request, format=None):
         paper_price = request.GET.get("price")
         newspapers = Newspaper.objects.filter(price__gt=paper_price) \
@@ -387,6 +393,7 @@ class Request3View(APIView):
 
 
 class Newspapers(APIView):
+    permission_classes = [permissions.IsAuthenticated, ]
     def get(self, request, format=None):
         newspapers = Newspaper.objects.all()
         serializer = NewspaperSerializer(newspapers, many=True)
@@ -395,6 +402,7 @@ class Newspapers(APIView):
 
 
 class Houses(APIView):
+    permission_classes = [permissions.IsAuthenticated, ]
     def get(self, request, format=None):
         newspapers = PrintingHouse.objects.all()
         serializer = PrintingHouseSerializer(newspapers, many=True)
@@ -403,6 +411,7 @@ class Houses(APIView):
 
 
 class Offices(APIView):
+    permission_classes = [permissions.IsAuthenticated, ]
     def get(self, request, format=None):
         offices = PostOffice.objects.all()
         serializer = PostOfficeSerializer(offices, many=True)
@@ -411,6 +420,7 @@ class Offices(APIView):
 
 
 class Request4View(APIView):
+    permission_classes = [permissions.IsAuthenticated, ]
     def get(self, request, format=None):
         print_run = request.GET.get("print_run")
         response = {'data' : []}
@@ -429,6 +439,7 @@ class Request4View(APIView):
 
 
 class Request5View(APIView):
+    permission_classes = [permissions.IsAuthenticated, ]
     def get(self, request, format=None):
         name = request.GET.get("name")
         address = request.GET.get("address")
@@ -446,6 +457,7 @@ class Request5View(APIView):
 
     
 class Addresses(APIView):
+    permission_classes = [permissions.IsAuthenticated, ]
     def get(self, request, format=None):
         houses = PrintingHouse.objects.all()
         serializer = PrintingHouseSerializer(houses, many=True)
@@ -454,6 +466,7 @@ class Addresses(APIView):
 
 
 class EditorsListView(APIView):
+    permission_classes = [permissions.IsAuthenticated, ]
     def get(self, request, format=None):
         editors = Editor.objects.all()
         serializer = EditorSerializer(editors, many=True)
@@ -465,6 +478,7 @@ class EditorsListView(APIView):
 
 
 class ReportView(APIView):
+    permission_classes = [permissions.IsAuthenticated, ]
     def get(self, request):
         houses = PrintingHouse.objects.all()
         serializer = PrintingHouseSerializer(houses, many=True)
@@ -503,7 +517,6 @@ class ReportView(APIView):
                                            'print_run' : print_run,
                                            'number' : post_office.number,
                                            'address' : post_office.address})
-
             response['data'].append({'name' : name,
                                      'print_runs' : sum(print_runs),
                                      'papers_run' : papers_run,

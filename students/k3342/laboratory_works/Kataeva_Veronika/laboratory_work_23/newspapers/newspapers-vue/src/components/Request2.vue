@@ -1,7 +1,14 @@
 <template>
   <div>
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+
+    <mu-container class="button-wrapper4" style="margin-bottom: 50px ">
+      <mu-button color="#e6ddde" textColor="black" @click="goHome">Home</mu-button>
+    </mu-container>
+
     <h1>What is the name of the editor of the newspaper, which is printed in the indicated printing house in the largest circulation?</h1>
+
+    <br/>
     
     <mu-select v-model="name">
       <mu-option v-for="option,index in options" :key="option" :label="option" :value="option"></mu-option>
@@ -64,6 +71,9 @@ export default {
           this.answers = response.data
           }
       })
+    },
+    goHome() {
+      this.$router.push({name: "home"})
     }
   }
 }

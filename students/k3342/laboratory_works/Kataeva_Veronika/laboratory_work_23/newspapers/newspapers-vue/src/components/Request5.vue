@@ -1,6 +1,11 @@
 <template>
   <div>
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+
+    <mu-container class="button-wrapper4" style="margin-bottom: 50px ">
+      <mu-button color="#e6ddde" textColor="black" @click="goHome">Home</mu-button>
+    </mu-container>
+
     <h1>Where does the requested newspaper go, which is printed at the given address?</h1>
 
     <mu-select v-model="name">
@@ -98,6 +103,9 @@ export default {
           alert("Either newspaper or post office was not found")
         }
       })
+    },
+    goHome() {
+      this.$router.push({name: "home"})
     }
   }
 }
@@ -123,5 +131,12 @@ h1 {
   text-align: center;
   margin-left: 325px;
   width: 468px;
+}
+
+.button-wrapper4 {
+  text-align: left;
+  .mu-button{
+    margin: 8px;
+  }
 }
 </style>

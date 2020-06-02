@@ -1,6 +1,9 @@
 <template>
   <div>
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+    <mu-container class="button-wrapper4" style="margin-bottom: 50px ">
+      <mu-button color="#e6ddde" textColor="black" @click="goHome">Home</mu-button>
+    </mu-container>
     <h1>Newspapers</h1>
 
     <mu-container class="table-wrapper">
@@ -232,8 +235,10 @@ export default {
           this.options = ''
         }
       })
-    }
-      
+    },
+    goHome() {
+      this.$router.push({name: "home"})
+    }      
   }
 }
 </script>
@@ -242,12 +247,14 @@ export default {
 body {
   background-color: #f4f4f4;
 }
+
 h1 {
-  font-size: 170%;
-  line-height: 100px;
+  font-size: 180%;
+  line-height: 0px;
   color: #000000;
   font-family: 'Questrial', sans-serif;
   text-align: center;
+  margin-bottom: 50px;
 }
 
 .demo-divider-form {

@@ -1,9 +1,14 @@
 <template>
   <div>
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+    <mu-container class="button-wrapper4" style="margin-bottom: 50px ">
+      <mu-button color="#e6ddde" textColor="black" @click="goHome">Home</mu-button>
+    </mu-container>
     <h1>Which post offices (addresses) receive newspapers with a price higher than the indicated?</h1>
-    
+    <br/>
+
     <input v-model="price" type="text" placeholder="Please, input the value of price" style="width: 240px"/>
+    <br/>
     <br/>
     <br/>
    
@@ -52,8 +57,12 @@ export default {
         error: (response) => {
           if (response.status === 404) {
             alert('No post office was found')
-            }}
+          }
+        }
       })
+    },
+    goHome() {
+      this.$router.push({name: "home"})
     }
   }
 }
@@ -63,7 +72,8 @@ export default {
 body {
   background-color: #f4f4f4;
 }
-#h1 {
+
+h1 {
   font-size: 180%;
   line-height: 100px;
   color: #000000;
@@ -84,6 +94,13 @@ body {
 .mu-demo-form {
   width: 100%;
   max-width: 460px;
+}
+
+.button-wrapper4 {
+  text-align: left;
+  .mu-button{
+    margin: 8px;
+  }
 }
 
 </style>

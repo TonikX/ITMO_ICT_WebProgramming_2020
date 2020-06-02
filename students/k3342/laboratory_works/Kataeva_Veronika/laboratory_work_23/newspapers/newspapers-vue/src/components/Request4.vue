@@ -1,6 +1,11 @@
 <template>
   <div>
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+    
+    <mu-container class="button-wrapper4" style="margin-bottom: 50px ">
+      <mu-button color="#e6ddde" textColor="black" @click="goHome">Home</mu-button>
+    </mu-container>
+
     <h1>Which newspapers and where (post offices' numbers) are received in quantities less than the specified?</h1>
 
     <input v-model="print_run" type="text" placeholder="Please, input the value of print-run" style="width: 320px"/>
@@ -71,7 +76,10 @@ export default {
         }
       })
     },
-  },
+    goHome() {
+      this.$router.push({name: "home"})
+    }
+  }
 }
 </script>
 
@@ -79,12 +87,14 @@ export default {
 body {
   background-color: #f4f4f4;
 }
+
 h1 {
-  font-size: 170%;
-  line-height: 100px;
+  font-size: 180%;
+  line-height: 0px;
   color: #000000;
   font-family: 'Questrial', sans-serif;
   text-align: center;
+  margin-bottom: 70px;
 }
 
 .demo-divider-form {

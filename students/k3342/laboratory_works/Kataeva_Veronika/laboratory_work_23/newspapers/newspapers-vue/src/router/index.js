@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
 import Login from '@/components/Login'
+import SignUp from '@/components/SignUp'
 import MainPage from '@/components/MainPage'
 import Request1 from '@/components/Request1'
 import Request2 from '@/components/Request2'
@@ -97,7 +98,11 @@ export default new Router({
       path: '/instocks',
       name: 'instocks',
       component: InStocks
-    }
-
+    },
+    {
+      path: '/signup',
+      name: 'signup',
+      component: SignUp
+    },
   ]
 })

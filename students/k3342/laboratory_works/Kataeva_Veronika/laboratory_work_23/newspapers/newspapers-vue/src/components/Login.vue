@@ -9,6 +9,9 @@
     <mu-container class="button-wrapper">
     <mu-button color="#e6ddde" textColor="#403F3F" @click="setLogin">Sign In</mu-button>
     </mu-container>
+    <br/>
+    Don't have an account? Please, 
+    <a href="http://localhost:8080/#/signup">Sign Up</a>.
   </div>
 </template>
 

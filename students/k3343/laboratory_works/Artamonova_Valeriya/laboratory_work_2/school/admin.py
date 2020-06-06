@@ -9,4 +9,3 @@ admin.site.register(Pupil)
 admin.site.register(Cabinet)
 admin.site.register(Subject)
 admin.site.register(Grade)
-# Register your models here.

@@ -17,6 +17,7 @@ class CharFilterInFilter(filters.BaseInFilter, filters.CharFilter):
 
 
 class TimetableFilter(filters.FilterSet):
+    """Фильтрация расписания по дню недели и по классу"""
     klass = CharFilterInFilter(field_name='klass_name', lookup_expr='in')
     day = CharFilterInFilter(field_name='day', lookup_expr='in')
 

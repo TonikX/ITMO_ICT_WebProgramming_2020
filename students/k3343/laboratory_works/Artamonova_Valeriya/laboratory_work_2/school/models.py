@@ -44,7 +44,7 @@ class UserProfile(models.Model):
 
 class Cabinet(models.Model):
     number = models.CharField("Номер кабинета", max_length=4)
-    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
+    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, related_name='cabinet')
     profile_types = models.TextChoices('profile_types', 'Для_профильных_дисциплин Для_базовых_дисциплин')
     profile = models.CharField("Тип кабинета", blank=True, choices=profile_types.choices, max_length=100)
 
@@ -62,7 +62,7 @@ class Klass(models.Model):
     number = models.CharField("Класс", blank=True, choices=number_types.choices, max_length=2)
     litera_types = models.TextChoices('litera_types', 'А Б В Г Д Е')
     litera = models.CharField("Литера", blank=True, choices=litera_types.choices, max_length=2)
-    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
+    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, related_name='klass')
 
     class Meta:
         verbose_name = "Класс"
@@ -97,6 +97,9 @@ class Grade(models.Model):
     grade = models.CharField("Оценка за четверть", blank=True, choices=grade_types.choices, max_length=2)
 
     class Meta:
+        unique_together = [
+            ("student", "subject", "grade")
+        ]
         verbose_name = "Четвертная оценка"
         verbose_name_plural = "Четвертные оценки"
 
@@ -106,7 +109,7 @@ class Grade(models.Model):
 
 
 class Timetable(models.Model):
-    klass_name = models.ForeignKey(Klass, on_delete=models.CASCADE)
+    klass_name = models.ForeignKey(Klass, on_delete=models.CASCADE, related_name="timetable")
     lesson_number = models.TextChoices('lesson_number', '1-8:00-8:45 2-8:50-9:35 3-9:40-10:25 4-10:40-11:25 5-11:30-12:15 6-12:20-13:05 7-13:05-13:50 8-14:00-14:45')
     lesson = models.CharField("Урок", blank=True, choices=lesson_number.choices, max_length=50)
     choose_day = models.TextChoices('choose_day', 'Понедельник Вторник Среда Четверг Пятница Суббота')
@@ -116,6 +119,9 @@ class Timetable(models.Model):
     cabinet_number = models.ForeignKey(Cabinet, verbose_name="Кабинет", on_delete=models.CASCADE)
 
     class Meta:
+        unique_together = [
+            ("klass_name", "lesson", "day")
+        ]
         verbose_name = "Расписание"
         verbose_name_plural = "Расписание"
 

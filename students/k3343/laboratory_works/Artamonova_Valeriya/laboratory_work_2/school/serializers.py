@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import UserProfile,Teacher,Timetable,Klass,Pupil,Cabinet,Subject, Grade
+from .models import Teacher,Timetable,Klass,Pupil,Cabinet,Subject, Grade
 
 
 class TeacherSerializer(serializers.ModelSerializer):
@@ -9,43 +9,38 @@ class TeacherSerializer(serializers.ModelSerializer):
         fields = ("id", "last_name", "first_name", "second_name")
 
 
-class TeacherDetailSerializer(serializers.ModelSerializer):
-    """Досье учителя"""
-    subject = serializers.SlugRelatedField(slug_field = "subject", read_only=True)
-    class Meta:
-        model = Teacher
-        fields = "__all__"
-
 class TeacherAddSerializer(serializers.ModelSerializer):
-
+    """Добавление учителя"""
     class Meta:
         model = Teacher
         fields = "__all__"
 
 
 class PupilSerializer(serializers.ModelSerializer):
-    """Список учителей"""
+    """Список учеников"""
     class Meta:
         model = Pupil
         fields = ("id", "last_name", "first_name", "second_name")
 
 
 class GradeCreateSerializer(serializers.ModelSerializer):
-
+    """Добавление оценки"""
     class Meta:
         model = Grade
         fields = "__all__"
 
 
 class GradeSerializer(serializers.ModelSerializer):
-    subject = serializers.SlugRelatedField(slug_field = "subject", read_only=True)
+    """Вывод оценок"""
+    subject = serializers.SlugRelatedField(slug_field="subject", read_only=True)
+
     class Meta:
         model = Grade
-        fields = ("subject", "grade")
+        fields = "__all__"
 
 
 class PupilDetailSerializer(serializers.ModelSerializer):
-    """Досье учителя"""
+    """Досье ученика"""
     klass = serializers.SlugRelatedField(slug_field = "number", read_only=True)
     grades = GradeSerializer(many=True)
     class Meta:
@@ -54,20 +49,21 @@ class PupilDetailSerializer(serializers.ModelSerializer):
 
 
 class PupilAddSerializer(serializers.ModelSerializer):
-
+    """Добавление ученика"""
     class Meta:
         model = Pupil
         fields = "__all__"
 
 
 class TimetableAddSerializer(serializers.ModelSerializer):
-
+    """Добавление расписания"""
     class Meta:
         model = Timetable
         fields = "__all__"
 
 
 class TimetableSerializer(serializers.ModelSerializer):
+    """Вывод расписания"""
     subject_name = serializers.SlugRelatedField(slug_field="subject", read_only=True)
     cabinet_number = serializers.SlugRelatedField(slug_field="number", read_only=True)
     teacher_name = serializers.SlugRelatedField(slug_field="last_name", read_only=True)
@@ -79,7 +75,7 @@ class TimetableSerializer(serializers.ModelSerializer):
 
 
 class KlassSerializer(serializers.ModelSerializer):
-    """Досье учителя"""
+    """Список классов"""
     teacher = serializers.SlugRelatedField(slug_field="last_name", read_only=True)
     class Meta:
         model = Klass
@@ -87,32 +83,44 @@ class KlassSerializer(serializers.ModelSerializer):
 
 
 class KlassAddSerializer(serializers.ModelSerializer):
-    """Досье учителя"""
+    """Добавление класса"""
     class Meta:
         model = Klass
         fields = "__all__"
 
 
 class KlassDetailSerializer(serializers.ModelSerializer):
-    """Досье учителя"""
+    """Описание класса"""
     teacher = serializers.SlugRelatedField(slug_field="last_name", read_only=True)
     pupils = PupilSerializer(many=True)
+    timetable = TimetableSerializer(many=True)
     class Meta:
         model = Klass
         fields = "__all__"
 
 
 class SubjectSerializer(serializers.ModelSerializer):
-    """Досье учителя"""
+    """Список предметов"""
     class Meta:
         model = Subject
         fields = "__all__"
 
 
 class CabinetSerializer(serializers.ModelSerializer):
-    """Досье учителя"""
+    """Список кабинетов"""
     teacher = serializers.SlugRelatedField(slug_field="last_name", read_only=True)
 
     class Meta:
         model = Cabinet
+        fields = "__all__"
+
+
+class TeacherDetailSerializer(serializers.ModelSerializer):
+    """Досье учителя"""
+    subject = serializers.SlugRelatedField(slug_field="subject", read_only=True)
+    klass = KlassSerializer(many=True)
+    cabinet = CabinetSerializer(many=True)
+
+    class Meta:
+        model = Teacher
         fields = "__all__"

@@ -170,7 +170,6 @@ export default {
         service.text = data[i].name
 
         this.services.push(service)
-        
       }
     },
     getEmployees (data) {

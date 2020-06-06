@@ -3,7 +3,7 @@
     <section>
       <v-col cols="8" class="my-1 mx-auto">
         <h2>Детали заявки</h2>
-        <p>Мя</p>
+        <p>Подробная информация о выбранной заявке</p>
       </v-col>
       <v-col  cols="12" class="my-1 mx-auto">
         <v-simple-table>

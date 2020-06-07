@@ -26,4 +26,10 @@ urlpatterns = [
     path("klass/add/", views.KlassViewSet.as_view({'post': 'create'})),
     path("subject/", views.SubjectViewSet.as_view({'get': 'list'})),
     path("cabinet/", views.CabinetViewSet.as_view({'get': 'list'})),
+    path('query1/', views.Query1.as_view()),
+    path('query2/', views.Query2.as_view()),
+    path('query3/', views.Query3.as_view()),
+    path('query4/', views.Query4.as_view()),
+    path('query5/', views.Query5.as_view()),
+    path('assessments_reports/', views.KlassReport.as_view())
     ]

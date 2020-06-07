@@ -24,17 +24,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9858ea65-3249-4d5a-8edd-283795b03bcb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/templates/create_view.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/templates/list_view.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/templates/project_first_app/car_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/templates/project_first_app/car_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/templates/success.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_project_evgenov/project_first_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_project_evgenov/project_first_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_project_evgenov/project_first_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="9858ea65-3249-4d5a-8edd-283795b03bcb" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,7 +55,8 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../laboratory_works/Evgenov_Sergei/laboratory_work_1" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -87,6 +78,7 @@
       <workItem from="1587291870539" duration="7582000" />
       <workItem from="1587374844084" duration="1522000" />
       <workItem from="1587457831548" duration="5953000" />
+      <workItem from="1591437212297" duration="4479000" />
     </task>
     <servers />
   </component>
@@ -113,9 +105,13 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="309" y="42" key="#Inspections/0.0.1366.728@0.0.1366.728" timestamp="1587459481980" />
-    <state x="184" y="9" key="SettingsEditor" timestamp="1587292495615">
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1591450091824">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="184" y="9" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1587292495615" />
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1591450091824" />
+    <state x="184" y="9" key="SettingsEditor" timestamp="1591439674754">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="184" y="9" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1591439674754" />
   </component>
 </project>

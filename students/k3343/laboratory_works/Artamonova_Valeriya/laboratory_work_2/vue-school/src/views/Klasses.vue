@@ -11,7 +11,6 @@
                     <li><a href="#">{{klass.number}} "{{klass.litera}}"</a>
                         <mu-button round color="primary" @click="goToPupils(klass.id)">Показать учеников</mu-button>
                         <mu-button round color="secondary" @click="goToTimetable(klass.id)">Показать расписание</mu-button>
-                        <mu-button round color="success">Получить отчет по классу</mu-button>
                     </li>
                 </ol>
             </mu-col>

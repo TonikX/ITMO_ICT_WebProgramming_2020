@@ -9,7 +9,7 @@
         </mu-row>
         <mu-row>
             <mu-col>
-                <table class="table-fill" v-for="timetable in listTimetable" :key="timetable.id">
+                <table>
                     <thead>
                     <tr>
                         <th colspan="4" class="text-left">{{timetable.day}}</th>

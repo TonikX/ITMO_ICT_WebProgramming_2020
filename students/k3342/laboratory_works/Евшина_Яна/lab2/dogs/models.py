@@ -77,7 +77,7 @@ class Registration(models.Model):
     fee = models.BooleanField(verbose_name='Fee paid', default=False)
 
     def __str__(self):
-        fee_str = 'paid' if self.fee else 'pending'
+        fee_str = 'paid' if self.fee else 'not paid'
 
         return f'{self.show} - {self.dog} - {fee_str}'
 

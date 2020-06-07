@@ -40,7 +40,7 @@ class DogDetailView(generics.RetrieveAPIView):
 class ClubListView(generics.ListAPIView, generics.CreateAPIView):
     queryset = Club.objects.all()
     serializer_class = ClubListSerializer
-    permission_classes = (IsAuthenticated,)
+ #   permission_classes = (IsAuthenticated,)
 
 
 class ExpertListView(generics.ListAPIView, generics.CreateAPIView):

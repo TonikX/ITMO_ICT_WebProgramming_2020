@@ -1,9 +1,8 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, PermissionsMixin
+from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.contrib.auth import get_user_model
 from django.conf import settings
-
-# Create your models here.
 
 
 class Club(models.Model):
@@ -19,7 +18,7 @@ class User(AbstractUser):
     last_name = models.CharField(max_length=25)
     phone_num = models.IntegerField(null=True)
     town = models.CharField(max_length=25)
-    passsport = models.CharField(max_length=25)
+    passport = models.CharField(max_length=25)
     expert = models.BooleanField(verbose_name='Expert', default=False)
 
     def __str__(self):
@@ -63,30 +62,32 @@ class Show(models.Model):
 
 
 class Ring(models.Model):
-    number = models.CharField(max_length=10)
     show = models.ForeignKey(Show, on_delete=models.PROTECT, null=True)
     ex1 = models.CharField(max_length=25)
     ex2 = models.CharField(max_length=25)
     ex3 = models.CharField(max_length=25)
 
     def __str__(self):
-        return self.number
+        return f'{self.show} - ринг {self.id}'
 
 
 class Registration(models.Model):
-    num = models.CharField(max_length=10)
     dog = models.ForeignKey(Dog, on_delete=models.PROTECT)
-    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     show = models.ForeignKey(Show, on_delete=models.PROTECT)
     fee = models.BooleanField(verbose_name='Fee paid', default=False)
 
     def __str__(self):
-        return self.num
+        fee_str = 'paid' if self.fee else 'pending'
+
+        return f'{self.show} - {self.dog} - {fee_str}'
 
 
 class Perform(models.Model):
     ring = models.ForeignKey(Ring, on_delete=models.PROTECT)
     dog = models.ForeignKey(Dog, on_delete=models.PROTECT)
+
+    def __str__(self):
+        return f'{self.ring_id} {self.dog}'
 
 
 class Grade(models.Model):
@@ -97,4 +98,7 @@ class Grade(models.Model):
     points1 = models.IntegerField()
     points2 = models.IntegerField()
     points3 = models.IntegerField()
+
+    def __str__(self):
+        return f'{self.perform} Эксперт: {self.expert}'
 

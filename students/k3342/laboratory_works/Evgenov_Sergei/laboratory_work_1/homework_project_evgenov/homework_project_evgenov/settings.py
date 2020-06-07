@@ -135,6 +135,6 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 
-LOGIN_REDIRECT_URL = '/homework/1'
+LOGIN_REDIRECT_URL = '/homework/list_view'
 LOGIN_URL = '/accounts/login/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

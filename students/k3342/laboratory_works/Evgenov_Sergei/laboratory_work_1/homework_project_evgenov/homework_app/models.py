@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 # Create your models here.
 
@@ -11,20 +13,27 @@ class Homework(models.Model):
     task_text = models.TextField()
     fine_info = models.TextField()
 
+    class Meta:
+        verbose_name = "Homework"
+        verbose_name_plural = "Homeworks"
+
+    def __str__(self):
+        return self.discipline+" "+self.issue_date.strftime("%d/%m/%Y")
+
 
 class Comment(models.Model):
     CType = (
-        ('question', 'question'),
-        ('error found', 'error found'),
-        ('else', 'else'))
+        ('вопрос', 'вопрос'),
+        ('найдена ошибка', 'найдена ошибка'),
+        ('иное', 'иное'))
     IType = (
-        ('highest', 'highest'),
-        ('high', 'high'),
-        ('medium', 'medium'),
-        ('low', 'low'),
+        ('высочайшая', 'высочайшая'),
+        ('высокая', 'высокая'),
+        ('средняя', 'средняя'),
+        ('низкая', 'низкая'),
     )
-    comment_text = models.TextField()
-    commenter = models.CharField(max_length=50)
-    comment_type = models.CharField(choices=CType, max_length=11)
-    comment_importancy = models.CharField(choices=IType, max_length=7)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    text = models.TextField()
+    type = models.CharField(choices=CType, max_length=14)
+    importance = models.CharField(choices=IType, max_length=10)
     homework = models.ForeignKey(Homework, on_delete=models.CASCADE)

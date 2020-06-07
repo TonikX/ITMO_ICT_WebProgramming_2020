@@ -14,6 +14,8 @@ import Login from '../views/Login'
 import Timetable from "../views/Timetable";
 import Delete_Pupil from "../views/Delete_Pupil";
 import Regis from "../views/Regis";
+import Queries from "../views/Queries";
+import KlassReport from "../views/KlassReport";
 
 import MuseUI from 'muse-ui';
 import 'muse-ui/dist/muse-ui.css';
@@ -105,6 +107,16 @@ const routes = [
         path: '/login',
         name: 'login',
         component: Login
+    },
+    {
+        path: '/queries',
+        name: 'Запросы',
+        component: Queries
+    },
+    {
+        path: '/klass_report',
+        name: 'Отчет по классу',
+        component: KlassReport
     },
     {
         path: '/about',

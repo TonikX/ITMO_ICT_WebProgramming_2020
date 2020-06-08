@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    conference archive
+{% endblock %}
+
+
+{% block content %}
+    {% for conf in confs %}
+    <div class="card">
+      <h5 class="card-header">{{ conf.conference_name }}</h5>
+      <div class="card-body">
+        <h5 class="card-title">Дата проведения: {{ conf.date_start }}</h5>
+        <p class="card-text">Место проведения: {{ conf.location }}</p>
+        <a href="{% url 'conf_detail_url' cid=conf.id %}" class="btn btn-primary">Программа</a>
+      </div>
+    </div>
+    {% endfor %}
+{% endblock %}

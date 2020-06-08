@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ hotel }}</title>
+</head>
+
+<body>
+    <div style="border: solid 1px; padding: 20px; margin: 20px auto; width: 600px">
+        <h1>Отель:</h1>
+        <p>{{ hotel }}</p>
+        <h4>Номера:</h4>
+        <div>
+            {% for flat in flats %}
+            <p>{{ flat.get_flat_type_display }}</p>
+            {% endfor %}
+        </div>
+        <a href="./all">На главную</a>
+    </div>
+    {% for comment in comments %}
+    <div style="border: solid 1px; padding: 20px; margin: 20px auto; width: 600px">
+        <p><strong>Автор: {{ comment.user }}</strong></p>
+        <p><strong>Рейтинг:</strong> {{ comment.star }}/10</p>
+        <p><strong>Период проживания:</strong> {{ comment.date_start }} - {{ comment.date_end }}</p>
+        <p>{{ comment.text }}</p>
+    </div>
+    {% endfor %}
+    <div style="border: solid 1px; padding: 20px; margin: 20px auto; width: 600px;">
+        <h2>Добавить комментарий:</h2>
+        <form action="./{{ hotel.id }}" method="post">
+            {% csrf_token %}
+            <input type="text" name="user" hidden value="{{ user.id }}">
+            {{ form.as_p }}
+            <input type="submit" value="Отправить">
+        </form>
+    </div>
+</body>
+
+</html>

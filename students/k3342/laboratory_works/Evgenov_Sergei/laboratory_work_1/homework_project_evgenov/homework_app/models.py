@@ -33,7 +33,7 @@ class Comment(models.Model):
         ('низкая', 'низкая'),
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    text = models.TextField()
-    type = models.CharField(choices=CType, max_length=14)
-    importance = models.CharField(choices=IType, max_length=10)
+    text = models.TextField(verbose_name="Текст")
+    type = models.CharField(verbose_name="Тип", choices=CType, max_length=14)
+    importance = models.CharField(verbose_name="Важность", choices=IType, max_length=10)
     homework = models.ForeignKey(Homework, on_delete=models.CASCADE)

@@ -23,6 +23,11 @@ def homework(request, homework_id):
     context["form"] = form
     return render(request, 'homework.html', context)
 
+
 class HomeworkList(ListView):
 
     model = Homework
+
+
+def empty_path(request):
+    return redirect('/accounts/login/')

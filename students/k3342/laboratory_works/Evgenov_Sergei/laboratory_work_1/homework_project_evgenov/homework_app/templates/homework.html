@@ -5,14 +5,17 @@
     <title>Домашнее задание</title>
 </head>
 <body>
+<form><input type="button" value="Назад к списку заданий" onClick='location.href="list_view"'>
+</form>
+<br>
 Предмет: {{homework.discipline}}, Преподаватель: {{homework.teacher}}. <br>
 Дата выдачи: {{homework.issue_date}}. <br>
-Время на выполнение: {{homework.time_for_doing}}. <br>
-Текст задания: {{homework.task_text}} <br>
-Информация о штрафах: {{homework.fine_info}} <br>
-<br>
-Комментарии:<br>
-<br>
+Время на выполнение: {{homework.time_for_doing}}. <br><br>
+Текст задания:<br>{{homework.task_text}} <br><br>
+Информация о штрафах:<br>{{homework.fine_info}} <br>
+<hr><br>
+Комментарии:<br><br>
+Добавить свой комментарий:<br>
 <form action="" method="POST" enctype="multipart/form-data">
 
     {% csrf_token %}
@@ -23,16 +26,17 @@
 
 </form>
 <br>
+Существующие комментарии:<br><br>
 {% for data in dataset %}
 
 Пользователь: {{data.user}}, Важность: {{data.importance}}. <br>
 Тип: {{data.type}}.<br>
 Текст комментария:<br>{{data.text}}
 <br><br>
-
+{% empty %}
+Комментариев пока нет.
+<br><br>
 {% endfor %}
 
-<form><input type="button" value="Назад к списку заданий" onClick='location.href="list_view"'>
-</form>
 </body>
 </html>

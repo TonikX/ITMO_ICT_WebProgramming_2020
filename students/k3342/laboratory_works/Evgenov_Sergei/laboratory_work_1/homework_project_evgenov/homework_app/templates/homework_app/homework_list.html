@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Homework list view</title>
+    <title>Список домашних заданий</title>
 </head>
 <body>
+    <form><input type="button" value="Выйти из аккаунта"
+                         onClick='location.href="../../accounts/logout/"'>
+            </form>
+    <hr>
     <ul>
 
         {% for object in object_list %}
@@ -13,8 +17,8 @@
             Дата выдачи: {{object.issue_date}}. <br>
             Время на выполнение: {{object.time_for_doing}}. <br>
             Текст задания: {{object.task_text}} <br>
-            Информация о штрафах: {{object.fine_info}} <br>
-            <form><input type="button" value="Перейти к записи" onClick='location.href="{{object.id}}"'>
+            <form><input type="button" value="Перейти к записи и комментариям"
+                         onClick='location.href="{{object.id}}"'>
             </form>
 
             <hr></li>

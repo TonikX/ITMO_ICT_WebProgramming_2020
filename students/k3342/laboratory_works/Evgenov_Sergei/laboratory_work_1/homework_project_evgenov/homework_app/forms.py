@@ -8,9 +8,7 @@ class CommentForm(forms.ModelForm):
         model = Comment
 
         fields = [
-            #"user",
             "text",
             "type",
             "importance",
-            #"homework"
         ]

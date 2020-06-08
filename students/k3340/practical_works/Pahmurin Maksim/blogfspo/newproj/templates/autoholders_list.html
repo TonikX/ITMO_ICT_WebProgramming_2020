@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Autoholders list</title>
+</head>
+<body>
+	 {% for data in dataset %}
+        holder: {{ data.first_name }} {{ data.last_name }}<br/>
+        date of birth: {{ data.date_of_birth }} <br/>
+        <hr/>
+
+        {% endfor %}
+</body>
+</html>

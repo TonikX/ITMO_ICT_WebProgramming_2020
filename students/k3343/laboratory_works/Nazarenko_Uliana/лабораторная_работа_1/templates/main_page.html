@@ -4,6 +4,16 @@
     <div class="p-3 mb-2 bg-info text-white">
         <br><h2><p class="text-center">AUTO RACING SCOREBOARD: Табло победителей автогонок</p></h2><br>
     </div>
-    <br><h3><p class="text-center text-info">Рады приветствовать Вас на AUTO RACING SCOREBOARD!</p></h3><br>
-    <p class="text-center"><img src="https://h-i.su/wp-content/uploads/2015/12/Ring-Racing-770x336.jpg" class="img-fluid" alt="Responsive image"></p>
-{% endblock %}
+   {% if user.is_active %}
+         <br><h3><p class="text-center text-info">Добро пожаловать, {{ user }}!</p></h3><br>
+           {% for user in info %}
+       <h4><p class="text-info"><i><b>Гонка: {{ user.name }} </b></i></p></h4>
+    {% endfor %}
+<p class="text-center"><img src="https://h-i.su/wp-content/uploads/2015/12/Ring-Racing-770x336.jpg" class="img-fluid" alt="Responsive image"></p>
+    {% else %}
+  <br><h3><p class="text-center text-info">Рады приветствовать Вас на AUTO RACING SCOREBOARD!</p></h3><br>
+       <p class="text-center"><img src="https://h-i.su/wp-content/uploads/2015/12/Ring-Racing-770x336.jpg" class="img-fluid" alt="Responsive image"></p>
+    {% endif %}
+
+{% endblock content %}
+

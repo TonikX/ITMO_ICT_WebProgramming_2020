@@ -24,7 +24,29 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9858ea65-3249-4d5a-8edd-283795b03bcb" name="Default Changelist" comment="" />
+    <list default="true" id="9858ea65-3249-4d5a-8edd-283795b03bcb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/migrations/0002_carowner_cars.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/migrations/0003_auto_20200610_0032.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/migrations/0004_auto_20200610_0053.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/migrations/0005_auto_20200610_0054.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/migrations/0006_auto_20200610_0102.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/migrations/0007_auto_20200610_0108.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/migrations/0008_auto_20200610_0109.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/migrations/0009_drivinglicense_owner.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/migrations/0010_auto_20200610_0117.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/migrations/0011_auto_20200610_0132.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/migrations/0012_auto_20200610_0152.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_project_evgenov/django_project_evgenov/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_project_evgenov/django_project_evgenov/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_project_evgenov/django_project_evgenov/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_project_evgenov/django_project_evgenov/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_project_evgenov/project_first_app/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_project_evgenov/project_first_app/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_project_evgenov/project_first_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_project_evgenov/project_first_app/templates/carowner.html" beforeDir="false" afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/templates/carowner.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_project_evgenov/project_first_app/templates/list_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/templates/list_view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_project_evgenov/project_first_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_project_evgenov/project_first_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_project_evgenov/project_first_app/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,6 +63,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../.." />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/django_project_evgenov/django_project_evgenov/settings.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/django_project_evgenov/project_first_app/views.py" root0="SKIP_INSPECTION" />
+  </component>
   <component name="ProjectId" id="1akuMfM3AqbDNwl9zWUP0JMqPLF" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -55,7 +81,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../laboratory_works/Evgenov_Sergei/laboratory_work_1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
@@ -79,6 +105,7 @@
       <workItem from="1587374844084" duration="1522000" />
       <workItem from="1587457831548" duration="5953000" />
       <workItem from="1591437212297" duration="4479000" />
+      <workItem from="1591727399963" duration="9417000" />
     </task>
     <servers />
   </component>

@@ -9,8 +9,13 @@
 
         {% for data in dataset %}
 
+        Имя пользователя: {{data.username}}<br>
         Имя: {{data.first_name}}, Фамилия: {{data.last_name}} <br>
-        Дата рождения: {{data.birth_date}}.
+        Дата рождения: {{data.birth_date}}<br>
+        Серия и номер паспорта: {{data.passport_data}}<br>
+        Домашний адрес: {{data.home_address}}<br>
+        Национальность: {{data.nationality}}<br>
+        Электронная почта: {{data.email}}<br>
 
         <hr/>
 

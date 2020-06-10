@@ -10,13 +10,15 @@ class UserManager(BaseUserManager):
     def create_quest_maker(self, username: str, password: str):
         if username.lower().startswith("team"):
             ValueError("The username field must not starts with 'team'.")
-        user = self.model(username=username, password=password)
+        user = self.model(username=username)
+        user.set_password(password)
         user.is_quest_maker = True
         user.save()
         return user
 
     def create_team(self):
-        user = self.model(username=f"team{self.model.objects.count() + 1}", password=self.make_random_password(length=8))
+        user = self.model(username=f"team{self.model.objects.count() + 1}")
+        user.set_password(self.make_random_password(length=8))
         user.save()
         return user
 

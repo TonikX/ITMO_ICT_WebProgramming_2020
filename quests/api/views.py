@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from rest_framework import generics
 from rest_framework.exceptions import ValidationError
 
@@ -50,6 +51,7 @@ class TipDetailView(generics.RetrieveUpdateDestroyAPIView):
 class AnswerCreateView(generics.CreateAPIView):
     queryset = Answer.objects.all()
     serializer_class = AnswerCreateSerializer
+    User
 
 
 class AnswerDetailView(generics.RetrieveUpdateDestroyAPIView):

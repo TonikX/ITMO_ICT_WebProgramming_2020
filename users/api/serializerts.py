@@ -21,7 +21,7 @@ class QuestMakerSerializer(serializers.ModelSerializer):
 class TeamSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'password', 'is_quest_maker']
+        fields = ['id', 'username', 'password']
         read_only_fields = ['username', 'password']
 
     def create(self, validated_data):

@@ -5,10 +5,10 @@ from users.models import User
 
 
 class QuestMakerListView(generics.ListCreateAPIView):
-    queryset = User.objects.filter(is_quest_maker=True)
+    queryset = User.objects.filter(is_staff=True)
     serializer_class = QuestMakerSerializer
 
 
 class TeamListView(generics.ListCreateAPIView):
-    queryset = User.objects.filter(is_quest_maker=False)
+    queryset = User.objects.filter(is_staff=False)
     serializer_class = TeamSerializer

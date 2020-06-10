@@ -7,12 +7,21 @@ from django.db import models
 class UserManager(BaseUserManager):
     use_in_migrations = True
 
+    def create_superuser(self, username: str, password: str):
+        if username.lower().startswith("team"):
+            ValueError("The username field must not starts with 'team'.")
+        user = self.model(username=username)
+        user.set_password(password)
+        user.is_staff = True
+        user.is_superuser = True
+        user.save()
+
     def create_quest_maker(self, username: str, password: str):
         if username.lower().startswith("team"):
             ValueError("The username field must not starts with 'team'.")
         user = self.model(username=username)
         user.set_password(password)
-        user.is_quest_maker = True
+        user.is_staff = True
         user.save()
         return user
 
@@ -36,8 +45,12 @@ class User(AbstractBaseUser, PermissionsMixin):
             'unique': "A user with that username already exists.",
         },
     )
-    is_quest_maker = models.BooleanField(
-        'is_quest_maker',
+    is_superuser = models.BooleanField(
+        'is_superuser',
+        default=False
+    )
+    is_staff = models.BooleanField(
+        'is_staff',
         default=False
     )
 

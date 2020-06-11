@@ -44,6 +44,9 @@ class Migration(migrations.Migration):
                 ('first_name', models.CharField(max_length=30)),
                 ('last_name', models.CharField(max_length=30)),
                 ('date_of_birth', models.DateField()),
+                ('passport', models.IntegerField(default='0000000000')),
+                ('address', models.CharField(max_length=150, default='city-street-house-flat')),
+                ('nationality', models.CharField(max_length=30, default='not_stated'))
             ],
             options={
                 'db_table': 'Owner',

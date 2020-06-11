@@ -3,8 +3,8 @@ from project_first_app.models import Owner, Car, DriverLicense, Ownership
 
 
 class OwnerAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'date_of_birth')
-    list_display_links = ('first_name', 'last_name', 'date_of_birth')
+    list_display = ('first_name', 'last_name', 'date_of_birth', 'passport', 'address', 'nationality')
+    list_display_links = ('first_name', 'last_name', 'date_of_birth', 'passport', 'address', 'nationality')
 
 
 class CarAdmin(admin.ModelAdmin):

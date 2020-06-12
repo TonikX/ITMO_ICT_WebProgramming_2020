@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Все отели</title>
+    <style>
+    body {
+        margin: auto;
+    }
+
+    .hotel {
+        border: solid #f7f7f7 1em;
+        border-radius: 1em;
+        padding: 1em;
+        margin: 1em;
+        width: 800px
+    }
+
+    .errorlist {
+        display: none;
+    }
+    </style>
+</head>
+
+<body>
+    {% if user.is_authenticated %}
+    <h1>Все отели:</h1>
+    <div class="hotel">
+        {% for hotel in hotels %}
+        <p>
+            <a href="./{{ hotel.id }}">{{ hotel }}</a>
+            <br />
+        </p>
+        {% endfor %}
+    </div>
+    {% else %}
+    У вас нет доступа к этой странице! <a href="/register">Регистрация</a> или <a href="/login">Вход</a>.
+    {% endif %}
+</body>
+
+</html>

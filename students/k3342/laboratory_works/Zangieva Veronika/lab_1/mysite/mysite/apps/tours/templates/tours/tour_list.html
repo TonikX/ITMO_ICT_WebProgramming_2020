@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tour list view</title>
+</head>
+<body>
+    <ul>
+
+        {% for object in object_list %}
+
+        <li>Название тура: {{object.tour_name}}. <br>
+            Турагенство: {{object.agency}}. <br>
+            Описание тура: {{object.tour_descrption}}. <br>
+            Период проведения тура: {{object.duration}} <br>
+            Условия оплаты: {{object.payment}} <br>
+            <form><input type="button" value="Перейти к записи" onClick='location.href="{{object.id}}"'>
+            </form>
+
+            <hr></li>
+
+        {% empty %}
+        <li>Туры не найдены.</li>
+        {% endfor %}
+
+    </ul>
+</body>
+</html>

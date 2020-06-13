@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Туры</title>
+</head>
+<body>
+
+Комментарии:<br>
+<br>
+<form action="" method="POST" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit">Комментировать</button>
+
+</form>
+<br>
+{% for data in dataset %}
+
+Пользователь: {{data.user}}<br>
+Тип комментария: {{data.comment_type}}.<br>
+Текст комментария:<br>{{data.text}}
+<br><br>
+
+{% endfor %}
+
+<form><input type="button" value="Назад к списку туров" onClick='location.href="list_view"'>
+</form>
+</body>
+</html>

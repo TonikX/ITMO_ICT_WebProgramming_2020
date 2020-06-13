@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Owners{% endblock %}
+
+{% block content %}
+
+	{% for a in owner_data %}
+		<li>Имя владельца: {{a.name}} <br>
+		Фамилия владельца: {{a.surname}} <br>
+		Дата рождения: {{a.birth_date}} <br>
+		Номер паспорта: {{a.passport_num}} <br>
+		Домашний адрес: {{a.address}} <br>
+		Национальность: {{a.nationality}} <br>
+		<hr></li>
+	{% endfor %}
+
+{% endblock %}

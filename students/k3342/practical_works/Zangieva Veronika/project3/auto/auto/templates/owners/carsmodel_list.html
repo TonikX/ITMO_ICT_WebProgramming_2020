@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<ul>
+	{% for a in carsmodel_list %}
+	
+		<li>{{ a.mark }}</li>
+		<li>{{ a.c_type }}</li>
+		<li>{{ a.color }}</li>
+		<li>{{ a.gov_num }}</li>
+
+
+	<hr/>
+	
+	{% empty %}
+		<li>No objects yet.</li>
+	{% endfor %}
+</ul>

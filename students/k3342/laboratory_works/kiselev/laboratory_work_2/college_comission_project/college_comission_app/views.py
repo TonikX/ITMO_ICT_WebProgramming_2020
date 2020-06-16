@@ -1,7 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import generics
 
-
 from .models import *
 from .serializers import *
 
@@ -21,6 +20,7 @@ class ApplicationListView(generics.ListAPIView):
 		privelege_type = get_params.get('privelege', None)
 		state = get_params.get('state', None)
 		minimal_point = get_params.get('min', None)
+		top = get_params.get('top', None)
 
 		if from_date:
 			queryset = queryset.filter(application_date__gte=from_date)
@@ -41,7 +41,10 @@ class ApplicationListView(generics.ListAPIView):
 			queryset = queryset.filter(state=state)
 
 		if minimal_point:
-			queryset = queryset.filter(spec__minimal_point__gte=minimal_point)
+			queryset = queryset.filter(spec__minimal_point__lte=minimal_point)
+
+		if top:
+			queryset = queryset.order_by('-enrollee__exam_profile')
 
 		return queryset
 

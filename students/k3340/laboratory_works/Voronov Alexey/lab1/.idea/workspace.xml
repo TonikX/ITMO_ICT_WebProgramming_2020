@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="42015696-c756-4d24-b27a-aa7126217a9e" name="Default Changelist" comment="" />
+    <list default="true" id="42015696-c756-4d24-b27a-aa7126217a9e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/raceapp/templates/race-form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/raceapp/templates/result-form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/lab1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/lab1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/raceapp/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/raceapp/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/raceapp/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/raceapp/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/raceapp/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/raceapp/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/raceapp/migrations/0002_auto_20200419_0832.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/raceapp/migrations/0003_auto_20200419_0841.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/raceapp/migrations/0004_auto_20200419_1756.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/raceapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/raceapp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/raceapp/templates/results.html" beforeDir="false" afterPath="$PROJECT_DIR$/raceapp/templates/results.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/raceapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/raceapp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/raceapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/raceapp/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,7 +34,13 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../.." />
+  </component>
   <component name="ProjectId" id="1aioG5ObbtoeKByjPsm0mE5SQLa" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -27,8 +49,10 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/raceapp/templates" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -100,6 +124,11 @@
       <option name="presentableId" value="Default" />
       <updated>1587227676846</updated>
       <workItem from="1587227679043" duration="18514000" />
+      <workItem from="1591622700530" duration="209000" />
+      <workItem from="1591622918121" duration="516000" />
+      <workItem from="1591623466191" duration="2000" />
+      <workItem from="1591623526246" duration="948000" />
+      <workItem from="1592221987971" duration="6569000" />
     </task>
     <servers />
   </component>
@@ -107,22 +136,38 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1398" height="148" key="GridCell.Tab.0.bottom" timestamp="1587321536271">
+    <state x="320" y="100" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591622956998">
       <screen x="0" y="23" width="1440" height="824" />
     </state>
-    <state width="1398" height="148" key="GridCell.Tab.0.bottom/0.23.1440.824@0.23.1440.824" timestamp="1587321536271" />
-    <state width="1398" height="148" key="GridCell.Tab.0.center" timestamp="1587321536270">
+    <state x="320" y="100" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.824@0.23.1440.824" timestamp="1591622956998" />
+    <state x="413" y="41" key="#lab1" timestamp="1591623430315">
       <screen x="0" y="23" width="1440" height="824" />
     </state>
-    <state width="1398" height="148" key="GridCell.Tab.0.center/0.23.1440.824@0.23.1440.824" timestamp="1587321536270" />
-    <state width="1398" height="148" key="GridCell.Tab.0.left" timestamp="1587321536270">
+    <state x="413" y="41" key="#lab1/0.23.1440.824@0.23.1440.824" timestamp="1591623430315" />
+    <state x="507" y="196" key="FileChooserDialogImpl" timestamp="1591623248231">
       <screen x="0" y="23" width="1440" height="824" />
     </state>
-    <state width="1398" height="148" key="GridCell.Tab.0.left/0.23.1440.824@0.23.1440.824" timestamp="1587321536270" />
-    <state width="1398" height="148" key="GridCell.Tab.0.right" timestamp="1587321536271">
+    <state x="507" y="196" key="FileChooserDialogImpl/0.23.1440.824@0.23.1440.824" timestamp="1591623248231" />
+    <state width="1398" height="148" key="GridCell.Tab.0.bottom" timestamp="1592326479583">
       <screen x="0" y="23" width="1440" height="824" />
     </state>
-    <state width="1398" height="148" key="GridCell.Tab.0.right/0.23.1440.824@0.23.1440.824" timestamp="1587321536271" />
+    <state width="1398" height="148" key="GridCell.Tab.0.bottom/0.23.1440.824@0.23.1440.824" timestamp="1592326479583" />
+    <state width="1398" height="148" key="GridCell.Tab.0.center" timestamp="1592326479582">
+      <screen x="0" y="23" width="1440" height="824" />
+    </state>
+    <state width="1398" height="148" key="GridCell.Tab.0.center/0.23.1440.824@0.23.1440.824" timestamp="1592326479582" />
+    <state width="1398" height="148" key="GridCell.Tab.0.left" timestamp="1592326479582">
+      <screen x="0" y="23" width="1440" height="824" />
+    </state>
+    <state width="1398" height="148" key="GridCell.Tab.0.left/0.23.1440.824@0.23.1440.824" timestamp="1592326479582" />
+    <state width="1398" height="148" key="GridCell.Tab.0.right" timestamp="1592326479582">
+      <screen x="0" y="23" width="1440" height="824" />
+    </state>
+    <state width="1398" height="148" key="GridCell.Tab.0.right/0.23.1440.824@0.23.1440.824" timestamp="1592326479582" />
+    <state x="221" y="74" key="SettingsEditor" timestamp="1592222449800">
+      <screen x="0" y="23" width="1440" height="824" />
+    </state>
+    <state x="221" y="74" key="SettingsEditor/0.23.1440.824@0.23.1440.824" timestamp="1592222449800" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/lab1$0001_initial.coverage" NAME="0001_initial Coverage Results" MODIFIED="1587284010051" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/raceapp/migrations" />

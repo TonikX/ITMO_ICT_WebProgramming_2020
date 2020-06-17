@@ -1,32 +1,31 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title">
+                    Неизвестный Питер
+                </span>
+                <div class="mdl-layout-spacer"></div>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Настройки</span>
+            <nav class="mdl-navigation" id="nav">
+                <router-link class="mdl-navigation__link" to="/quests">
+                    <i class="material-icons" style="margin: 0px 10px 5px 0px">extension</i>
+                    Квесты
+                </router-link>
+                <router-link class="mdl-navigation__link" to="/teams">
+                    <i class="material-icons" style="margin: 0px 10px 5px 0px">people</i>
+                    Команды
+                </router-link>
+            </nav>
+        </div>
+        <main class="mdl-layout__content" id="content_holder">
+            <router-view></router-view>
+        </main>
     </div>
-    <router-view/>
-  </div>
 </template>
 
-<style>
-/*#app {*/
-/*  font-family: Avenir, Helvetica, Arial, sans-serif;*/
-/*  -webkit-font-smoothing: antialiased;*/
-/*  -moz-osx-font-smoothing: grayscale;*/
-/*  text-align: center;*/
-/*  color: #2c3e50;*/
-/*}*/
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+<script></script>

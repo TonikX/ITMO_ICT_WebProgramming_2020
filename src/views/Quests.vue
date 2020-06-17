@@ -1,27 +1,29 @@
 <template>
-    <div>
-        <h1>Quests</h1>
+    <div class="content-grid mdl-grid">
+        <Quest v-for="(quest, index) in quests" :key="index" :quest="quest"/>
     </div>
 </template>
 
 <script>
+    import Quest from "../components/Quest";
 
-    // import TodoList from '@/components/TodoList';
-    //
-    // export default {
-    //     name: 'app',
-    //     data() {
-    //         return {
-    //             todos: ['Work out', 'abacaba']
-    //         }
-    //     },
-    //     components: {
-    //         TodoList
-    //     },
-    //     methods: {
-    //         deleteTodo(index) {
-    //             this.todos.splice(index, 1);
-    //         }
-    //     }
-    // }
+    export default {
+        name: "quests",
+        data() {
+            return {
+                quests: [
+                    {
+                        id: 0,
+                        title: 'abacaba',
+                        place: 'something',
+                        start_time: '3:00',
+                        duration: '12:00'
+                    }
+                ]
+            }
+        },
+        components: {
+            Quest
+        }
+    }
 </script>

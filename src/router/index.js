@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Quests from '../views/Quests.vue'
+import QuestDetail from "../views/QuestDetail";
 
 Vue.use(VueRouter)
 
@@ -13,6 +14,11 @@ const routes = [
         path: '/quests',
         name: 'Quests',
         component: Quests
+    },
+    {
+        path: '/quests/:id',
+        name: 'QuestDetail',
+        component: QuestDetail
     },
     {
         path: '/teams',

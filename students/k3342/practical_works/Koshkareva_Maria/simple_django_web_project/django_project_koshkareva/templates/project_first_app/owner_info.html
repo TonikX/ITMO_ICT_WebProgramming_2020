@@ -1,6 +1,11 @@
 <body>
     Name: <b>{{ owner.first_name }}</b> <br>
-    Surname: <b>{{ owner.last_name }}</b> <br>
+    Surname: <b>{{ owner.last_name }}</b> <br><br>
+
+    Passport (number): <b>{{ owner.person.passport }}</b> <br>
+    Lives at: <b>{{ owner.person.address }}</b> <br>
+    Nationality: <b>{{ owner.person.nationality }}</b> <br><br>
+
     License number and type: <b>{{ license.number }}, {{ license.type }}</b> <br>
     Has/had cars:
     <ul>

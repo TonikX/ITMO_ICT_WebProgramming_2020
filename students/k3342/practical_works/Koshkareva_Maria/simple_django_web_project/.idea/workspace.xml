@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bb1229b6-dea6-4b11-8ff8-168b77688812" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/folder_for_project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/folder_for_project.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_project_koshkareva/django_project_koshkareva/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_project_koshkareva/django_project_koshkareva/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/django_project_koshkareva/project_first_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_project_koshkareva/project_first_app/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/django_project_koshkareva/project_first_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_project_koshkareva/project_first_app/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_project_koshkareva/project_first_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_project_koshkareva/project_first_app/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,34 +55,36 @@
     <session id="2019101481">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.5" value="2" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.open.time.4" value="3" />
+          <entry key="project.open.time.5" value="5" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.opened" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="html" value="8" />
-          <entry key="py" value="10" />
+          <entry key="html" value="19" />
+          <entry key="py" value="76" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="8" />
-          <entry key="Python" value="10" />
+          <entry key="HTML" value="19" />
+          <entry key="Python" value="76" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="320" />
-          <entry key="py" value="1138" />
+          <entry key="html" value="804" />
+          <entry key="py" value="1928" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="320" />
-          <entry key="Python" value="1138" />
+          <entry key="HTML" value="804" />
+          <entry key="Python" value="1928" />
         </counts>
       </usages-collector>
     </session>
@@ -88,50 +92,51 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/django_project_koshkareva/project_first_app/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="29" column="13" selection-start-line="26" selection-start-column="4" selection-end-line="29" selection-end-column="13" />
-              <folding>
-                <marker date="1586123923672" expanded="true" signature="1961:1966" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/django_project_koshkareva/project_first_app/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="9" column="46" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/car_form.html">
+        <entry file="file://$PROJECT_DIR$/../../../laboratory_works/Koshkareva_Maria/laboratory_work_1/my_project/hotels/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="32" selection-start-column="32" selection-end-column="32" />
+              <caret column="21" selection-start-column="21" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../laboratory_works/Koshkareva_Maria/laboratory_work_1/my_project/hotels/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="20">
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../laboratory_works/Koshkareva_Maria/laboratory_work_1/my_project/templates/hotels/hotel_list.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="20">
+              <caret line="1" column="20" lean-forward="true" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+              <folding>
+                <element signature="n#style#0;n#p#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/django_project_koshkareva/project_first_app/views.py">
+        <entry file="file://$PROJECT_DIR$/../../../laboratory_works/Koshkareva_Maria/laboratory_work_1/my_project/hotels/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="531">
-              <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
+            <state relative-caret-position="100">
+              <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../laboratory_works/Koshkareva_Maria/laboratory_work_1/my_project/templates/hotels/hotel_info.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="80">
+              <caret line="4" column="36" lean-forward="true" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
               <folding>
-                <element signature="e#0#35#0" expanded="true" />
-                <marker date="1586124761462" expanded="true" signature="304:309" ph="..." />
-                <marker date="1586124761462" expanded="true" signature="850:988" ph="..." />
-                <marker date="1586124761462" expanded="true" signature="1015:1020" ph="..." />
-                <marker date="1586124761462" expanded="true" signature="1071:1076" ph="..." />
-                <marker date="1586124761462" expanded="true" signature="1308:1313" ph="..." />
+                <element signature="n#style#0;n#p#0;n#body#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -147,6 +152,11 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>AUTH_U</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../.." />
   </component>
@@ -158,7 +168,6 @@
         <option value="$PROJECT_DIR$/django_project_koshkareva/project_first_app/admin.py" />
         <option value="$PROJECT_DIR$/django_project_koshkareva/django_project_koshkareva/urls.py" />
         <option value="$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/owner_list.html" />
-        <option value="$PROJECT_DIR$/django_project_koshkareva/django_project_koshkareva/settings.py" />
         <option value="$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/owners_list.html" />
         <option value="$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/cars_list.html" />
         <option value="$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/car_list.html" />
@@ -166,16 +175,26 @@
         <option value="$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/create_owner.html" />
         <option value="$PROJECT_DIR$/django_project_koshkareva/project_first_app/forms.py" />
         <option value="$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/car_form.html" />
-        <option value="$PROJECT_DIR$/django_project_koshkareva/project_first_app/models.py" />
-        <option value="$PROJECT_DIR$/django_project_koshkareva/project_first_app/urls.py" />
         <option value="$PROJECT_DIR$/django_project_koshkareva/project_first_app/views.py" />
+        <option value="$PROJECT_DIR$/../../../laboratory_works/Koshkareva_Maria/laboratory_work_1/my_project/hotels/admin.py" />
+        <option value="$PROJECT_DIR$/django_project_koshkareva/project_first_app/urls.py" />
+        <option value="$PROJECT_DIR$/../../../laboratory_works/Koshkareva_Maria/laboratory_work_1/my_project/templates/hotels/hotels_list.html" />
+        <option value="$PROJECT_DIR$/../../../laboratory_works/Koshkareva_Maria/laboratory_work_1/my_project/my_project/settings.py" />
+        <option value="$PROJECT_DIR$/../../../laboratory_works/Koshkareva_Maria/laboratory_work_1/my_project/hotels/views.py" />
+        <option value="$PROJECT_DIR$/django_project_koshkareva/project_first_app/models.py" />
+        <option value="$PROJECT_DIR$/django_project_koshkareva/django_project_koshkareva/settings.py" />
+        <option value="$PROJECT_DIR$/../../../laboratory_works/Koshkareva_Maria/laboratory_work_1/my_project/my_project/urls.py" />
+        <option value="$PROJECT_DIR$/../../../laboratory_works/Koshkareva_Maria/laboratory_work_1/my_project/templates/hotels/hotel_list.html" />
+        <option value="$PROJECT_DIR$/../../../laboratory_works/Koshkareva_Maria/laboratory_work_1/my_project/hotels/urls.py" />
+        <option value="$PROJECT_DIR$/../../../laboratory_works/Koshkareva_Maria/laboratory_work_1/my_project/templates/hotels/hotel_info.html" />
+        <option value="$PROJECT_DIR$/../../../laboratory_works/Koshkareva_Maria/laboratory_work_1/my_project/hotels/models.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="950" />
-    <option name="width" value="979" />
-    <option name="height" value="1040" />
+    <option name="x" value="952" />
+    <option name="width" value="977" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -185,6 +204,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -194,44 +214,33 @@
             </path>
             <path>
               <item name="simple_django_web_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="simple_django_web_project" type="462c0819:PsiDirectoryNode" />
-              <item name="django_project_koshkareva" type="462c0819:PsiDirectoryNode" />
+              <item name="my_project" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="simple_django_web_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="simple_django_web_project" type="462c0819:PsiDirectoryNode" />
-              <item name="django_project_koshkareva" type="462c0819:PsiDirectoryNode" />
-              <item name="django_project_koshkareva" type="462c0819:PsiDirectoryNode" />
+              <item name="my_project" type="462c0819:PsiDirectoryNode" />
+              <item name="hotels" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="simple_django_web_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="simple_django_web_project" type="462c0819:PsiDirectoryNode" />
-              <item name="django_project_koshkareva" type="462c0819:PsiDirectoryNode" />
-              <item name="project_first_app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="simple_django_web_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="simple_django_web_project" type="462c0819:PsiDirectoryNode" />
-              <item name="django_project_koshkareva" type="462c0819:PsiDirectoryNode" />
+              <item name="my_project" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="simple_django_web_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="simple_django_web_project" type="462c0819:PsiDirectoryNode" />
-              <item name="django_project_koshkareva" type="462c0819:PsiDirectoryNode" />
+              <item name="my_project" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="project_first_app" type="462c0819:PsiDirectoryNode" />
+              <item name="hotels" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../laboratory_works/Koshkareva_Maria/laboratory_work_1/my_project" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -287,10 +296,9 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="760" y="0" width="783" height="832" extended-state="1" />
-    <editor active="true" />
+    <frame x="762" y="0" width="781" height="830" extended-state="1" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.010723861" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.25268817" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -301,7 +309,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32904148" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.27259684" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -333,97 +341,17 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/django_project_koshkareva/blog/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/manage.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/django_project_koshkareva/blog/admin.py" />
     <entry file="file://$PROJECT_DIR$/django_project_koshkareva/django_project_koshkareva/admin.py" />
     <entry file="file://$PROJECT_DIR$/django_project_koshkareva/blog/models.py" />
-    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/project_first_app/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="19" lean-forward="true" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/django_project_koshkareva/.idea/modules.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/django_project_koshkareva/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="820">
-          <caret line="41" selection-start-line="41" selection-end-line="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/owners_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="7" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/django_project_koshkareva/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/django_project_koshkareva/project_first_app/1.py" />
-    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/car_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/django_project_koshkareva/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/owner_info.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="10" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/create_owner.html">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret selection-end-line="4" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/project_first_app/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-            <marker date="1586121110133" expanded="true" signature="86:91" ph="..." />
-            <marker date="1586121110133" expanded="true" signature="102:107" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/project_first_app/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="29" column="13" selection-start-line="26" selection-start-column="4" selection-end-line="29" selection-end-column="13" />
-          <folding>
-            <marker date="1586123923672" expanded="true" signature="1961:1966" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/project_first_app/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="46" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -434,18 +362,152 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/project_first_app/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/django_project_koshkareva/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/owners_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="7" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/project_first_app/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/django_project_koshkareva/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="21" column="47" lean-forward="true" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/car_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="11" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/templates/project_first_app/owner_info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="10" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../laboratory_works/Koshkareva_Maria/laboratory_work_1/my_project/hotels/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/project_first_app/apps.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/project_first_app/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="4" column="26" lean-forward="true" selection-end-line="4" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/django_project_koshkareva/project_first_app/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="531">
-          <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
+        <state relative-caret-position="455">
+          <caret line="23" column="10" lean-forward="true" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/project_first_app/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" selection-start-line="5" selection-end-line="5" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/manage.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/django_project_koshkareva/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="122" selection-start-line="122" selection-end-line="122" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_project_koshkareva/project_first_app/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-360">
+          <caret line="6" column="44" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
-            <marker date="1586124761462" expanded="true" signature="304:309" ph="..." />
-            <marker date="1586124761462" expanded="true" signature="850:988" ph="..." />
-            <marker date="1586124761462" expanded="true" signature="1015:1020" ph="..." />
-            <marker date="1586124761462" expanded="true" signature="1071:1076" ph="..." />
-            <marker date="1586124761462" expanded="true" signature="1308:1313" ph="..." />
+            <element signature="e#0#28#0" expanded="true" />
+            <marker date="1588796435994" expanded="true" signature="109:230" ph="..." />
+            <marker date="1588796435994" expanded="true" signature="528:531" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../laboratory_works/Koshkareva_Maria/laboratory_work_1/my_project/my_project/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2019">
+          <caret line="128" lean-forward="true" selection-start-line="128" selection-end-line="128" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../laboratory_works/Koshkareva_Maria/laboratory_work_1/my_project/my_project/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="17" column="36" lean-forward="true" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../laboratory_works/Koshkareva_Maria/laboratory_work_1/my_project/hotels/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="21" selection-start-column="21" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../laboratory_works/Koshkareva_Maria/laboratory_work_1/my_project/hotels/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../laboratory_works/Koshkareva_Maria/laboratory_work_1/my_project/templates/hotels/hotel_info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="36" lean-forward="true" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
+          <folding>
+            <element signature="n#style#0;n#p#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../laboratory_works/Koshkareva_Maria/laboratory_work_1/my_project/templates/hotels/hotel_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="20" lean-forward="true" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+          <folding>
+            <element signature="n#style#0;n#p#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../laboratory_works/Koshkareva_Maria/laboratory_work_1/my_project/hotels/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
         </state>
       </provider>
     </entry>

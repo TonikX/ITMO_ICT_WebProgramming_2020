@@ -33,10 +33,12 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'project_first_app'
 ]
 
@@ -119,3 +121,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+
+#LOGOUT_REDIRECT_URL = '/accounts/login/'
+#LOGIN_REDIRECT_URL = '/cars_list/'
+#LOGIN_URL = '/accounts/login/'
+SITE_ID = 1
+AUTH_USER_MODEL='project_first_app.User'

@@ -1,9 +1,9 @@
 <body>
     {%for object in object_list%}
-        {{ object.make }} <br>
+        {{ object.make }}
         {{ object.model }} <br>
-        {{ object.get_colour_display }} <br>
-        {{ object.reg_plate }} <br>
+        <i>Colour: </i> {{ object.get_colour_display }} <br>
+        <i>Reg. plate:</i> {{ object.reg_plate }} <br>
         <hr>
 
         {%empty%}

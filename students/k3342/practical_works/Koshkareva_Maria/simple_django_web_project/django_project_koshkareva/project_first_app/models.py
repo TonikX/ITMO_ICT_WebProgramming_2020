@@ -1,12 +1,28 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+from django.contrib.auth import get_user_model
+from django.conf import settings
+
+
+class User(AbstractUser):
+    passport = models.CharField(max_length=6, default='000000')
+    address = models.CharField(max_length=80, default='ilivehere')
+    nationality = models.CharField(max_length=25, default='Australian')
+
 
 class Owner(models.Model):
+    #for_def = settings.AUTH_USER_MODEL.objects.create_user(username='Hey9',
+                                    #email='',
+                                    #password='redridinghood')
+    person = models.ForeignKey(settings.AUTH_USER_MODEL,default='1',on_delete=models.CASCADE)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     date_of_birth = models.DateField()
 
     def __str__(self):
         return self.last_name
+
+
 
 class Car(models.Model):
     CAR_COLOUR = (
@@ -60,8 +76,12 @@ class Driver_license(models.Model):
     def __str__(self):
         return self.number
 
+
 class Ownership(models.Model):
     owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
     car = models.ForeignKey(Car, on_delete=models.CASCADE)
     date_begin = models.DateField()
     date_end = models.DateField()
+
+    def __str__(self):
+        return self.owner

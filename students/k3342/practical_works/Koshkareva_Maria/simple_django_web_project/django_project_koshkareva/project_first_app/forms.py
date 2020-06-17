@@ -5,5 +5,5 @@ from .models import Owner
 class OwnerForm(forms.ModelForm):
     class Meta:
         model = Owner
-        fields = ["first_name","last_name","date_of_birth"]
+        fields = ["person","first_name","last_name","date_of_birth"]
 

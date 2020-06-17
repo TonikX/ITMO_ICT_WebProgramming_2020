@@ -1,11 +1,11 @@
-from django.urls import path
-from django.contrib.auth import views as view
+from django.contrib import admin
+from django.urls import path, include
 from . import views
-from .views import Add_Comment
+from .views import ConferenceView
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('all_conferences', views.show_conferences, name='all_conferences'),
-    path('add_comment', Add_Comment.as_view, name='add_comment'),
-    path('all_comments', views.show_comments, name='all_comments'),
+    path('', views.index,),
+    path('index/', views.index),
+    path('conferences/', ConferenceView.as_view()),
+    path('conferences/<int:conf_id>/', views.about_conf),
 ]

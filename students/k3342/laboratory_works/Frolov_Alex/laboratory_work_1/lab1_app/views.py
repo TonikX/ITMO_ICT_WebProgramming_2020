@@ -1,44 +1,54 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.http import Http404, HttpResponseRedirect, HttpResponse
+from django.views.generic.list import ListView
 from .forms import AddComment
 from .models import Conference, Comment
-from django.urls import reverse_lazy
-from django.http import HttpResponseRedirect
-from django.views.generic.edit import CreateView
-
 
 
 def index(request):
     return render(request, 'index.html')
 
 
-def show_conferences(request):
-    conferences = {}
-    conferences["conferences"] = Conference.objects.all()
-    return render(request, 'all_conferences.html', conferences)
+class ConferenceView(ListView):
+    model = Conference
+
+    def get(self, request):
+        context = {}
+
+        try:
+            context["conferences"] = Conference.objects.all()
+        except Conference.DoesNotExist:
+            raise Http404("Conference does not exist")
+
+        return render(request, 'all_conferences.html', context)
 
 
-def show_comments(request):
-    comments = {}
-    comments["comments"] = Comment.objects.all()
-    return render(request, 'all_comments.html', comments)
+def about_conf(request, conf_id):
+    global user_id
+    try:
+        conference = Conference.objects.get(pk=conf_id)
+    except Conference.DoesNotExist:
+        raise Http404("Conference does not exist")
 
+    try:
+        comments = Comment.objects.filter(conference_name=conf_id).all()
+    except Comment.DoesNotExist:
+        pass
 
+    if request.POST.get('user_id'):
+        user_id = int(request.POST.get('user_id'))
 
-class Add_Comment(CreateView):
-    model = Comment
-    fields = [
-            "conference",
-            "type_of_comment",
-            "text",
-        ]
-    def as_view(request):
-        comments = {}
-        form = AddComment(request.POST or None)
-        if form.is_valid():
-            form = form.save(commit=False)
-            form.participant = request.user
-            form.save()
-            return HttpResponseRedirect(reverse_lazy('all_comments'))
-        comments['form'] = form
-        return render(request, 'add_comment.html', comments)
+    form = AddComment(request.POST)
+
+    if form.is_valid():
+
+        conference_form = form.save(commit=False)
+        conference_form.post = form
+        conference_form.conf_id = conf_id
+        conference_form.participant_id = user_id
+        conference_form.save()
+
+        return HttpResponseRedirect('/conferences/{}/'.format(conf_id))
+
+    return render(request, 'conference_info.html', {'conference': conference, 'comments': comments, 'form': form})
 # Create your views here.

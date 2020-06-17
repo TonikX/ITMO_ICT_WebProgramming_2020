@@ -7,10 +7,14 @@
  <body>
 <h1>Список научных конференций</h1>
  <ul class="sidebar-nav">
-<li><a href="{% url 'index' %}">Главная страниица</a></li>
-<li><a href="{% url 'all_conferences' %}">Конференции</a></li>
-<li><a href="{% url 'account_login' %}">Войти</a></li>
-<li><a href="{% url 'account_logout' %}">Выйти</a></li>
+<li><a href="/index/{{ index }}">Главная страниица</a></li>
+<li><a href="/conferences/{{ conferences }}">Конференции</a></li>
+<li>{% if user.is_active %}
+<a href="{% url 'account_logout' %}">Выйти</a>
+{% else %}
+<a href="{% url 'account_login' %}">Войти</a>
+{% endif %}</li>
 </ul>
  </body>
 </html>
+

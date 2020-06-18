@@ -10,9 +10,8 @@
     <!-- Iterate over object_list -->
     {% for person in persons %}
     <!-- Display Objects -->
-    <li>{{ person }}</li>
-    <li>{{ person.date }}</li>
-
+    <li>ФИО: {{ person }}</li>
+    <li>Дата рождения: {{ person.date }}</li>
     <hr/>
     <!-- If objet_list is empty  -->
     {% empty %}

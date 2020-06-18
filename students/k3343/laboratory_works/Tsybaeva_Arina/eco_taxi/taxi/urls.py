@@ -34,7 +34,8 @@ urlpatterns=[
     path('delete-order/<int:pk>', storage_detail),
     path('total_storage/', views.TotalStorageView.as_view()),
     path('add_client/', views.ClientView.as_view()),
-    path('logout/', views.Logout.as_view())
+    path('logout/', views.Logout.as_view()),
+    path('clients/', views.Client1View.as_view())
 
 ]
 

@@ -1,9 +1,22 @@
 <template>
-<div>
+  <div class="text-md-center">
+    <h2 align="center">Авторизация</h2>
+    <v-layout>
+      <v-flex xs6 offset-xs3>
+        <v-card>
+         <v-card-text>
+              <v-text-field v-model="login.username" label="Логин"/>
+              <v-text-field v-model="login.password"  type="password" label="Пароль"/>
+         </v-card-text>
+            <v-card-actions>
+              <v-spacer><v-btn text color="green"  @click="setLogin()">Войти</v-btn></v-spacer>
 
-<input v-model="login.username" type="text" placeholder="Логин"/>
-  <input v-model="login.password" type="password" placeholder="Пароль"/>
-  <button @click="setLogin()">Войти</button>
+            </v-card-actions>
+        </v-card>
+
+      </v-flex>
+    </v-layout>
+
 
 </div>
 </template>
@@ -35,5 +48,5 @@ export default {
 
 
 <style scoped>
-
+  div {padding: 10px}
 </style>

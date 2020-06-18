@@ -7,7 +7,7 @@ class DriverListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Driver
-        fields = ("id", "name", "age", "image")
+        fields = ("id", "name", "age")
 
 
 class DriverDetailSerializer(serializers.ModelSerializer):
@@ -20,9 +20,13 @@ class DriverDetailSerializer(serializers.ModelSerializer):
 
 class OrderCreateSerializer(serializers.ModelSerializer):
     """Добавление заказа"""
+
     class Meta:
         model = Order
         fields = "__all__"
+
+    def create(self, validated_data):
+        return Order.objects.create(**validated_data)
 
 
 class OrderDetailSerializer(serializers.ModelSerializer):

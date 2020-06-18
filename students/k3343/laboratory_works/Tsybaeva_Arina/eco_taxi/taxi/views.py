@@ -58,6 +58,11 @@ class YoungListView(generics.ListAPIView):
     filter_backends = (DjangoFilterBackend,)
 
 
+class Client1View(generics.ListAPIView):
+    queryset = Client.objects.all()
+    serializer_class = ClientSerializer
+
+
 class DriverOrderView(generics.ListAPIView):
     """Заказы определенного водителя за указанную дату"""
     queryset = Order.objects.all()

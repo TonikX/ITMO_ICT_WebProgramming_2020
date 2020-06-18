@@ -6,10 +6,11 @@ import Drivers from "../components/Drivers";
 import Report from "../components/Report";
 import Storage from "../components/Storage";
 import Order from "../components/Order";
-import Register from "../components/Register";
+import Info from "../components/Info";
 import addOrder from "../components/addOrder";
 import deleteOrder from "../components/deleteOrder";
 import Logout from "../components/Logout";
+import Register from "../components/Register";
 Vue.use(Router)
 
 export default new Router({
@@ -45,9 +46,9 @@ export default new Router({
       component: Order
     },
      {
-      path: '/register',
-      name: 'Register',
-      component: Register
+      path: '/info',
+      name: 'Info',
+      component: Info
     },
          {
       path: '/add_order',
@@ -63,6 +64,11 @@ export default new Router({
       path: '/logout',
       name: 'Logout',
       component: Logout
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: Register
     },
   ]
 })

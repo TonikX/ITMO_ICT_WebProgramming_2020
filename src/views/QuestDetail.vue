@@ -1,104 +1,156 @@
 <template>
-    <div class="mdl-grid">
-        <div class="mdl-layout-spacer"></div>
-        <div class="mdl-cell mdl-cell--5-col mdl-card mdl-shadow--6dp">
-            <input id="input-file" type="file" style="display: none">
-            <label id="input-file-holder" for="input-file" style="cursor:pointer">
-                <span class="mdl-card__title" id="img-preview" style="color: #FFFFFF; height: 176px;"></span>
-            </label>
-            <div class="mdl-grid">
-                <div class="mdl-cell mdl-cell--12-col">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%;">
-                        <input v-model="quest.title" class="mdl-textfield__input" type="text" id="name">
-                        <label class="mdl-textfield__label" for="name">Название квеста</label>
-                    </div>
-                </div>
-                <div class="mdl-cell mdl-cell--12-col">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%;">
-                        <input v-model="quest.place" class="mdl-textfield__input" type="text" id="place">
-                        <label class="mdl-textfield__label" for="place">Место проведения</label>
-                    </div>
-                </div>
-                <div class="mdl-cell mdl-cell--4-col">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%;">
-                        <input v-model="quest.date" type='date' class="mdl-textfield__input" id="date">
-                        <label class="mdl-textfield__label" for="date">Дата проведения</label>
-                    </div>
-                </div>
-                <div class="mdl-cell mdl-cell--4-col">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%;">
-                        <input v-model="quest.time" type='time' class="mdl-textfield__input" id="time">
-                        <label class="mdl-textfield__label" for="time">Время проведения</label>
-                    </div>
-                </div>
-                <div class="mdl-cell mdl-cell--4-col">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%;">
-                        <input v-model="quest.duration" type='time' class="mdl-textfield__input" id="duration">
-                        <label class="mdl-textfield__label" for="duration">Продолжительность</label>
-                    </div>
-                </div>
-                <div class="mdl-cell mdl-cell--12-col">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%;">
-                        <textarea v-model="quest.welcome_text" rows="3" class="mdl-textfield__input" id="start_text"></textarea>
-                        <label class="mdl-textfield__label" for="start_text">Приветственный текст</label>
-                    </div>
-                </div>
-                <div class="mdl-cell mdl-cell--12-col">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%;">
-                        <textarea v-model="quest.farewell_text" rows="3" class="mdl-textfield__input" id="final_text"></textarea>
-                        <label class="mdl-textfield__label" for="final_text">Финальный текст</label>
-                    </div>
-                </div>
-                <div v-for="(penalty, index) in quest.penalty_times" :key="index" class="mdl-cell mdl-cell--12-col">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%;">
-                        <input v-model="quest.penalty_times[index]" type='time' class="mdl-textfield__input" id="tip_1_time">
-                        <label class="mdl-textfield__label" for="tip_1_time">Штраф за {{ index + 1 }}-ую подсказку</label>
-                    </div>
-                </div>
-            </div>
-            <div class="mdl-card__actions mdl-card--border" style="display: flex;">
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary"
-                        @click="save">
-                    Сохранить
-                </button>
-                <div class="mdl-layout-spacer"></div>
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-                        @click="remove">
-                    Удалить
-                </button>
-            </div>
-        </div>
-        <div class="mdl-layout-spacer"></div>
-    </div>
-
+    <v-row align="start" justify="center">
+        <v-col cols="12" sm="8" md="6" lg="5" xl="4">
+            <v-card class="elevation-12">
+                <v-img src="http://scipy-lectures.org/_images/face.png" :aspect-ratio="16/9"/>
+                <v-card-text>
+                    <v-form v-model="valid">
+                        <v-text-field v-model="quest.title"
+                                      label="Название"
+                                      prepend-icon="title"
+                                      required
+                                      :rules="rules"/>
+                        <v-text-field v-model="quest.place"
+                                      label="Место проведения"
+                                      prepend-icon="map"
+                                      required
+                                      :rules="rules"/>
+                        <v-menu ref="date_menu"
+                                v-model="date_menu"
+                                :close-on-content-click="false"
+                                :return-value.sync="quest.date"
+                                transition="scale-transition"
+                                offset-y
+                                min-width="290px">
+                            <template v-slot:activator="{ on, attrs }">
+                                <v-text-field v-model="quest.date"
+                                              label="Время старта"
+                                              prepend-icon="event"
+                                              readonly
+                                              v-bind="attrs"
+                                              v-on="on"
+                                              required
+                                              :rules="rules"/>
+                            </template>
+                            <v-date-picker v-model="quest.date" no-title scrollable>
+                                <v-spacer></v-spacer>
+                                <v-btn text color="primary" @click="date_menu = false">Cancel</v-btn>
+                                <v-btn text color="primary" @click="$refs.date_menu.save(quest.date)">OK</v-btn>
+                            </v-date-picker>
+                        </v-menu>
+                        <v-menu ref="start_time_menu"
+                                v-model="start_time_menu"
+                                :close-on-content-click="false"
+                                :nudge-right="40"
+                                :return-value.sync="quest.start_time"
+                                transition="scale-transition"
+                                offset-y
+                                max-width="290px"
+                                min-width="290px">
+                            <template v-slot:activator="{ on, attrs }">
+                                <v-text-field v-model="quest.start_time"
+                                              label="Время начала"
+                                              prepend-icon="access_time"
+                                              readonly
+                                              v-bind="attrs"
+                                              v-on="on"
+                                              required
+                                              :rules="rules"/>
+                            </template>
+                            <v-time-picker v-if="start_time_menu"
+                                           v-model="quest.start_time"
+                                           full-width
+                                           format="24hr"
+                                           @click:minute="$refs.start_time_menu.save(quest.start_time)">
+                            </v-time-picker>
+                        </v-menu>
+                        <v-menu ref="duration_menu"
+                                v-model="duration_menu"
+                                :close-on-content-click="false"
+                                :nudge-right="40"
+                                :return-value.sync="quest.duration"
+                                transition="scale-transition"
+                                offset-y
+                                max-width="290px"
+                                min-width="290px">
+                            <template v-slot:activator="{ on, attrs }">
+                                <v-text-field v-model="quest.duration"
+                                              label="Предолжительность"
+                                              prepend-icon="access_time"
+                                              readonly
+                                              v-bind="attrs"
+                                              v-on="on"
+                                              required
+                                              :rules="rules"/>
+                            </template>
+                            <v-time-picker v-if="duration_menu"
+                                           v-model="quest.duration"
+                                           full-width
+                                           format="24hr"
+                                           @click:minute="$refs.duration_menu.save(quest.duration)">
+                            </v-time-picker>
+                        </v-menu>
+                        <v-textarea label="Приветственный текст"
+                                    v-model="quest.welcome_text"
+                                    rows="2"
+                                    hint="Будет показан участникам во время ожидания старта"
+                                    required
+                                    :rules="rules"/>
+                        <v-textarea label="Прощальный текст"
+                                    v-model="quest.farewell_text"
+                                    rows="2"
+                                    hint="Будет показан участникам по окончанию квеста"
+                                    required
+                                    :rules="rules"/>
+                    </v-form>
+                </v-card-text>
+                <v-divider/>
+                <v-card-actions>
+                    <v-btn color="error" @click="remove()">
+                        Удалить
+                    </v-btn>
+                    <v-spacer/>
+                    <v-btn color="accent" @click="save()" :disabled="!valid">
+                        Сохранить
+                    </v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-col>
+    </v-row>
 </template>
 
 <script>
     export default {
         name: "QuestDetail",
-        data() {
-            return {
-                quest: {
-                    id: 0,
-                    title: 'abacaba',
-                    place: 'abacaba',
-                    start_time: 'abacaba',
-                    duration: 'abacaba',
-                    welcome_text: 'welcome text',
-                    farewell_text: 'farewell text',
-                    penalty_times: [
-                        10,
-                        15
-                    ]
-                }
-            }
-        },
+        data: () => ({
+            valid: false,
+            date_menu: false,
+            start_time_menu: false,
+            duration_menu: false,
+            quest: {
+                id: 0,
+                title: '',
+                place: 'abacaba',
+                date: new Date().toISOString().substr(0, 10),
+                start_time: null,
+                duration: null,
+                welcome_text: 'welcome text',
+                farewell_text: 'farewell text',
+                penalty_times: [
+                    10,
+                    15
+                ]
+            },
+            rules: [
+                v => !!v || 'Это поле обязательно'
+            ]
+        }),
         methods: {
             remove() {
-                console.log("remove")
+                console.log('remove ' + JSON.stringify(this.quest))
             },
             save() {
-                console.log("save")
+                console.log('save ' + JSON.stringify(this.quest))
             }
         }
     }

@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Quests from '../views/Quests.vue'
 import QuestDetail from "../views/QuestDetail";
+import Teams from "../views/Teams";
+import MainNavbar from "../layout/MainNavbar";
 
 Vue.use(VueRouter)
 
@@ -12,21 +14,18 @@ const routes = [
     },
     {
         path: '/quests',
-        name: 'Quests',
-        component: Quests
+        name: 'quests',
+        components: { default: Quests, header: MainNavbar }
     },
     {
         path: '/quests/:id',
-        name: 'QuestDetail',
-        component: QuestDetail
+        name: 'questDetail',
+        components: { default: QuestDetail, header: MainNavbar }
     },
     {
         path: '/teams',
-        name: 'Teams',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "about" */ '../views/Teams.vue')
+        name: 'teams',
+        components: { default: Teams, header: MainNavbar }
     }
 ]
 

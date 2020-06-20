@@ -10,7 +10,7 @@ const vuetify = new Vuetify({
         themes: {
             light: {
                 primary: colors.teal,
-                accent: colors.indigo.accent4,
+                accent: colors.indigo.accent4
             }
         }
     }

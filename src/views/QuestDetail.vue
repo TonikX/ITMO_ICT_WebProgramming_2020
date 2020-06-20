@@ -82,7 +82,7 @@
                                     <template v-slot:activator="{ on, attrs }">
                                         <v-text-field v-model="quest.duration"
                                                       label="Предолжительность"
-                                                      prepend-icon="access_time"
+                                                      prepend-icon="timelapse"
                                                       readonly
                                                       v-bind="attrs"
                                                       v-on="on"
@@ -98,16 +98,46 @@
                                 </v-menu>
                                 <v-textarea label="Приветственный текст"
                                             v-model="quest.welcome_text"
+                                            prepend-icon="emoji_people"
                                             rows="2"
                                             hint="Будет показан участникам во время ожидания старта"
                                             required
                                             :rules="rules"/>
                                 <v-textarea label="Прощальный текст"
                                             v-model="quest.farewell_text"
+                                            prepend-icon="emoji_people"
                                             rows="2"
                                             hint="Будет показан участникам по окончанию квеста"
                                             required
                                             :rules="rules"/>
+                                <v-menu v-for="(penalty_time, index) in quest.penalty_times"
+                                        :key="index"
+                                        ref="penalty_time_menu"
+                                        v-model="penalty_time_menu[index]"
+                                        :close-on-content-click="false"
+                                        :nudge-right="40"
+                                        :return-value.sync="quest.penalty_times[index]"
+                                        transition="scale-transition"
+                                        offset-y
+                                        max-width="290px"
+                                        min-width="290px">
+                                    <template v-slot:activator="{ on, attrs }">
+                                        <v-text-field v-model="quest.penalty_times[index]"
+                                                      :label="'Штрафное время за подсказку №' + (index + 1)"
+                                                      prepend-icon="timer"
+                                                      readonly
+                                                      v-bind="attrs"
+                                                      v-on="on"
+                                                      required
+                                                      :rules="rules"/>
+                                    </template>
+                                    <v-time-picker v-if="penalty_time_menu[index]"
+                                                   v-model="quest.penalty_times[index]"
+                                                   full-width
+                                                   format="24hr"
+                                                   @click:minute="$refs.penalty_time_menu[index].save(quest.penalty_times[index])">
+                                    </v-time-picker>
+                                </v-menu>
                             </v-card-text>
                         </v-tab-item>
                         <v-tab-item>
@@ -175,6 +205,7 @@
             date_menu: false,
             start_time_menu: false,
             duration_menu: false,
+            penalty_time_menu: [false, false],
             quest: {
                 id: 0,
                 title: '',
@@ -185,8 +216,8 @@
                 welcome_text: 'welcome text',
                 farewell_text: 'farewell text',
                 penalty_times: [
-                    10,
-                    15
+                    '00:10',
+                    '00:15'
                 ],
                 tasks: [
                     {

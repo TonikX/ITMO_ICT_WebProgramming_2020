@@ -1,0 +1,74 @@
+<body>
+{% if user.is_active %}
+    <p align="right">
+    <b><a href="{% url 'account_logout'%}">Log Out</a></b>
+    </p>
+    {% else %}
+    <p align="right">
+    <b><a href="{% url 'account_login'%}">Log In</a></b>&nbsp&nbsp
+        <b><a href="{% url 'account_signup'%}">Sign Up</a></b>
+    </p>
+{% endif %}
+
+<hr>
+<b><a href="{% url 'hotel-main'%}">Back</a></b> <br>
+    <div align="center">
+        <b>{{ hotel.name }}</b> <br>
+        {{ hotel.address }} <br>
+
+    <p style="width:85%; border:2px solid;padding:5px;">
+            {{ hotel.description }}
+    </p>
+        </div>
+    We offer: {{ hotel.get_facilities_display }} <br>
+    Capacity: {{ hotel.capacity }} <br>
+    Contacts: {{ hotel.contacts }} <br>
+
+    <hr><br>
+    {% for comm in the_comments %}
+        <table style="border:1px solid; width:65%">
+            <tr>
+                <td style="border:1px solid; width:25%" rowspan="3">
+                    <p align="center">
+                        <b>{{comm.user}}</b>
+                    </p>
+                    Age: <b>{{comm.user.profile.get_age_display}}</b><br>
+                    Came from: <br>
+                    <img src="{{comm.user.profile.country.flag}}">
+                    <b>{{comm.user.profile.get_country_display}}</b>
+                    <hr>
+                    Traveling as a: <b>{{comm.get_tourist_kind_display}}</b><br>
+                    Stayed here:<br>
+                    <b>{{comm.vacation_start}} - {{comm.vacation_end}}</b>
+                </td>
+                <td>
+                    Rating: {{comm.rating}}/10
+                    <hr>
+                </td>
+            </tr>
+            <tr><td>{{comm.text}} <hr></td></tr>
+            <tr><td>Sent: {{comm.created}}</td></tr>
+        </table>
+        <br>
+        {%empty%}
+            Leave the first review!
+
+    {% endfor %}
+    <hr>
+    <div >
+        {% if user.is_active %}
+        Add a review:<br>
+            <form action="" method="POST">
+                {% csrf_token %}
+
+                {{form.as_p}}
+
+                <button type="submit">Send</button>
+            </form>
+        {% else %}
+        <p align="center">
+            <b><a href="{% url 'account_login'%}">Log in</a></b> to write reviews.
+        </p>
+        {% endif %}
+    </div>
+</body>

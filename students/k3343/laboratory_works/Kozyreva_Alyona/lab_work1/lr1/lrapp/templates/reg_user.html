@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+	<meta charset="UTF-8">
+	<b><title>Регистрация</title></b> 
+</head>
+<body>
+<form method="POST" enctype="multipart/form-data" align="justify"> 
+<!-- Security token --> {% csrf_token %} 
+<!-- Using the formset --> {{ form.as_p }} 
+<input type="submit" value="Далее"> 
+</form> 
+</body> 
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars</title>
+</head>
+<body>
+    <div align="center">
+        {% for car in car_list %}
+             <b>Марка</b>: {{car.name}} <br>
+             <b>Модель</b>: {{car.model}} <br>
+             <b>Цвет</b>: {{car.colour}} <br>
+             <b>Номер</b>: {{car.gov_number}} <br>
+            <hr/>
+            {% empty %}
+            <li>No cars</li>
+        {% endfor %}
+</body>
+</html>

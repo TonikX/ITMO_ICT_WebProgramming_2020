@@ -35,6 +35,38 @@ def result(request, id):
                    "comments": comments,
                    "form": form})
 
+def raceform(request):
+    context = {}
+
+    if request.method == "POST":
+        form = forms.RaceForm(request.POST)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.user = request.user
+            form.result = result
+            form.save()
+            return redirect('/')
+    else:
+        form = forms.RaceForm
+    return render(request, "race-form.html",
+                  {"form": form})
+
+def addresult(request):
+    context = {}
+
+    if request.method == "POST":
+        form = forms.ResultForm(request.POST)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.user = request.user
+            form.result = result
+            form.save()
+            return redirect('/')
+    else:
+        form = forms.ResultForm
+    return render(request, "result-form.html",
+                  {"form": form})
+
 def comments(request, id):
     context = {}
     try:

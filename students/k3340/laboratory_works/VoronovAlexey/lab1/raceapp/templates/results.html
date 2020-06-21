@@ -6,8 +6,9 @@
 </head>
 <body>
 
-<a href="accounts/signup">Регистрация</a>
-<a href="accounts/login">Авторизация</a>
+
+<a href="addresult">Добавить заезд</a>
+<a href="addrace">Добавить гонку</a>
 
 
 <ul>
@@ -19,6 +20,7 @@
     <li>Авто: {{ result.vehicle }}</li>
     <li>Пилот: {{ result.driver }}</li>
     <li>Время: {{ result.result }}</li>
+    <li>Гонка: {{ result.race }}</li>
     <li>Комменты: {{ result.count }}</li>
     <li><a href="result/{{ result.id }}">Подробнее</a></li>
 

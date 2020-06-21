@@ -19,6 +19,8 @@ from raceapp import views, forms
 urlpatterns = [
     path('results', views.results),
     path('result/<int:id>/', views.result),
+    path('addrace', views.raceform),
+    path('addresult', views.addresult),
     path('comments/<int:id>/', views.comments),
 #    path('add_comment/<int:id>/', forms.AddVehicle.as_view()),
     path('', views.results),

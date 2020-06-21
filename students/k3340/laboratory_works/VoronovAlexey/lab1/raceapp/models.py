@@ -10,6 +10,7 @@ class Team(models.Model):
     def __str__(self):
         return self.name
 
+
 class Person(models.Model):
     TYPE = (
         (1, 'Механик'),
@@ -34,6 +35,14 @@ class Vehicle(models.Model):
     def __str__(self):
         return self.name + ", hp:" + str(self.hp)
 
+class Race(models.Model):
+
+    name = models.CharField('Название', max_length=100)
+    description = models.CharField('Описание', max_length=100)
+
+    def __str__(self):
+        return self.name
+
 class Result(models.Model):
     name = models.CharField('Название', max_length=100)
     description = models.CharField('Описание', max_length=100)
@@ -41,6 +50,7 @@ class Result(models.Model):
     result = models.DurationField('Время заезда')
     vehicle = models.ForeignKey(Vehicle, verbose_name='Автомобиль', on_delete=models.CASCADE)
     driver = models.ForeignKey(Person, verbose_name='Пилот', on_delete=models.CASCADE)
+    race = models.ForeignKey(Race, verbose_name='Гонка', on_delete=models.CASCADE)
 
     def count(self):
         count = len(Comment.objects.filter(result_id=self.id))

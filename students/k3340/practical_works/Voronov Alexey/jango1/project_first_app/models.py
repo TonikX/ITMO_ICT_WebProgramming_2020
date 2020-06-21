@@ -24,6 +24,13 @@ class Person(models.Model):
     date = models.DateField()
 
 
+class AdditionalData(models.Model):
+    owner = models.OneToOneField(Person, on_delete=models.CASCADE, primary_key=True)
+    passport_num = models.CharField(max_length=128)
+    home_address = models.CharField(max_length=128)
+    nationality = models.CharField(max_length=128)
+
+
 class Ownership(models.Model):
 
 

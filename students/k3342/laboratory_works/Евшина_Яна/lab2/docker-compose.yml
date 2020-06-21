@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    container_name: dg
+    command: bash -c "sleep 3 && python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/application
+    ports:
+      - "8000:8000"
+
+  client:
+    build: ./vuedog
+    container_name: front
+    command: npm run serve
+    volumes:
+      - ./vuedog:/application
+    ports:
+      - "8080:8080"

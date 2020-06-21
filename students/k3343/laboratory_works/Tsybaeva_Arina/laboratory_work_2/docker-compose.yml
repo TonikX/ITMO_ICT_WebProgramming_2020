@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+        db:
+                image: postgres
+                ports:
+                        - "5436:5432"
+                environment:
+                        - POSTGRES_USER=postgres
+                        - POSTGRES_PASSWORD=123456
+                        - POSTGRES_DB=eco-taxi
+
+        backend:
+                container_name: taxi_backend
+                build:
+                        context: ./eco_taxi
+                        dockerfile: Dockerfile
+
+                command: python ./manage.py runserver 0.0.0.0:8000
+                volumes:
+                        - ./eco_taxi:/eco_taxi
+                ports:
+                        - "8000:8000"
+                depends_on:
+                        - db
+        frontend:
+                container_name: taxi_frontend
+                build:
+                        context: ./webtaxi
+                        dockerfile: Dockerfile
+                command: npm run dev;
+                volumes:
+                        - ./webtaxi:/webtaxi
+                        - /webtaxi/node_modules
+                ports:
+                        - "8085:8080"
+                depends_on:
+                        - backend
+

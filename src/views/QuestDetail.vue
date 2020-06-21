@@ -175,9 +175,17 @@
                                                       prepend-icon="emoji_objects"
                                                       hint="Если поле пустое, то участник не увидит подсказку"/>
                                     </v-expansion-panel-content>
-                                    <v-divider v-if="index + 1 < quest.tasks.length"/>
+                                    <v-divider/>
                                 </v-expansion-panel>
                             </v-expansion-panels>
+                            <v-container>
+                                <v-row class="justify-center">
+                                    <v-btn rounded class="accent" @click="createNewTask()">
+                                        <v-icon left>add</v-icon>
+                                        Добавить
+                                    </v-btn>
+                                </v-row>
+                            </v-container>
                         </v-tab-item>
                     </v-tabs>
                 </v-form>
@@ -244,6 +252,14 @@
             },
             save() {
                 console.log('save ' + JSON.stringify(this.quest))
+            },
+            createNewTask() {
+                this.quest.tasks.push({
+                    title: "Задание",
+                    question: "",
+                    answers: [],
+                    tips: ["", ""]
+                })
             }
         }
     }

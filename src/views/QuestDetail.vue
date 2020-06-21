@@ -146,7 +146,7 @@
                                     <v-expansion-panel-header>
                                         {{ index + 1 }}. {{ task.title }}
                                         <template v-slot:actions>
-                                            <v-icon color="primary">mdi-check</v-icon>
+                                            <v-icon>keyboard_arrow_down</v-icon>
                                         </template>
                                     </v-expansion-panel-header>
                                     <v-expansion-panel-content>
@@ -174,6 +174,12 @@
                                                       :label="'Подсказка №' + (index + 1)"
                                                       prepend-icon="emoji_objects"
                                                       hint="Если поле пустое, то участник не увидит подсказку"/>
+                                        <v-row class="justify-center">
+                                            <v-btn text small color="error" @click="removeTask(index)">
+                                                <v-icon small>delete_forever</v-icon>
+                                                Удалить задание
+                                            </v-btn>
+                                        </v-row>
                                     </v-expansion-panel-content>
                                     <v-divider/>
                                 </v-expansion-panel>
@@ -260,6 +266,9 @@
                     answers: [],
                     tips: ["", ""]
                 })
+            },
+            removeTask(index) {
+                this.quest.tasks.splice(index, 1);
             }
         }
     }

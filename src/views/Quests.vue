@@ -1,15 +1,26 @@
 <template>
-    <v-row>
-        <v-col cols="12"
-               sm="6"
-               md="4"
-               lg="3"
-               xl="2"
-               v-for="(quest, index) in quests"
-               :key="index">
-            <quest :quest="quest"/>
-        </v-col>
-    </v-row>
+    <div>
+        <v-row>
+            <v-col cols="12"
+                   sm="6"
+                   md="4"
+                   lg="3"
+                   xl="2"
+                   v-for="(quest, index) in quests"
+                   :key="index">
+                <quest :quest="quest"/>
+            </v-col>
+        </v-row>
+        <v-btn class="accent"
+               @click="createNewQuest()"
+               dark
+               fixed
+               bottom
+               right
+               fab>
+            <v-icon>add</v-icon>
+        </v-btn>
+    </div>
 </template>
 
 <script>
@@ -74,6 +85,17 @@
         },
         components: {
             Quest
+        },
+        methods: {
+            createNewQuest() {
+                this.quests.push({
+                    id: 0,
+                    title: "qwerut",
+                    place: "wefwe",
+                    start_time: "ejje",
+                    duration: "wjwjw"
+                })
+            }
         }
     }
 </script>

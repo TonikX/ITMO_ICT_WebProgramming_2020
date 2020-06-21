@@ -3,15 +3,12 @@
         <v-toolbar-title>
             <span>Неизвестный питер</span>
         </v-toolbar-title>
-        <v-spacer/>
-        <v-btn text>Квесты</v-btn>
-        <v-btn text>Команды</v-btn>
     </v-app-bar>
 </template>
 
 <script>
     export default {
-        name: "MainNavbar"
+        name: "LoginNavbar"
     }
 </script>
 

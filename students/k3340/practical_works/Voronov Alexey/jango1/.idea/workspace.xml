@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="503132c7-0e5e-49aa-93a5-7f50b3824a11" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../laboratory_works/Voronov Alexey/lab1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../laboratory_works/Voronov Alexey/lab1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_first_app/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_first_app/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_first_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_first_app/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_first_app/templates/project_first_app/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_first_app/templates/project_first_app/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_first_app/templates/project_first_app/persons.html" beforeDir="false" afterPath="$PROJECT_DIR$/project_first_app/templates/project_first_app/persons.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_first_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_first_app/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="503132c7-0e5e-49aa-93a5-7f50b3824a11" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -115,7 +103,7 @@
       <workItem from="1583912655982" duration="10328000" />
       <workItem from="1585944385073" duration="135000" />
       <workItem from="1585944700970" duration="7064000" />
-      <workItem from="1592476173663" duration="1420000" />
+      <workItem from="1592476173663" duration="1453000" />
     </task>
     <servers />
   </component>
@@ -132,26 +120,26 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="436" y="260" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1583920191042" />
-    <state width="1398" height="137" key="GridCell.Tab.0.bottom" timestamp="1592477660490">
+    <state width="1398" height="137" key="GridCell.Tab.0.bottom" timestamp="1592477762626">
       <screen x="0" y="23" width="1440" height="824" />
     </state>
     <state width="1398" height="260" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1583926893689" />
-    <state width="1398" height="137" key="GridCell.Tab.0.bottom/0.23.1440.824@0.23.1440.824" timestamp="1592477660490" />
-    <state width="1398" height="137" key="GridCell.Tab.0.center" timestamp="1592477660489">
+    <state width="1398" height="137" key="GridCell.Tab.0.bottom/0.23.1440.824@0.23.1440.824" timestamp="1592477762626" />
+    <state width="1398" height="137" key="GridCell.Tab.0.center" timestamp="1592477762626">
       <screen x="0" y="23" width="1440" height="824" />
     </state>
     <state width="1398" height="260" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1583926893688" />
-    <state width="1398" height="137" key="GridCell.Tab.0.center/0.23.1440.824@0.23.1440.824" timestamp="1592477660489" />
-    <state width="1398" height="137" key="GridCell.Tab.0.left" timestamp="1592477660489">
+    <state width="1398" height="137" key="GridCell.Tab.0.center/0.23.1440.824@0.23.1440.824" timestamp="1592477762626" />
+    <state width="1398" height="137" key="GridCell.Tab.0.left" timestamp="1592477762626">
       <screen x="0" y="23" width="1440" height="824" />
     </state>
     <state width="1398" height="260" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1583926893687" />
-    <state width="1398" height="137" key="GridCell.Tab.0.left/0.23.1440.824@0.23.1440.824" timestamp="1592477660489" />
-    <state width="1398" height="137" key="GridCell.Tab.0.right" timestamp="1592477660490">
+    <state width="1398" height="137" key="GridCell.Tab.0.left/0.23.1440.824@0.23.1440.824" timestamp="1592477762626" />
+    <state width="1398" height="137" key="GridCell.Tab.0.right" timestamp="1592477762626">
       <screen x="0" y="23" width="1440" height="824" />
     </state>
     <state width="1398" height="260" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1583926893689" />
-    <state width="1398" height="137" key="GridCell.Tab.0.right/0.23.1440.824@0.23.1440.824" timestamp="1592477660490" />
+    <state width="1398" height="137" key="GridCell.Tab.0.right/0.23.1440.824@0.23.1440.824" timestamp="1592477762626" />
     <state width="1398" height="303" key="GridCell.Tab.1.bottom" timestamp="1583930113039">
       <screen x="0" y="23" width="1440" height="824" />
     </state>

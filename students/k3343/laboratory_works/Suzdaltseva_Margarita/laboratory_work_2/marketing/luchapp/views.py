@@ -119,14 +119,20 @@ class CreatePaymentView(generics.CreateAPIView):
     serializer_class = PaymentSerializer
 
 
-class GetPaymentView(generics.ListAPIView):
+class GetPaymentView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Payment.objects.all()
     serializer_class = PaymentSerializer
 
 
-class GetPaymentsView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Payment.objects.all()
+class GetPaymentsView(generics.ListAPIView):
     serializer_class = PaymentSerializer
+    def get_queryset(self):
+        queryset = Payment.objects.all()
+        params = self.request.query_params
+        req = params.get('req', None)
+        if req:
+            queryset = queryset.filter(request__id=req)
+        return queryset
 
 
 # Services
@@ -138,4 +144,17 @@ class GetServiceView(generics.RetrieveAPIView):
 class GetServicesView(generics.ListAPIView):
     queryset = Service.objects.all()
     serializer_class = ServiceSerializer
+
+
+# Products
+class GetProductsView(generics.ListAPIView):
+    serializer_class = ProductSerializer
+    def get_queryset(self):
+        queryset = Product.objects.all()
+        params = self.request.query_params
+        req = params.get('req', None)
+        if req:
+            queryset = queryset.filter(request__id=req)
+        return queryset
+
 

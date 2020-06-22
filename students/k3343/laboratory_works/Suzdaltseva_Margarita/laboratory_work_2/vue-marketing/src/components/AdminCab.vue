@@ -55,11 +55,12 @@
           <v-card-title class="headline">{{ card.title }} -- {{ card.status }}</v-card-title>
           <v-card-subtitle>{{ card.service.name }}</v-card-subtitle>
           <v-card-text>
-            <p>Заказчик {{ card.client.user.first_name }} {{ card.client.user.last_name }}</p>
-            <p>Исполнитель {{ card.employee.user.first_name }} {{ card.employee.user.last_name }}</p>
+            <p>Заказчик {{ card.client.first_name }} {{ card.client.last_name }}</p>
+            <p>Исполнитель {{ card.employee.first_name }} {{ card.employee.last_name }}</p>
           </v-card-text>
           <v-card-actions>
             <v-btn text :to='"/details/" + card.id'>Подробнее</v-btn>
+            <v-btn light class="pink lighten-5" v-if="card.status === 'in progress'" @click="markCompleted(card.id)">Отметить как завершённую</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -142,7 +143,7 @@ export default {
         requestcard.description = data[i].description
         requestcard.materials = data[i].materials
         requestcard.date = data[i].date
-        requestcard.status = data[i].status
+        requestcard.status = data[i].status === '0' ? 'in progress' : 'completed'
 
         this.requestcards.push(requestcard)
       }
@@ -176,7 +177,7 @@ export default {
       for (let i = 0; i < data.length; i++) {
         let employee = {}
         employee.value = data[i].id
-        employee.text = `${data[i].user.first_name} ${data[i].user.last_name} (${data[i].user.username})`
+        employee.text = `${data[i].first_name} ${data[i].last_name} (${data[i].user.username})`
 
         this.employees.push(employee)
       }
@@ -185,10 +186,19 @@ export default {
       for (let i = 0; i < data.length; i++) {
         let client = {}
         client.value = data[i].id
-        client.text = `${data[i].user.first_name} ${data[i].user.last_name} (${data[i].user.username})`
+        client.text = `${data[i].first_name} ${data[i].last_name} (${data[i].user.username})`
 
         this.clients.push(client)
       }
+    },
+    markCompleted (id) {
+      let data = {
+        status: '1'
+      }
+      this.axios
+        .patch(`http://${window.location.hostname}:8000/api/request/${id}`, data)
+        .then(response => { console.log(response); this.filterReq() })
+        .catch(err => { console.error(err) })
     }
   }
 }

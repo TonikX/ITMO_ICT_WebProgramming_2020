@@ -3,6 +3,7 @@
     <v-col cols="8" class="my-1 mx-auto">
       <h2>Личный кабинет пользователя</h2>
       <p>Все Ваши заявки</p>
+      <v-btn :to='"/newReq"' dark class="mr-4 pink accent-3">Оставить новую заявку</v-btn>
     </v-col>
     <section>
       <v-col cols="8" class="mx-auto">
@@ -11,8 +12,8 @@
           <v-card-title class="headline">{{ card.title }} -- {{ card.status }}</v-card-title>
           <v-card-subtitle>{{ card.service.name }}</v-card-subtitle>
           <v-card-text>
-            <p>Заказчик {{ card.client.user.first_name }} {{ card.client.user.last_name }}</p>
-            <p>Исполнитель {{ card.employee.user.first_name }} {{ card.employee.user.last_name }}</p>
+            <p>Заказчик {{ card.client.first_name }} {{ card.client.last_name }}</p>
+            <p>Исполнитель {{ card.employee.first_name }} {{ card.employee.last_name }}</p>
           </v-card-text>
           <v-card-actions>
             <v-btn text :to='"/details/" + card.id'>Подробнее</v-btn>
@@ -53,7 +54,7 @@ export default {
         requestcard.description = data[i].description
         requestcard.materials = data[i].materials
         requestcard.date = data[i].date
-        requestcard.status = data[i].status
+        requestcard.status = data[i].status === '0' ? 'in progress' : 'completed'
 
         this.requestcards.push(requestcard)
       }

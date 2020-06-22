@@ -13,3 +13,5 @@ admin.site.register(Client)
 admin.site.register(Request)
 
 admin.site.register(Payment)
+
+admin.site.register(Product)

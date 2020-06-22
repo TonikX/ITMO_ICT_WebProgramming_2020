@@ -22,4 +22,5 @@ urlpatterns = [
     path('getclient/', GetClientView.as_view()),
     path('request/adminfilter', AdminFilterView.as_view()),
     path('employee/all', GetEmployeesView.as_view()),
+    path('product/all', GetProductsView.as_view()),
 ]

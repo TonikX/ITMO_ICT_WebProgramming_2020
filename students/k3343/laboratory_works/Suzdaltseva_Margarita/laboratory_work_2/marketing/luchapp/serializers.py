@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'first_name', 'last_name']
+        fields = ['id', 'username', 'email']
 
 
 class NewCompanySerializer(serializers.ModelSerializer):
@@ -59,7 +59,7 @@ class CreateRequestSerializer(serializers.ModelSerializer):
 
 
 class RequestSerializer(serializers.ModelSerializer):
-    status = serializers.CharField(source="get_status_display")
+    #status = serializers.CharField(source="get_status_display")
     service = ServiceSerializer(read_only=True)
     client = ClientSerializer(read_only=True)
     employee = EmployeeSerializer(read_only=True)
@@ -72,3 +72,11 @@ class PaymentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Payment
         fields = '__all__'
+
+
+class ProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = '__all__'
+
+

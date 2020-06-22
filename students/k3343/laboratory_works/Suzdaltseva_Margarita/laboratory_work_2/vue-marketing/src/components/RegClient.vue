@@ -60,8 +60,6 @@ export default {
       let userdata = {
         username: this.reg_username,
         email: this.reg_email,
-        first_name: this.reg_first_name,
-        last_name: this.reg_last_name,
         password: this.reg_password
       }
 
@@ -87,7 +85,9 @@ export default {
       let clientdata = {
         user: this.client_user,
         phone: this.reg_phone,
-        company: this.client_company
+        company: this.client_company,
+        first_name: this.reg_first_name,
+        last_name: this.reg_last_name
       }
 
       this.axios

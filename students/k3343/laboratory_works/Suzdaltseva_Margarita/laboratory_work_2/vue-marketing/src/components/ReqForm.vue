@@ -31,7 +31,8 @@ export default {
       req_description: '',
       req_materials: '',
       req_client: '',
-      success: false
+      req_id: '',
+      price: ''
     }
   },
   methods: {
@@ -46,7 +47,7 @@ export default {
 
       this.axios
         .get(`http://${window.location.hostname}:8000/api/getclient?user=${sessionStorage.getItem('user')}`)
-        .then(response => { this.getClient(response.data) })
+        .then(response => { console.log(response); this.getClient(response.data) })
         .catch(err => { console.error(err) })
     },
     getClient (data) {
@@ -63,13 +64,37 @@ export default {
 
       this.axios
         .post(`http://${window.location.hostname}:8000/api/request/new/`, data)
-        .then(response => { console.log(response); this.clearRequest(); this.success = true })
+        .then(response => { console.log(response); this.getPrice(response.data) })
+        .catch(err => { console.error(err) })
+    },
+    getPrice (data) {
+      this.req_id = data.id
+
+      this.axios
+        .get(`http://${window.location.hostname}:8000/api/request/${this.req_id}`)
+        .then(response => { console.log(response); this.createPayment(response.data) })
+        .catch(err => { console.error(err) })
+    },
+    createPayment (data) {
+      this.price = data.service.price
+      console.log('price is', this.price)
+
+      let paydata = {
+        amount: this.price,
+        request: this.req_id
+      }
+
+      this.axios
+        .post(`http://${window.location.hostname}:8000/api/payment/new`, paydata)
+        .then(response => { console.log(response); this.clearRequest() })
         .catch(err => { console.error(err) })
     },
     clearRequest () {
       this.req_service = ''
       this.req_description = ''
       this.req_materials = ''
+      this.req_id = ''
+      this.price = ''
     }
   },
   mounted () {

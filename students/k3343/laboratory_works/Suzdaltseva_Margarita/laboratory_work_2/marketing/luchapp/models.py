@@ -43,12 +43,16 @@ class Employee(models.Model):
     ]
     position = models.CharField(max_length=1, choices=POSITIONS, default='e')
     phone = models.CharField(max_length=14)
+    first_name = models.CharField(max_length=150, null=True)
+    last_name = models.CharField(max_length=150, null=True)
 
 
 class Client(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     phone = models.CharField(max_length=14)
+    first_name = models.CharField(max_length=150, null=True)
+    last_name = models.CharField(max_length=150, null=True)
 
 
 class Request(models.Model):
@@ -68,11 +72,19 @@ class Request(models.Model):
 class Payment(models.Model):
     request = models.ForeignKey(Request, on_delete=models.CASCADE)
     amount = models.IntegerField()
-    day_requested = models.DateTimeField()
-    day_paid = models.DateTimeField()
+    day_requested = models.DateTimeField(auto_now_add=True, null=True)
+    day_paid = models.DateTimeField(null=True, blank=True)
     STATUSES = [
         ('0','unpaid'),
         ('1','paid')
     ]
     status = models.CharField(max_length=1, choices=STATUSES, default='0')
+
+
+class Product(models.Model):
+    request = models.ForeignKey(Request, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    description = models.CharField(max_length=280)
+    image = models.CharField(blank=True, max_length=280)
+
 

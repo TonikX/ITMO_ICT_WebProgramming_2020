@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars</title>
+</head>
+<body>
+<ul>
+    {% for data in dataset %}
+        <li> <b><i>Отель</i></b>: <a href="/{{ data.pk }}">{{data.name}}</a> </li>
+            <li> <b><i>Описание</i></b>: {{data.desc}} </li>
+        <hr/>
+    {% empty %}
+    <li>No objects yet.</li>
+    {% endfor %}
+    <div><a href="/login"><h2 style="text-align: center">Войти</h2></a>
+        <a href="/createowner"><h2 style="text-align: center">Зарегистрироваться</h2></a></div>
+</ul>
+</body>
+</html>

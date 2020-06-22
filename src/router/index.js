@@ -16,6 +16,7 @@ const routes = [
     },
     {
         path: '/login',
+        name: 'login',
         components: { default: Login, header: LoginNavbar }
     },
     {

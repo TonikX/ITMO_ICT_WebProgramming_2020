@@ -7,7 +7,7 @@
                 </v-toolbar>
                 <v-card-text>
                     <v-form v-model="valid">
-                        <v-text-field v-model="login"
+                        <v-text-field v-model="username"
                                       name="login"
                                       label="Логин"
                                       prepend-icon="person"
@@ -26,7 +26,7 @@
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn color="accent" :disabled="!valid">Войти</v-btn>
+                    <v-btn color="accent" :disabled="!valid" @click="login()">Войти</v-btn>
                 </v-card-actions>
             </v-card>
         </v-col>
@@ -34,16 +34,38 @@
 </template>
 
 <script>
+    import { httpClient } from "../api/httpClient"
+    import { TokenStorage } from "../api/tokenStorage";
+    import router from "../router";
+
     export default {
-        valid: false,
         name: "Login",
         data: () => ({
+            valid: false,
             showPassword: false,
-            login: "",
+            username: "",
             password: "",
             rules: [
                 v => !!v || 'Это поле обязательно'
             ]
         }),
+        methods: {
+            login() {
+                httpClient.post('/users/token', {
+                    username: this.username,
+                    password: this.password
+                })
+                    .then((response) => {
+                        TokenStorage.storeAccessToken(response.data.access);
+                        TokenStorage.storeRefreshToken(response.data.refresh);
+                        console.log('response login' + JSON.stringify(response));
+                        router.push('quests')
+                    })
+                    .catch((error) => {
+                        TokenStorage.clear();
+                        console.log('response login error' + JSON.stringify(error))
+                    })
+            }
+        }
     }
 </script>

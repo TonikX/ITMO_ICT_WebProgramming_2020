@@ -10,11 +10,6 @@ from backend.profiles.models import Profile
 from backend.app.models import Exhibition, Competition, Expert, ExpertCompetition, CompParticipation, Dog, Result, DogRegistration, Dismissed, DogOwner, ClubParticipation
 from backend.app.forms import ExhibitionForm, SetExpertForm, DelExpertForm, CompetitionForm, DogToCompForm, DelDogFromCompForm, DogRegForm, Query2Form, Query3Form
 
-from bootstrap_modal_forms.generic import (BSModalLoginView,
-                                           BSModalCreateView,
-                                           BSModalUpdateView,
-                                           BSModalReadView,
-                                           BSModalDeleteView)
 
 
 class AllExhibition(ListView):

@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'djoser',
 
     'bootstrap4',
-    'bootstrap_modal_forms',
     'widget_tweaks',
 
     'debug_toolbar',

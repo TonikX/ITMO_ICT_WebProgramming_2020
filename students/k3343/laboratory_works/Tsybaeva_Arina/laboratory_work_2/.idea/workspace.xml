@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6a804080-70db-4fa3-bcfb-286fc3fde501" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../practical_works/Tsybaeva_Arina/docker/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../practical_works/Tsybaeva_Arina/docker/docker-tutorial" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/Web_K3343_ЛР2-3_Цыбаева.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/eco_taxi/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/eco_taxi/asgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/eco_taxi/settings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/eco_taxi/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/eco_taxi/wsgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/manage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/media/drivers/водитель1.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/media/drivers/водитель1_zlEmjFb.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/media/drivers/водитель2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/media/drivers/водитель2_6vdLk06.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/media/drivers/водитель2_zmN91nY.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/media/drivers/водитель3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/media/drivers/водитель3_nrgnHZ2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/dist/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/dist/vue.common.dev.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/dist/vue.common.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/dist/vue.common.prod.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/dist/vue.esm.browser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/dist/vue.esm.browser.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/dist/vue.esm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/dist/vue.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/dist/vue.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/dist/vue.runtime.common.dev.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/dist/vue.runtime.common.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/dist/vue.runtime.common.prod.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/dist/vue.runtime.esm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/dist/vue.runtime.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/dist/vue.runtime.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/compiler/codeframe.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/compiler/codegen/events.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/compiler/codegen/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/compiler/create-compiler.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/compiler/directives/bind.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/compiler/directives/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/compiler/directives/model.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/compiler/directives/on.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/compiler/error-detector.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/compiler/helpers.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/compiler/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/compiler/optimizer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/compiler/parser/entity-decoder.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/compiler/parser/filter-parser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/compiler/parser/html-parser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/compiler/parser/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/compiler/parser/text-parser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/compiler/to-function.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/components/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/components/keep-alive.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/global-api/assets.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/global-api/extend.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/global-api/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/global-api/mixin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/global-api/use.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/instance/events.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/instance/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/instance/init.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/instance/inject.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/instance/lifecycle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/instance/proxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/instance/render-helpers/bind-dynamic-keys.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/instance/render-helpers/bind-object-listeners.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/instance/render-helpers/bind-object-props.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/instance/render-helpers/check-keycodes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/instance/render-helpers/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/instance/render-helpers/render-list.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/instance/render-helpers/render-slot.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/instance/render-helpers/render-static.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/instance/render-helpers/resolve-filter.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/instance/render-helpers/resolve-scoped-slots.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/instance/render-helpers/resolve-slots.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/instance/render.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/instance/state.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/observer/array.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/observer/dep.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/observer/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/observer/scheduler.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/observer/traverse.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/observer/watcher.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/util/debug.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/util/error.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/util/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/util/lang.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/util/next-tick.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/util/options.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/util/perf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/util/props.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/vdom/create-component.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/vdom/create-element.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/vdom/create-functional-component.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/vdom/helpers/extract-props.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/vdom/helpers/get-first-component-child.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/vdom/helpers/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/vdom/helpers/is-async-placeholder.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/vdom/helpers/merge-hook.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/vdom/helpers/normalize-children.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/vdom/helpers/normalize-scoped-slots.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/vdom/helpers/resolve-async-component.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/vdom/helpers/update-listeners.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/vdom/modules/directives.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/vdom/modules/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/vdom/modules/ref.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/vdom/patch.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/core/vdom/vnode.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/compiler/directives/html.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/compiler/directives/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/compiler/directives/model.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/compiler/directives/text.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/compiler/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/compiler/modules/class.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/compiler/modules/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/compiler/modules/model.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/compiler/modules/style.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/compiler/options.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/compiler/util.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/entry-compiler.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/entry-runtime-with-compiler.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/entry-runtime.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/entry-server-basic-renderer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/entry-server-renderer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/runtime/class-util.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/runtime/components/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/runtime/components/transition-group.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/runtime/components/transition.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/runtime/directives/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/runtime/directives/model.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/runtime/directives/show.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/runtime/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/runtime/modules/attrs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/runtime/modules/class.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/runtime/modules/dom-props.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/runtime/modules/events.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/runtime/modules/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/runtime/modules/style.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/runtime/modules/transition.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/runtime/node-ops.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/runtime/patch.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/runtime/transition-util.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/server/compiler.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/server/directives/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/server/directives/model.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/server/directives/show.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/server/modules/attrs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/server/modules/class.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/server/modules/dom-props.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/server/modules/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/server/modules/style.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/server/util.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/util/attrs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/util/class.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/util/compat.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/util/element.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/util/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/web/util/style.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/compiler/directives/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/compiler/directives/model.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/compiler/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/compiler/modules/append.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/compiler/modules/class.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/compiler/modules/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/compiler/modules/props.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/compiler/modules/recycle-list/component-root.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/compiler/modules/recycle-list/component.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/compiler/modules/recycle-list/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/compiler/modules/recycle-list/recycle-list.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/compiler/modules/recycle-list/text.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/compiler/modules/recycle-list/v-bind.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/compiler/modules/recycle-list/v-for.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/compiler/modules/recycle-list/v-if.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/compiler/modules/recycle-list/v-on.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/compiler/modules/recycle-list/v-once.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/compiler/modules/style.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/entry-compiler.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/entry-framework.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/entry-runtime-factory.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/runtime/components/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/runtime/components/richtext.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/runtime/components/transition-group.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/runtime/components/transition.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/runtime/directives/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/runtime/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/runtime/modules/attrs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/runtime/modules/class.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/runtime/modules/events.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/runtime/modules/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/runtime/modules/style.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/runtime/modules/transition.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/runtime/node-ops.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/runtime/patch.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/runtime/recycle-list/render-component-template.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/runtime/recycle-list/virtual-component.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/runtime/text-node.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/util/element.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/util/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/platforms/weex/util/parser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/server/bundle-renderer/create-bundle-renderer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/server/bundle-renderer/create-bundle-runner.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/server/bundle-renderer/source-map-support.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/server/create-basic-renderer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/server/create-renderer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/server/optimizing-compiler/codegen.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/server/optimizing-compiler/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/server/optimizing-compiler/modules.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/server/optimizing-compiler/optimizer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/server/optimizing-compiler/runtime-helpers.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/server/render-context.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/server/render-stream.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/server/render.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/server/template-renderer/create-async-file-mapper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/server/template-renderer/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/server/template-renderer/parse-template.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/server/template-renderer/template-stream.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/server/util.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/server/webpack-plugin/client.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/server/webpack-plugin/server.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/server/webpack-plugin/util.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/server/write.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/sfc/parser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/shared/constants.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/src/shared/util.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/types/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/types/options.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/types/plugin.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/types/umd.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/types/vnode.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/node_modules/vue/types/vue.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/taxi/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/taxi/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/taxi/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/taxi/filters.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/taxi/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/taxi/migrations/0002_auto_20200516_1250.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/taxi/migrations/0003_delete_costclient.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/taxi/migrations/0004_auto_20200516_1258.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/taxi/migrations/0005_order.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/taxi/migrations/0006_auto_20200516_1324.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/taxi/migrations/0007_auto_20200516_2016.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/taxi/migrations/0008_auto_20200517_1808.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/taxi/migrations/0009_auto_20200517_1810.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/taxi/migrations/0010_auto_20200517_1812.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/taxi/migrations/0011_auto_20200520_1324.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/taxi/migrations/0012_auto_20200523_1342.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/taxi/migrations/0013_auto_20200523_1348.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/taxi/migrations/0014_auto_20200523_1349.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/taxi/migrations/0015_auto_20200525_1021.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/taxi/migrations/0016_auto_20200525_1310.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/taxi/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/taxi/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/taxi/serializers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/taxi/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/taxi/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/taxi/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/.babelrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/.postcssrc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/build/build.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/build/check-versions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/build/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/build/utils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/build/vue-loader.conf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/build/webpack.base.conf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/build/webpack.dev.conf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/build/webpack.prod.conf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/config/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/src/App.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/src/assets/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/src/components/Drivers.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/src/components/Home.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/src/components/Info.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/src/components/Logout.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/src/components/Order.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/src/components/Register.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/src/components/Report.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/src/components/Storage.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/src/components/addOrder.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/src/components/deleteOrder.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/src/components/login.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/src/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/src/plugins/vuetify.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/src/router/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/src/service/api_service.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/src/service/config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../eco_taxi/webtaxi/static/.gitkeep" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../.." />
+  </component>
+  <component name="ProjectId" id="1db3gB1vqRsPQ4RotPGno8TK0YA" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../../docker-tutorial/students/k3343/practical_works/Tsybaeva Arina/docker" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6a804080-70db-4fa3-bcfb-286fc3fde501" name="Default Changelist" comment="" />
+      <created>1592680073245</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1592680073245</updated>
+      <workItem from="1592680075849" duration="15380000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1592813985372">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1592813985372" />
+  </component>
+</project>

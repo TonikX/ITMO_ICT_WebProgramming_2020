@@ -9,6 +9,7 @@
                         </mu-list-item-content>
                     </mu-list-item>
                     <mu-button @click="addPart">Add</mu-button>
+                    <mu-button @click="closeaddPart">Отмена</mu-button>
                 </mu-list>
             </mu-dialog>
         </mu-container>
@@ -66,6 +67,9 @@
                     }
                 })
             },
+            closeaddPart() {
+                this.$emit('closeaddPart')
+            }
         }
     }
 </script>

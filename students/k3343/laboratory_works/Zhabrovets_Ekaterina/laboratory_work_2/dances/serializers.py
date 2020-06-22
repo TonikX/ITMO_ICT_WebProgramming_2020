@@ -8,10 +8,19 @@ class ParticipantsSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+
+class StyleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DanceStyle
+        fields = '__all__'
+
+
 class ChoreographersSerializer(serializers.ModelSerializer):
+    style = StyleSerializer()
+
     class Meta:
         model = Choreographer
-        fields = '__all__'
+        fields = ('id', 'full_name', 'style')
 
 
 class LocationSerializer(serializers.ModelSerializer):
@@ -39,7 +48,8 @@ class WorkshopSerializer(serializers.ModelSerializer):
 
 
 class WorkshopAddSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Workshop
         fields = ('id', 'name', 'place', 'date', 'time', 'duration', 'info')
+
+

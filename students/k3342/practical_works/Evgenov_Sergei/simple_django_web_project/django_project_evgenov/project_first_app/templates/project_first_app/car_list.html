@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars list view</title>
+</head>
+<body>
+    <ul>
+
+        {% for object in object_list %}
+
+        <li>Производитель: {{ object.producer }}<br/>
+        Модель: {{ object.model }}<br/>
+        Цвет: {{ object.color }}<br/>
+        Государственный номер: {{ object.state_num }}</li>
+
+        <hr/>
+
+        {% empty %}
+        <li>Машин не найдено.</li>
+        {% endfor %}
+
+    </ul>
+</body>
+</html>

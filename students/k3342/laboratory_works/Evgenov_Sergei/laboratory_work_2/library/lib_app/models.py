@@ -29,7 +29,7 @@ class Book(models.Model):
         verbose_name_plural = "Книги"
 
     def __str__(self):
-        return 'единица №'+str(self.id)+' экземпляр книги "'+self.title+'"'
+        return 'единица №'+str(self.id)+' экземпляр книги "'+self.title+'"'+' №'+self.cipher[-1]
 
 
 class Reader(models.Model):
@@ -64,7 +64,7 @@ class Attachment(models.Model):
     reader = models.ForeignKey(Reader, on_delete=models.CASCADE, verbose_name="читатель")
     book = models.ForeignKey(Book, on_delete=models.CASCADE, verbose_name="книга")
     attachment_starting_date = models.DateField(verbose_name="время закрепления")
-    attachment_finishing_date = models.DateField(blank=True, verbose_name="время открепления")
+    attachment_finishing_date = models.DateField(null=True, blank=True, verbose_name="время открепления")
 
     class Meta:
         verbose_name = "Закрепление"

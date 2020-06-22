@@ -1,4 +1,4 @@
-# library-vue
+# lib-vue
 
 > A Vue.js project
 

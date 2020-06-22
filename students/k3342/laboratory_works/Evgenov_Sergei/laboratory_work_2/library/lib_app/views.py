@@ -6,6 +6,7 @@ from rest_framework import permissions
 from lib_app.models import Hall, Book, Reader, Attachment
 from lib_app.serializers import HallSerializer, BookSerializer, ReaderSerializer
 from lib_app.serializers import AttachmentSerializer, AttachmentSerializer_2
+from lib_app.serializers import AttachmentSerializer_3
 
 
 class Hall_V(APIView):
@@ -40,7 +41,9 @@ class Attachment_V(APIView):
         return Response({"data": serializer.data})
 
 
-class Books_person(APIView):
+class Reader_books(APIView):
+
+    permission_classes = [permissions.IsAuthenticated, ]
 
     def get(self, request):
         person = request.GET.get("reader")
@@ -49,3 +52,12 @@ class Books_person(APIView):
         attachments = Attachment.objects.filter(reader=person, attachment_finishing_date=None)
         serializer = AttachmentSerializer_2(attachments, many=True)
         return Response({"reader": reader.data,"books": serializer.data})
+
+    def post(self, request):
+        # person = request.data.get("reader")
+        attachments =  AttachmentSerializer_3(data=request.data)
+        if attachments.is_valid():
+            attachments.save()
+            return Response({"status": "Add"})
+        else:
+            return Response({"status": "Error"})

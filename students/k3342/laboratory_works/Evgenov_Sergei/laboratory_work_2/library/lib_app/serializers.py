@@ -41,6 +41,13 @@ class BookSerializer_2(serializers.ModelSerializer):
         fields = ("title", "author", "cipher", "hall")
 
 
+class BookSerializer_3(serializers.ModelSerializer):
+
+    class Meta:
+        model = Book
+        fields = ("cipher", "hall")
+
+
 class AttachmentSerializer(serializers.ModelSerializer):
 
     reader = ReaderSerializer_2()
@@ -57,3 +64,11 @@ class AttachmentSerializer_2(serializers.ModelSerializer):
     class Meta:
         model = Attachment
         fields = ("book", "attachment_starting_date")
+
+
+class AttachmentSerializer_3(serializers.ModelSerializer):
+
+    # book = BookSerializer_3()
+    class Meta:
+        model = Attachment
+        fields = ("reader", "book", "attachment_starting_date")

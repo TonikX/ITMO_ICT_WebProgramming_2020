@@ -58,7 +58,6 @@ class Hotel(models.Model):
     description = models.TextField()
     capacity = models.IntegerField()  # suites/rooms
     facilities = MultiSelectField(choices=OFFERS, default='wifi')
-    #facilities = models.CharField(max_length=10,choices=OFFERS)
     contacts = models.CharField(max_length=50)
 
     def __str__(self):

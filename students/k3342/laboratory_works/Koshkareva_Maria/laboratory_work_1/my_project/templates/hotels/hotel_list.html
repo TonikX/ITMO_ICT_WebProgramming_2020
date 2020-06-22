@@ -1,5 +1,4 @@
 <body>
-<body>
 {% if user.is_active %}
     <p align="right">
     <b><a href="{% url 'account_logout'%}">Log Out</a></b>
@@ -15,7 +14,8 @@
 
 <div align="center">
     {%for object in object_list%}
-    <b><a href="{% url 'hotel-info' hotel_id=object.id%}">{{ object.name }}</a></b> <br>
+    <b><a href="{% url 'hotel-info' hotel_id=object.id%}">
+        {{ object.name }}</a></b> <br>
     <i>Address:</i> {{ object.address }}<br>
     <i>Offers: </i>{{ object.get_facilities_display }} <br>
         <p style="width:65%; border:2px solid;padding:5px;">

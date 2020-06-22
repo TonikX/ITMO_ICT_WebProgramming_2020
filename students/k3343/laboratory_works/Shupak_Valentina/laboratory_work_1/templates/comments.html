@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<h1>Comment Board for {{hotel.name}}</h1>
+</head>
+<body>
+<li><a href="{% url 'main' %}">Главная страниица</a></li>
+<li><a href="{% url 'account_login' %}">Войти</a></li>
+<li><a href="{% url 'hotels' %}">Отели</a></li>
+<li><a href="{% url 'comment' %}">Новый комментарий</a></li>
+<li><a href="{% url 'account_logout' %}">Выйти</a></li>
+    <table>
+        {% for comment in comments %}
+        <tr>
+            <td>Author:{{comment.username}}</td>
+        </tr>
+        <tr>
+            <td>Rating: {{comment.rating}}</td>
+        <tr>
+            <td><h3>{{comment.comment}}</h3></td>
+        </tr>
+        <tr>
+            <td>Arrived on:{{comment.start}} Departed on:{{comment.end}}</td>
+        </tr>
+        <tr>
+            <td>Posted on:{{comment.post}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <hr>
+    <hr>
+</body>
+</html>

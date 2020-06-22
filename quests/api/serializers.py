@@ -83,7 +83,7 @@ class QuestDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Quest
         fields = '__all__'
-        read_only_fields = ['tasks', 'answers', 'penalty_times']
+        read_only_fields = ['tasks', 'penalty_times']
 
     def get_penalty_times(self, obj):
         return [pt.penalty for pt in obj.penalty_times.all()]

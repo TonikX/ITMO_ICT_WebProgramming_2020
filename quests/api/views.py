@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User
 from rest_framework import generics
 from rest_framework.exceptions import ValidationError
 
@@ -7,14 +6,17 @@ from quests.api.serializers import QuestListSerializer, QuestDetailSerializer, T
     AnswerCreateSerializer, AnswerDetailSerializer, TipCreateSerializer, TipDetailSerializer, \
     PenaltyTimeCreateSerializer, PenaltyTimeDetailSerializer
 from quests.models import Quest, Task, Answer, Tip, PenaltyTime
+from quests.permissions import IsAdminOrReadOnly
 
 
 class PenaltyTimeCreateView(generics.CreateAPIView):
+    permission_classes = (IsAdminOrReadOnly, )
     queryset = PenaltyTime.objects.all()
     serializer_class = PenaltyTimeCreateSerializer
 
 
 class PenaltyTimeDetailView(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (IsAdminOrReadOnly,)
     queryset = PenaltyTime.objects.all()
     serializer_class = PenaltyTimeDetailSerializer
 
@@ -30,6 +32,7 @@ class PenaltyTimeDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 
 class TipCreateView(generics.CreateAPIView):
+    permission_classes = (IsAdminOrReadOnly,)
     queryset = Tip.objects.all()
     serializer_class = TipCreateSerializer
 
@@ -44,32 +47,37 @@ class TipCreateView(generics.CreateAPIView):
 
 
 class TipDetailView(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (IsAdminOrReadOnly,)
     queryset = Tip.objects.all()
     serializer_class = TipDetailSerializer
 
 
 class AnswerCreateView(generics.CreateAPIView):
+    permission_classes = (IsAdminOrReadOnly,)
     queryset = Answer.objects.all()
     serializer_class = AnswerCreateSerializer
-    User
 
 
 class AnswerDetailView(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (IsAdminOrReadOnly,)
     queryset = Answer.objects.all()
     serializer_class = AnswerDetailSerializer
 
 
 class TaskCreateView(generics.CreateAPIView):
+    permission_classes = (IsAdminOrReadOnly,)
     queryset = Task.objects.all()
     serializer_class = TaskCreateSerializer
 
 
 class TaskDetailView(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (IsAdminOrReadOnly,)
     queryset = Task.objects.all()
     serializer_class = TaskDetailSerializer
 
 
 class QuestListView(generics.ListCreateAPIView):
+    permission_classes = (IsAdminOrReadOnly,)
     queryset = Quest.objects.all()
 
     def get_serializer_class(self):
@@ -79,5 +87,6 @@ class QuestListView(generics.ListCreateAPIView):
 
 
 class QuestDetailView(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (IsAdminOrReadOnly,)
     queryset = Quest.objects.all()
     serializer_class = QuestDetailSerializer

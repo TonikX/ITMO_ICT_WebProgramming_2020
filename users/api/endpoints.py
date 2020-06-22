@@ -7,6 +7,6 @@ app_name = 'users'
 urlpatterns = [
     path('questMaker', views.QuestMakerListView.as_view(), name='quest-maker-list'),
     path('team', views.TeamListView.as_view(), name='team-register-list'),
-    path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh', TokenRefreshView.as_view(), name='token_refresh'),
 ]

@@ -1,0 +1,13 @@
+{% extends 'races_table/base.html' %}
+
+{% block title %}
+    Выход
+{% endblock %}
+
+{% block content %}
+    <h1>Вы вышли из аккаунта</h1>
+    <p>Вы можете снова <a href="{% url "login" %}">войти</a> в аккаунт</p>
+    <p> Либо перейти на <a href="{% url "table_url" %}">главную страницу</a></p>
+    </div>
+{% endblock %}
+

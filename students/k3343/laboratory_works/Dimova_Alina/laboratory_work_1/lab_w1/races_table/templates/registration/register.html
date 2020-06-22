@@ -1,0 +1,17 @@
+{% extends 'races_table/base.html' %}
+
+{% block title %}
+    Страница регистрации
+{% endblock %}
+
+{% block content %}
+    <h1 style="margin: 20px"> Создание нового аккаунта</h1>
+    <h5 style="margin: 20px"> <em>Пожалуйста, заполните форму</em></h5> <hr>
+    <form method='POST' action='.'>
+    <div class="form-group" style="margin: 20px">
+        {{ user_form.as_p }}
+        {% csrf_token %}
+        <p><input type='submit' value='Зарегистрироваться'></p>
+    </div>
+    </form>
+{% endblock %}

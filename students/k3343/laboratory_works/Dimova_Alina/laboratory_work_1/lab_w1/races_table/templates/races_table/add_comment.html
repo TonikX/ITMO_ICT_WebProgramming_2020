@@ -1,0 +1,15 @@
+{% extends 'races_table/base.html' %}
+{% block title %}
+    Добавить комментарий
+{% endblock %}
+
+{% block content %}
+    <div style="margin: 20px">
+    <h4 class="ml-5"> Добавить комментарий к участнику {{ driver.fio }} </h4>
+    <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Добавить" onclick="{% url 'table_url' %}">
+    </form>
+    </div>
+{% endblock %}

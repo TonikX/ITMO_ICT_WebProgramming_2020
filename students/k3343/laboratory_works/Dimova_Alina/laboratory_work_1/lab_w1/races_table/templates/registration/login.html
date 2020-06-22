@@ -1,0 +1,24 @@
+{% extends 'races_table/base.html' %}
+
+{% block title %}
+    Страница входа
+{% endblock %}
+
+{% block content %}
+    <h1 style="margin: 20px">Войдите в свой аккаунт</h1>
+    {% if form.password.errors %}
+        <p>
+            Неверное имя пользователя или пароль!
+        </p>
+    {% endif %}
+    <p style="margin: 20px"><em>Используйте следующую форму для входа либо <a href="{% url "register" %}">зарегистрируйтесь</a></em></p>
+    <hr>
+    <div class="login-form" style="margin: 10px">
+        <form action="{% url 'login' %}" method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}"/>
+            <p><input type="submit" value="Войти"></p>
+        </form>
+    </div>
+{% endblock %}

@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+
 urlpatterns = [
     path('owner/<int:owner_id>/', views.detail, name='detail'),
     path('blog/', views.post_list, name='post_list'),
@@ -10,3 +11,5 @@ urlpatterns = [
     path('create_owner/', views.create_owner),
     path('create_car/', views.CreateCar.as_view(template_name="Create_Car.html")),
 ]
+
+

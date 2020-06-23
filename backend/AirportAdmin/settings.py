@@ -80,7 +80,7 @@ DATABASES = {
         'NAME': 'airport_db_final',
         'USER': 'admin',
         'PASSWORD': 'admin',
-        'HOST': 'db',
+        'HOST': os.environ.get('POSTGRES_HOST', default='localhost'),
         'PORT': '5432',
     }
 }

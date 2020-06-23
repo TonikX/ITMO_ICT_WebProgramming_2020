@@ -3,29 +3,11 @@ from rest_framework import serializers
 from quests.models import Quest, Task, Answer, Tip, PenaltyTime
 
 
-class PenaltyTimeCreateSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = PenaltyTime
-        fields = '__all__'
-
-
 class PenaltyTimeDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = PenaltyTime
         fields = '__all__'
         read_only_fields = ['quest']
-
-
-class PenaltyTimeListSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = PenaltyTime
-        fields = '__all__'
-
-
-class TipCreateSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Tip
-        fields = '__all__'
 
 
 class TipDetailSerializer(serializers.ModelSerializer):
@@ -41,23 +23,11 @@ class TipListSerializer(serializers.ModelSerializer):
         fields = ['tip']
 
 
-class AnswerCreateSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Answer
-        fields = '__all__'
-
-
 class AnswerDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Answer
         fields = '__all__'
         read_only_fields = ['task']
-
-
-class TaskCreateSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Task
-        fields = '__all__'
 
 
 class TaskDetailSerializer(serializers.ModelSerializer):
@@ -68,18 +38,6 @@ class TaskDetailSerializer(serializers.ModelSerializer):
         model = Task
         fields = '__all__'
         read_only_fields = ['quest', 'answers', 'tips']
-
-
-class TaskListSerializer(serializers.ModelSerializer):
-    answers = serializers.SerializerMethodField()
-    tips = TipListSerializer(many=True, required=True)
-
-    class Meta:
-        model = Task
-        fields = ['answers', 'content', 'tips']
-
-    def get_answers(self, obj):
-        return [answer.answer for answer in obj.answers.all()]
 
 
 class QuestDetailSerializer(serializers.ModelSerializer):

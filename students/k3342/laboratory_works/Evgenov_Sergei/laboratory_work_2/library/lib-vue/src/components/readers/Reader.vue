@@ -1,13 +1,10 @@
 <template>
-  <div>
-    <ul>
-      <li v-for="reader in readers" v-bind:key="reader.id">
-        <h3>{{reader.attributes.full_name}}</h3>
-        Читательский билет №{{reader.attributes.library_card_num}}<br>
-        Адрес: {{reader.attributes.home_address}}
-      </li>
-    </ul>
-  </div>
+  <mu-col span="2" xl="2">
+    <div v-for="reader in readers" v-bind:key="reader.id" class="readers">
+      <h3 @click="openFull(reader.id)">{{reader.attributes.full_name}}</h3>
+      <small>Читательский билет №{{reader.attributes.library_card_num}}</small><br>
+    </div>
+  </mu-col>
 </template>
 
 <script>
@@ -28,13 +25,11 @@ export default {
         success: (response) => {
           this.readers = response.data
           console.log(response)
-        },
-        error: (response) => {
-          if (response.status === 400) {
-            alert('Логин или пароль не верен')
-          }
         }
       })
+    },
+    openFull (id) {
+      this.$emit('openFull', id)
     }
   },
   created () {
@@ -47,5 +42,10 @@ export default {
 </script>
 
 <style scoped>
-
+  h3 {
+    cursor: pointer
+  }
+  .readers {
+    box-shadow: 1px 2px 3px #888888
+  }
 </style>

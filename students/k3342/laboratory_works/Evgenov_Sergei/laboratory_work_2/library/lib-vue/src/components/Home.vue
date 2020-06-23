@@ -1,20 +1,41 @@
 <template>
-  <div>
-    <h2>Сайт библиотеки на Vue.js</h2>
-    <button v-if="!auth" @click="goLogin">Вход</button>
-    <button v-else @click="logout">Выход</button>
+  <mu-container>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <mu-appbar style="width: 100%;" color="primary">
+      <mu-button icon slot="left">
+        <mu-icon value="menu"></mu-icon>
+      </mu-button>
+      Сайт библиотеки на Vue.js
+      <mu-button v-if="!auth" @click="goLogin" flat slot="right">Вход</mu-button>
+      <mu-button v-else @click="logout" flat slot="right">Выход</mu-button>
+    </mu-appbar>
 
-    <reader v-if="auth"></reader>
-  </div>
+    <mu-row>
+      <reader v-if="auth" @openFull="openFull"></reader>
+      <reader_books v-if="reader_full.show" :id="reader_full.id"></reader_books>
+    </mu-row>
+  </mu-container>
 </template>
 
 <script>
-import Reader from '../components/Reader'
+import Reader from '../components/readers/Reader'
+// eslint-disable-next-line
+import Reader_books from '../components/readers/Reader_books'
 
 export default {
   name: 'Home',
   components: {
-    Reader
+    Reader,
+    Reader_books
+  },
+  data () {
+    return {
+      reader_full: {
+        id: '',
+        show: false
+      }
+    }
   },
   computed: {
     auth () {
@@ -30,6 +51,10 @@ export default {
     logout () {
       sessionStorage.removeItem('auth_token')
       window.location = '/'
+    },
+    openFull (id) {
+      this.reader_full.id = id
+      this.reader_full.show = true
     }
   }
 }

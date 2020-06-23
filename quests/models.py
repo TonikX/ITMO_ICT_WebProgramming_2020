@@ -8,25 +8,16 @@ class Quest(models.Model):
     duration = models.TimeField()
     welcome_text = models.CharField(max_length=1000)
     farewell_text = models.CharField(max_length=1000)
-
-    def __str__(self):
-        return f"{self.title}, {self.place}"
+    penalty_1 = models.TimeField()
+    penalty_2 = models.TimeField()
 
 
 class Task(models.Model):
     quest = models.ForeignKey(Quest, on_delete=models.CASCADE, related_name='tasks')
+    title = models.CharField(max_length=1000)
     content = models.CharField(max_length=1000)
-
-    def __str__(self):
-        return f"{self.content[:20]}..."
-
-
-class Tip(models.Model):
-    task = models.ForeignKey(Task, on_delete=models.CASCADE, related_name='tips')
-    tip = models.CharField(max_length=200)
-
-    def __set__(self):
-        return self.tip
+    tip_1 = models.CharField(max_length=1000, blank=True)
+    tip_2 = models.CharField(max_length=1000, blank=True)
 
 
 class Answer(models.Model):
@@ -34,12 +25,4 @@ class Answer(models.Model):
     answer = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.answer
-
-
-class PenaltyTime(models.Model):
-    quest = models.ForeignKey(Quest, on_delete=models.CASCADE, related_name='penalty_times')
-    penalty = models.TimeField()
-
-    def __str__(self):
-        return self.penalty
+        return str(self.answer)

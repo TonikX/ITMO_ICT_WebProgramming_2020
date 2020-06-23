@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+{% block title %}<title>Hotels: комментарии к отелям</title>{% endblock %}
+{% block content %}
+<h1>Список отелей</h1>
+    <table class="table table-bordered">
+        {% for hotel in hotels %}
+       <tr>
+           <td class="table-info" colspan="2"><a href="{% url 'single_hotel' pk=hotel.id %}"><h3>{{hotel.name}}</h3></a></td>
+       </tr>
+        <tr>
+            <td>Адрес</td>
+            <td>{{hotel.address}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock%}

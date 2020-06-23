@@ -25,62 +25,13 @@
 
 <script>
     import Quest from "../components/Quest";
+    import {httpClient} from "../api/httpClient";
 
     export default {
         name: "quests",
         data() {
             return {
-                quests: [
-                    {
-                        id: 0,
-                        title: 'abacaba',
-                        place: 'something',
-                        start_time: '3:00',
-                        duration: '12:00'
-                    },
-                    {
-                        id: 0,
-                        title: 'abacaba',
-                        place: 'something',
-                        start_time: '3:00',
-                        duration: '12:00'
-                    },
-                    {
-                        id: 0,
-                        title: 'abacaba',
-                        place: 'something',
-                        start_time: '3:00',
-                        duration: '12:00'
-                    },
-                    {
-                        id: 0,
-                        title: 'abacaba',
-                        place: 'something',
-                        start_time: '3:00',
-                        duration: '12:00'
-                    },
-                    {
-                        id: 0,
-                        title: 'abacaba',
-                        place: 'something',
-                        start_time: '3:00',
-                        duration: '12:00'
-                    },
-                    {
-                        id: 0,
-                        title: 'abacaba',
-                        place: 'something',
-                        start_time: '3:00',
-                        duration: '12:00'
-                    },
-                    {
-                        id: 0,
-                        title: 'abacaba',
-                        place: 'something',
-                        start_time: '3:00',
-                        duration: '12:00'
-                    }
-                ]
+                quests: []
             }
         },
         components: {
@@ -88,14 +39,17 @@
         },
         methods: {
             createNewQuest() {
-                this.quests.push({
-                    id: 0,
-                    title: "qwerut",
-                    place: "wefwe",
-                    start_time: "ejje",
-                    duration: "wjwjw"
-                })
+                this.$router.push({name: 'createQuest'})
             }
+        },
+        mounted() {
+            httpClient.get('/quests')
+                .then((response) => {
+                    this.quests = response.data
+                })
+                .catch((error) => {
+                    console.log("quests load error " + JSON.stringify(error));
+                })
         }
     }
 </script>

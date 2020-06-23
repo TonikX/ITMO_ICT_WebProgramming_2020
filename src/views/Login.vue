@@ -34,8 +34,8 @@
 </template>
 
 <script>
-    import { httpClient } from "../api/httpClient"
-    import { TokenStorage } from "../api/tokenStorage";
+    import {httpClient} from "../api/httpClient"
+    import {TokenStorage} from "../api/tokenStorage";
     import router from "../router";
 
     export default {
@@ -51,7 +51,7 @@
         }),
         methods: {
             login() {
-                httpClient.post('/users/token', {
+                httpClient.post('/auth', {
                     username: this.username,
                     password: this.password
                 })
@@ -59,7 +59,7 @@
                         TokenStorage.storeAccessToken(response.data.access);
                         TokenStorage.storeRefreshToken(response.data.refresh);
                         console.log('response login' + JSON.stringify(response));
-                        router.push('quests')
+                        router.push({name: 'quests'})
                     })
                     .catch((error) => {
                         TokenStorage.clear();

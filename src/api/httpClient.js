@@ -31,6 +31,7 @@ httpClientInstance.interceptors.response.use(
     (error) => {
         const originalRequest = error.config;
         if (error.response.status === 401 && !error.config.url.endsWith(REFRESH_TOKEN_ROUTE)) {
+            console.log("refresh " + TokenStorage.getRefreshToken());
             return httpClientInstance.post(REFRESH_TOKEN_ROUTE, {refresh: TokenStorage.getRefreshToken()})
                 .then((response) => {
                     console.log("Access token was successfully updated");
@@ -41,7 +42,7 @@ httpClientInstance.interceptors.response.use(
                     if (error.response.status === 401) {
                         console.log("Unable to refresh token. Logout");
                         TokenStorage.clear();
-                        router.push("login");
+                        router.push({name: "login"});
                     }
                 })
         }

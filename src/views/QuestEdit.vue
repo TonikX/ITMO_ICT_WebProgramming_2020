@@ -110,20 +110,18 @@
                                             hint="Будет показан участникам по окончанию квеста"
                                             required
                                             :rules="rules"/>
-                                <v-menu v-for="(penalty_time, index) in quest.penalty_times"
-                                        :key="index"
-                                        ref="penalty_time_menu"
-                                        v-model="penalty_time_menu[index]"
+                                <v-menu ref="penalty_time_menu_1"
+                                        v-model="penalty_time_menu_1"
                                         :close-on-content-click="false"
                                         :nudge-right="40"
-                                        :return-value.sync="quest.penalty_times[index]"
+                                        :return-value.sync="quest.penalty_1"
                                         transition="scale-transition"
                                         offset-y
                                         max-width="290px"
                                         min-width="290px">
                                     <template v-slot:activator="{ on, attrs }">
-                                        <v-text-field v-model="quest.penalty_times[index]"
-                                                      :label="'Штрафное время за подсказку №' + (index + 1)"
+                                        <v-text-field v-model="quest.penalty_1"
+                                                      label="Штрафное время за подсказку №1"
                                                       prepend-icon="timer"
                                                       readonly
                                                       v-bind="attrs"
@@ -131,11 +129,37 @@
                                                       required
                                                       :rules="rules"/>
                                     </template>
-                                    <v-time-picker v-if="penalty_time_menu[index]"
-                                                   v-model="quest.penalty_times[index]"
+                                    <v-time-picker v-if="penalty_time_menu_1"
+                                                   v-model="quest.penalty_1"
                                                    full-width
                                                    format="24hr"
-                                                   @click:minute="$refs.penalty_time_menu[index].save(quest.penalty_times[index])">
+                                                   @click:minute="$refs.penalty_time_menu_1.save(quest.penalty_1)">
+                                    </v-time-picker>
+                                </v-menu>
+                                <v-menu ref="penalty_time_menu_2"
+                                        v-model="penalty_time_menu_2"
+                                        :close-on-content-click="false"
+                                        :nudge-right="40"
+                                        :return-value.sync="quest.penalty_2"
+                                        transition="scale-transition"
+                                        offset-y
+                                        max-width="290px"
+                                        min-width="290px">
+                                    <template v-slot:activator="{ on, attrs }">
+                                        <v-text-field v-model="quest.penalty_2"
+                                                      label="Штрафное время за подсказку №1"
+                                                      prepend-icon="timer"
+                                                      readonly
+                                                      v-bind="attrs"
+                                                      v-on="on"
+                                                      required
+                                                      :rules="rules"/>
+                                    </template>
+                                    <v-time-picker v-if="penalty_time_menu_2"
+                                                   v-model="quest.penalty_2"
+                                                   full-width
+                                                   format="24hr"
+                                                   @click:minute="$refs.penalty_time_menu_2.save(quest.penalty_2)">
                                     </v-time-picker>
                                 </v-menu>
                             </v-card-text>
@@ -156,7 +180,7 @@
                                                       required
                                                       hint="Используется только в админ панеле"
                                                       :rules="rules"/>
-                                        <v-text-field v-model="task.question"
+                                        <v-text-field v-model="task.content"
                                                       label="Вопрос"
                                                       prepend-icon="live_help"
                                                       required
@@ -168,10 +192,12 @@
                                                     hide-selected
                                                     hint="Здесь необходимо перечислить все возможные варианты ответов"
                                                     chips/>
-                                        <v-text-field v-for="(tip, index) in task.tips"
-                                                      :key="index"
-                                                      v-model="task.tips[index]"
-                                                      :label="'Подсказка №' + (index + 1)"
+                                        <v-text-field v-model="task.tip_1"
+                                                      label="Подсказка №1"
+                                                      prepend-icon="emoji_objects"
+                                                      hint="Если поле пустое, то участник не увидит подсказку"/>
+                                        <v-text-field v-model="task.tip_2"
+                                                      label="Подсказка №2"
                                                       prepend-icon="emoji_objects"
                                                       hint="Если поле пустое, то участник не увидит подсказку"/>
                                         <v-row class="justify-center">
@@ -212,6 +238,8 @@
 </template>
 
 <script>
+    import {httpClient} from "../api/httpClient";
+
     export default {
         name: "QuestDetail",
         data: () => ({
@@ -219,34 +247,19 @@
             date_menu: false,
             start_time_menu: false,
             duration_menu: false,
-            penalty_time_menu: [false, false],
+            penalty_time_menu_1: false,
+            penalty_time_menu_2: false,
             quest: {
-                id: 0,
                 title: '',
-                place: 'abacaba',
+                place: '',
                 date: new Date().toISOString().substr(0, 10),
                 start_time: null,
                 duration: null,
-                welcome_text: 'welcome text',
-                farewell_text: 'farewell text',
-                penalty_times: [
-                    '00:10',
-                    '00:15'
-                ],
-                tasks: [
-                    {
-                        title: "title",
-                        question: "It's question",
-                        answers: ["ab", "abac", "qwerty"],
-                        tips: ["tip1", "tip2"]
-                    },
-                    {
-                        title: "title",
-                        question: "It's question",
-                        answers: ["ab", "abac", "qwerty"],
-                        tips: ["tip1", "tip2"]
-                    }
-                ]
+                welcome_text: '',
+                farewell_text: '',
+                penalty_1: '00:05',
+                penalty_2: '00:15',
+                tasks: []
             },
             rules: [
                 v => !!v || 'Это поле обязательно'
@@ -254,21 +267,67 @@
         }),
         methods: {
             remove() {
-                console.log('remove ' + JSON.stringify(this.quest))
+                httpClient.delete('/quests/' + this.$route.params.id)
+                    .then(() => {
+                        this.$router.push({name: 'quests'})
+                    });
             },
             save() {
-                console.log('save ' + JSON.stringify(this.quest))
+                const questForSave = Object.assign({}, this.quest);
+                const start_time = `${this.quest.date}T${this.quest.start_time}:00Z`;
+                delete questForSave.date;
+                questForSave.start_time = start_time;
+                if (this.$route.params.id !== undefined) {
+                    const questId = this.$route.params.id;
+                    httpClient.put(`/quests/${questId}/`, questForSave)
+                        .then((response) => {
+                            console.log(`save quest by Id: response ${response}`)
+                        })
+                        .catch((error) => {
+                            console.log(`save quest by Id: error ${error}`)
+                        })
+                } else {
+                    httpClient.post(`/quests/`, questForSave)
+                        .then((response) => {
+                            console.log(`save quest: response ${response}`);
+                            this.$router.push({name: 'editQuest', params: {id: response.data.id}})
+                        })
+                        .catch((error) => {
+                            console.log(`save quest: error ${error}`)
+                        })
+                }
+                console.log('save ' + JSON.stringify(questForSave))
             },
             createNewTask() {
                 this.quest.tasks.push({
-                    title: "Задание",
-                    question: "",
+                    title: "Новое задание",
+                    content: "",
                     answers: [],
-                    tips: ["", ""]
+                    tip_1: "",
+                    tip_2: ""
                 })
             },
             removeTask(index) {
                 this.quest.tasks.splice(index, 1);
+            },
+        },
+        mounted() {
+            if (this.$route.params.id !== undefined) {
+                const questId = this.$route.params.id;
+                console.log("request quest " + questId);
+                httpClient.get(`/quests/${questId}/`)
+                    .then((response) => {
+                        const start_time = new Date(response.data.start_time);
+                        response.data.start_time = start_time.toISOString().substr(11, 5);
+                        response.data.date = start_time.toISOString().substr(0, 10);
+                        response.data.penalty_1 = response.data.penalty_1.substr(0, 5);
+                        response.data.penalty_2 = response.data.penalty_2.substr(0, 5);
+                        response.data.duration = response.data.duration.substr(0, 5);
+                        this.quest = response.data
+                    })
+                    .catch((error) => {
+                        console.log("Catch error when get quest: " + JSON.stringify(error))
+                    })
             }
         }
     }

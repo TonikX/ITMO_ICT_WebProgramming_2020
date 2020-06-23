@@ -61,7 +61,7 @@
         props: ['quest'],
         methods: {
             edit(id) {
-                this.$router.push({path: `quests/${id}`})
+                this.$router.push({name: 'editQuest', params: {id: id}})
             }
         }
     }

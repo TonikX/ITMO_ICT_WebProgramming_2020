@@ -31,7 +31,7 @@
                         <v-icon>event</v-icon>
                     </v-list-item-icon>
                     <v-list-item-content>
-                        <v-list-item-title>{{ quest.start_time }}</v-list-item-title>
+                        <v-list-item-title>{{ dateStart }}</v-list-item-title>
                         <v-list-item-subtitle>Дата проведения</v-list-item-subtitle>
                     </v-list-item-content>
                 </v-list-item>
@@ -40,7 +40,7 @@
                         <v-icon>timelapse</v-icon>
                     </v-list-item-icon>
                     <v-list-item-content>
-                        <v-list-item-title>{{ quest.duration }}</v-list-item-title>
+                        <v-list-item-title>{{ duration }}</v-list-item-title>
                         <v-list-item-subtitle>Продолжительность</v-list-item-subtitle>
                     </v-list-item-content>
                 </v-list-item>
@@ -63,12 +63,16 @@
             edit(id) {
                 this.$router.push({name: 'editQuest', params: {id: id}})
             }
+        },
+        computed: {
+            dateStart: function () {
+                console.log(`start time ${this.quest.start_time}`);
+                const start_time = new Date(this.quest.start_time).toISOString();
+                return start_time.substr(0, 10) + ", " + start_time.substr(11, 5)
+            },
+            duration: function () {
+                return new Date('1970-01-01T' + this.quest.duration + 'Z').toISOString().substr(11, 5)
+            }
         }
     }
 </script>
-
-<style scoped>
-    /*.md-card {*/
-    /*    margin: 8px*/
-    /*}*/
-</style>

@@ -7,7 +7,7 @@ app_name = "airport_app"
 
 urlpatterns = [
 	path('auth/', include('djoser.urls')),
-	path('auth/token', obtain_auth_token, name='token'),
+	path('auth/token/', obtain_auth_token, name='token'),
 
 	path('flights/', FlightsView.as_view()),
 	path('flights/<int:pk>', FlightView.as_view()),
@@ -31,4 +31,6 @@ urlpatterns = [
 	path('flights/crew/<int:pk>', CrewView.as_view()),
 
 	path('challengers/', ChallengerView.as_view()),
+	path('challengers/list', ChallengerListView.as_view()),
+
 ]

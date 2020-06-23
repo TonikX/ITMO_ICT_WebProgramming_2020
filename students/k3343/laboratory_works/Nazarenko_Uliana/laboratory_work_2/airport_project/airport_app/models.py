@@ -24,7 +24,7 @@ class Plane(models.Model):
 	is_repair = models.BooleanField(default=False) # в ремонте или нет?
 
 	def __str__(self):
-		return f'{self.plane_model}, {self.get_plane_type_display}'
+		return f'{self.plane_model}, {self.get_plane_type_display()}'
 
 
 class Flight(models.Model):
@@ -100,7 +100,7 @@ class Challenger(models.Model):
 	work_experience = models.IntegerField()
 	position = models.CharField(choices=POSITIONS, max_length=1, default='1')
 	passport = models.IntegerField()
-	is_hired = models.BooleanField(default=True) # допущен ли к полёту
+	is_hired = models.BooleanField(default=False)
 
 	def __str__(self):
 		return f'{self.last_name} {self.first_name} {self.patronymic}'

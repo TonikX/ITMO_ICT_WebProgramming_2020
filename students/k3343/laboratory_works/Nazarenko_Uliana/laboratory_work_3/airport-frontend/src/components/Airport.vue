@@ -12,10 +12,6 @@
               <label for="departure">Прибытие</label>
               <b-form-input id="departure" v-model="departure"></b-form-input>
             </div>
-            <!-- <div class="m-1">
-              <label for="date">Дата</label>
-              <b-form-datepicker id="date" v-model="date"></b-form-datepicker>
-            </div> -->
             <div class="m-1">
               <label for="tickets">Количество билетов</label>
               <b-form-input id="tickets" type="number" v-model="tickets"></b-form-input>

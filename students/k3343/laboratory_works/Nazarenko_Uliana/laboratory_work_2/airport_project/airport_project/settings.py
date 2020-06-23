@@ -25,7 +25,7 @@ SECRET_KEY = '*c(9p(d*+65g)e6gu$+wfv@@gcrv-*3nt10@r9b%scx$v$qs%6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'airport_app',
     'corsheaders',
     'rest_framework',
+    'rest_framework.authtoken',
     'djoser'
 ]
 
@@ -82,7 +83,11 @@ WSGI_APPLICATION = 'airport_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'airport_db'
+        'NAME': 'airport_db',
+	'USER': 'postgres',
+	'PASSWORD': 'postgres',
+	'HOST': 'db',
+	'PORT': '5432'
     }
 }
 
@@ -106,7 +111,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 CORS_ORIGIN_WHITELIST = [
-    "http://localhost:8080"
+    "http://localhost:8080",
+    "http://0.0.0.0:8080",
+    "http://127.0.0.1:8080"
 ]
 
 CORS_ALLOW_METHODS = [

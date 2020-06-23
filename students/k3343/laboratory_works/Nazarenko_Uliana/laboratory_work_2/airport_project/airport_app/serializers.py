@@ -44,6 +44,15 @@ class ChallengerSerializer(serializers.ModelSerializer):
 		fields = '__all__'
 
 
+class GetChallengerSerializer(serializers.ModelSerializer):
+	company = CompanySerializer()
+	position = serializers.CharField(source='get_position_display')
+
+	class Meta():
+		model = Challenger
+		fields = '__all__'
+
+
 class CrewSerializer(serializers.ModelSerializer):
 	class Meta():
 		model = Crew

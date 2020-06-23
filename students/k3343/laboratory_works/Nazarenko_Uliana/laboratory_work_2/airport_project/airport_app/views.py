@@ -123,3 +123,8 @@ class CrewView(generics.RetrieveAPIView):
 class ChallengerView(generics.CreateAPIView):
 	queryset = Challenger.objects.all()
 	serializer_class = ChallengerSerializer
+
+
+class ChallengerListView(generics.ListAPIView):
+	queryset = Challenger.objects.all()
+	serializer_class = GetChallengerSerializer

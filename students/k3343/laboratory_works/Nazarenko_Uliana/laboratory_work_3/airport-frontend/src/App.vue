@@ -5,7 +5,11 @@
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item to="/challenger">Отправить резюме</b-nav-item>
+          <b-nav-item v-for="navItem in navItems" :key="navItem.name" :to="navItem.link">{{ navItem.name }}</b-nav-item>
+          <b-nav-item v-if="!isLogin" to="/login">Вход</b-nav-item>
+          <b-nav-item v-if="!isLogin" to="/register">Регистрация</b-nav-item>
+          <b-nav-item v-if="isLogin" to="/cabinet">Личный кабинет</b-nav-item>
+          <b-nav-item v-if="isLogin" @click="logout()">Выход</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -16,7 +20,28 @@
 </template>
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data () {
+    return {
+      navItems: [
+        { link: '/challenger', name: 'Отправить резюме' }
+      ],
+      isLogin: false
+    }
+  },
+  mounted () {
+    if (sessionStorage.getItem('token') && sessionStorage.getItem('username')) {
+      this.isLogin = true
+    }
+
+    console.log(this.isLogin)
+  },
+  methods: {
+    logout () {
+      sessionStorage.clear()
+      this.isLogin = false
+    }
+  }
 }
 
 </script>

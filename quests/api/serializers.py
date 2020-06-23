@@ -48,40 +48,39 @@ class QuestDetailSerializer(serializers.ModelSerializer):
         model = Quest
         fields = '__all__'
 
+    def fill_quest(self, instance, tasks, penalty_times):
+        for penalty_time in penalty_times:
+            PenaltyTime.objects.create(quest=instance, **penalty_time)
+        for task in tasks:
+            answers = task.pop('answers')
+            tips = task.pop('tips')
+            task_instance = Task.objects.create(quest=instance, **task)
+            for answer in answers:
+                Answer.objects.create(task=task_instance, **answer)
+            for tip in tips:
+                Tip.objects.create(task=task_instance, **tip)
+
     def create(self, validated_data):
         tasks = validated_data.pop('tasks')
         penalty_times = validated_data.pop('penalty_times')
         quest_instance = Quest.objects.create(**validated_data)
-        for penalty_time in penalty_times:
-            PenaltyTime.objects.create(quest=quest_instance, **penalty_time)
-        for task in tasks:
-            task_instance = Task.objects.create(quest=quest_instance, **task)
-            answers = tasks.pop('answers')
-            for answer in answers:
-                Answer.objects.create(task=task_instance, **answer)
-            tips = tasks.pop('tips')
-            for tip in tips:
-                Tip.objects.create(task=task_instance, **tip)
+        self.fill_quest(quest_instance, tasks=tasks, penalty_times=penalty_times)
         return quest_instance
 
     def update(self, instance, validated_data):
         tasks = validated_data.pop('tasks')
         penalty_times = validated_data.pop('penalty_times')
         instance.penalty_times.all().delete()
-        for penalty_time in penalty_times:
-            PenaltyTime.objects.create(quest=instance, **penalty_time)
         instance.tasks.all().delete()
-        for task in tasks:
-            task_instance = Task.objects.create(quest=instance, **task)
-            answers = tasks.pop('answers')
-            task.answers.all().delete()
-            for answer in answers:
-                Answer.objects.create(task=task_instance, **answer)
-            tips = tasks.pop('tips')
-            task.tips.all().delete()
-            for tip in tips:
-                Tip.objects.create(task=task_instance, **tip)
+        self.fill_quest(instance, tasks=tasks, penalty_times=penalty_times)
         return super().update(instance, validated_data)
+
+    def validate(self, attrs):
+        penalty_times = len(attrs['penalty_times'])
+        for answer in attrs['tasks']:
+            if len(answer['tips']) != penalty_times:
+                raise serializers.ValidationError("Number of tips must be equal to number of penalty times")
+        return attrs
 
 
 class QuestListSerializer(serializers.ModelSerializer):

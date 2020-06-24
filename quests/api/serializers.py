@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
-from quests.models import Quest, Task, Answer
+from quests.models import Quest, Task, Answer, TeamStatistic, TaskStatistic
+from users.api.serializerts import TeamSerializer
 
 
 class TaskDetailSerializer(serializers.ModelSerializer):
@@ -8,7 +9,7 @@ class TaskDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Task
-        fields = ['answers', 'content', 'tip_1', 'tip_2', 'title']
+        fields = ['id', 'answers', 'content', 'tip_1', 'tip_2', 'title']
 
 
 class QuestDetailSerializer(serializers.ModelSerializer):
@@ -42,3 +43,43 @@ class QuestListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Quest
         fields = ['id', 'title', 'place', 'start_time', 'duration']
+
+
+class TaskStatisticListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TaskStatistic
+        fields = ['id', 'task', 'tip_1_used', 'tip_2_used', 'lead_time']
+
+
+class TeamStatisticListSerializer(serializers.ModelSerializer):
+    team = TeamSerializer()
+    tasks_statistic = TaskStatisticListSerializer(many=True)
+
+    class Meta:
+        model = TeamStatistic
+        fields = ['id', 'team', 'tasks_statistic']
+        read_only_fields = ['id', 'team', 'tasks_statistic']
+
+
+class QuestStatisticSerializer(serializers.ModelSerializer):
+    tasks_statistic = TaskStatisticListSerializer(many=True, required=False)
+
+    class Meta:
+        model = TeamStatistic
+        fields = ['id', 'team', 'quest', 'tasks_statistic']
+        read_only_fields = ['id', 'team', 'quest', 'tasks_statistic']
+
+    def create(self, validated_data):
+        team_statistic = TeamStatistic.objects.create(**validated_data)
+        tasks = Task.objects.filter(quest_id=validated_data['quest_id'])
+        for task in tasks:
+            TaskStatistic.objects.create(task=task, team_statistic=team_statistic)
+        return team_statistic
+
+
+class QuestStatisticListSerializer(serializers.ModelSerializer):
+    teams_statistic = TeamStatisticListSerializer(many=True)
+
+    class Meta:
+        model = Quest
+        fields = ['teams_statistic']

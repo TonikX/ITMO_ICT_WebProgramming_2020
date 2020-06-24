@@ -1,5 +1,7 @@
 from django.db import models
 
+from users.models import User
+
 
 class Quest(models.Model):
     title = models.CharField(max_length=200)
@@ -26,3 +28,16 @@ class Answer(models.Model):
 
     def __str__(self):
         return str(self.answer)
+
+
+class TeamStatistic(models.Model):
+    team = models.OneToOneField(User, on_delete=models.CASCADE)
+    quest = models.ForeignKey(Quest, on_delete=models.CASCADE, related_name='teams_statistic')
+
+
+class TaskStatistic(models.Model):
+    team_statistic = models.ForeignKey(TeamStatistic, on_delete=models.CASCADE, related_name='tasks_statistic')
+    task = models.ForeignKey(Task, on_delete=models.CASCADE, related_name='statistic')
+    tip_1_used = models.BooleanField(default=False)
+    tip_2_used = models.BooleanField(default=False)
+    lead_time = models.TimeField(blank=True, null=True)

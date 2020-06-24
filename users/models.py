@@ -25,9 +25,11 @@ class UserManager(BaseUserManager):
         user.save()
         return user
 
-    def create_team(self):
-        user = self.model(username=f"team{self.model.objects.count() + 1}")
-        user.set_password(self.make_random_password(length=8))
+    def create_team(self, password: str):
+        user = self.model(username="team")
+        user.set_password(password)
+        user.save()
+        user.username = f"team{user.id}"
         user.save()
         return user
 

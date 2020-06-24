@@ -22,7 +22,12 @@ class TeamSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username', 'password']
-        read_only_fields = ['username', 'password']
+        read_only_fields = ['username']
+        extra_kwargs = {
+            'password': {'write_only': True}
+        }
 
     def create(self, validated_data):
-        return User.objects.create_team()
+        return User.objects.create_team(
+            password=validated_data['password']
+        )

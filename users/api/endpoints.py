@@ -4,6 +4,7 @@ from users.api import views
 
 app_name = 'users'
 urlpatterns = [
-    path('questMaker', views.QuestMakerListView.as_view(), name='quest-maker-list'),
-    path('team', views.TeamListView.as_view(), name='team-register-list')
+    path('questMakers', views.QuestMakerListView.as_view(), name='quest-makers-list'),
+    path('teams', views.TeamListView.as_view(), name='teams-list'),
+    path('teams/<int:pk>/', views.TeamDetailView.as_view(), name='team-detail')
 ]

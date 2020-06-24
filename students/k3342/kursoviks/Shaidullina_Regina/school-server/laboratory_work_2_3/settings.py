@@ -81,12 +81,17 @@ WSGI_APPLICATION = 'laboratory_work_2_3.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#    }
-#}
+# updated
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'school',
+        'USER': 'postgres',
+        'PASSWORD': 'regina',
+        'HOST': 'db',
+        'PORT': '5432'
+    }
+}
 
 
 # Password validation

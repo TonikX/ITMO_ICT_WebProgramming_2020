@@ -2,4 +2,8 @@
 =========================
 
 School administration system:
-- http://127.0.0.1:8080/#/ - Главная страница.
+- http://localhost:8080/#/ - Главная страница.
+
+Docker usage:
+- docker-compose build
+- docker-compose up

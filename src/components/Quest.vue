@@ -48,7 +48,7 @@
         </v-card-text>
         <v-divider/>
         <v-card-actions md-alignment="space-between">
-            <v-btn color="primary">Статистика</v-btn>
+            <v-btn color="primary" @click="navigateToStatistic(quest.id)">Статистика</v-btn>
             <v-spacer/>
             <v-btn color="accent" @click="edit(quest.id)">Редактировать</v-btn>
         </v-card-actions>
@@ -62,6 +62,9 @@
         methods: {
             edit(id) {
                 this.$router.push({name: 'editQuest', params: {id: id}})
+            },
+            navigateToStatistic(id) {
+                this.$router.push({name: 'statistic', params: {id: id}})
             }
         },
         computed: {

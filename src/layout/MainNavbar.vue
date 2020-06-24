@@ -4,14 +4,22 @@
             <span>Неизвестный питер</span>
         </v-toolbar-title>
         <v-spacer/>
-        <v-btn text>Квесты</v-btn>
-        <v-btn text>Команды</v-btn>
+        <v-btn text @click="navigateToQuests()">Квесты</v-btn>
+        <v-btn text @click="navigateToTeams()">Команды</v-btn>
     </v-app-bar>
 </template>
 
 <script>
     export default {
-        name: "MainNavbar"
+        name: "MainNavbar",
+        methods: {
+            navigateToQuests() {
+                this.$router.push({name: 'quests'})
+            },
+            navigateToTeams() {
+                this.$router.push({name: 'teams'})
+            }
+        }
     }
 </script>
 

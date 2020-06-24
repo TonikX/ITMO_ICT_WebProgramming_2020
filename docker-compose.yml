@@ -14,8 +14,8 @@ services:
       - "5432:5432"
   backend:
     build: ./backend
-#    command: bash -c "sleep 3 && python /app/manage.py makemigrations && python /app/manage.py migrate && python /app/manage.py runserver 0.0.0.0:8000"
-    command: python /app/manage.py runserver 0.0.0.0:8000
+    entrypoint: /bin/sh -c
+    command: ["python /app/manage.py makemigrations; python /app/manage.py migrate; python /app/manage.py runserver 0.0.0.0:8000"]
     volumes:
       - ./backend:/app
     ports:

@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+        db:
+                image: postgres
+                ports:
+                        - "5432:5432"
+                environment:
+                        - POSTGRES_USER=admin
+                        - POSTGRES_PASSWORD=28032803
+                        - POSTGRES_DB=abit
+
+        backend:
+                container_name: abit_backend
+                build:
+                        context: ./project
+                        dockerfile: Dockerfile
+
+                command: python ./manage.py runserver 0.0.0.0:8000
+                volumes:
+                        - ./project:/project
+                ports:
+                        - "8005:8005"
+                depends_on:
+                        - db
+        frontend:
+                container_name: abit_frontend
+                build:
+                        context: ./abit-vue
+                        dockerfile: Dockerfile
+
+                volumes:
+                        - ./abit-vue:/abit-vue
+                        - /abit-vue/node_modules
+                ports:
+                        - "8085:8080"
+                depends_on:
+                        - backend
+

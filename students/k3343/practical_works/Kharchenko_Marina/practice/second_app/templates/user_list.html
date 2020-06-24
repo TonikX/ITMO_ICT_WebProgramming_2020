@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Owners</title>
+</head>
+<body>
+<div class="'main">
+    {% for data in dataset %}
+    <strong>Username: </strong> {{ data.username }}<br/>
+        <strong>First name: </strong>{{ data.first_name }}<br/>
+        <strong>Last name: </strong>{{ data.last_name }}<br/>
+       <strong>Email: </strong> {{ data.email }}<br/>
+    <strong>Nationality: </strong>{{data.nationality}}<br/>
+    <strong>Passport number: </strong>{{data.passport_number}}<br/>
+    <strong>Home address: </strong>{{data.home_address}}<br/>
+    <hr/>
+
+    {% endfor %}
+</div>
+</body>
+</html>

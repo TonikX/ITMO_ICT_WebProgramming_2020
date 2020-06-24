@@ -80,8 +80,8 @@ DATABASES = {
         'NAME': 'airport_db_final',
         'USER': 'admin',
         'PASSWORD': 'admin',
-        'HOST': os.environ.get('POSTGRES_HOST', default='localhost'),
-        'PORT': '5432',
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }
 
@@ -126,9 +126,12 @@ STATICFILES_DIR = [STATIC_DIR]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 CORS_ORIGIN_WHITELIST = [
-    "http://localhost:8080",
     "http://127.0.0.1:8000",
+    "http://localhost:8000",
+    "http://localhost:8080",
 ]
 
 CKEDITOR_UPLOAD_PATH = "uploads/"

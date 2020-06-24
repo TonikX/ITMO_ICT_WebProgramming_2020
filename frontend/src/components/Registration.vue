@@ -26,9 +26,9 @@
         </div>
 
         <div class="form-group">
-            <label for="passport_number">Пасспортные данные</label>
+            <label for="passport_number">Паспортные данные</label>
             <input class="form-control" id="passport_number" v-model="passport_number" type="text"
-                   required="" placeholder="Введите свои пасспортные данные"/>
+                   required="" placeholder="Введите свои паспортные данные"/>
         </div>
 
         <div class="form-group">

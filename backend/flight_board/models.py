@@ -86,7 +86,7 @@ class Employee(AbstractUser):
     position = models.CharField("Должность", max_length=50, choices=SQUAD_CHOICES, null=True, blank=True)
     status = models.CharField("Статус", max_length=50, choices=STATUS_CHOICES, default='Пользователь сайта', null=True,
                               blank=True)
-    flight = models.ManyToManyField(Flight, verbose_name="Рейс(-ы)", related_name="passengers")
+    flight = models.ManyToManyField(Flight, verbose_name="Рейс(-ы)", related_name="passengers", blank=True)
 
     # REQUIRED_FIELDS = ['username']
 
@@ -114,7 +114,7 @@ class Crew(models.Model):
                                 related_name='steward')
     airline_company = models.ForeignKey(AirlineCompany, verbose_name="Авиакомпания", on_delete=models.CASCADE)
     served_flight = models.ManyToManyField(Flight, verbose_name="Обслуживаемый рейс(-ы)",
-                                           related_name="served_flight")
+                                           related_name="served_flight", blank=True)
 
     class Meta:
         verbose_name = "Экипаж"

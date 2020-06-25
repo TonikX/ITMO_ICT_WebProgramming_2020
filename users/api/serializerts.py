@@ -1,5 +1,6 @@
 from rest_framework import serializers
 
+from quests.models import TeamStatistic, Quest
 from users.models import User
 
 
@@ -19,10 +20,12 @@ class QuestMakerSerializer(serializers.ModelSerializer):
 
 
 class TeamSerializer(serializers.ModelSerializer):
+    quest = serializers.SerializerMethodField()
+
     class Meta:
         model = User
-        fields = ['id', 'username', 'password']
-        read_only_fields = ['username']
+        fields = ['id', 'username', 'password', 'quest']
+        read_only_fields = ['username', 'quest']
         extra_kwargs = {
             'password': {'write_only': True}
         }
@@ -31,3 +34,15 @@ class TeamSerializer(serializers.ModelSerializer):
         return User.objects.create_team(
             password=validated_data['password']
         )
+
+    class QuestTitleSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = Quest
+            fields = ['id', 'title']
+            read_only_fields = ['title']
+
+    def get_quest(self, obj):
+        try:
+            return self.QuestTitleSerializer(TeamStatistic.objects.get(team=obj).quest).data
+        except TeamStatistic.DoesNotExist:
+            return None

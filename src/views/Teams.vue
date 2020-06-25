@@ -23,6 +23,22 @@
                             <v-icon>delete</v-icon>
                         </v-btn>
                     </template>
+                    <template v-slot:item.quest="{ item }">
+                        <span v-if="item.quest !== null">
+                            {{ item.quest.title }}
+                            <v-tooltip top>
+                            <template v-slot:activator="{ on, attrs }">
+                                <v-btn icon small @click="navigateToStatistic(item.quest.id)" v-bind="attrs" v-on="on">
+                                    <v-icon small color="accent">
+                                        open_in_new
+                                    </v-icon>
+                                </v-btn>
+                            </template>
+                            <span>Перейти к статистике</span>
+                        </v-tooltip>
+                        </span>
+                        <span v-else>-</span>
+                    </template>
                 </v-data-table>
             </v-card>
             <v-dialog v-model="dialog" max-width="500px">
@@ -84,6 +100,12 @@
                         text: 'Логин',
                         sortable: false,
                         value: 'username',
+                    },
+                    {
+                        text: "Текущий квест",
+                        sortable: false,
+                        value: "quest",
+                        align: 'center'
                     },
                     {
                         text: 'Действия',
@@ -158,10 +180,14 @@
                 }
                 this.close()
             },
+            navigateToStatistic(id) {
+                this.$router.push({name: "statistic", params: {id: id}})
+            },
             loadTeams() {
                 httpClient.get('/users/teams')
                     .then((response) => {
                         this.teams = response.data
+                        // console.log(response.data)
                     })
                     .catch((error) => {
                         console.log("load teams error" + JSON.stringify(error))

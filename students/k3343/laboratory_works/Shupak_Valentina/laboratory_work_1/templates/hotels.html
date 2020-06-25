@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Список отелей</title>
+</head>
+<body>
+<li><a href="/main/{{ main }}">Главная страниица</a></li>
+<li>{% if user.is_active %}
+<a href="{% url 'account_logout' %}">Выйти</a>
+{% else %}
+<a href="{% url 'account_login' %}">Войти</a>
+{% endif %}</li>
+<h1>Список отелей</h1>
+<ul style="list-style-type: none; padding: 0; margin: 1rem 0">
+        <li>
+            {% for hotel in hotels %}
+            <p>
+            {{ hotel }}
+            <br/>
+            <a href="/hotels/{{ hotel.id }}">Больше об отеле</a>
+            {% endfor %}
+        </li>
+    </ul>
+</body>
+</html>

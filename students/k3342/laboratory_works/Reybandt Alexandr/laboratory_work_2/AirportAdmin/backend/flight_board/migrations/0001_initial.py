@@ -50,7 +50,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=100, verbose_name='Название')),
-                ('logo', models.ImageField(upload_to='movies/', verbose_name='Логотип')),
+                ('logo', models.ImageField(upload_to='airline_componies/', verbose_name='Логотип')),
             ],
             options={
                 'verbose_name': 'Авиакомпания',

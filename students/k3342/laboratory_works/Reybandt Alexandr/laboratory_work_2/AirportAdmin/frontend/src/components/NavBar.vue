@@ -31,12 +31,11 @@
                                        v-model="airlineCategories" @change="getFlightsAccordingToCompany()"/>
                                 <label>{{ airline_company.name }}</label><br>
                             </div>
-<!--                            <p>Airline Companies Categories:</p>-->
-<!--                            <ul>-->
-<!--                                <li v-for="category in airlineCategories">{{category}}</li>-->
-<!--                            </ul>-->
                         </div>
                     </li>
+<!--                    <li class="nav-item active">-->
+<!--                        <router-link :to="{ name: 'Home'}" class="nav-link">Справка о самолетах<span class="sr-only">(current)</span></router-link>-->
+<!--                    </li>-->
                 </ul>
                 <span class="button mr-5" v-if="!auth">
                     <button class="btn btn-primary" @click="goLogin()">Войти</button>

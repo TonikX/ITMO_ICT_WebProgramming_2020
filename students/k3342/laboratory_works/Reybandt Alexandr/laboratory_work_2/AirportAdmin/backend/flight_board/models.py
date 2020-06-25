@@ -24,7 +24,8 @@ STATUS_CHOICES = [
 
 class AirlineCompany(models.Model):
     name = models.CharField("Название", max_length=100)
-    logo = models.ImageField("Логотип", upload_to="movies/")
+
+    # logo = models.ImageField("Логотип", upload_to="airline_componies/")
 
     def __str__(self):
         return str(self.name)
@@ -85,8 +86,7 @@ class Employee(AbstractUser):
     position = models.CharField("Должность", max_length=50, choices=SQUAD_CHOICES, null=True, blank=True)
     status = models.CharField("Статус", max_length=50, choices=STATUS_CHOICES, default='Пользователь сайта', null=True,
                               blank=True)
-    flight = models.ManyToManyField(Flight, verbose_name="Рейс(-ы)", related_name="passengers", null=True,
-                                    blank=True)
+    flight = models.ManyToManyField(Flight, verbose_name="Рейс(-ы)", related_name="passengers")
 
     # REQUIRED_FIELDS = ['username']
 

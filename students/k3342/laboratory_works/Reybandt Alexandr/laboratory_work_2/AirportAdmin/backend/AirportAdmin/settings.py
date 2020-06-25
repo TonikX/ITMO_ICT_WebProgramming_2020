@@ -80,7 +80,7 @@ DATABASES = {
         'NAME': 'airport_db_final',
         'USER': 'admin',
         'PASSWORD': 'admin',
-        'HOST': 'localhost',
+        'HOST': 'db',
         'PORT': '5432',
     }
 }

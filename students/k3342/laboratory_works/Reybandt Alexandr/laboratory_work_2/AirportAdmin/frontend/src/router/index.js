@@ -5,7 +5,6 @@ import Login from '../components/Login.vue'
 import Single from '../views/Single.vue'
 import Profile from '../views/Profile.vue'
 import Registration from '../components/Registration.vue'
-
 Vue.use(VueRouter)
 
 const routes = [

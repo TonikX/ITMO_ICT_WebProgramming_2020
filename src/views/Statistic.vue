@@ -10,7 +10,9 @@
                               :page.sync="page"
                               :items-per-page="itemsPerPage"
                               @page-count="pageCount = $event"
-                              hide-default-footer>
+                              hide-default-footer
+                              :loading="is_loading"
+                              loading-text="Loading... Please wait">
                 </v-data-table>
             </v-card>
             <div class="text-center pt-2">
@@ -32,6 +34,7 @@
         name: "Statistic",
         data() {
             return {
+                is_loading: false,
                 page: 1,
                 pageCount: 0,
                 itemsPerPage: 15,
@@ -52,6 +55,7 @@
         },
         methods: {
             loadTasks() {
+                this.is_loading = false;
                 const questId = this.$route.params.id;
                 httpClient.get(`/quests/${questId}/`)
                     .then((response) => {
@@ -74,10 +78,12 @@
                         this.loadStatistic()
                     })
                     .catch((error) => {
+                        this.is_loading = false;
                         console.log("Catch error when get quest: " + JSON.stringify(error))
                     })
             },
             loadStatistic() {
+                this.is_loading = true;
                 const questId = this.$route.params.id;
                 httpClient.get(`/quests/${questId}/statistic`)
                     .then((response) => {
@@ -91,9 +97,11 @@
                                 statistic[`task_${task_statistic.task}`] = `${lead_time_str}, ${tip_1_str} | ${tip_2_str}`
                             });
                             this.statistic.push(statistic)
-                        })
+                        });
+                        this.is_loading = false;
                     })
                     .catch((error) => {
+                        this.is_loading = false;
                         console.log("load teams error" + JSON.stringify(error))
                     })
             },

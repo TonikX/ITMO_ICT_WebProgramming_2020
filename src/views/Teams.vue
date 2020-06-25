@@ -14,7 +14,9 @@
                               :page.sync="page"
                               :items-per-page="itemsPerPage"
                               @page-count="pageCount = $event"
-                              hide-default-footer>
+                              hide-default-footer
+                              :loading="is_loading"
+                              loading-text="Loading... Please wait">
                     <template v-slot:item.actions="{ item }">
                         <v-btn icon @click="editTeam(item)">
                             <v-icon>edit</v-icon>
@@ -86,6 +88,7 @@
     export default {
         data() {
             return {
+                is_loading: false,
                 valid: false,
                 showPassword: false,
                 editedTeamId: -1,
@@ -184,12 +187,15 @@
                 this.$router.push({name: "statistic", params: {id: id}})
             },
             loadTeams() {
+                this.is_loading = true;
                 httpClient.get('/users/teams')
                     .then((response) => {
+                        this.is_loading = false;
                         this.teams = response.data
                         // console.log(response.data)
                     })
                     .catch((error) => {
+                        this.is_loading = false;
                         console.log("load teams error" + JSON.stringify(error))
                     })
             }

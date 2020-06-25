@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Owners</title>
+</head>
+<body>
+    <div>
+	{% for owner in owners %}
+		<p><b>Владелец:</b> {{owner.first_name}} {{owner.last_name}}</p>
+		<p><b>Дата рождения:</b> {{ owner.birthday_date }}</p>
+        <p><b>Паспорт: </b> {{owner.passport}} <br>
+        <p><b>Адресс: </b> {{owner.address}} <br>
+        <p><b>Национальность: </b> {{owner.nationality}} <br>
+		<hr>
+	{% endfor %}
+	</div>
+</body>
+</html>

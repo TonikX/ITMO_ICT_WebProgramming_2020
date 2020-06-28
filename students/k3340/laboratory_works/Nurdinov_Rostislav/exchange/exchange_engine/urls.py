@@ -2,10 +2,25 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("jobseeker/", views.JobSeekerListView.as_view()),
-    path("jobseeker/<int:pk>/", views.JobSeekerDetailView.as_view()),
-    path("vacancy/", views.VacancyListView.as_view()),
-    path("vacancy/<int:pk>", views.VacancyDetailView.as_view()),
-    path("employer/", views.EmployerListView.as_view()),
-    path("employer/<int:pk>", views.EmployerDetailView.as_view()),
+    path("jobseeker/list/", views.JobSeekerListView.as_view()),
+    path("jobseeker/detail/<int:pk>/", views.JobSeekerRetrieveUpdateDeleteView.as_view()),
+    path("jobseeker/create/", views.JobSeekerCreateView.as_view()),
+    path("jobseeker/update/<int:pk>/", views.JobSeekerRetrieveUpdateDeleteView.as_view()),
+
+    path("vacancy/list/", views.VacancyListView.as_view()),
+    path("vacancy/detail/<int:pk>/", views.VacancyRetrieveUpdateDeleteView.as_view()),
+    path("vacancy/create/", views.VacancyCreateView.as_view()),
+
+    path("profession/list/", views.ProfessionListView.as_view()),
+    path("profession/detail/<int:pk>/", views.ProfessionRetrieveUpdateDeleteView.as_view()),
+    path("profession/create/", views.ProfessionCreateView.as_view()),
+
+    path("employer/list/", views.EmployerListView.as_view()),
+    path("employer/detail/<int:pk>", views.EmployerRetrieveUpdateDeleteView.as_view()),
+    path("employer/create/", views.EmployerCreateView.as_view()),
+
+    path("experience/list/", views.ExperienceListView.as_view()),
+    path("experience/detail/<int:pk>", views.ExperienceRetrieveUpdateDeleteView.as_view()),
+    path("experience/create/", views.ExperienceCreateView.as_view()),
+
 ]

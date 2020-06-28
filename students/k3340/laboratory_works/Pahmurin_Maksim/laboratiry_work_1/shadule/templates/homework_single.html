@@ -1,0 +1,45 @@
+<!-- {% for homework in homeworks%}
+
+<h1>{{ homework.subject_title}}</h1>
+<h2>{{ homework.homework_text}}</h2>
+<h2>{{ homework.teacher}}</h2>
+<h2>{{ homework.created}}</h2>
+<h2>{{ homework.deadline}}</h2>
+<h2>{{ homework.keywords}}</h2>
+
+
+{% endfor %}
+ -->
+{% block title %}{{ new.title }}{% endblock title %}
+
+{% block content %}
+    <h1>{{ homework.subject_title }}</h1>
+    <p>{{ homework.homework_text }}</p>
+
+
+    Преподаватель - {{ homework.teacher }} <br>
+    Дедлайн- {{ homework.created }}<br>
+    Штраф за позднюю сдачу - {{homework.keywords}}<br>
+
+    
+
+    <h4>Комментарии</h4>
+     {% for comment in comments %}
+        Пользователь - {{ comment.user }}<br>
+        {{ comment.text }} <br>
+     {% endfor %}
+{#    {% for comment in homework.comments_set.all %}#}
+{#        Пользователь - {{ comment.user }}<br>#}
+{#        {{ comment.text }} <br>#}
+
+{#    {% endfor %}#}
+    {% if user.is_active %}
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Отправить</button>
+        </form>
+    {% else %}
+        <h4>Что бы оставить комментарий авторизуйтесь</h4>
+    {% endif %}
+{% endblock content %}

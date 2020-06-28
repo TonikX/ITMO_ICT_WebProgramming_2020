@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+ 	{% block content %}
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+	 	<title>Homework</title>
+	 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+		<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+ </head>
+ <body>
+ <p>
+    {% for homework in homeworks %}
+        <h2><a href="{% url 'homework_single' pk=homework.id %}" button class="mdl-button mdl-js-button">{{ homework.subject_title }}</a></h2>
+        <p>Задание выдано: {{ homework.created }}</p>
+        <p>Краткое описание задания: {{ homework.homework_short}}</p>
+    {% endfor %}
+ </p>
+    </body>
+ </html>
+	{% endblock content %}
+ 

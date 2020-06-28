@@ -1,0 +1,13 @@
+**env**
+**pycache**
+config.py
+*.*~
+*.sqlite3
+.idea
+*.txt
+/__pycache__
+__init__.py
+asgi.py
+wsgi.py
+/migrations
+tests.py

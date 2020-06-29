@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+    marketing_db:
+        image: postgres
+        ports:
+            - "5436:5432"
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+            - POSTGRES_DB=marketingdb
+        volumes:
+            - ./dbs/postgres-data:/var/lib/postgresql
+    backend:
+        container_name: marketing
+        build: ./marketing
+        command: bash -c "
+            sleep 3 &&
+            python3 manage.py makemigrations && python3 manage.py migrate &&
+            python3 manage.py runserver --insecure 0.0.0.0:8000";
+        volumes:
+            - ./marketing:/marketing
+        ports:
+            - "8000:8000"
+        depends_on:
+            - marketing_db
+    frontend:
+        container_name: vue-marketing
+        build:
+            context: ./vue-marketing
+            dockerfile: Dockerfile
+        command: npm start --start;
+        volumes:
+            - ./vue-marketing:/vue-marketing
+            - /vue-marketing/node_modules
+        ports:
+            - "8085:8080"
+        depends_on:
+            - backend

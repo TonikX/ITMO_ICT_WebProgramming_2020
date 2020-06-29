@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+        db:
+                image: postgres
+                ports:
+                        - "5436:5432"
+                environment:
+                        - POSTGRES_USER=postgres
+                        - POSTGRES_PASSWORD=postgres
+                        - POSTGRES_DB=hotel_db
+                volumes:
+                        - ./dbs/postgres-data:/var/lib/postgresql
+        backend:
+                container_name: hotel_backend
+                build: ./hotel-admin/hotel_admin
+                command: bash -c "
+                        sleep 3 &&
+                        python3 manage.py makemigrations && python3 manage.py migrate &&
+                        python3 manage.py runserver --insecure 0.0.0.0:8000";
+                volumes:
+                        - ./hotel-admin/hotel_admin:/hotel_admin
+                ports:
+                        - "8000:8000"
+                depends_on:
+                        - db
+        frontend:
+                container_name: hotel_frontend
+                build:
+                        context: ./hotel-admin-frontend
+                        dockerfile: Dockerfile
+                command: npm start --start;
+                volumes:
+                        - ./hotel-admin-frontend:/hotel-admin-frontend
+                        - /hotel-admin-frontend/node_modules
+                ports:
+                        - "8085:8080"
+                depends_on:
+                        - backend
+

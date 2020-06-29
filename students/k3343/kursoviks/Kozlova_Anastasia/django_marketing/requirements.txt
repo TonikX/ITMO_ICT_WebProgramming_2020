@@ -1,0 +1,10 @@
+asgiref==3.2.7
+Django==3.0.6
+django-cors-headers==3.3.0
+django-templated-mail==1.1.1
+djangorestframework==3.11.0
+djoser==2.0.3
+pgsql==1.2
+psycopg2-binary==2.8.5
+pytz==2020.1
+sqlparse==0.3.1

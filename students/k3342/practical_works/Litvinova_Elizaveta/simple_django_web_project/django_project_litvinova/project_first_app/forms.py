@@ -1,5 +1,6 @@
 from django import forms
 from .models import *
+from .models import User as AutoOwner
 
 
 class AutoOwnerForm(forms.ModelForm):
@@ -10,5 +11,8 @@ class AutoOwnerForm(forms.ModelForm):
 			"last_name",
 			"birthdate",
 			"age",
-			"gender"
+			"gender",
+			"nationality",
+			"passport",
+			"address"
 		]

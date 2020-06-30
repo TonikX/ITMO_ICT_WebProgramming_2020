@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import *
+from .models import User as AutoOwner
 from django.views import View
 from .forms import *
 from django.http import Http404, HttpResponseRedirect

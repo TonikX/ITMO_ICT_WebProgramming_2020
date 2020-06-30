@@ -1,16 +1,22 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
-class AutoOwner(models.Model):
+
+class User(AbstractUser):
     GENDERS = [
         ('M', 'Male'),
         ('F', 'Female')
     ]
 
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    birthdate = models.DateField()
-    age = models.IntegerField()
+    first_name = models.CharField(max_length=50, blank=True, null=True)
+    last_name = models.CharField(max_length=50, blank=True, null=True)
+    birthdate = models.DateField(blank=True, null=True)
+    age = models.IntegerField(blank=True, null=True)
     gender = models.CharField(choices=GENDERS, default='F', max_length=1)
+
+    passport = models.CharField(max_length=30, default="default")
+    nationality = models.CharField(max_length=30, default="default")
+    address = models.CharField(max_length=30, default="address")
 
     def __str__(self):
         return "{} {}, {}, {}".format(self.first_name, self.last_name, self.age, self.get_gender_display())
@@ -27,7 +33,7 @@ class Auto(models.Model):
 
 
 class Ownership(models.Model):
-    owner = models.ForeignKey(AutoOwner, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     auto = models.ForeignKey(Auto, on_delete=models.CASCADE)
     start_date = models.DateField()
     end_date = models.DateField()
@@ -46,7 +52,7 @@ class OwnerLicense(models.Model):
     license_number = models.CharField(max_length=50)
     issuing_date = models.DateField()
     license = models.CharField(choices=LICENSES, default='A', max_length=1)
-    owner = models.ForeignKey(AutoOwner, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return "{}, {}".format(self.owner, self.get_license_display())

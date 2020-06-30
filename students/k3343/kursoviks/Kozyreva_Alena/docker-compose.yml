@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+        db:
+                image: postgres
+                ports:
+                        - "5436:5432"
+                environment:
+                        - POSTGRES_USER=postgres
+                        - POSTGRES_PASSWORD=postgres
+                        - POSTGRES_DB=hospital
+                volumes:
+                        - ./dbs/postgres-data:/var/lib/postgresql
+        backend:
+                container_name: hospital_backend
+                build: ./hospital/django_hospital
+                command: bash -c "
+                        sleep 3 &&
+                        python3 manage.py makemigrations && python3 manage.py migrate &&
+                        python3 manage.py runserver --insecure 0.0.0.0:8000";
+                volumes:
+                        - ./hospital/django_hospital:/django_hospital
+                ports:
+                        - "8000:8000"
+                depends_on:
+                        - db
+        frontend:
+                container_name: hospital_frontend
+                build:
+                        context: ./hospital-vue
+                        dockerfile: Dockerfile
+                command: npm start --start;
+                volumes:
+                        - ./hospital-vue:/hospital-vue
+                        - /hospital-vue/node_modules
+                ports:
+                        - "8080:8080"
+                depends_on:
+                        - backend
+

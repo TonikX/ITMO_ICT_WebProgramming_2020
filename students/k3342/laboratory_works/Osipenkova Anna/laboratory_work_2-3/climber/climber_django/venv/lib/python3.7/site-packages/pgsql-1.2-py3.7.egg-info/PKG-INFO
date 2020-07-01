@@ -1,0 +1,96 @@
+Metadata-Version: 1.2
+Name: pgsql
+Version: 1.2
+Summary: PostgreSQL client library for Python 3
+Home-page: https://antti.heinonen.cc
+Author: Antti Heinonen
+Author-email: antti@heinonen.cc
+License: MIT
+Description: Pgsql
+        =====
+        
+        PostgreSQL client library for Python 3. Simple, fast and lightweight.
+        
+        Installation
+        ------------
+        
+        ::
+        
+        	$ pip install pgsql
+        
+        Example
+        -------
+        
+        .. code-block:: python
+        
+        	import pgsql
+        
+        	# address defaults to ("localhost", 5432), a string must point to a unix socket
+        	# user defaults to "postgres"
+        	# password defaults to None
+        	# database equals user by default
+        	db = pgsql.Connection(user = "antti", database = "postgres")
+        	print(db("CREATE TABLE people (name TEXT, age INT)"))
+        	print(db("INSERT INTO people (name, age) VALUES ($1, $2)", "Veronica", 18))
+        	print(db("SELECT * FROM people"))
+        	db.close()
+        
+        	# for convenience, connection objects support the with statement
+        	with pgsql.Connection(user = "antti", database = "postgres") as db:
+        		# you can use .begin(), .commit(), .rollback() manually, or use the with statement
+        		with db.transaction():
+        			with db.prepare("INSERT INTO people (name, age) VALUES ($1, $2)") as ps:
+        				for person in ("Wallace", 18), ("Keith", 45), ("Lianne", 44):
+        					ps(*person)
+        
+        		# iterate through and print all the rows represented as tuples
+        		people = db.prepare("SELECT * FROM people")
+        		for person in people():
+        			print(person)
+        
+        		# sometimes instead of an iterator, you want the rows as a list
+        		# you may also want to call columns by their name
+        		people_over = db.prepare("SELECT * FROM people WHERE age > $1").all
+        		for person in people_over(21):
+        			print(person.name, "is", person.age - 21, "years over the age of 21")
+        
+        		# when the expected result is only one row, it's convenient to call .first
+        		person_named = db.prepare("SELECT * FROM people WHERE name = $1 LIMIT 1").first
+        		print(person_named("Veronica"))
+        		print(person_named("Backup"))
+        
+        prints
+        
+        ::
+        
+        	[]
+        	[]
+        	[('Veronica', 18)]
+        	('Veronica', 18)
+        	('Wallace', 18)
+        	('Keith', 45)
+        	('Lianne', 44)
+        	Keith is 24 years over the age of 21
+        	Lianne is 23 years over the age of 21
+        	('Veronica', 18)
+        	None
+        
+        Changes
+        -------
+        
+        1.2 (2019-10-27)
+        ******************
+        - Update package description
+        
+        1.1 (2014-03-26)
+        ****************
+        - Make it possible to execute one-time statements by calling the ``Connection`` object
+        
+Platform: POSIX
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Database
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3

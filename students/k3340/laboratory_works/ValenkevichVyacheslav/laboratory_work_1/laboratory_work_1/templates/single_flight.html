@@ -1,0 +1,58 @@
+{% extends 'base_generic.html' %}
+{% block desc %}{{ new.description }}{% endblock desc %}
+{% block keywords %}{{ new.keywords }}{% endblock keywords %}
+{% block title %}{{ new.title }}{% endblock title %}
+
+{% block content %}
+<table class="table table-bordered">
+       <tr>
+           <td colspan="2"><H2>Рейс номер: {{flight.flight_number}}</H2></td>
+       </tr>
+        <tr>
+            <td>Авиакомпания</td>
+            <td>{{flight.aviacompany}}</td>
+        </tr>
+        <tr>
+            <td>Отправление из</td>
+            <td>{{flight.departure_from}}</td>
+        </tr>
+        <tr>
+            <td>Дата и время отправления</td>
+            <td>{{flight.departure_time}}</td>
+        </tr>
+        <tr>
+            <td>Прибытие в</td>
+            <td>{{flight.arrival_to}}</td>
+        </tr>
+        <tr>
+            <td>Дата и время прибытия</td>
+            <td>{{flight.arrival_time}}</td>
+        </tr>
+        <tr>
+            <td>Номер выхода</td>
+            <td>{{flight.gate_number}}</td>
+        </tr>
+    </table>
+
+<h4>Комментарии</h4>
+{% for comment in comments %}
+Пользователь - {{ comment.username }}<br>
+Тип комментария - {{ comment.comment_type }}<br>
+{{ comment.text }} <br>
+Добавлен - {{ comment.post_date }}<br><br>
+{% endfor %}
+{#    {% for comment in flight.comments_set.all %}#}
+{#        Пользователь - {{ comment.username }}<br>#}
+{#        {{ comment.text }} <br>#}
+{#        Добавлен - {{ comment.post_date }}<br><br>#}
+{#    {% endfor %}#}
+{% if user.is_active %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Отправить</button>
+</form>
+{% else %}
+<h4>Чтобы оставить комментарий авторизуйтесь</h4>
+{% endif %}
+{% endblock content %}

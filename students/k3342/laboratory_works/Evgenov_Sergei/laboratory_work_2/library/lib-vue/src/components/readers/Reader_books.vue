@@ -18,13 +18,13 @@
           <mu-flex v-else>Отсутствует учёная степень</mu-flex>
         </mu-col>
       </mu-row>
-      <h4>Закреплённые за читателем в данный момент книги:</h4>
+      <mu-flex><h4>Закреплённые за читателем в данный момент книги:</h4></mu-flex>
     </div>
     <div v-for="book in person_books.books" v-bind:key="book.book.cipher">
       <mu-row>
         <mu-col span="1"><strong>{{book.book.cipher}}</strong></mu-col>
         <mu-col>
-          <mu-flex>Книга: {{book.book.title}}</mu-flex>
+          <mu-flex class="title">Книга: {{book.book.title}}</mu-flex>
           <mu-flex>Автор: {{book.book.author}}</mu-flex>
           <mu-flex>Зал: {{book.book.hall}}</mu-flex>
           <mu-flex>Дата закрепления: {{book.attachment_starting_date}}</mu-flex>
@@ -33,18 +33,18 @@
       <mu-row><mu-flex><hr/></mu-flex></mu-row>
     </div>
     <mu-row>
-      <mu-flex>Добавить новое закрепление книги за данным читателем:</mu-flex>
+      <mu-flex><strong>Добавить новое закрепление книги за данным читателем:</strong></mu-flex>
     </mu-row>
     <mu-row>
-      <mu-form :model="form" class="mu-demo-form" :label-position="labelPosition" label-width="100">
+      <mu-form :model="form" class="mu-demo-form" :label-position="labelPosition" label-width="150">
         <mu-form-item prop="input" label="Шифр книги">
           <mu-text-field v-model="form.input"></mu-text-field>
         </mu-form-item>
-        <mu-form-item prop="date" label="Дата закрепления">
-          <mu-date-input v-model="form.date" type="dateTime" actions></mu-date-input>
+        <mu-form-item prop="date" label="Дата закрепления" help-text="В формате: год(4 цифры)-месяц-день">
+          <mu-text-field v-model="form.date"></mu-text-field>
         </mu-form-item>
         <mu-form-item>
-          <mu-button color="primary" @click="submit">Добавить</mu-button>
+          <mu-button color="primary" @click="addAtt">Добавить</mu-button>
         </mu-form-item>
       </mu-form>
     </mu-row></mu-container>
@@ -52,8 +52,6 @@
 </template>
 
 <script>
-import $ from 'jquery'
-
 export default {
   name: 'Reader_books',
   props: {
@@ -63,6 +61,7 @@ export default {
     return {
       person_books: '',
       labelPosition: 'left',
+      book_form: '',
       form: {
         input: '',
         date: ''
@@ -70,6 +69,7 @@ export default {
     }
   },
   created () {
+    // eslint-disable-next-line
     $.ajaxSetup({
       headers: {'Authorization': 'Token ' + sessionStorage.getItem('auth_token')}
     })
@@ -77,6 +77,7 @@ export default {
   },
   methods: {
     loadBooks () {
+      // eslint-disable-next-line
       $.ajax({
         url: 'http://127.0.0.1:8000/api/lib/reader/',
         type: 'GET',
@@ -85,6 +86,44 @@ export default {
         },
         success: (response) => {
           this.person_books = response.data
+        }
+      })
+    },
+    addAtt () {
+      // eslint-disable-next-line
+      $.ajax({
+        url: 'http://127.0.0.1:8000/api/lib/book/',
+        type: 'GET',
+        data: {
+          book: this.form.input
+        },
+        success: (response) => {
+          console.log(response.data)
+          if (response.data.length !== 0) {
+            this.book_form = response.data[0].id
+            // eslint-disable-next-line
+            $.ajax({
+              url: 'http://127.0.0.1:8000/api/lib/reader/',
+              type: 'POST',
+              data: {
+                reader: this.id,
+                book: this.book_form,
+                attachment_starting_date: this.form.date
+              },
+              success: (response) => {
+                alert('Закрепление добавлено')
+                this.loadBooks()
+              },
+              error: (response) => {
+                alert('Error')
+              }
+            })
+          } else {
+            alert('Книга с введённым шифром отсутствует в библиотеке')
+          }
+        },
+        error: (response) => {
+          alert('Error')
         }
       })
     }
@@ -96,5 +135,8 @@ export default {
   .mu-demo-form {
     width: 100%;
     max-width: 460px;
+  }
+  .title {
+    text-align: justify;
   }
 </style>

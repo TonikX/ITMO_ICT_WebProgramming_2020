@@ -13,8 +13,9 @@ class BookSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Book
-        fields = ("title", "author", "publisher", "edition_year",
-                  "sphere", "cipher", "receipt_date", "hall")
+        # fields = ("title", "author", "publisher", "edition_year",
+                  # "sphere", "cipher", "receipt_date", "hall")
+        fields = ("id", "cipher")
 
 
 class ReaderSerializer(serializers.ModelSerializer):
@@ -23,7 +24,7 @@ class ReaderSerializer(serializers.ModelSerializer):
         model = Reader
         fields = ("id", "library_card_num", "full_name", "passport_data",
                   "birth_date", "home_address", "phone_num",
-                  "education", "degree", "hall"#, "books"
+                  "education", "degree", "hall"
                   )
 
 

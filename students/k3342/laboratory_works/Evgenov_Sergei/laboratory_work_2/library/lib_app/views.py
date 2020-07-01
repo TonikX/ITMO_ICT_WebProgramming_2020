@@ -20,7 +20,8 @@ class Hall_V(APIView):
 class Book_V(APIView):
 
     def get(self, request):
-        books = Book.objects.all()
+        book = request.GET.get("book")
+        books = Book.objects.filter(cipher=book)
         serializer = BookSerializer(books, many=True)
         return Response(serializer.data)
 
@@ -58,6 +59,6 @@ class Reader_books(APIView):
         attachments =  AttachmentSerializer_3(data=request.data)
         if attachments.is_valid():
             attachments.save()
-            return Response({"status": "Add"})
+            return Response({"status": 201})
         else:
-            return Response({"status": "Error"})
+            return Response({"status": 400})

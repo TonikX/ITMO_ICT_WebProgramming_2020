@@ -15,7 +15,7 @@ class Hall(models.Model):
 
 
 class Book(models.Model):
-    title = models.CharField(max_length=50, verbose_name="название")
+    title = models.TextField(verbose_name="название")
     author = models.CharField(max_length=100, verbose_name="автор(ы)")
     publisher = models.CharField(max_length=50, verbose_name="издатель")
     edition_year = models.SmallIntegerField(verbose_name="год издания")

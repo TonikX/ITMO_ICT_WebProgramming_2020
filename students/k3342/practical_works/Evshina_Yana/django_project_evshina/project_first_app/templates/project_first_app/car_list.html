@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div class="main">
+    {% for object in object_list %}
+    {{object.name}}<br/>
+    {{object.type}}<br/>
+    {{object.colour}}<br/>
+    {{object.number}}<br/>
+    <hr/>
+
+    {% endfor %}
+</div>
+</body>
+</html>

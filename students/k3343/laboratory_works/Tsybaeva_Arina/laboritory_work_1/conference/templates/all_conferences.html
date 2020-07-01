@@ -1,0 +1,13 @@
+{% extends "welcome_page.html" %}
+{% block title %}<title>Conferences</title>{% endblock %}
+{% block content %}
+<h1 align="center">Конференции</h1>
+<div class="'main">
+    {% for data in dataset %}
+        {{data.conference_name}}<br>
+        <a href="/conference/{{ data.id }}">Show more information</a>
+    <hr/>
+
+    {% endfor %}
+</div>
+{% endblock %}

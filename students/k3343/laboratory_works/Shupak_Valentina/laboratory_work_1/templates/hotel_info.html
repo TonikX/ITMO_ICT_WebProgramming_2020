@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ hotel }}</title>
+</head>
+<body>
+<li><a href="/main/{{ main }}">Главная страниица</a></li>
+<li><a href="/hotels/{{ hotels }}">Отели</a></li>
+<li>{% if user.is_active %}
+<a href="{% url 'account_logout' %}">Выйти</a>
+{% else %}
+<a href="{% url 'account_login' %}">Войти</a>
+{% endif %}</li>
+<h1>Информация об отеле</h1>
+    <h3>{{ hotel }}</h3>
+<p>
+    <b>Название:</b>
+    <br/>
+    {{ hotel.name }}
+    <p>
+    <b>Адрес:</b>
+    <br/>
+    {{ hotel.address }}
+    <p>
+    <b>Описание:</b>
+    <br/>
+    {{ hotel.description }}
+    <p>
+    <b>Вместимость:</b>
+    <br/>
+    {{ hotel.capacity }}
+    <p>
+    <b>Владелец:</b>
+    <br/>
+    {{ hotel.owner }}
+    <p>
+    <b>Тип номеров:</b>
+    <br/>
+    {{ hotel.rooms }}
+    <p>
+    <b>Удобства:</b>
+    <br/>
+    {{ hotel.comfort }}
+
+<h1>Комментарии к отелю</h1>
+
+{% for comment in comments %}
+    <p><b>Рейтинг:</b> {{ comment.rating }}</p>
+    <p>{{ comment.comment }}</p>
+    <p><small><b>Дата: {{ comment.post }}</b></small></p>
+    <p><small><b>Автор комментария: {{ comment.username }}</b></small></p>
+    <p><small><b>Период проживания:{{comment.start}}-{{comment.end}}</b></small></p>
+    {% endfor %}
+
+{% if user.is_authenticated %}
+    <div>
+        <h1>Добавить новый комментарий:</h1>
+        <form action="/hotels/{{hotel.id}}/" method="post">
+            {% csrf_token %}
+            <input type="text" name="user_id" hidden value="{{ user.id }}">
+            {{ form.as_p }}
+            <input type="submit" value="Добавить комментарий">
+        </form>
+    </div>
+{% else %}
+    Авторизируйтесь, чтобы добавить комментарий <a href="{% url 'account_login' %}">Войти</a>
+    {% endif %}
+
+</body>
+</html>

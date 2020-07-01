@@ -1,14 +1,14 @@
 version: '3'
 
 services:
-        db:
+        school_db:
                 image: postgres
                 ports:
                         - "5432:5432"
                 environment:
                         - POSTGRES_DB=school
                         - POSTGRES_USER=postgres
-                        - POSTGRES_PASSWORD=regina
+                        - POSTGRES_PASSWORD=postgres
 
         backend:
                 container_name: school_backend
@@ -24,7 +24,7 @@ services:
                 ports:
                         - "8000:8000"
                 depends_on:
-                        - db
+                        - school_db
 
         frontend:
                 container_name: school_frontend

@@ -72,10 +72,10 @@ class AllClientRoomView(generics.ListAPIView):
 		from_city = self.request.query_params.get('from_city', None)
 
 		if date1:
-			queryset = queryset.filter(date__gte=date1)
+			queryset = queryset.filter(arrival_date__gte=date1)
 
 		if date2:
-			queryset = queryset.filter(date__lte=date2)
+			queryset = queryset.filter(departure_date__lte=date2)
 
 		if room_type:
 			queryset = queryset.filter(room__room_type=room_type)
@@ -103,7 +103,6 @@ class AllCleaningView(generics.ListAPIView):
 		queryset = Cleaning.objects.all()
 
 		servant = self.request.query_params.get('servant', None)
-		print(servant)
 
 		if servant:
 			queryset = queryset.filter(employee__user__username=servant)

@@ -44,10 +44,11 @@ class Client(models.Model):
 class ClientRoom(models.Model):
 	room = models.ForeignKey(Room, on_delete=models.CASCADE)
 	client = models.ForeignKey(Client, on_delete=models.CASCADE)
-	date = models.DateField()
+	arrival_date = models.DateField()
+	departure_date = models.DateField()
 
 	def __str__(self):
-		return '{}, {}. {}'.format(self.client, self.room, self.date)
+		return '{}, {}. {} - {}'.format(self.client, self.room, self.arrival_date, self.departure_date)
 
 
 class Employee(models.Model):

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ tour }}</title>
+</head>
+
+<body>
+    <p><a href="/tours/">На главную</a></p>
+    <h1>Информация о туре:</h1>
+    <h2>{{ tour }}</h2>
+    <strong>Описание тура:</strong>
+    <p></p>
+    {{ tour.desc }}
+    <p></p>
+    <p></p>
+    {{ tour.payment_conditions }}
+    {% for comment in comments %}
+    <p></p>
+    <hr>
+    <p><b>Тип комментария:</b> {{ comment.get_comment_type_display }}</p>
+    <p>{{ comment.desc }}</p>
+    <p><small><b>Автор: {{ comment.author }}</b></small></p>
+    <hr>
+    <p></p>
+    {% endfor %}
+    <p></p>
+    <p></p>
+    <div>
+        <h3>Добавить новый комментарий:</h3>
+        <form action="/tours/{{ tour.id }}/" method="post">
+            {% csrf_token %}
+            <input type="text" name="user_id" hidden value="{{ user.id }}">
+            {{ form.as_p }}
+            <input type="submit" value="Add comment">
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+
+<body>
+    {% if not registered %}
+    <form method="post">
+        {% csrf_token %}
+        {{ register_user_form.as_p }}
+        <input type="submit" name="" value="Register">
+    </form>
+    {% else %}
+    <a href="/auth/">Войдите</a> для получения полного доступа к сайту.
+    {% endif %}
+</body>
+
+</html>

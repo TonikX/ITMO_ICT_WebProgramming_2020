@@ -7,4 +7,5 @@ urlpatterns = [
     path('reader_old/', Reader_V.as_view()),
     path('attachment/', Attachment_V.as_view()),
     path('reader/', Reader_books.as_view()),
+    path('detach/<int:pk>/', Detach.as_view({'put': 'put'})),
 ]

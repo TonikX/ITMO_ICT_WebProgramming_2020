@@ -28,6 +28,17 @@
           <mu-flex>Автор: {{book.book.author}}</mu-flex>
           <mu-flex>Зал: {{book.book.hall}}</mu-flex>
           <mu-flex>Дата закрепления: {{book.attachment_starting_date}}</mu-flex>
+          <mu-flex justify-content="end">
+            <mu-form :model="detachment_form[book.book.id]" class="detachment-form" :label-position="labelPosition" label-width="150">
+              <mu-form-item prop="date" label="Дата открепления" help-text="В формате: год(4 цифры)-месяц-день">
+                <mu-text-field v-model="detachment_form[book.book.id].date"></mu-text-field>
+              </mu-form-item>
+            </mu-form>
+            <mu-button color="error"
+                       @click="detach(idAtt=book.id, idForm=book.book.id)">
+              Открепить
+            </mu-button>
+          </mu-flex>
         </mu-col>
       </mu-row>
       <mu-row><mu-flex><hr/></mu-flex></mu-row>
@@ -65,7 +76,8 @@ export default {
       form: {
         input: '',
         date: ''
-      }
+      },
+      detachment_form: []
     }
   },
   created () {
@@ -85,7 +97,12 @@ export default {
           reader: this.id
         },
         success: (response) => {
+          let i
+          for (i = 0; i < 100; i++) {
+            this.detachment_form[i] = {attachment: '', date: ''}
+          }
           this.person_books = response.data
+          console.log(this.detachment_form)
         }
       })
     },
@@ -126,6 +143,32 @@ export default {
           alert('Error')
         }
       })
+    },
+    detach (idAtt, idForm) {
+      this.detachment_form[idForm].attachment = idAtt
+      console.log(this.detachment_form[idForm].attachment + ' ' + this.detachment_form[idForm].date)
+      let data = {
+        data: {
+          type: 'Attachment',
+          id: idAtt,
+          attributes: {
+            attachment_finishing_date: this.detachment_form[idForm].date
+          }
+        }
+      }
+      fetch(`http://127.0.0.1:8000/api/lib/detach/${this.detachment_form[idForm].attachment}/`,
+        {
+          method: 'PUT',
+          headers: {
+            'Authorization': 'Token ' + sessionStorage.getItem('auth_token'),
+            'Content-Type': 'application/vnd.api+json'
+          },
+          body: JSON.stringify(data)
+        }
+      ).then(response => {
+        alert('Книга успешно откреплена')
+        this.loadBooks()
+      })
     }
   }
 }
@@ -138,5 +181,9 @@ export default {
   }
   .title {
     text-align: justify;
+  }
+  .detachment-form {
+    width: 400px;
+    height: 50px;
   }
 </style>

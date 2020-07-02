@@ -2,11 +2,13 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import permissions
+from rest_framework import viewsets
+from rest_framework.authentication import TokenAuthentication
 
 from lib_app.models import Hall, Book, Reader, Attachment
 from lib_app.serializers import HallSerializer, BookSerializer, ReaderSerializer
 from lib_app.serializers import AttachmentSerializer, AttachmentSerializer_2
-from lib_app.serializers import AttachmentSerializer_3
+from lib_app.serializers import AttachmentSerializer_3, AttachmentSerializer_4
 
 
 class Hall_V(APIView):
@@ -55,10 +57,20 @@ class Reader_books(APIView):
         return Response({"reader": reader.data,"books": serializer.data})
 
     def post(self, request):
-        # person = request.data.get("reader")
         attachments =  AttachmentSerializer_3(data=request.data)
         if attachments.is_valid():
             attachments.save()
             return Response({"status": 201})
         else:
             return Response({"status": 400})
+
+
+class Detach(viewsets.ModelViewSet):
+
+    queryset = Attachment.objects.all()
+    serializer_class = AttachmentSerializer_4
+    authentication_classes = [TokenAuthentication, ]
+    permission_classes = [permissions.IsAuthenticated, ]
+
+    def put(self, request, *args, **kwargs):
+        return self.partial_update(request, *args, **kwargs)

@@ -82,7 +82,7 @@ export default {
     },
     getWorkers () {
       this.axios
-        .get(`http://127.0.0.1:8000/api/employees/?position=2`)
+        .get(`http://127.0.0.1:8000/api/employees/?employee_position=2`)
         .then(response => {
           response.data.forEach((worker) => {
             this.workers.push({ text: `${worker.surname} ${worker.name} ${worker.middle_name}`, value: worker.id })

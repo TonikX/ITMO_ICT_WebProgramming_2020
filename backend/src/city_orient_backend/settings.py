@@ -19,12 +19,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '9qy+w#qu#hada%f(m(kilq_7573!z6g2!!o^ot12dk_)i(tp_*'
+SECRET_KEY = os.environ.get('SECRET_KEY', default='9qy+w#qu#hada%f(m(kilq_7573!z6g2!!o^ot12dk_)i(tp_*')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = int(os.environ.get('DEBUG', default=0))
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', default='localhost').split(" ")
 
 # Application definition
 
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'city_orient_backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, '../../templates')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -86,8 +86,12 @@ REST_FRAMEWORK = {
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, '../../db.sqlite3'),
+        'ENGINE': os.environ.get('SQL_ENGINE', default='django.db.backends.sqlite3'),
+        'NAME': os.environ.get('DB_NAME', default=os.path.join(BASE_DIR, "db.sqlite3")),
+        'USER': os.environ.get('DB_USER', default='user'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', default='password'),
+        'HOST': os.environ.get('DB_HOST', default='localhost'),
+        'PORT': int(os.environ.get('DB_PORT', default='5432')),
     }
 }
 
@@ -128,6 +132,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, '..', 'static')
 
 # CORS settings
 CORS_ORIGIN_ALLOW_ALL = True

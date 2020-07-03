@@ -1,0 +1,53 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:latest
+    networks:
+      - db_network
+    volumes:
+      - city_orient_db_volume:/var/lib/postgresql/data
+    env_file:
+      - ./backend/.env.${ENVIRONMENT:-local}.db
+
+  backend:
+    build: ./backend
+    command: >
+      bash -c "sleep 5 &&
+      python manage.py makemigrations &&
+      python manage.py migrate &&
+      python manage.py collectstatic --noinput &&
+      gunicorn --bind :8000 city_orient_backend.wsgi:application"
+    depends_on:
+      - db
+    volumes:
+      - ./backend/src:/src
+      - static_volume:/src/static
+    networks:
+      - nginx_network
+      - db_network
+    env_file:
+      - ./backend/.env.${ENVIRONMENT:-local}
+
+  nginx:
+    image: nginx:1.13
+    ports:
+      - 8000:443
+    volumes:
+      - ./nginx/${ENVIRONMENT:-local}:/etc/nginx/conf.d
+      - ./certs:/certs
+      - static_volume:/opt/services/djangoapp/static
+    depends_on:
+      - backend
+    networks:
+      - nginx_network
+
+networks:
+  nginx_network:
+    driver: bridge
+  db_network:
+    driver: bridge
+
+volumes:
+  city_orient_db_volume:
+  static_volume:

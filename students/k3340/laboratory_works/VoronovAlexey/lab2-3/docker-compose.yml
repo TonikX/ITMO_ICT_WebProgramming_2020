@@ -30,7 +30,7 @@ services:
                         dockerfile: Dockerfile
 
                 volumes:
-                        - ./abit-vue:/abit-vue
+                        - ./project/abit-vue:/project/abit-vue
                         - /abit-vue/node_modules
                 ports:
                         - "8085:8080"

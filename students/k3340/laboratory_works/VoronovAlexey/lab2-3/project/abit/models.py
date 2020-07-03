@@ -65,6 +65,13 @@ class Abiturient(models.Model): #Модель абитуриента
 
     contract_type = models.PositiveSmallIntegerField(choices=CONTRACT_TYPE, default=1,  verbose_name='тип обучения')
 
+    ABIT_TYPE = (
+        (1, 'после 9'),
+        (2, 'после 11'),
+    )
+
+    abit_type = models.PositiveSmallIntegerField(choices=ABIT_TYPE, default=2, verbose_name='тип поступления')
+
     STUDENT_TYPE = (
         (1, 'нет'),
         (2, 'целевик'),
@@ -76,13 +83,7 @@ class Abiturient(models.Model): #Модель абитуриента
 
     study_program = models.ForeignKey(Study_Program, verbose_name='программа обучения', on_delete=models.CASCADE)
 
-    marks = models.CharField(max_length=200)
-
-    def set_marks(self, x):
-        self.marks = json.dumps(x)
-
-    def get_marks(self):
-        return json.loads(self.marks)
+    marks = models.PositiveSmallIntegerField(default=0, verbose_name="сумма оценок")
 
     accepted = models.BooleanField(verbose_name='зачислен', default=False)
 

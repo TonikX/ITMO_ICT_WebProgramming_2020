@@ -21,4 +21,6 @@ urlpatterns = [
     path('programs/', views.Study_Programs.as_view()),
     path('places/', views.Study_Places.as_view()),
     path('abits/', views.Abiturients.as_view()),
+    path('setabitstatus/<int:id>/', views.AbiturientSetStatus.as_view()),
+    path('setabitprogram/<int:id>/', views.AbiturientSetProgram.as_view()),
 ]

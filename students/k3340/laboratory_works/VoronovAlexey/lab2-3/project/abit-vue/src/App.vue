@@ -1,14 +1,20 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
     <router-view/>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'App'
-}
+    export default {
+        name: 'App',
+        created() {
+            if (localStorage.getItem("auth_token"))  {
+                $.ajaxSetup({
+                    headers: {'Authorization': "Token " + localStorage.getItem('auth_token')},
+                });
+            }
+        }
+    }
 </script>
 
 <style>

@@ -1,11 +1,14 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.authtoken.views import obtain_auth_token
 from . import views
 
 urlpatterns = [
+    path('auth/', include('djoser.urls')),
+    path('auth/token', obtain_auth_token, name='token'),
+
     path("jobseeker/list/", views.JobSeekerListView.as_view()),
     path("jobseeker/detail/<int:pk>/", views.JobSeekerRetrieveUpdateDeleteView.as_view()),
     path("jobseeker/create/", views.JobSeekerCreateView.as_view()),
-    path("jobseeker/update/<int:pk>/", views.JobSeekerRetrieveUpdateDeleteView.as_view()),
 
     path("vacancy/list/", views.VacancyListView.as_view()),
     path("vacancy/detail/<int:pk>/", views.VacancyRetrieveUpdateDeleteView.as_view()),

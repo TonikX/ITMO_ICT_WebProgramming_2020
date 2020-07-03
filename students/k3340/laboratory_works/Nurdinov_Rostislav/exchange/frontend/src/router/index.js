@@ -1,27 +1,35 @@
 import Vue from 'vue';
-import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
-import JobSeekerDetail from '../views/JobSeekerDetail.vue';
+import Router from 'vue-router';
+import Home from '../components/Home';
+import Login from '../components/Login';
+import Registration from "../components/Registration";
+import Vacancy from "../components/Vacancy";
 
-Vue.use(VueRouter);
 
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home,
-  },
-  {
-    path: '/jobseeker/:id',
-    name: 'Jobseeker',
-    component: JobSeekerDetail,
-    props: true,
-  },
-];
+Vue.use(Router)
 
-const router = new VueRouter({
-  mode: 'history',
-  routes,
-});
-
-export default router;
+export default new Router({
+  mode: "history",
+  routes: [
+    {
+      path: '/',
+      name: 'home',
+      component: Home,
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login,
+    },
+    {
+      path: '/registration',
+      name: 'registration',
+      component: Registration,
+    },
+    {
+      path: '/vacancy',
+      name: 'vacancy',
+      component: Vacancy,
+    }
+  ]
+})

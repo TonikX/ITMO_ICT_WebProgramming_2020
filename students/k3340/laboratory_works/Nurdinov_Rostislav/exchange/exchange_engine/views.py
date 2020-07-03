@@ -1,26 +1,37 @@
 from rest_framework.response import Response
+from rest_framework import status
 from rest_framework.views import APIView
-from rest_framework import generics
+from rest_framework import generics, permissions
 from .models import JobSeeker, Vacancy, Resume
 from .serializers import *
+
+
+class Logout(APIView):
+
+    def get(self, request, format=None):
+        request.user.auth_token.delete()
+        return Response(status=status.HTTP_200_OK)
 
 
 class JobSeekerListView(generics.ListAPIView):
     """Вывод списка соискателей"""
     queryset = JobSeeker.objects.all()
     serializer_class = JobSeekerListSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 
 class JobSeekerRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
     """Вывод соискателея"""
     queryset = JobSeeker.objects.all()
     serializer_class = JobSeekerDetailSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 
 class JobSeekerCreateView(generics.CreateAPIView):
     """Создание соискателя"""
     queryset = JobSeeker.objects.all()
     serializer_class = JobSeekerCreateSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 
 class VacancyListView(generics.ListAPIView):

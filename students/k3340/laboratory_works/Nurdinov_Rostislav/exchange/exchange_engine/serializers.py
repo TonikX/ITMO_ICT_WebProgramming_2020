@@ -20,7 +20,7 @@ class JobSeekerListSerializer(serializers.ModelSerializer):
 
 class JobSeekerDetailSerializer(serializers.ModelSerializer):
     """Соискатель"""
-    resume = ResumeDetailSerializer()
+    # resume = ResumeDetailSerializer()
 
     class Meta:
         model = JobSeeker
@@ -42,7 +42,7 @@ class VacancyListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Vacancy
-        fields = ("id", "profession", "salary")
+        fields = ("id", "profession", "date_start", "salary", "min_exp", "status")
 
 
 class VacancyCreateSerializer(serializers.ModelSerializer):

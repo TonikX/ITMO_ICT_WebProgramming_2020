@@ -18,6 +18,12 @@
           <mu-flex v-else>Отсутствует учёная степень</mu-flex>
         </mu-col>
       </mu-row>
+      <mu-flex><hr/></mu-flex>
+      <mu-flex justify-content="end">
+        <mu-button color="indigo400" @click="changeReader(person_books.reader[0])">
+          Изменить данные о пользователе
+        </mu-button>
+      </mu-flex>
       <mu-flex><h4>Закреплённые за читателем в данный момент книги:</h4></mu-flex>
     </div>
     <div v-for="book in person_books.books" v-bind:key="book.book.cipher">
@@ -169,6 +175,9 @@ export default {
         alert('Книга успешно откреплена')
         this.loadBooks()
       })
+    },
+    changeReader (person) {
+      this.$router.push({name: 'reader_ch', params: {person}})
     }
   }
 }

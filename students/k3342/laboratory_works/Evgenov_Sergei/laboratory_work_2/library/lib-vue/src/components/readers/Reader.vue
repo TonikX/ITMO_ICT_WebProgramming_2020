@@ -1,19 +1,32 @@
 <template>
-  <mu-col span="2" xl="2">
-    <h2>Читатели:</h2>
-    <div v-for="reader in readers" v-bind:key="reader.id" class="readers">
-      <h3 @click="openFull(reader.id)">{{reader.attributes.full_name}}</h3>
-      <small>Читательский билет №{{reader.attributes.library_card_num}}</small><br>
-    </div>
-  </mu-col>
+  <mu-row>
+    <mu-col span="2" xl="2">
+      <h2>Читатели:</h2>
+      <div v-for="reader in readers" v-bind:key="reader.id" class="readers">
+        <h3 @click="openFull(reader.id)">{{reader.attributes.full_name}}</h3>
+        <small>Читательский билет №{{reader.attributes.library_card_num}}</small><br>
+      </div>
+    </mu-col>
+    <reader_books v-if="reader_full.show" :id="reader_full.id"></reader_books>
+  </mu-row>
 </template>
 
 <script>
+// eslint-disable-next-line
+import Reader_books from './Reader_books'
+
 export default {
   name: 'Reader',
+  components: {
+    Reader_books
+  },
   data () {
     return {
-      readers: ''
+      readers: '',
+      reader_full: {
+        id: '',
+        show: false
+      }
     }
   },
   methods: {
@@ -29,7 +42,17 @@ export default {
       })
     },
     openFull (id) {
-      this.$emit('openFull', id)
+      if (this.reader_full.show === true) {
+        let id2 = id
+        this.reader_full.show = false
+        setTimeout(function (id) {
+          this.reader_full.id = id
+          this.reader_full.show = true
+        }.bind(this), 10, id = id2)
+      } else {
+        this.reader_full.id = id
+        this.reader_full.show = true
+      }
     }
   },
   created () {

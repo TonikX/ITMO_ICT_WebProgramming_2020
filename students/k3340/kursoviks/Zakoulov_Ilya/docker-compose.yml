@@ -1,0 +1,57 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:latest
+    networks:
+      - db_network
+    volumes:
+      - city_orient_db_volume:/var/lib/postgresql/data
+    env_file:
+      - ./backend/.env.${ENVIRONMENT:-local}.db
+
+  backend:
+    build: ./backend
+    command: >
+      bash -c "sleep 5 &&
+      python manage.py makemigrations &&
+      python manage.py migrate &&
+      gunicorn --bind :8000 city_orient_backend.wsgi:application"
+    depends_on:
+      - db
+    volumes:
+      - ./backend/src:/src
+    networks:
+      - nginx_network
+      - db_network
+    env_file:
+      - ./backend/.env.${ENVIRONMENT:-local}
+
+  frontend:
+    build: ./frontend
+    command: npm run ${ENVIRONMENT:-local}
+    depends_on:
+      - backend
+    networks:
+      - nginx_network
+
+  nginx:
+    image: nginx:1.13
+    ports:
+      - 443:443
+    volumes:
+      - ./nginx/${ENVIRONMENT:-local}:/etc/nginx/conf.d
+      - ./certs:/certs
+    depends_on:
+      - backend
+    networks:
+      - nginx_network
+
+networks:
+  nginx_network:
+    driver: bridge
+  db_network:
+    driver: bridge
+
+volumes:
+  city_orient_db_volume:

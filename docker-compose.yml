@@ -16,27 +16,32 @@ services:
       bash -c "sleep 5 &&
       python manage.py makemigrations &&
       python manage.py migrate &&
-      python manage.py collectstatic --noinput &&
       gunicorn --bind :8000 city_orient_backend.wsgi:application"
     depends_on:
       - db
     volumes:
       - ./backend/src:/src
-      - static_volume:/src/static
     networks:
       - nginx_network
       - db_network
     env_file:
       - ./backend/.env.${ENVIRONMENT:-local}
 
+  frontend:
+    build: ./frontend
+    command: npm run ${ENVIRONMENT:-local}
+    depends_on:
+      - backend
+    networks:
+      - nginx_network
+
   nginx:
     image: nginx:1.13
     ports:
-      - 8000:443
+      - 443:443
     volumes:
       - ./nginx/${ENVIRONMENT:-local}:/etc/nginx/conf.d
       - ./certs:/certs
-      - static_volume:/opt/services/djangoapp/static
     depends_on:
       - backend
     networks:
@@ -50,4 +55,3 @@ networks:
 
 volumes:
   city_orient_db_volume:
-  static_volume:

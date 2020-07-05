@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+        db:
+                image: postgres
+                ports:
+                        - "5436:5432"
+                environment:
+                        - POSTGRES_USER=postgres
+                        - POSTGRES_PASSWORD=postgres
+                        - POSTGRES_DB=airport_db
+                volumes:
+                        - ./dbs/postgres-data:/var/lib/postgresql
+        backend:
+                container_name: airport_backend_container
+                build: ./airport/airport_project
+                command: bash -c "
+                        sleep 2 &&
+                        python3 manage.py makemigrations && python3 manage.py migrate &&
+                        python3 manage.py runserver --insecure 0.0.0.0:8000";
+                volumes:
+                        - ./airport/airport_project:/airport_project
+                ports:
+                        - "8000:8000"
+                depends_on:
+                        - db
+        frontend:
+                container_name: airport_frontend_container
+                build:
+                        context: ./airport-frontend
+                        dockerfile: Dockerfile
+                command: npm start --start;
+                volumes:
+                        - ./airport-frontend:/airport-frontend
+                        - /airport-frontend/node_modules
+                ports:
+                        - "8080:8080"
+                depends_on:
+                        - backend
+

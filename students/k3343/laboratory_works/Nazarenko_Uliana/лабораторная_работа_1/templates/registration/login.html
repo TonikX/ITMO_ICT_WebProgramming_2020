@@ -1,0 +1,36 @@
+{% extends 'menu.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}<title>ARS: Вход</title>{% endblock %}
+
+{% block content %}
+
+    {% if user.is_active %}
+    <div class="p-3 mb-2 bg-info text-white">
+            <br><h1><p class="text-center">AUTO RACING SCOREBOARD: Вход</p></h1><br>
+        </div>
+    <br><h3><p class="text-info text-center">Вы уже вошли в свой аккаунт!</p></h3><br>
+
+{% else %}
+        <div class="p-3 mb-2 bg-info text-white">
+            <br><h2><p class="text-center">AUTO RACING SCOREBOARD: Вход</p></h2><br>
+        </div>
+        <div class="card" style="width:100%; margin-left:35%">
+            <div class="card-body">
+                <div class="col-xs-3">
+                    <br><h3 class="card-title text-info"><p class="text-center">Вход в аккаунт</p></h3><br>
+                    <form method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ next }}">
+
+                        {{ form|crispy }}
+
+                        <button type="submit" class="btn btn-info" style="margin-left:37%">Войти</button>
+                    </form>
+                    <br><h4 class="card-title text-center">Нет своего аккаунта?<a href="{% url 'register' %}"><p class="text-info">Зарегистрироваться!</p></a></h4>
+
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'menu.html' %}
+{% block title %}<title>ARS: Комментарии</title>{% endblock %}
+{% block content %}
+    <div class="p-3 mb-2 bg-info text-white">
+            <br><h2><p class="text-center">AUTO RACING SCOREBOARD: Комментарии</p></h2><br>
+    </div>
+{% with comments.count as total %}
+    <ol class="list-counter-square">
+        <br><h4><p class="text-info"> Всего комментариев: {{ total }}</p></h4></ol><br><br>
+{% endwith %}
+
+{% for comment in comments %}
+<ol class="list-counter-square">
+    <h4><p class="text-info"><i>Комментарий от: {{ comment.user }}</i></p></h4>
+	<li><b>Адрессовано для: </b>{{ comment.racer }}</li>
+	<li><b>Тип: </b>{{ comment.comment_type }}</li>
+	<li><b>Комментарий: </b><i>{{ comment.text }}</i></li>
+	<li><b>Дата публикации: </b>{{ comment.date }}</li><br><br>
+    <style>
+/* CSS */
+.list-counter-square {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.list-counter-square>li {
+  position: relative;
+  display: block;
+  margin-bottom: .25rem;
+  padding: .325rem .825rem .325rem 1.325rem;
+  color: #000;
+  background: #fff;
+}
+.list-counter-square>li:last-child {
+  margin-bottom: 0;
+}
+.list-counter-square>li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0.5rem;
+  background: #f5554a;
+}
+    </style>
+    </ol>
+{% endfor %}
+
+
+    {% if user.is_active %}
+    <br> <br><div style="width:50%; margin-left:20%; border: dashed 3px; color: #4682B4; padding:10px; border-radius: 15px;">
+        <h3 align="center">Оставить свой комментарий</h3><br>
+	<form method='POST' enctype='multipart/form-data'>
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input type='submit' class="b1" value='Опубликовать'>
+     <style>
+   .b1 {
+    background: #f5554a; /* Цвет фона */
+    color: #ffffff; /* Цвет текста */
+    padding: 7px 12px; /* Поля */
+    margin-bottom: 1em; /* Отступ снизу */
+       position: relative;
+       border-radius: 10px;
+       left: 50%;
+       transform: translate(-50%, 0);
+   }
+  </style>
+	</form>
+    </div>
+    <br><br><br><br><br><br>
+{% else %}
+    <br><h3><p class="text-info">Оставь свой комментарий!</p></h3>
+	<h4><p><a href="{% url 'login' %}" style="color: #f5554a">Авторизируйся</a>, чтобы написать комментарий.</p></h4><br><br><br><br><br>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+
+<body>
+    {% if not registered %}
+    <form method="post">
+        {% csrf_token %}
+        {{ create_user_form.as_p }}
+        <input type="submit" name="" value="Register">
+    </form>
+    {% else %}
+    Thanks for registration! Now you can <a href="/accounts/login">login</a>
+    {% endif %}
+</body>
+
+</html>

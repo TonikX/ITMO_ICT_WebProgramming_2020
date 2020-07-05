@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hotels</title>
+</head>
+
+<body>
+    {% if user.is_authenticated %}
+    <h1>Hotels:</h1>
+    <div>
+        {% for hotel in hotels %}
+        <p>
+            {{ hotel }}
+            <br />
+            <a href="/hotels/{{ hotel.id }}">Show more information</a>
+        </p>
+        {% endfor %}
+    </div>
+    {% else %}
+    You haven't access for watching this page! <a href="/accounts/register">Register</a> or <a href="/accounts/login">Login</a>.
+    {% endif %}
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+{% extends 'hotels/base.html' %}
+
+{% block title %}
+Добавить комментарий
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% if user.is_active %}
+<h1>Добавление комментария</h1>
+    <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form|crispy}}
+    <input type="submit" value="Send">
+    </form>
+
+{% else %}
+<h1>Вы должны войти в аккаунт, чтобы оставить отзыв</h1>
+{% endif %}
+</body>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% load static %}
+<html>
+    <head>
+        <title>Отели</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{% static 'css/hotels.css' %}">
+        <style>
+   body{
+    background-color: #e7e7e7; /* Цвет фона веб-страницы */
+   } 
+  </style>
+    </head>
+    <body>
+    <div class="header">
+        <a href="/" class="logo">Сайт об отелях</a>
+        <div class="header-right">
+            {% if user.is_active %}
+                <a class="active">Вы вошли как {{ request.user }}</a>
+                <a href="/logout">Сменить пользователя</a>
+                <a href="/add_comment">Оставить отзыв</a>
+            {% else %}
+                <a class="active" href="/login">Войти</a>
+                <a href="/register">Зарегистрироваться</a>
+            {% endif %}
+    </div>
+</div>
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+            {% block content %}
+            {% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -12,20 +12,11 @@
                     <mu-list-item button href="/vacancy">
                         <mu-list-item-title>Вакансии</mu-list-item-title>
                     </mu-list-item>
-                    <mu-list-item button href="/klass">
-                        <mu-list-item-title>Классы</mu-list-item-title>
+                    <mu-list-item button href="/jobseeker">
+                        <mu-list-item-title>Соискатели</mu-list-item-title>
                     </mu-list-item>
-                    <mu-list-item button href="/pupils">
-                        <mu-list-item-title>Ученики школы</mu-list-item-title>
-                    </mu-list-item>
-                    <mu-list-item button href="/subjects">
-                        <mu-list-item-title>Дисциплины</mu-list-item-title>
-                    </mu-list-item>
-                    <mu-list-item button href="/cabinets">
-                        <mu-list-item-title>Кабинеты</mu-list-item-title>
-                    </mu-list-item>
-                    <mu-list-item button href="/query">
-                        <mu-list-item-title>Запросы</mu-list-item-title>
+                    <mu-list-item button href="/employer">
+                        <mu-list-item-title>Работодатели</mu-list-item-title>
                     </mu-list-item>
                 </mu-list>
             </mu-menu>

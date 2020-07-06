@@ -7,7 +7,7 @@
   <mu-paper :z-depth="1">
     <mu-data-table stripe :columns="columns" :sort.sync="sort" @sort-change="handleSortChange" :data="list">
       <template slot-scope="scope">
-        <td><button v-on:click="clickRow(scope.row.id)">{{ scope.row.profession }}</button></td>
+        <td><button v-on:click="goTo(scope.row.id)">{{ scope.row.profession }}</button></td>
         <td class="is-right">{{ scope.row.date_start }}</td>
         <td class="is-right">{{ scope.row.salary }}</td>
         <td class="is-right">{{ scope.row.min_exp }}</td>
@@ -20,11 +20,10 @@
 
 <script>
 import Navbar from '../components/Navbar';
-import $ from "jquery";
 export default {
 
   name: "Vacancy",
-  components: {
+  components:{
     Navbar,
   },
   data() {
@@ -35,10 +34,10 @@ export default {
       },
       columns: [
         {title: 'Профессия', width: 200, name: 'profession'},
-        {title: 'Дата публикации', name: 'date_start', width: 126, align: 'center', sortable: true},
-        {title: 'Зарплата', name: 'salary', width: 126, align: 'center', sortable: true},
-        {title: 'Опыт работы', name: 'min_exp', width: 126, align: 'center', sortable: true},
-        {title: 'Статус', name: 'status', width: 126, align: 'center', sortable: true},
+        {title: 'Дата публикации', name: 'date_start', width: 150, align: 'center', sortable: true},
+        {title: 'Зарплата', name: 'salary', width: 110, align: 'center', sortable: true},
+        {title: 'Опыт работы', name: 'min_exp', width: 105, align: 'center', sortable: true},
+        {title: 'Статус', name: 'status', width: 100, align: 'center', sortable: true},
       ],
       list: '',
     }
@@ -47,7 +46,7 @@ export default {
     Navbar,
   },
   created() {
-    this.loadVacancy();
+    this.loadListVacancy();
   },
   // computed: {
   //   auth() {
@@ -60,19 +59,14 @@ export default {
     handleSortChange({name, order}) {
       this.list = this.list.sort((a, b) => order === 'asc' ? a[name] - b[name] : b[name] - a[name]);
     },
-    loadVacancy() {
-    $.ajax({
-      url: "http://127.0.0.1:8000/api/v1/vacancy/list/",
-      type: "GET",
-      success: (response) => {
-        this.list = response;
-        console.log(this.list);
-      },
-    })
-  },
-    clickRow(message) {
-        document.location.href = "http://localhost:8080/vacancy/detail/" + String(message);
-      },
+    async loadListVacancy() {
+            this.list = await fetch(
+                `${this.$store.getters.getServerUrl}/vacancy/list/`
+            ).then(response => response.json())
+    },
+    goTo(id) {
+      this.$router.push({name: 'vacancySingle', params: {id: id}})
+    },
   }
 };
 </script>

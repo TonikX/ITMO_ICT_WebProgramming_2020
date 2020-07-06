@@ -13,25 +13,46 @@ class Logout(APIView):
         return Response(status=status.HTTP_200_OK)
 
 
+class ResumeListView(generics.ListAPIView):
+    """Вывод списка соискателей"""
+    queryset = Resume.objects.all()
+    serializer_class = ResumeListSerializer
+    # permission_classes = [permissions.IsAuthenticated]
+
+
+class ResumeRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
+    """Вывод соискателея"""
+    queryset = Resume.objects.all()
+    serializer_class = ResumeDetailSerializer
+    # permission_classes = [permissions.IsAuthenticated]
+
+
+class ResumeCreateView(generics.CreateAPIView):
+    """Создание соискателя"""
+    queryset = Resume.objects.all()
+    serializer_class = ResumeCreateSerializer
+    # permission_classes = [permissions.IsAuthenticated]
+
+
 class JobSeekerListView(generics.ListAPIView):
     """Вывод списка соискателей"""
     queryset = JobSeeker.objects.all()
     serializer_class = JobSeekerListSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
 
 
 class JobSeekerRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
     """Вывод соискателея"""
     queryset = JobSeeker.objects.all()
     serializer_class = JobSeekerDetailSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
 
 
 class JobSeekerCreateView(generics.CreateAPIView):
     """Создание соискателя"""
     queryset = JobSeeker.objects.all()
     serializer_class = JobSeekerCreateSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
 
 
 class VacancyListView(generics.ListAPIView):
@@ -111,10 +132,15 @@ class EmployerCreateView(generics.CreateAPIView):
     serializer_class = EmployerCreateSerializer
 
 
-class ExperienceListView(generics.ListAPIView):
+class ExperienceListView(APIView):
     """Список опытов работы"""
-    queryset = Experience.objects.all()
-    serializer_class = ExperienceListSerializer
+
+    def get(self, request, pk):
+        queryset = Experience.objects.filter(resume=pk)
+        serializer = ExperienceListSerializer(queryset, many=True)
+        return Response(serializer.data)
+    # queryset = Experience.objects.all()
+    # serializer_class = ExperienceListSerializer
 
 
 class ExperienceRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):

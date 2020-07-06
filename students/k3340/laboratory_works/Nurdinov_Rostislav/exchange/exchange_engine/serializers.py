@@ -10,6 +10,23 @@ class ResumeDetailSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+class ResumeListSerializer(serializers.ModelSerializer):
+    """Соискатель"""
+    # resume = ResumeDetailSerializer()
+
+    class Meta:
+        model = Resume
+        fields = "__all__"
+
+
+class ResumeCreateSerializer(serializers.ModelSerializer):
+    """Добавление соискателя"""
+
+    class Meta:
+        model = Resume
+        fields = '__all__'
+
+
 class JobSeekerListSerializer(serializers.ModelSerializer):
     """Список соискателей"""
 

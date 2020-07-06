@@ -22,8 +22,12 @@ urlpatterns = [
     path("employer/detail/<int:pk>", views.EmployerRetrieveUpdateDeleteView.as_view()),
     path("employer/create/", views.EmployerCreateView.as_view()),
 
-    path("experience/list/", views.ExperienceListView.as_view()),
+    path("experience/list/<int:pk>/", views.ExperienceListView.as_view()),
     path("experience/detail/<int:pk>", views.ExperienceRetrieveUpdateDeleteView.as_view()),
     path("experience/create/", views.ExperienceCreateView.as_view()),
+
+    path("resume/list/<int:pk>/", views.ResumeListView.as_view()),
+    path("resume/detail/<int:pk>", views.ResumeRetrieveUpdateDeleteView.as_view()),
+    path("resume/create/", views.ResumeCreateView.as_view()),
 
 ]

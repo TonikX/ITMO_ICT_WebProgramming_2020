@@ -13,8 +13,6 @@ class BookSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Book
-        # fields = ("title", "author", "publisher", "edition_year",
-                  # "sphere", "cipher", "receipt_date", "hall")
         fields = ("id", "cipher")
 
 
@@ -78,3 +76,11 @@ class AttachmentSerializer_4(serializers.ModelSerializer):
     class Meta:
         model = Attachment
         fields = ("reader", "book", "attachment_starting_date", "attachment_finishing_date")
+
+
+class BookSerializer_4(serializers.ModelSerializer):
+
+    class Meta:
+        model = Book
+        fields = ("title", "author", "publisher", "edition_year",
+                  "sphere", "cipher", "receipt_date", "hall")

@@ -9,6 +9,7 @@ from lib_app.models import Hall, Book, Reader, Attachment
 from lib_app.serializers import HallSerializer, BookSerializer, ReaderSerializer
 from lib_app.serializers import AttachmentSerializer, AttachmentSerializer_2
 from lib_app.serializers import AttachmentSerializer_3, AttachmentSerializer_4
+from lib_app.serializers import BookSerializer_4
 
 
 class Hall_V(APIView):
@@ -28,12 +29,28 @@ class Book_V(APIView):
         return Response(serializer.data)
 
 
+class Books_V(APIView):
+
+    def get(self, request):
+        books = Book.objects.all()
+        serializer = BookSerializer_4(books, many=True)
+        return Response(serializer.data)
+
+
 class Reader_V(APIView):
 
     def get(self, request):
         readers = Reader.objects.all()
         serializer = ReaderSerializer(readers, many=True)
         return Response(serializer.data)
+
+    def post(self, request):
+        readers =  ReaderSerializer(data=request.data)
+        if readers.is_valid():
+            readers.save()
+            return Response({"status": 201})
+        else:
+            return Response({"status": 400})
 
 
 class Attachment_V(APIView):
@@ -74,3 +91,43 @@ class Detach(viewsets.ModelViewSet):
 
     def put(self, request, *args, **kwargs):
         return self.partial_update(request, *args, **kwargs)
+
+
+class Reader_change(viewsets.ModelViewSet):
+
+    queryset = Reader.objects.all()
+    serializer_class = ReaderSerializer
+    authentication_classes = [TokenAuthentication, ]
+    permission_classes = [permissions.IsAuthenticated, ]
+
+    def put(self, request, *args, **kwargs):
+        return self.partial_update(request, *args, **kwargs)
+
+
+class Reader_del(APIView):
+
+    permission_classes = [permissions.IsAuthenticated, ]
+
+    def delete(self, request, pk):
+        reader = Reader.objects.get(pk=pk)
+        reader.delete()
+        return Response({"status": "Delete"})
+
+
+class Book_add(APIView):
+
+    def post(self, request):
+        book =  BookSerializer_4(data=request.data)
+        if book.is_valid():
+            book.save()
+            return Response({"status": 201})
+        else:
+            return Response({"status": 400})
+
+
+class Book_one(APIView):
+
+    def get(self, request):
+        books = Book.objects.all()
+        serializer = BookSerializer_4(books, many=True)
+        return Response(serializer.data)

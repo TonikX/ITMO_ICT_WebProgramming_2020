@@ -1,6 +1,6 @@
 <template>
   <mu-container>
-    <mu-appbar style="width: 100%;" color="primary">
+    <mu-appbar style="width: 100%;" color="#8B4513">
       Сайт библиотеки на Vue.js
     </mu-appbar>
     <mu-container>

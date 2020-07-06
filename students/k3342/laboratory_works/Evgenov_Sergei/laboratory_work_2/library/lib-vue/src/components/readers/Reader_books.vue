@@ -20,8 +20,8 @@
       </mu-row>
       <mu-flex><hr/></mu-flex>
       <mu-flex justify-content="end">
-        <mu-button color="indigo400" @click="changeReader(person_books.reader[0])">
-          Изменить данные о пользователе
+        <mu-button color="indigo400" @click="changeReader(person_books.reader[0])" small>
+          Изменить данные о читателе
         </mu-button>
       </mu-flex>
       <mu-flex><h4>Закреплённые за читателем в данный момент книги:</h4></mu-flex>
@@ -135,6 +135,8 @@ export default {
               },
               success: (response) => {
                 alert('Закрепление добавлено')
+                this.form.input = ''
+                this.form.date = ''
                 this.loadBooks()
               },
               error: (response) => {

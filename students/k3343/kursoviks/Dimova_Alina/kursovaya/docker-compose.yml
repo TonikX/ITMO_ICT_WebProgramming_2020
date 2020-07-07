@@ -1,0 +1,35 @@
+version: '3'
+services:
+        db:
+                image: postgres
+                ports:
+                        - "5432:5432"
+                environment:
+                        - POSTGRES_USER=admin
+                        - POSTGRES_PASSWORD=password
+                        - POSTGRES_DB=hotel-db
+        backend:
+                container_name: hotel_backend
+                build: ./server
+                command: bash -c "
+                        python3 manage.py makemigrations && python3 manage.py migrate &&
+                        python3 manage.py runserver 0.0.0.0:8000";
+                volumes:
+                        - ./server:/server
+                ports:
+                        - "8000:8000"
+                depends_on:
+                        - db
+        frontend:
+                container_name: hotel_frontend
+                build:
+                        context: ./hotel-vue
+                        dockerfile: Dockerfile
+                command: npm start --start;
+                volumes:
+                        - ./hotel-vue:/hotel-vue
+                        - /hotel-vue/node_modules
+                ports:
+                        - "8080:8080"
+                depends_on:
+                        - backend

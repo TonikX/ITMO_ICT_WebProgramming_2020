@@ -13,4 +13,6 @@ urlpatterns = [
     path('reader_del/<int:pk>/', Reader_del.as_view()),
     path('book_add/', Book_add.as_view()),
     path('one_book/', Book_one.as_view()),
+    path('check_att/', Check_att.as_view()),
+    path('reader_get_id/', Reader_get_id.as_view()),
 ]

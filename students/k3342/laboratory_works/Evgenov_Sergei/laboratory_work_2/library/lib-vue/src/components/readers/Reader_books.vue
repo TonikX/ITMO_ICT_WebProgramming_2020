@@ -179,7 +179,7 @@ export default {
       })
     },
     changeReader (person) {
-      this.$router.push({name: 'reader_ch', params: {person}})
+      this.$router.push({name: 'reader_change', params: {person}})
     }
   }
 }

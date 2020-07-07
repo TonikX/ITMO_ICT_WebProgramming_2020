@@ -21,7 +21,7 @@
         </mu-list>
       </mu-menu>
       Сайт библиотеки на Vue.js
-      <mu-button @click="logout" flat slot="right">Выход</mu-button>
+      <mu-button @click="logout()" flat slot="right">Выход</mu-button>
     </mu-appbar>
       <mu-tabs :value.sync="active" color="#C08E67">
         <mu-tab>Список книг</mu-tab>
@@ -33,7 +33,7 @@
           <mu-flex>
             <mu-form :model="micro_form" class="cipher-search-form"
                      :label-position="labelPosition" label-width="490">
-              <mu-form-item prop="unattached" label="Показывать только незакреплённые в данный момент за кем-то книги">
+              <mu-form-item prop="unattached" label="Показывать только незакреплённые ни за кем в данный момент книги">
                 <mu-switch v-model="micro_form.unattached"></mu-switch>
               </mu-form-item>
             </mu-form>
@@ -43,12 +43,14 @@
           </mu-flex>
           <mu-flex>Для внесения изменений нажмите на шифр книги</mu-flex>
           <mu-paper :z-depth="1">
-            <mu-data-table border stripe :columns="columns"
-                           :sort.sync="sort"
-                           @sort-change="handleSortChange"
-                           :data="bookList">
+            <mu-data-table border stripe :columns="columns" :sort.sync="sort"
+                           @sort-change="handleSortChange" :data="finalBooksList">
               <template slot-scope="scope">
-                <td class="is-left"><strong>{{scope.row.cipher}}</strong></td>
+                <td class="is-left"><strong>
+                  <div @click="goToBook(scope.row.cipher)" class="cipher-link">
+                    {{scope.row.cipher}}
+                  </div>
+                </strong></td>
                 <td class="is-left">{{scope.row.title}}</td>
                 <td class="is-left">{{scope.row.author}}</td>
                 <td class="is-left">{{scope.row.publisher}}</td>
@@ -62,6 +64,26 @@
         </mu-container>
       </div>
       <div class="demo-text" v-if="active === 1">
+        <mu-row>
+          <mu-flex>
+            <mu-form :model="micro_form" class="cipher-search-form"
+                     :label-position="labelPosition" label-width="490">
+              <mu-form-item prop="unattached" label="Искать только среди незакреплённых ни за кем в данный момент книг">
+                <mu-switch v-model="micro_form.unattached"></mu-switch>
+              </mu-form-item>
+            </mu-form>
+          </mu-flex>
+        </mu-row>
+        <mu-row>
+          <mu-col span="8">
+            <mu-flex style="margin-left: 11px">
+              Для поиска с учётом изменения положения переключателя нажмите кнопку "Искать" ещё раз
+            </mu-flex>
+          </mu-col>
+          <mu-col span="5" style="color: #ffffff;">
+            {{unattachedBooks}}
+          </mu-col>
+        </mu-row>
         <mu-row>
           <mu-flex>
             <div class="near-form-text">Поиск по шифру:</div>
@@ -88,8 +110,8 @@
             </mu-button>
           </mu-flex>
         </mu-row>
-        <div v-if="this.foundBooksShow">
-          <mu-row v-for="book in this.foundBooksList" v-bind:key="book.cipher">
+        <div v-if="foundBooksShow">
+          <div v-for="book in foundBooksList" v-bind:key="book.cipher"><mu-row>
             <mu-col span="1"><strong>{{book.cipher}}</strong></mu-col>
             <mu-col>
               <mu-flex class="title">Книга: {{book.title}}</mu-flex>
@@ -99,8 +121,61 @@
               <mu-flex>Сфера: {{book.sphere}}</mu-flex>
               <mu-flex>Дата поступления: {{book.receipt_date}}</mu-flex>
               <mu-flex>Зал: {{book.hall}}</mu-flex>
+              <mu-flex>
+                <mu-button color="primary" @click="changeBook()" small class="search-form-button">
+                  Изменить/Удалить книгу
+                </mu-button>
+              </mu-flex>
             </mu-col>
-          </mu-row>
+            <mu-col justify-content="end">
+              <mu-flex>
+                <mu-form :model="add_form[book.id]" class="add-form"
+                         :label-position="labelPosition" label-width="50">
+                  <mu-form-item prop="bookTitle" label="Зал:">
+                    <mu-select v-model="add_form[book.id].hall">
+                      <mu-option v-for="option in h_options" :key="option[0]"
+                                 :label="option[1]" :value="option[0]"></mu-option>
+                    </mu-select>
+                  </mu-form-item>
+                </mu-form>
+              </mu-flex>
+              <mu-flex>
+                <mu-form :model="add_form[book.id]" class="add-form"
+                         :label-position="labelPosition" label-width="150">
+                  <mu-form-item prop="receiptDate" label="Дата поступления">
+                    <mu-text-field v-model="add_form[book.id].receipt_date"></mu-text-field>
+                  </mu-form-item>
+                </mu-form>
+              </mu-flex>
+              <mu-flex>
+                <mu-button color="success" @click="addCopy(book.id)" small class="copy-form-button">
+                  Добавить экземпляр книги
+                </mu-button>
+              </mu-flex>
+            </mu-col>
+            <div v-if="micro_form.unattached">
+              <mu-row justify-content="start">
+                <mu-flex class="near-att-form-text">Закрепить данную книгу за читателем:</mu-flex>
+              </mu-row>
+              <mu-row>
+                <mu-flex justify-content="start">
+                  <mu-form :model="add_form[book.id]" class="attachment-form" :label-position="labelPosition" label-width="250">
+                    <mu-form-item prop="date" label="Дата закрепления" help-text="В формате: год(4 цифры)-месяц-день">
+                      <mu-text-field v-model="add_form[book.id].date"></mu-text-field>
+                    </mu-form-item>
+                    <mu-form-item prop="library_card_num" label="Номер читательского билета">
+                      <mu-text-field v-model="add_form[book.id].library_card_num"></mu-text-field>
+                    </mu-form-item>
+                  </mu-form>
+                </mu-flex>
+              </mu-row>
+              <mu-flex justify-content="start" class="attachment-button">
+                <mu-button color="success" @click="addAtt(book.id)">
+                  Закрепить
+                </mu-button>
+              </mu-flex>
+            </div>
+          </mu-row></div>
         </div>
         <div v-if="notFound">
           По вашему запросу книг не найдено
@@ -201,8 +276,10 @@ export default {
           name: 'hall'
         }
       ],
-      bookList: '',
+      bookList: [],
       i: '',
+      j: '',
+      ii: '',
       active: 0,
       form: {
         cipher: '',
@@ -226,12 +303,15 @@ export default {
       },
       rawBooksList: '',
       foundBooksList: [],
-      j: '',
       foundBooksShow: false,
       notFound: false,
       micro_form: {
         unattached: false
-      }
+      },
+      unattachedBooksList: [],
+      finalBooksList: [],
+      add_form: [],
+      goalBook: ''
     }
   },
   created () {
@@ -240,14 +320,19 @@ export default {
       headers: {'Authorization': 'Token ' + sessionStorage.getItem('auth_token')}
     })
     this.loadBooks()
+    this.checkAttachments()
+    this.finalBooksList = this.bookList
   },
   computed: {
     unattachedBooks: function () {
       if (this.micro_form.unattached) {
-        console.log('doit')
-        return 'doit'
+        // eslint-disable-next-line
+        this.finalBooksList = this.unattachedBooksList
+        return 'Показаны только не закреплённые ни за кем в данный момент книги'
       } else {
-        return "or don't"
+        // eslint-disable-next-line
+        this.finalBooksList = this.bookList
+        return 'Показаны все книги'
       }
     }
   },
@@ -270,6 +355,15 @@ export default {
         type: 'GET',
         success: (response) => {
           this.bookList = response.data
+          for (let m = 0; m < 100; m++) {
+            this.add_form.push({
+              id: m,
+              hall: '',
+              receipt_date: '',
+              library_card_num: '',
+              date: ''
+            })
+          }
           this.i = 0
           this.bookList.forEach(function () {
             let newVal = {}
@@ -277,7 +371,9 @@ export default {
               newVal[key] = this.bookList[this.i].attributes[key]
             }
             newVal['hall'] = this.bookList[this.i].relationships.hall.data.id
+            newVal['id'] = this.bookList[this.i].id
             this.bookList[this.i] = newVal
+            this.add_form[newVal.id].receipt_date = newVal.receipt_date
             this.i++
           }.bind(this))
         }
@@ -307,74 +403,185 @@ export default {
       if (this.foundBooksShow) {
         this.foundBooksShow = false
         this.foundBooksList = []
-        this.rawBooksList = ''
         this.search_form.bookTitle = ''
       }
-      // eslint-disable-next-line
-      $.ajax({
-        url: 'http://127.0.0.1:8000/api/lib/one_book/',
-        type: 'GET',
-        success: (response) => {
-          this.rawBooksList = response.data
-          this.j = 0
-          let neededLength = this.search_form.bookCipher.length
-          this.rawBooksList.forEach(function () {
-            if (this.rawBooksList[this.j].attributes.cipher.substring(0, neededLength) === this.search_form.bookCipher) {
-              let newVal = {}
-              for (let key in this.rawBooksList[this.j].attributes) {
-                newVal[key] = this.rawBooksList[this.j].attributes[key]
-              }
-              newVal['hall'] = this.rawBooksList[this.j].relationships.hall.data.id
-              this.foundBooksList.push(newVal)
-              this.j++
-            } else {
-              this.j++
-            }
-          }.bind(this))
-          if (this.foundBooksList.length) {
-            this.foundBooksShow = true
-          } else {
-            this.foundBooksShow = true
-            this.notFound = true
-          }
+      this.j = 0
+      let neededLength = this.search_form.bookCipher.length
+      this.finalBooksList.forEach(function () {
+        if (this.finalBooksList[this.j].cipher.substring(0, neededLength) === this.search_form.bookCipher) {
+          this.foundBooksList.push(this.finalBooksList[this.j])
+          this.j++
+        } else {
+          this.j++
         }
-      })
+      }.bind(this))
+      if (this.foundBooksList.length) {
+        this.foundBooksShow = true
+      } else {
+        this.foundBooksShow = true
+        this.notFound = true
+      }
     },
     openByTitle () {
       this.notFound = false
       if (this.foundBooksShow) {
         this.foundBooksShow = false
         this.foundBooksList = []
-        this.rawBooksList = ''
         this.search_form.bookCipher = ''
+      }
+      this.j = 0
+      let neededLength = this.search_form.bookTitle.length
+      this.finalBooksList.forEach(function () {
+        if (this.finalBooksList[this.j].title.substring(0, neededLength) === this.search_form.bookTitle) {
+          this.foundBooksList.push(this.finalBooksList[this.j])
+          this.j++
+        } else {
+          this.j++
+        }
+      }.bind(this))
+      if (this.foundBooksList.length) {
+        this.foundBooksShow = true
+      } else {
+        this.foundBooksShow = true
+        this.notFound = true
+      }
+    },
+    checkAttachments () {
+      // eslint-disable-next-line
+      $.ajax({
+        url: 'http://127.0.0.1:8000/api/lib/check_att/',
+        type: 'GET',
+        success: (response) => {
+          let attachedBooksList = response.data.data
+          let k = 0
+          attachedBooksList.forEach(function () {
+            attachedBooksList[k] = attachedBooksList[k].book.cipher
+            k++
+          })
+          let l = 0
+          this.bookList.forEach(function () {
+            if (attachedBooksList.indexOf(this.bookList[l].cipher) === -1) {
+              this.unattachedBooksList.push(this.bookList[l])
+            }
+            l++
+          }.bind(this))
+        }
+      })
+    },
+    changeBook () {
+      this.$router.push({'name': 'book_change'})
+    },
+    addCopy (bookId) {
+      // Получаю данные о книге, экземпляр который хочу добавить (по id)
+      this.ii = 0
+      this.bookList.forEach(function () {
+        if (this.bookList[this.ii].id === bookId) {
+          this.goalBook = this.bookList[this.ii]
+        }
+        this.ii++
+      }.bind(this))
+      // Ищу последний экземпляр данной книги
+      for (let n = this.bookList.length - 1; n > -1; n--) {
+        if (this.bookList[n].title === this.goalBook.title) {
+          this.goalBook = this.bookList[n]
+          break
+        }
+      }
+      // Формирую шифр
+      let cipherList = this.goalBook.cipher.split('/')
+      let newNum = parseInt(cipherList[1]) + 1
+      let newCipher = cipherList[0] + '/' + newNum
+      let data = {
+        cipher: newCipher,
+        title: this.goalBook.title,
+        author: this.goalBook.author,
+        publisher: this.goalBook.publisher,
+        edition_year: this.goalBook.edition_year,
+        sphere: this.goalBook.sphere,
+        receipt_date: this.add_form[bookId].receipt_date,
+        hall: this.add_form[bookId].hall
       }
       // eslint-disable-next-line
       $.ajax({
-        url: 'http://127.0.0.1:8000/api/lib/one_book/',
-        type: 'GET',
+        url: 'http://127.0.0.1:8000/api/lib/book_add/',
+        type: 'POST',
+        data: data,
         success: (response) => {
-          this.rawBooksList = response.data
-          this.j = 0
-          let neededLength = this.search_form.bookTitle.length
-          this.rawBooksList.forEach(function () {
-            if (this.rawBooksList[this.j].attributes.title.substring(0, neededLength) === this.search_form.bookTitle) {
-              let newVal = {}
-              for (let key in this.rawBooksList[this.j].attributes) {
-                newVal[key] = this.rawBooksList[this.j].attributes[key]
-              }
-              newVal['hall'] = this.rawBooksList[this.j].relationships.hall.data.id
-              this.foundBooksList.push(newVal)
-              this.j++
-            } else {
-              this.j++
-            }
-          }.bind(this))
-          if (this.foundBooksList.length) {
-            this.foundBooksShow = true
-          } else {
-            this.foundBooksShow = true
-            this.notFound = true
+          alert('Новая книга успешно добавлена')
+          this.loadBooks()
+          this.active = 0
+          this.finalBooksList = this.bookList
+          this.goalBook = ''
+          this.search_form = {
+            bookCipher: '',
+            bookTitle: ''
           }
+          this.foundBooksList = []
+          this.foundBooksShow = false
+        },
+        error: (response) => {
+          alert('Error')
+        }
+      })
+    },
+    goToBook (bookCipher) {
+      this.notFound = false
+      if (this.foundBooksShow) {
+        this.foundBooksShow = false
+        this.foundBooksList = []
+        this.search_form.bookTitle = ''
+      }
+      this.j = 0
+      this.search_form.bookCipher = bookCipher
+      this.finalBooksList.forEach(function () {
+        if (this.finalBooksList[this.j].cipher === this.search_form.bookCipher) {
+          this.foundBooksList.push(this.finalBooksList[this.j])
+          this.j++
+        } else {
+          this.j++
+        }
+      }.bind(this))
+      this.active = 1
+      this.foundBooksShow = true
+    },
+    addAtt (bookId) {
+      // eslint-disable-next-line
+      $.ajax({
+        url: 'http://127.0.0.1:8000/api/lib/reader_get_id/',
+        type: 'GET',
+        data: {
+          library_card_num: this.add_form[bookId].library_card_num
+        },
+        success: (response) => {
+          if (response.data.length !== 0) {
+            let data = {
+              reader: response.data[0].id,
+              book: bookId,
+              attachment_starting_date: this.add_form[bookId].date
+            }
+            // eslint-disable-next-line
+            $.ajax({
+              url: 'http://127.0.0.1:8000/api/lib/reader/',
+              type: 'POST',
+              data: data,
+              success: (response) => {
+                alert('Закрепление добавлено')
+                this.loadBooks()
+                this.unattachedBooksList = []
+                this.checkAttachments()
+                this.finalBooksList = this.bookList
+                this.active = 0
+              },
+              error: (response) => {
+                alert('Error')
+              }
+            })
+          } else {
+            alert('Книга с введённым шифром отсутствует в библиотеке')
+          }
+        },
+        error: (response) => {
+          alert('Error')
         }
       })
     }
@@ -384,8 +591,8 @@ export default {
 
 <style scoped>
   .demo-text {
-  padding: 16px;
-  background: #ffffff;
+    padding: 16px;
+    background: #ffffff;
   }
   .book-form {
     width: 800px;
@@ -398,7 +605,7 @@ export default {
   }
   .search-form-button {
     margin-top: 8px;
-    margin-left: 10px;
+    margin-bottom: 10px;
   }
   .near-form-text {
     margin-top: 9px;
@@ -408,5 +615,33 @@ export default {
     width: 400px;
     height: 50px;
     margin-left: 10px;
+  }
+  .add-form {
+    width: 240px;
+    height: 50px;
+    margin-left: 10px;
+  }
+  .copy-form-button {
+    margin-left: 12px;
+  }
+  .cipher-link {
+    cursor: pointer
+  }
+  .attachment-form {
+    width: 500px;
+    height: 120px;
+    margin-right: 300px;
+    margin-left: 80px;
+  }
+  .attachment-button {
+    margin-left: 90px;
+    margin-bottom: 20px;
+  }
+  .near-att-form-text {
+    margin-top: 9px;
+    margin-left: 90px;
+  }
+  .title {
+    text-align: justify;
   }
 </style>

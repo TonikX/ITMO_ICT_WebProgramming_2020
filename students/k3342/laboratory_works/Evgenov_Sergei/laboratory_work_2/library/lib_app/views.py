@@ -9,10 +9,13 @@ from lib_app.models import Hall, Book, Reader, Attachment
 from lib_app.serializers import HallSerializer, BookSerializer, ReaderSerializer
 from lib_app.serializers import AttachmentSerializer, AttachmentSerializer_2
 from lib_app.serializers import AttachmentSerializer_3, AttachmentSerializer_4
-from lib_app.serializers import BookSerializer_4
+from lib_app.serializers import BookSerializer_4, AttachmentSerializer_5
+from lib_app.serializers import ReaderSerializer_2
 
 
 class Hall_V(APIView):
+
+    permission_classes = [permissions.IsAuthenticated, ]
 
     def get(self, request):
         halls = Hall.objects.all()
@@ -21,6 +24,8 @@ class Hall_V(APIView):
 
 
 class Book_V(APIView):
+
+    permission_classes = [permissions.IsAuthenticated, ]
 
     def get(self, request):
         book = request.GET.get("book")
@@ -31,6 +36,8 @@ class Book_V(APIView):
 
 class Books_V(APIView):
 
+    permission_classes = [permissions.IsAuthenticated, ]
+
     def get(self, request):
         books = Book.objects.all()
         serializer = BookSerializer_4(books, many=True)
@@ -38,6 +45,8 @@ class Books_V(APIView):
 
 
 class Reader_V(APIView):
+
+    permission_classes = [permissions.IsAuthenticated, ]
 
     def get(self, request):
         readers = Reader.objects.all()
@@ -54,6 +63,8 @@ class Reader_V(APIView):
 
 
 class Attachment_V(APIView):
+
+    permission_classes = [permissions.IsAuthenticated, ]
 
     def get(self, request):
         attachments = Attachment.objects.all()
@@ -116,6 +127,8 @@ class Reader_del(APIView):
 
 class Book_add(APIView):
 
+    permission_classes = [permissions.IsAuthenticated, ]
+
     def post(self, request):
         book =  BookSerializer_4(data=request.data)
         if book.is_valid():
@@ -127,7 +140,30 @@ class Book_add(APIView):
 
 class Book_one(APIView):
 
+    permission_classes = [permissions.IsAuthenticated, ]
+
     def get(self, request):
         books = Book.objects.all()
         serializer = BookSerializer_4(books, many=True)
+        return Response(serializer.data)
+
+
+class Check_att(APIView):
+
+    permission_classes = [permissions.IsAuthenticated, ]
+
+    def get(self, request):
+        attachments = Attachment.objects.filter(attachment_finishing_date=None)
+        serializer = AttachmentSerializer_5(attachments, many=True)
+        return Response({"data": serializer.data})
+
+
+class Reader_get_id(APIView):
+
+    permission_classes = [permissions.IsAuthenticated, ]
+
+    def get(self, request):
+        num = request.GET.get("library_card_num")
+        readers = Reader.objects.filter(library_card_num=num)
+        serializer = ReaderSerializer_2(readers, many=True)
         return Response(serializer.data)

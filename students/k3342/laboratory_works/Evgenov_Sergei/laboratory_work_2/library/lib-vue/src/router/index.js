@@ -2,9 +2,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../components/Home'
 import Login from '../components/Login'
-import ReaderCh from '../components/readers/ReaderChange'
+import ReaderChange from '../components/readers/ReaderChange'
 import ReaderForm from '../components/readers/ReaderForm'
 import Books from '../components/Books'
+import BookChange from '../components/BookChange'
 
 Vue.use(Router)
 
@@ -21,9 +22,9 @@ export default new Router({
       component: Login
     },
     {
-      path: '/reader_ch',
-      name: 'reader_ch',
-      component: ReaderCh,
+      path: '/reader_change',
+      name: 'reader_change',
+      component: ReaderChange,
       props: true
     },
     {
@@ -35,6 +36,11 @@ export default new Router({
       path: '/books',
       name: 'books',
       component: Books
+    },
+    {
+      path: '/book_change',
+      name: 'book_change',
+      component: BookChange
     }
   ]
 })

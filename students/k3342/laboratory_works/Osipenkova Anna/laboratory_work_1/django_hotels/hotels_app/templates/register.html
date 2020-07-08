@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <style>
+        * {box-sizing: border-box;}
+        body {
+          background: #e6f4fd;
+          font-family: 'Roboto', sans-serif;
+        }
+        .ui-form {
+          max-width: 350px;
+          padding: 55px 30px 30px;
+          margin: 50px auto 30px;
+          background: rgba(255, 255, 255, 0.75);
+          border-radius: 25px;
+        }
+        .ui-form h3 {
+          position: relative;
+          z-index: 5;
+          margin: 0 0 60px;
+          text-align: center;
+          color: #4a90e2;
+          font-size: 30px;
+          font-weight: normal;
+        }
+        .ui-form h3:before {
+          content: "";
+          position: absolute;
+          z-index: -1;
+          left: 60px;
+          top: -30px;
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          background: #fee8e4;
+        }
+        .ui-form h3:after {
+          content: "";
+          position: absolute;
+          z-index: -1;
+          right: 50px;
+          top: -40px;
+          width: 0;
+          height: 0;
+          border-left: 55px solid transparent;
+          border-right: 55px solid transparent;
+          border-bottom: 90px solid #ffe3b5;
+        }
+        p{
+          position: relative;
+          margin-bottom: 40px;
+
+        }
+        p input {
+            margin-top: 25px;
+          display: block;
+          width: 100%;
+          /*padding: 10px 10px;*/
+          line-height: 40px;
+          font-family: 'Roboto', sans-serif;
+          font-size: 20px;
+          background: none;
+          border-width: 0;
+          border-bottom: 2px solid #4a90e2;
+          transition: all 0.2s ease;
+        }
+        p label {
+          position: absolute;
+          left: 13px;
+          color: #9d959d;
+          font-size: 20px;
+          font-weight: 300;
+          transition: all 0.2s ease;
+        }
+        p input:focus {
+          outline: 0;
+          border-color: #F77A52;
+        }
+        p input:focus + label,
+        p input:valid + label {
+          transform: translateY(-60px);
+          margin-left: -14px;
+          font-size: 14px;
+          font-weight: 400;
+          outline: 0;
+          border-color: #F77A52;
+          color: #F77A52;
+        }
+        .ui-form input[type="submit"] {
+          width: 100%;
+          padding: 0;
+          line-height: 42px;
+          background: #4a90e2;
+          border-width: 0;
+          color: white;
+          font-size: 20px;
+             border-radius: 15px;
+        }
+        .ui-form p {
+          margin: 0;
+          padding-top: 10px;
+        }
+        p label a {
+            margin-top: 25px;
+          display: block;
+          width: 100%;
+          /*padding: 10px 10px;*/
+          line-height: 40px;
+          font-family: 'Roboto', sans-serif;
+          font-size: 20px;
+          background: none;
+          border-width: 0;
+          border-bottom: 2px solid #4a90e2;
+          transition: all 0.2s ease;
+        }
+
+</style>
+</head>
+
+<body>
+    {% if not registered %}
+    <form class="ui-form" method="post">
+        {% csrf_token %}
+        {{ create_user_form.as_p }}
+        <br>
+        <input type="submit" name="" value="Зарегистрироваться">
+    </form>
+    {% else %}
+    <div class="ui-form"><label for=""></label><h2>Вы успешно зарегистрировались!</h2> <br>
+        <label for=""><a href="/accounts/login" class="button">Перейти ко входу</a></label>
+    </div>
+    {% endif %}
+</body>
+
+</html>

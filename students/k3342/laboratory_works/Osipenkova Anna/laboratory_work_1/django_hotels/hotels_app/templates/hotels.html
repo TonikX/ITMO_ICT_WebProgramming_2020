@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Отели</title>
+    <style>
+        body {
+          background: #e6f4fd;
+          font-family: 'Roboto', sans-serif;
+        }
+        .hotel-card{
+          max-width: 350px;
+          padding: 35px 30px 30px;
+          margin: 50px auto 30px;
+          background: rgba(255, 255, 255, 0.75);
+          border-radius: 25px;
+        }</style>
+</head>
+
+<body>
+    {% if user.is_authenticated %}
+    <div class="hotel-card">
+    <h1>Отели:</h1>
+        <hr>
+    <div>
+        {% for hotel in hotels %}
+        <p>
+            <h3>{{ hotel.name }} </h3><br> <p>{{ hotel.comfort }}</p>
+            <br />
+            <a href="/hotels/{{ hotel.id }}">Подробнее</a>
+        <hr>
+        </p>
+        {% endfor %}
+    </div>
+    {% else %}
+    Для доступа к этой странице необходимо <a href="/accounts/register">зарегистрироваться</a> или <a href="/accounts/login">Войти</a>.
+    {% endif %}
+    </div>
+</body>
+
+</html>

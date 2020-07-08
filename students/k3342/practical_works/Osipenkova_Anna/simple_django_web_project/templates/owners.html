@@ -1,0 +1,8 @@
+<body>
+    {% for owner in owners %}
+    <u>Владелец:</u> {{ owner.first_name }}
+    <br>
+    <u>Дата рождения:</u> {{ owner.birth_date }}
+    <br>
+    {% endfor %}
+</body>

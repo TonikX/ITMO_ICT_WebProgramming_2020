@@ -20,4 +20,6 @@ from project_first_app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('person/<int:poll_id>/', views.detail),
+    path('time/', views.geeks_view),
+    path('test/', views.list_view),
 ]

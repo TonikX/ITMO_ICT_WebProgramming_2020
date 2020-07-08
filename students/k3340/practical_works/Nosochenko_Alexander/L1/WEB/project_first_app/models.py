@@ -1,6 +1,12 @@
 from django.db import models
 from datetime import datetime
 
+class Vehicle(models.Model):
+    manufacturer = models.CharField(max_length=100)
+    model = models.CharField(max_length=100)
+    color = models.CharField(max_length=30)
+    vehicle_number = models.CharField(max_length=10)
+
 class Person(models.Model):
     def __str__(self):
         return self.name + " " + self.surname
@@ -9,8 +15,9 @@ class Person(models.Model):
     surname = models.CharField(max_length=128)
     bdate = models.DateField
 
-class Driver_License(models.Model):
+    vehicle = models.ManyToManyField(Vehicle, through='Ownership')
 
+class Driver_License(models.Model):
 
     TYPE = [
         ('A', 'A'),
@@ -50,12 +57,6 @@ class Ownership(models.Model):
     def __str__(self):
         return str(str(self.owner) + " " + str(self.vehicle) + " from " + str(self.start_date_of_ownership) + " till " + str(self.end_date_of_ownership))
 
-
-class Vehicle(models.Model):
-    manufacturer = models.CharField(max_length=100)
-    model = models.CharField(max_length=100)
-    color = models.CharField(max_length=30)
-    vehicle_number = models.CharField(max_length=10)
 
     def __str__(self):
         return str(self.manufacturer + " " + self.model + " " + self.vehicle_number)

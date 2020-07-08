@@ -15,4 +15,7 @@ urlpatterns = [
     path('one_book/', Book_one.as_view()),
     path('check_att/', Check_att.as_view()),
     path('reader_get_id/', Reader_get_id.as_view()),
+    path('attachment_books/', Attachment_books.as_view()),
+    path('book_del/<int:pk>/', Book_del.as_view()),
+    path('book_change/<int:pk>/', Book_change.as_view({'put': 'put'})),
 ]

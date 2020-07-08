@@ -55,7 +55,6 @@ export default {
         type: 'GET',
         success: (response) => {
           this.readers = response.data
-          console.log(response)
         }
       })
     },

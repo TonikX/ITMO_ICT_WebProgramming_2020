@@ -40,7 +40,8 @@ export default new Router({
     {
       path: '/book_change',
       name: 'book_change',
-      component: BookChange
+      component: BookChange,
+      props: true
     }
   ]
 })

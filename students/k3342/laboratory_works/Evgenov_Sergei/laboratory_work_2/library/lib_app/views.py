@@ -10,7 +10,7 @@ from lib_app.serializers import HallSerializer, BookSerializer, ReaderSerializer
 from lib_app.serializers import AttachmentSerializer, AttachmentSerializer_2
 from lib_app.serializers import AttachmentSerializer_3, AttachmentSerializer_4
 from lib_app.serializers import BookSerializer_4, AttachmentSerializer_5
-from lib_app.serializers import ReaderSerializer_2
+from lib_app.serializers import ReaderSerializer_2, BookSerializer_5
 
 
 class Hall_V(APIView):
@@ -167,3 +167,35 @@ class Reader_get_id(APIView):
         readers = Reader.objects.filter(library_card_num=num)
         serializer = ReaderSerializer_2(readers, many=True)
         return Response(serializer.data)
+
+
+class Attachment_books(APIView):
+
+    permission_classes = [permissions.IsAuthenticated, ]
+
+    def get(self, request):
+        book_id = request.GET.get("book")
+        attachments = Attachment.objects.filter(book=book_id).filter(attachment_finishing_date=None)
+        serializer = AttachmentSerializer_5(attachments, many=True)
+        return Response({"data": serializer.data})
+
+
+class Book_del(APIView):
+
+    permission_classes = [permissions.IsAuthenticated, ]
+
+    def delete(self, request, pk):
+        book = Book.objects.get(pk=pk)
+        book.delete()
+        return Response({"status": "Delete"})
+
+
+class Book_change(viewsets.ModelViewSet):
+
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer_5
+    authentication_classes = [TokenAuthentication, ]
+    permission_classes = [permissions.IsAuthenticated, ]
+
+    def put(self, request, *args, **kwargs):
+        return self.partial_update(request, *args, **kwargs)

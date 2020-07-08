@@ -121,13 +121,13 @@
 
 <script>
 export default {
-  name: 'ReaderCh',
+  name: 'ReaderChange',
   props: ['person'],
   data () {
     return {
       form: {
         id: '',
-        ful_name: '',
+        full_name: '',
         library_card_num: '',
         hall: '',
         home_address: '',
@@ -209,7 +209,6 @@ export default {
         },
         success: (response) => {
           if (response.data.books.length === 0) {
-            console.log('done')
             // eslint-disable-next-line
             $.ajax({
               url: 'http://127.0.0.1:8000/api/lib/reader_del/' + this.person.id + '/',

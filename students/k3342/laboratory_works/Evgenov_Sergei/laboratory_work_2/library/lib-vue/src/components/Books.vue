@@ -122,8 +122,9 @@
               <mu-flex>Дата поступления: {{book.receipt_date}}</mu-flex>
               <mu-flex>Зал: {{book.hall}}</mu-flex>
               <mu-flex>
-                <mu-button color="primary" @click="changeBook()" small class="search-form-button">
-                  Изменить/Удалить книгу
+                <mu-button color="indigo400" @click="changeBook(book)"
+                           small class="search-form-button">
+                  Изменить/Списать книгу
                 </mu-button>
               </mu-flex>
             </mu-col>
@@ -468,8 +469,8 @@ export default {
         }
       })
     },
-    changeBook () {
-      this.$router.push({'name': 'book_change'})
+    changeBook (book) {
+      this.$router.push({name: 'book_change', params: {book}})
     },
     addCopy (bookId) {
       // Получаю данные о книге, экземпляр который хочу добавить (по id)

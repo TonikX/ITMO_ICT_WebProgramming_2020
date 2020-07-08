@@ -108,7 +108,6 @@ export default {
             this.detachment_form[i] = {attachment: '', date: ''}
           }
           this.person_books = response.data
-          console.log(this.detachment_form)
         }
       })
     },
@@ -121,7 +120,6 @@ export default {
           book: this.form.input
         },
         success: (response) => {
-          console.log(response.data)
           if (response.data.length !== 0) {
             this.book_form = response.data[0].id
             // eslint-disable-next-line
@@ -154,7 +152,6 @@ export default {
     },
     detach (idAtt, idForm) {
       this.detachment_form[idForm].attachment = idAtt
-      console.log(this.detachment_form[idForm].attachment + ' ' + this.detachment_form[idForm].date)
       let data = {
         data: {
           type: 'Attachment',

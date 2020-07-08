@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+	<title>Доктора</title>
+	<style>
+		.myDiv {
+			background-color: #4c77a6; 
+			width: 100%; /* Ширина слоя */
+			margin: 0px; /* Значение отступов */
+			border: 10px solid black; /* Параметры границы */
+			padding: 5px; /* Поля вокруг текста */
+			border: 1px solid #4c77a6;
+
+		}
+
+		p {
+			margin-top: 0.5em; /* Отступ сверху */
+			margin-bottom: 1em; /* Отступ снизу */
+		}
+		body {
+			background-color: #edeef0;
+		}
+		th{
+			background-color: #4c77a6;
+			color: #f8f9fa;
+		}
+		td {
+			background-color: #f8f9fa;
+			color: #4c77a6;
+		}
+		.layer1 {
+			position: absolute; /* Относительное позиционирование */
+			background: #f0f0f0; /* Цвет фона */
+			height: 500px; /* Высота блока */
+			bottom: 15px; /* Положение от нижнего края */
+			right: 15px; /* Положение от правого края */
+			line-height: 1px;
+		}
+	</style>
+</head>
+<body >
+	<div class="myDiv">
+		<button type="button" class="btn btn-light">Доктора</button>
+		<button type="button" class="btn btn-light">Пациенты</button>
+		<button type="button" class="btn btn-light">Мед. Карты</button>
+		<button type="button" class="btn btn-light">Кабинеты</button>
+		<button type="button" class="btn btn-light">Оплата</button>
+		<button type="button" class="btn btn-light">Расписание</button>
+		<button type="button" class="btn btn-light">Запросы</button>
+		
+	</div>
+	<p>
+		<table margin=auto width="600" border="1" align="center">
+			<tr>
+				<th class="text-center">Имя</th>
+				<th class="text-center">Фамилия</th>
+				<th class="text-center">Специализация</th>
+				<th class="text-center">Пол</th>
+                <th colspan="2" class="text-center">Взаимодействие</th>
+			</tr>
+			{% for doctor in doctors %}
+			<tr>
+				<td align="center">{{ doctor.name }}</td>
+				<td align="center">{{ doctor.surname }}</td>
+				<td align="center">{{ doctor.specialty }}</td>
+				<td align="center">{{ doctor.sex }}</td>
+                <td align="center"><button type="button" class="btn btn-warning">Изменить</button></td>
+                <td align="center"><button class="btn btn-danger" id="layer1">Удалить</button></td>
+			</tr>
+			{% endfor %}
+		</table>
+	
+
+			<button  style="position: relative;left: 29.1%; margin-top: 5px;";   type="button" class="btn btn-primary">Добавить</button>
+
+	</p>
+
+
+</body>
+</html>

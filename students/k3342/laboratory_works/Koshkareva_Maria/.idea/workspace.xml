@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0e1d62f6-8b44-492e-86d9-9f300099d573" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../.idea/k3342.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Koshkareva_Maria.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="ProjectId" id="1dlWXASytIlgKrSO84SErdlhYVY" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus-vue/src/components" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\hey_uni\3\Web\ITMO_ICT_WebProgramming_2020\students\k3342\laboratory_works\Koshkareva_Maria\laboratory_work_2-3\my_project\bus-vue\src\assets\images" />
+      <recent name="D:\hey_uni\3\Web\ITMO_ICT_WebProgramming_2020\students\k3342\laboratory_works\Koshkareva_Maria\laboratory_work_2-3\my_project\bus-vue\src\assets" />
+      <recent name="D:\hey_uni\3\Web\ITMO_ICT_WebProgramming_2020\students\k3342\laboratory_works\Koshkareva_Maria\laboratory_work_2-3\my_project\bus-vue\static" />
+      <recent name="D:\hey_uni\3\Web\ITMO_ICT_WebProgramming_2020\students\k3342\laboratory_works\Koshkareva_Maria\laboratory_work_2-3\my_project\bus-vue\src\components\Buses" />
+      <recent name="D:\hey_uni\3\Web\ITMO_ICT_WebProgramming_2020\students\k3342\laboratory_works\Koshkareva_Maria\laboratory_work_2-3\my_project\bus-vue\src\components" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\hey_uni\3\Web\ITMO_ICT_WebProgramming_2020\students\k3342\laboratory_works\Koshkareva_Maria\laboratory_work_2-3\my_project\bus-vue\src\components" />
+      <recent name="D:\hey_uni\3\Web\ITMO_ICT_WebProgramming_2020\students\k3342\laboratory_works\Koshkareva_Maria\laboratory_work_2-3\my_project\bus-vue\src\assets\images" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Koshkareva_Maria" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/laboratory_work_2-3/my_project" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/laboratory_work_2-3/my_project/manage.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.manage" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\justj\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0e1d62f6-8b44-492e-86d9-9f300099d573" name="Default Changelist" comment="" />
+      <created>1592431670563</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1592431670563</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593005841584">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1593005841584" />
+    <state x="8" y="218" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1593289222710">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="8" y="218" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1593289222710" />
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1593005888146">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593005888146" />
+    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1593005888146">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1593005888146" />
+    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1593005888146">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1593005888146" />
+    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1593005888146">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1593005888146" />
+    <state x="141" y="136" key="RollbackChangesDialog" timestamp="1593913234951">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="141" y="136" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1593913234951" />
+    <state x="11" y="70" width="981" height="707" key="SettingsEditor" timestamp="1593264298361">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="11" y="70" width="981" height="707" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1593264298361" />
+    <state x="46" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1594214972804">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="46" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1594214972804" />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

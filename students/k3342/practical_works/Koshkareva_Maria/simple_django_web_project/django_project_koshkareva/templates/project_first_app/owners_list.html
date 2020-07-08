@@ -1,0 +1,11 @@
+<body>
+    {%for data in dataset%}
+    <i>Passport (number): </i> {{data.person.passport}}<br>
+    <i>Lives at: </i> {{data.person.address}} <br>
+    <i>Nationality: </i> {{data.person.nationality}}<br>
+    <br>
+    <i>Name: </i> {{ data.first_name }} {{ data.last_name }}<br>
+    <i>Was born: </i> {{ data.date_of_birth }} <br>
+    <hr>
+    {%endfor%}
+</body>

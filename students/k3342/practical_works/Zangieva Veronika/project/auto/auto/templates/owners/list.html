@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Owners{% endblock %}
+
+{% block content %}
+
+	{% if owner_data %}
+
+		{% for a in owner_data %}
+			<a href="{% url 'owners:detail' a.id %}">{{a.surname}}</a>
+		{% endfor %}
+
+	{% else %}
+		No data found
+	{% endif %}
+
+{% endblock %}

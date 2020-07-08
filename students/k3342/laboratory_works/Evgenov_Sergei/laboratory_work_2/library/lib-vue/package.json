@@ -12,10 +12,13 @@
   },
   "dependencies": {
     "jquery": "^3.5.1",
+    "material-design-icons": "^3.0.1",
+    "muse-ui": "^3.0.2",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.10.4",
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
     "babel-eslint": "^8.2.1",

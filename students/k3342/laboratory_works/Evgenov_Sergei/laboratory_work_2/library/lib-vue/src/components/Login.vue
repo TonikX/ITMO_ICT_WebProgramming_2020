@@ -1,14 +1,32 @@
 <template>
-  <div>
-    <input v-model="login" type="text" placeholder="Логин"/>
-    <input v-model="password" type="password" placeholder="Пароль"/>
-    <button @click="doLogin">Войти</button>
-  </div>
+  <mu-container>
+    <mu-appbar style="width: 100%;" color="#8B4513">
+      Сайт библиотеки на Vue.js
+    </mu-appbar>
+    <mu-container>
+      <mu-row>
+        <mu-col></mu-col>
+        <mu-col align-items="center">
+          <mu-flex><hr/></mu-flex>
+          <mu-flex justify-content="center">
+            Логин: <input v-model="login" type="text" placeholder="Логин"/>
+          </mu-flex>
+          <mu-flex><hr/></mu-flex>
+          <mu-flex justify-content="center">
+            Пароль: <input v-model="password" type="password" placeholder="Пароль"/>
+          </mu-flex>
+          <mu-flex><hr/></mu-flex>
+          <mu-flex justify-content="center">
+            <button @click="doLogin">Войти</button>
+          </mu-flex>
+        </mu-col>
+        <mu-col></mu-col>
+      </mu-row>
+    </mu-container>
+  </mu-container>
 </template>
 
 <script>
-import $ from 'jquery'
-
 export default {
   name: 'Login',
   data () {
@@ -19,6 +37,7 @@ export default {
   },
   methods: {
     doLogin () {
+      // eslint-disable-next-line
       $.ajax({
         url: 'http://127.0.0.1:8000/auth/token/login/',
         type: 'POST',
@@ -44,5 +63,9 @@ export default {
 </script>
 
 <style scoped>
-
+  .flex-wrapper {
+    width: 100%;
+    height: 56px;
+    margin-top: 8px;
+  }
 </style>

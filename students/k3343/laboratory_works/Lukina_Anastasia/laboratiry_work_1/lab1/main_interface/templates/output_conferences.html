@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Научные конференции 2020</title>
+		<meta charset="utf-8" />
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'main.css' %}" />
+
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="{% url 'conf_output'%}" class="logo">Научные конференции 2020</a>
+									{% if request.user.is_authenticated %}
+  										<ul class="actions" style="display:inline-block; margin-left:20px">
+										<li><a href="{% url 'logout'%}" class="button medium">Выйти</a></li>
+									</ul>
+										{% else %}
+  											<ul class="actions" style="display:inline-block; margin-left:20px">
+										<li><a href="{% url 'login'%}" class="button medium">Войти</a></li>
+											<br>
+											<li><a href="{% url 'register'%}" class="button medium">Зарегистрироваться</a></li>
+											</ul>
+										{% endif %}
+								</header>
+							<!-- Section -->
+								<section>
+									{% if request.user.is_authenticated %}
+									<h2>Добро пожаловать, {{request.user.first_name}} {{request.user.last_name}}</h2>
+									{% endif%}
+									{% block register %}{% endblock %}
+									<div class="posts">
+                                        {% for data in dataset %}
+                                            <article>
+
+                                                <a href="{% url 'conf_info' conf_id=data.id%}" class="image">
+                                                    <img width="450px" src="{% static data.promo.url%}" alt="" /></a>
+                                                <h3>{{data.title}}</h3>
+                                            </article>
+                                        {% endfor %}
+										{% for data in dataset %}
+                                            <article>
+
+                                                <a href="{% url 'conf_info' conf_id=data.id%}" class="image">
+                                                    <img width="450px" src="{% static data.promo.url%}" alt="" /></a>
+                                                <h3>{{data.title}}</h3>
+                                            </article>
+                                        {% endfor %}
+									</div>
+								</section>
+
+						</div>
+					</div>
+
+			</div>
+	</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars</title>
+</head>
+<body>
+<ul>
+        <li> <b><i>Отель</i></b>:{{hotel.name}} </li>
+            <li> <b><i>Адрес</i></b>: {{hotel.address}} </li>
+            <li> <b><i>Описание</i></b>: {{hotel.desc}} </li>
+            <li> <b><i>Вместимость</i></b>: {{hotel.places}} </li>
+            <li> <b><i>Типы номеров</i></b>: {{hotel.types}} </li>
+            <li> <b><i>Удобства</i></b>: {{hotel.facilities}} </li>
+            <li> <b><i>Владелец</i></b>: {{hotel.owner}} </li>
+{% with comments.count as total_comments %}
+  <h2>
+    {{ total_comments }} comment{{ total_comments|pluralize }}
+  </h2>
+{% endwith %}
+
+<hr/>
+{% for comment in comments %}
+  <div class="comment">
+    <p class="info">
+      Comment {{ forloop.counter }} by {{ comment.name }}
+      {{ comment.created }}
+    </p>
+  {{ comment.body|linebreaks }}
+  </div>
+{% empty %}
+  <p>There are no comments yet.</p>
+{% endfor %}
+<hr/>
+{% if new_comment %}
+  <h2>Your comment has been added.</h2>
+{% else %}
+  <h2>Add a new comment</h2>
+  <form action="." method="post">
+    {{ comment_form.as_p }}
+    {% csrf_token %}
+    <p><input type="submit" value="Add comment"></p>
+  </form>
+{% endif %}
+</ul>
+</body>

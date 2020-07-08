@@ -1,0 +1,54 @@
+{% extends "menu.html" %}
+
+{% block content %}
+    <div class="p-3 mb-2 bg-info text-white">
+        <br><h2><p class="text-center">AUTO RACING SCOREBOARD: Табло победителей автогонок</p></h2><br>
+    </div>
+    <br><h3><p class="text-center" style="color: #f5554a">Информация о победителях автогонок</p></h3><br>
+    <ul>
+        {% for race, winner, car in info %}
+            <ol class="list-counter-square">
+                <h4><p class="text-info"><i><b>Гонка: {{ race.name }} </b></i></p></h4>
+                <li class="list-group-item-info"><b>Категория:</b> {{ race.category }}</li>
+                <li class="list-group-item-info"><b>Дата проведения:</b> {{ race.date }}</li>
+                <li class="list-group-item-info"><b>Информация о победителе: </b>{{ winner.name }} {{ winner.surname }} {{ winner.middlename }} {{ winner.description }}</li>
+                <li class="list-group-item-info"><b>Опыт: </b>{{ winner.experience }}</li>
+                <li class="list-group-item-info"><b>Класс: </b>{{ winner.racer_class }}</li>
+                <li class="list-group-item-info"><b>Комманда: </b>{{ winner.team_name }}</li>
+                <li class="list-group-item-info"><b>Автомобиль: </b>{{ winner.car }}</li>
+                <li class="list-group-item-info"><b>Номер автомобиля: </b>{{ car.car_number }}</li>
+                <ul></ul><br><br>
+        <style>
+/* CSS */
+.list-counter-square {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.list-counter-square>li {
+  position: relative;
+  display: block;
+  margin-bottom: .25rem;
+  padding: .325rem .825rem .325rem 1.325rem;
+  color: #000;
+  background: #fff;
+}
+.list-counter-square>li:last-child {
+  margin-bottom: 0;
+}
+.list-counter-square>li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0.5rem;
+  background: #f5554a;
+}
+    </style>
+    </ol>
+	<br>
+{% endfor %}
+</ul>
+
+{% endblock %}

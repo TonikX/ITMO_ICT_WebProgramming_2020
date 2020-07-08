@@ -1,0 +1,7 @@
+tutorial-env/
+.idea/
+**env**
+**pycache**
+config.py
+*.*~
+*.sqlite3

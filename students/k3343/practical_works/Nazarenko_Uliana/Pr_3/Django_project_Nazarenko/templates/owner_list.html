@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Владельцы</title>
+</head>
+<body>
+    <div class="main">
+
+        {% for data in dataset %}
+
+        <b>Имя:</b> {{ data.name }}<br>
+        <b>Фамилия:</b> {{ data.surname }}<br>
+        <b>Дата рождения:</b> {{ data.birth_date }}<br>
+        <b>Паспортные данные:</b> {{ data.passport }}<br>
+        <b>Адрес:</b> {{ data.address }}<br>
+        <b>Национальность:</b> {{ data.nationality }}<br>
+            <hr/>
+
+        {% endfor %}
+
+    </div>
+</body>
+</html>

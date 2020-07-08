@@ -1,0 +1,7 @@
+**env**
+**pycache**
+*.*~
+*.sqlite3
+node_modules/
+.idea/
+dist/

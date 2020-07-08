@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block main %}
+<div class="card">
+<div class="card-body">
+<h4 class="card-title">Log into your profile</h4>
+
+<form method="post">
+{% csrf_token %}
+<input type="hidden" name="next" value="{% url 'main' %}">
+
+{{ form|crispy }}
+
+<button type="submit" class="btn btn-primary btn-block" >Log in</button>
+</form>
+    <h6 class="card-title">New here? <a href="{% url 'register_page' %}">Register</a></h6>
+</div>
+</div>
+{% endblock %}

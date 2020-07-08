@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+        django_marketing_db:
+                image: postgres
+                ports:
+                        - "5436:5432"
+                environment:
+                        - POSTGRES_USER=postgres
+                        - POSTGRES_PASSWORD=postgres
+                        - POSTGRES_DB=django_marketing
+                volumes:
+                        - ./dbs/postgres-data:/var/lib/postgresql
+        backend:
+                container_name: django_marketing_backend
+                build: ./django_marketing
+                command: bash -c "
+                        sleep 2 &&
+                        python3 manage.py makemigrations && python3 manage.py migrate &&
+                        python3 manage.py runserver --insecure 0.0.0.0:8000";
+                volumes:
+                        - ./django_marketing:/django_marketing
+                ports:
+                        - "8000:8000"
+                depends_on:
+                        - django_marketing_db
+        frontend:
+                container_name: django_marketing_frontend
+                build:
+                        context: ./vue-marketing
+                        dockerfile: Dockerfile
+                command: npm start --start;
+                volumes:
+                        - ./vue-marketing:/vue-marketing
+                        - /vue-marketing/node_modules
+                ports:
+                        - "8080:8080"
+                depends_on:
+                        - backend
+

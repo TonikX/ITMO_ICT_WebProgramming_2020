@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Информация о машинах{% endblock %}
+
+{% block content %}
+<body>
+	<div class="main">
+		<h1>Список машин (реализован с помощью классов):</h1>
+		<ul>
+		{% for car in object_list %}
+    		<li>Авто: <em>{{ car.make }} {{ car.model }}</em></li>
+    		<li>Цвет: <em>{{ car.color }}</em></li>
+    		<li>Гос. номер: <em>{{ car.state_number }}</em></li>
+    		<hr>
+		{% empty %}
+    		<li>Машины не найдены.</li>
+		{% endfor %}
+		</ul>
+	</div>	
+</body>	
+
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'project_first_app/base.html' %}
+
+{% block content %}
+  {% for owner in owners %}
+    <p> Имя : {{ owner.name }}</p>
+    <p>Фамилия :  {{ owner.surname }}</p>
+    <br/>
+  {% endfor %}
+
+{% endblock %}

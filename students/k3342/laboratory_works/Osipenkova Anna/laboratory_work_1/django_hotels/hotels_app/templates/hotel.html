@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ hotel.name }}</title>
+    <style>
+        .hotel-card{
+          min-width: 350px;
+          max-width: 400px;
+          padding: 55px 30px 30px;
+          /*margin: 50px auto 30px;*/
+          background: rgba(255, 255, 255, 0.75);
+          border-radius: 25px;
+             margin-left: 0;
+            margin-right: auto;
+        }
+        .hotel-card-2{
+            float: right;
+          max-width: 350px;
+          padding: 55px 30px 30px;
+          /*margin: 0 auto auto;*/
+          background: rgba(255, 255, 255, 0.75);
+          border-radius: 25px;
+             margin-left: auto;
+            margin-right: 0;
+        }
+        li {display: none}
+        .hotel-card-2 p label {position: relative;
+          margin-bottom: 40px; font-size: 20px}
+        .hotel-card-3{
+          min-width: 350px;
+          padding: 55px 30px 30px;
+          /*margin: 0 auto auto;*/
+          background: rgba(255, 255, 255, 0.75);
+          border-radius: 25px;
+             margin-left: auto;
+            margin-right: auto;
+        }
+           body {
+          background: #e6f4fd;
+          font-family: 'Roboto', sans-serif;
+          display: flex;
+        }
+    p{
+          position: relative;
+          margin-bottom: 40px;
+
+        }
+        p input {
+            margin-top: 25px;
+          display: block;
+          width: 100%;
+          /*padding: 10px 10px;*/
+          line-height: 40px;
+          font-family: 'Roboto', sans-serif;
+          font-size: 20px;
+          background: none;
+          border-width: 0;
+          border-bottom: 2px solid #4a90e2;
+          transition: all 0.2s ease;
+        }
+        p label {
+          position: absolute;
+          left: 13px;
+          color: #9d959d;
+          font-size: 20px;
+          font-weight: 300;
+          transition: all 0.2s ease;
+        }
+        p input:focus {
+          outline: 0;
+          border-color: #F77A52;
+        }
+        p input:focus + label,
+        p input:valid + label {
+          transform: translateY(-60px);
+          margin-left: -14px;
+          font-size: 14px;
+          font-weight: 400;
+          outline: 0;
+          border-color: #F77A52;
+          color: #F77A52;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hotel-card">
+    <h1>Отель: <em>{{ hotel.name }}</em></h1>
+
+        <hr>
+    <h4>Расположение:</h4><p>{{ hotel.address }}</p>
+    <h4>Доступные апартаменты:</h4>
+    <div>
+        {% for room in rooms %}
+        <p>{{ room.get_room_type_display }}</p>
+        <hr>
+        {% endfor %}
+    </div>
+    <h4>Владелец:</h4>
+    <div>
+        {% for owner in owners%}
+        <p>{{ owner.name }}</p>
+        {% endfor %}
+    </div>
+    </div>
+    <div class="hotel-card-3"><h1>Отзывы:</h1>
+
+    {% for comment in comments %}
+    <hr>
+    <div>
+        <p><b>Оценка:</b> {{ comment.rating }}/10</p>
+        <p><b>Период пробывания:</b> <br>{{ comment.period_start }} - {{ comment.period_end }}</p>
+        <p><b>Пользователь: {{ comment.user }}</b></p>
+        <p>{{ comment.text }}</p>
+    </div>
+    <hr>
+    {% endfor %}
+
+    </div>
+    <div class="hotel-card-2"><h1>Добавить отзыв:</h1>
+        <hr>
+        <form action="/hotels/{{ hotel.id }}/" method="post">
+            {% csrf_token %}
+            <input type="text" name="user" hidden value="{{ user.id }}">
+            {{ form.as_p }}
+            <input type="submit">
+        </form></div>
+</body>
+
+</html>

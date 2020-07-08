@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<title> Owners</title>
+</head>
+<body>
+<div class="main">
+{% for x in dataset %}
+{{ x.name }}
+{{ x.surname }} is born at
+{{ x.birthdate }}  <br/>
+    {% endfor %}
+</div>
+</body>
+</html>

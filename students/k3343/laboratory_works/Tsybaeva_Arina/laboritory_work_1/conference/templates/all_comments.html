@@ -1,0 +1,34 @@
+{% extends "welcome_page.html" %}
+{% block title %}<title>Conferences: Комментарии</title>{% endblock %}
+{% block content %}
+<h1 align="center">Комментарии к конференциям</h1>
+    {% with comments.count as total_comments %}
+    <h2>
+        {{ total_comments }} comment{{ total_comments|pluralize }}
+    </h2>
+{% endwith %}
+
+        {% for comment in comments %}
+    <div class="comment">
+        <p class="info">
+            Comment {{ forloop.counter }} by <font color="#dc143c" >{{ comment.name }}</font>
+            {{ comment.created }}
+        </p>
+        {{ comment.body|linebreaks }}
+    </div>
+{% empty %}
+    <p>There are no comments yet.</p>
+{% endfor %}
+<h1 align="center">Добавление нового комментария</h1>
+    <form method="POST" enctype="multipart/form-data">
+
+    <!-- Security token -->
+    {% csrf_token %}
+
+    <!-- Using the formset -->
+    {{ form.as_p }}
+
+    <input type="submit" value="Отправить комментарий" >
+    </form>
+
+{% endblock %}

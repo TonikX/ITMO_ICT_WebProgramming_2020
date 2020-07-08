@@ -1,0 +1,27 @@
+{% extends 'hw/base_hw.html' %}
+
+{% block title %}
+    Комментарии пользователей - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <div class="mb-5">
+        <h5 class="mb-4">Комментарии пользователей:</h5>
+        {% for comment in comments %}
+            <div class="card pd-5 mb-3">
+                <div class="card-header">
+                    Предмет: {{ comment.homework }}
+                </div>
+                <div class="card-body">
+                    <small>
+                        Автор: <strong><i>{{ comment.commentator }}</i></strong> <br>
+                        Важность: <strong><i>{{ comment.comment_importance }}</i></strong> <br>
+                        Тип комментария: <strong><i>{{ comment.comment_type }}</i></strong> <br>
+                    </small>
+                    <big>{{ comment.text|linebreaksbr }}</big> <br>
+                    <small>Добавлен: <i>{{ comment.created }}</i></small>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

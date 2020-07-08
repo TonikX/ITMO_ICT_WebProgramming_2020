@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Научные конференции 2020</title>
+		<meta charset="utf-8" />
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'main.css' %}" />
+		<link rel="icon" href="data:;base64,=">
+
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="{% url 'conf_output'%}" class="logo">Научные конференции 2020</a>
+									{% if request.user.is_authenticated %}
+  										<ul class="actions" style="display:inline-block; margin-left:20px">
+										<li><a href="{% url 'logout'%}" class="button medium">Выйти</a></li>
+									</ul>
+										{% else %}
+  											<ul class="actions" style="display:inline-block; margin-left:20px">
+										<li><a href="{% url 'login'%}" class="button medium">Войти</a></li>
+											<br>
+											<li><a href="{% url 'register'%}" class="button medium">Зарегистрироваться</a></li>
+											</ul>
+										{% endif %}
+								</header>
+
+<!--							Главная информация-->
+								<section id="banner">
+									<div class="content">
+										<header>
+											<h2>{{conf.title}}</h2>
+                                            <p><b>Сроки проведения:</b>
+                                                {%ifequal conf.date_start conf.date_end%}
+                                                    {{conf.date_start|date:"d.m.Y"}}
+                                                {%else%}
+                                                    с {{conf.date_start|date:"d.m.Y"}} до {{conf.date_end|date:"d.m.Y"}}
+                                                {%endifequal%}
+                                            </p>
+                                            <p style="text-align:justify">{{conf.conference_description}}</p>
+                                        </header>
+										{%for theme in themes_id%}
+											<ul class="actions" style="display:inline-block; margin-left:20px">
+											<li><a href="#" class="button medium">{{theme.theme.theme}}</a></li>
+											</ul>
+										{% endfor %}
+									</div>
+
+									<span class="image object">
+										<img src="{% static conf.promo.url%}" alt="" />
+									</span>
+
+								</section>
+
+<!--							Подробности-->
+								<section>
+									<header class="major">
+										<h2>Подробности</h2>
+									</header>
+									<div class="features">
+										<article>
+											<span class="icon fa-gem"></span>
+											<div class="content">
+												<h3>Место проведения:</h3>
+												<h4>{{conf.place}}</h4>
+												<p style="text-align:justify;">{{conf.place_description}}</p>
+											</div>
+										</article>
+										<article>
+											<span class="icon solid fa-paper-plane"></span>
+											<div class="content">
+												<h3>Условия участия</h3>
+												<p>{{conf.conditions}}</p>
+											</div>
+										</article>
+									</div>
+								</section>
+
+<!--							Комментарии-->
+							<section>
+									<header class="major">
+										<h2>Комментарии</h2>
+									</header>
+									<div class="features">
+										{% for comment in comments %}
+										<article>
+											<div class="content" style="border: solid 2px lightpink; padding:20px">
+												<h3>{{comment.user.first_name}} {{comment.user.last_name}}</h3>
+												<h4>{{comment.date|date:"d.m.Y"}}</h4>
+												<h4>{{comment.get_comment_type_display}}
+												</h4>
+												<p style="text-align:justify;">{{comment.comment}}</p>
+											</div>
+										</article>
+										{% empty %}
+										<article>
+											<div class="content">
+												<h3>Комментариев пока нет...</h3>
+											</div>
+										</article>
+										{% endfor %}
+									</div>
+								</section>
+<!--							Оставить комментарий-->
+							<article>
+								{% if request.user.is_authenticated %}
+  								<header class="major">
+										<h2>Оставьте свой комментарий</h2>
+									</header>
+								<div class="content" style="width:48.5%">
+									<form action="#" method="post">
+										   {% csrf_token %}
+    										{{ form.as_p }}
+										<input type="submit" value="Отправить">
+									</form>
+
+								</div>
+								{% else %}
+								<div class="content">
+									<h2>Чтобы оставить свой комментарий, пожалуйста, авторизируйтесь!</h2>
+									</form>
+								</div>
+								{% endif %}
+
+
+							</article>
+
+						</div>
+					</div>
+
+
+
+			</div>
+	</body>
+</html>

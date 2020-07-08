@@ -1,0 +1,30 @@
+{% extends "base_view.html" %}
+{% block title %}<title>Flights</title>{% endblock %}
+{% block content %}
+<h1>Table of flights</h1>
+<table>
+        {% for flight in flights %}
+       <tr>
+           <td><H1>Flight {{flight.code}}</H1></td>
+       </tr>
+        <tr>
+            <td>Departures from airport {{flight.dep_airport}}</td>
+            <td>Departure terminal {{flight.dep_terminal}}</td>
+            <td>Gate {{flight.gate}}</td>
+        </tr>
+        <tr>
+            <td>Departures at {{flight.dep_time}}</td>
+        </tr>
+        <tr>
+            <td>Arrives to airport {{flight.arr_airport}}</td>
+            <td>Arrival terminal {{flight.arr_terminal}}</td>
+        </tr>
+        <tr>
+            <td>Arrives at {{flight.arr_time}}</td>
+        </tr>
+        <tr>
+            <td>Flight type is {{flight.flight_type}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock%}

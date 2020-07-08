@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car</title>
+</head>
+<body>
+    <div>
+	{% for avto in avtos %}
+		<p><b>Автомобиль:</b> {{ Avto }}</p>
+        <p><b>Марка:</b> {{avto.mark}}</p>
+        <p><b>Модель:</b> {{avto.model}}</p>
+		<p><b>Цвет:</b> {{avto.color}}</p>
+		<p><b>Номер:</b> {{avto.number}}</p>
+		<hr>
+	{% endfor %}
+	</div>
+</body>
+</html>

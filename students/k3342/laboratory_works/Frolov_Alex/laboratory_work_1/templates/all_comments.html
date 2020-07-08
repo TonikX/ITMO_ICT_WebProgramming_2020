@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Комментарии</title>
+</head>
+<body>
+<li><a href="{% url 'index' %}">Главная страниица</a></li>
+<li><a href="{% url 'account_login' %}">Войти</a></li>
+<li><a href="{% url 'all_conferences' %}">Конференции</a></li>
+<li><a href="{% url 'add_comment' %}">Новый комментарий</a></li>
+<li><a href="{% url 'account_logout' %}">Выйти</a></li>
+<h1>Комментарии к научным конференциям</h1>
+    <table>
+        {% for comment in comments %}
+        <tr>
+           <td><H1>Комментарий к конференции: </H1></td>
+            <td>{{comment.conference_name}}</td>
+       </tr>
+        <tr>
+            <td>Автор комментария</td>
+            <td>{{comment.participant}}</td>
+        </tr>
+        <tr>
+            <td>Тип комментария</td>
+            <td>{{comment.type_of_comment}}</td>
+        </tr>
+        <tr>
+            <td>Техт комментария</td>
+            <td>{{comment.text}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

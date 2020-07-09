@@ -1,0 +1,23 @@
+<html>
+	<body>
+		<h2>Owners</h2>
+		<h3>{{ car_info.colour }} {{ car_info.brand }} {{ car_info.model}}</h3>
+		<ul>
+		{% for owner, dl, owned in info %}
+			<li>Name: {{ owner.name }} {{ owner.surname }}</li>
+			<li>Username: {{ owner.username }}</li>
+			<li>Birth date: {{ owner.birth_date }}</li>
+			<li>Passport number: {{ owner.passport }}</li>
+			<li>Address: {{ owner.address }}</li>
+			<li>Ethnicity: {{ owner.ethnicity }}</li>
+			<li>Owned the car from {{ owned.date_start_own }} to {{ owned.date_end_own }}</li>
+			<li>Driver's license:</li>
+			<ul>
+			<li>Number: {{ dl.license_number }}</li>
+			<li>Date of issue: {{ dl.date_issue }}</li>
+			<li>Category: {{ dl.category }}</li><br>
+			</ul>
+		{% endfor %}
+		</ul>
+	</body>
+</html>

@@ -1,4 +1,10 @@
-# Django #
+
+**env**
+**pycache**
+config.py
+*.*~
+*.sqlite3
+.idea
 *.log
 *.pot
 *.pyc
@@ -117,3 +123,4 @@ GitHub.sublime-settings
 
 # .DS_Store #
 .*\.DS_Store
+

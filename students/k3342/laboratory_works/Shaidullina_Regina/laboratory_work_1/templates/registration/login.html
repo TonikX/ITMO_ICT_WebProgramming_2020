@@ -1,0 +1,17 @@
+{% extends 'main_menu.html' %}
+
+{% block content %}
+
+<h2>Log in to your account</h2>
+{% if user.is_active %}
+<p>You have signed in already.</p>
+{% else %}
+<p>If you have not created an account yet, then please <a href="{% url 'register' %}">sign up</a> first.</p>
+<form method='POST'>
+	{% csrf_token %}
+	{{ form.as_p }}
+	<input type='submit' value='Login'>
+</form><br>
+{% endif %}
+
+{% endblock %}

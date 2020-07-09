@@ -1,0 +1,14 @@
+<html>
+	<body>
+		<h2>Cars</h2>
+		<ul>
+		{% for car in object_list %}
+			<li>Brand: {{ car.brand }}</li>
+			<li>Model: {{ car.model }}</li>
+			<li>Colour: {{ car.colour }}</li>
+			<li>State number: {{ car.car_number }}</li>
+			<hr/>
+		{% endfor %}
+		</ul>
+	</body>
+</html>

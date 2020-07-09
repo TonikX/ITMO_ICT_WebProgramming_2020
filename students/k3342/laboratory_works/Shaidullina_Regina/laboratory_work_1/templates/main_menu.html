@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<title>Leaderboard</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+	<div>
+		<div class='container-fluid'>
+		<ul><br>
+			<li><a href="{% url 'main' %}">Main page</a></li>
+			<li><a href="{% url 'leaderboard' %}">Racing Leaderboard</a></li>
+			<li><a href="{% url 'comments' %}">Comments</a></li>
+			<li><a href="{% url 'register' %}">Register</a></li>
+			<li><a href="{% url 'login' %}">Log in</a></li>
+			<li><a href="{% url 'logout' %}">Log out</a></li>
+		</ul>
+		{% block content %}
+		{% endblock %}
+		</div>
+	</div>
+</body>
+</html>

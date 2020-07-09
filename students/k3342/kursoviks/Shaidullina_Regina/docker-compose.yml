@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+        school_db:
+                image: postgres
+                ports:
+                        - "5432:5432"
+                environment:
+                        - POSTGRES_DB=school
+                        - POSTGRES_USER=postgres
+                        - POSTGRES_PASSWORD=postgres
+
+        backend:
+                container_name: school_backend
+                build:
+                        context: ./school-server
+                        dockerfile: Dockerfile
+
+                command: bash -c "sleep 3 &&
+                        python3 manage.py makemigrations && python3 manage.py migrate &&
+                        python3 manage.py runserver 0.0.0.0:8000";
+                volumes:
+                        - ./school-server:/school-server
+                ports:
+                        - "8000:8000"
+                depends_on:
+                        - school_db
+
+        frontend:
+                container_name: school_frontend
+                build:
+                        context: ./school-vue
+                        dockerfile: Dockerfile
+
+                command: npm run dev
+                volumes:
+                        - ./school-vue:/school-vue
+                ports:
+                        - "8080:8080"
+                depends_on:
+                        - backend

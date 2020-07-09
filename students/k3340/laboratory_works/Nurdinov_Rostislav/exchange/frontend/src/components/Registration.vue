@@ -1,7 +1,7 @@
-<template xmlns="http://www.w3.org/1999/html">
+<template>
   <mu-container>
 
-    <mu-appbar style="width: 100%;"  color="indigo400">
+    <mu-appbar style="width: 100%;"  color="indigo400" align="center">
 
       Выполните вход
 
@@ -9,7 +9,7 @@
  <mu-paper class="demo-paper" :z-depth="5">
     <mu-form class="mu-demo-form">
       <mu-form-item prop="username">
-        <mu-text-field style="margin-top: 20px;" v-model="login" type="text" placeholder="Логин"></mu-text-field>
+        <mu-text-field style="margin-top: 20px;" v-model="username" type="text" placeholder="Логин"></mu-text-field>
       </mu-form-item>
       <mu-form-item prop="username">
         <mu-text-field v-model="password" type="password" placeholder="Пароль"></mu-text-field>
@@ -17,7 +17,7 @@
       <mu-form-item prop="username">
         <mu-text-field  type="password" placeholder="Повторите пароль"></mu-text-field>
       </mu-form-item>
-      <mu-button style="margin-bottom: 20px;" @click="setLogin">Регистрация</mu-button>
+      <mu-button style="margin-bottom: 20px;" @click="setReg">Регистрация</mu-button>
     </mu-form>
    </mu-paper>
   </mu-container>
@@ -25,24 +25,24 @@
 <script>
   import $ from 'jquery'
   export default {
-    name: "Login",
+    name: "Registration",
     data() {
       return {
-        login: '',
+        username: '',
         password: '',
       }
     },
     methods: {
-      setLogin() {
+      setReg() {
         $.ajax({
-          url: "http://127.0.0.1:8000/auth/users/",
+          url: "http://127.0.0.1:8000/register",
           type: "POST",
           data: {
-            username: this.login,
+            username: this.username,
             password: this.password
           },
           success: (response) => {
-                this.$router.push({name: "Info"})
+                this.$router.push({name: "ResumeReg"})
           },
           error: (response) => {
             if (response.status === 400) {

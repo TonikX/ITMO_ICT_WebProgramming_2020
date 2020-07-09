@@ -2,7 +2,9 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework import generics, permissions
-from .models import JobSeeker, Vacancy, Resume
+from .permissions import IsOwnerOrReadOnly
+
+from .models import JobSeeker, Vacancy, Resume, Application
 from .serializers import *
 
 
@@ -13,10 +15,26 @@ class Logout(APIView):
         return Response(status=status.HTTP_200_OK)
 
 
+class UserView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
 class ResumeListView(generics.ListAPIView):
     """Вывод списка соискателей"""
-    queryset = Resume.objects.all()
+    # queryset = Resume.objects.all()
     serializer_class = ResumeListSerializer
+
+    def get_queryset(self):
+        queryset = Resume.objects.all()
+        params = self.request.query_params
+
+        jobseeker = params.get('jobseeker', None)
+
+        if jobseeker:
+            queryset = queryset.filter(jobseeker=jobseeker)
+
+        return queryset
     # permission_classes = [permissions.IsAuthenticated]
 
 
@@ -24,6 +42,7 @@ class ResumeRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
     """Вывод соискателея"""
     queryset = Resume.objects.all()
     serializer_class = ResumeDetailSerializer
+
     # permission_classes = [permissions.IsAuthenticated]
 
 
@@ -32,6 +51,12 @@ class ResumeCreateView(generics.CreateAPIView):
     queryset = Resume.objects.all()
     serializer_class = ResumeCreateSerializer
     # permission_classes = [permissions.IsAuthenticated]
+
+    def perform_create(self, serializer):
+        jobseeker = JobSeeker.objects.get(user=self.request.user)
+        print(jobseeker)
+        print(self.request.user.is_staff)
+        serializer.save(jobseeker=jobseeker, **self.kwargs)
 
 
 class JobSeekerListView(generics.ListAPIView):
@@ -45,7 +70,6 @@ class JobSeekerRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
     """Вывод соискателея"""
     queryset = JobSeeker.objects.all()
     serializer_class = JobSeekerDetailSerializer
-    # permission_classes = [permissions.IsAuthenticated]
 
 
 class JobSeekerCreateView(generics.CreateAPIView):
@@ -53,6 +77,9 @@ class JobSeekerCreateView(generics.CreateAPIView):
     queryset = JobSeeker.objects.all()
     serializer_class = JobSeekerCreateSerializer
     # permission_classes = [permissions.IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user, **self.kwargs)
 
 
 class VacancyListView(generics.ListAPIView):
@@ -124,12 +151,14 @@ class EmployerRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
     """Вывод работодателя"""
     queryset = Employer.objects.all()
     serializer_class = EmployerDetailSerializer
+    permission_classes = [permissions.IsAdminUser]
 
 
 class EmployerCreateView(generics.CreateAPIView):
     """Создание работодателя"""
     queryset = Employer.objects.all()
     serializer_class = EmployerCreateSerializer
+    permission_classes = [permissions.IsAdminUser]
 
 
 class ExperienceListView(APIView):
@@ -153,3 +182,32 @@ class ExperienceCreateView(generics.CreateAPIView):
     """Создания опыта работы"""
     queryset = Experience.objects.all()
     serializer_class = ExperienceCreateSerializer
+
+
+class ApplicationListView(generics.ListCreateAPIView):
+    queryset = Application.objects.all()
+    serializer_class = ApplicationListSerializer
+
+
+class ApplicationRetrieveUpdateDeleteView(APIView):
+    """Опыт работы"""
+    queryset = Application.objects.all()
+    serializer_class = ApplicationCreateSerializer
+    # def get(self, request, pk):
+    #     vacancy = Vacancy.objects.get(id=pk)
+    #     queryset = Application.objects.get(vacancy=vacancy)
+    #     serializer = Application(queryset)
+    #     return Response(serializer.data)
+
+
+class ApplicationCreateView(generics.CreateAPIView):
+    """Создания опыта работы"""
+    queryset = Application.objects.all()
+    serializer_class = ApplicationCreateSerializer
+
+    def perform_create(self, serializer):
+        jobseeker = JobSeeker.objects.get(user=self.request.user)
+        resume = Resume.objects.get(jobseeker=jobseeker)
+        print(self.args)
+        vacancy = Vacancy.objects.get(id=self.args['vacancy_id'])
+        serializer.save(resume=resume, vacancy=vacancy, **self.kwargs)

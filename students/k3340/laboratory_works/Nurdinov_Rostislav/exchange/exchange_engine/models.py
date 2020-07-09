@@ -1,9 +1,55 @@
+from django.contrib.auth.base_user import BaseUserManager, AbstractBaseUser
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, PermissionsMixin
 from django.urls import reverse
 
 
+class UserManager(BaseUserManager):
+    use_in_migrations = True
+
+    def create_superuser(self, username: str, password: str):
+        user = self.model(username=username)
+        user.set_password(password)
+        user.is_superuser = True
+        user.is_staff = True
+        user.save()
+        return user
+
+    def create_user(self, username: str, password: str):
+        user = self.model(username=username)
+        user.set_password(password)
+        user.save()
+        return user
+
+
+class User(AbstractBaseUser, PermissionsMixin):
+    username = models.CharField(
+        'username',
+        max_length=150,
+        unique=True,
+    )
+
+    is_superuser = models.BooleanField(
+        'is_superuser',
+        default=False
+    )
+
+    is_staff = models.BooleanField(
+        'is_staff',
+        default=False
+    )
+
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['password']
+
+    objects = UserManager()
+
+    def __str__(self):
+        return self.username
+
+
 class JobSeeker(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     surname = models.CharField(max_length=50)
     name = models.CharField(max_length=50)
     second_name = models.CharField(max_length=50)

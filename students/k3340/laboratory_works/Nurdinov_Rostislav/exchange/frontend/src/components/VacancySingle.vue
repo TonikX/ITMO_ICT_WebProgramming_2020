@@ -13,13 +13,13 @@
               <p>Имя работодателя: {{ vacancy_single.employer }}</p>
               <p>Образование: {{ vacancy_single.education }}</p>
               <p>Необходимый разряд: {{ vacancy_single.rank }}</p>
-              <p>Минимальный опыт работы: {{ vacancy_single.employer }}</p>
+              <p>Минимальный опыт работы: {{ vacancy_single.min_exp }}</p>
               <p>Зарплата: {{ vacancy_single.salary }}</p>
           </mu-card-text>
           <mu-card-text>
           </mu-card-text>
           <mu-card-actions>
-            <mu-button color="success">Подать заявку</mu-button>
+            <mu-button color="success" v-on:click="createApplication(vacancy_single.id)">Подать заявку</mu-button>
           </mu-card-actions>
         </mu-card>
     </div>
@@ -34,6 +34,7 @@ export default {
     props: ['id'],
     data() {
         return {
+            vac: '',
             vacancy_single: '',
         }
     },
@@ -45,7 +46,6 @@ export default {
     },
     methods: {
         async loadVacancy() {
-            console.log('11ппцз');
             this.vacancy_single = await fetch(
                 `${this.$store.getters.getServerUrl}/vacancy/detail/${this.id}`, {
                     method: 'GET',
@@ -56,10 +56,25 @@ export default {
                     body: JSON.stringify(this.form)
                 }
             ).then(response => response.json());
-            console.log('GGWP');
-            console.log(this.vacancy_single);
+            this.vac = this.vacancy_single.id;
         },
-    },
+        async createApplication(id) {
+            console.log(id);
+      const response = await fetch('http://127.0.0.1:8000/api/v1/application/create/', {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + sessionStorage.getItem("access")
+        },
+        method: "POST",
+        body: JSON.stringify({vacancy_id: id})
+      });
+      // await this.$router.push({name: 'home'});
+      if (response.status !== 201) {
+        alert(JSON.stringify(await response.json(), null, 2));
+      }
+    }
+    }
 
 }
 

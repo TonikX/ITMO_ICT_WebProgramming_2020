@@ -1,10 +1,10 @@
 from django.urls import path, include
 from rest_framework.authtoken.views import obtain_auth_token
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+
 from . import views
 
 urlpatterns = [
-    path('auth/', include('djoser.urls')),
-    path('auth/token', obtain_auth_token, name='token'),
 
     path("jobseeker/list/", views.JobSeekerListView.as_view()),
     path("jobseeker/detail/<int:pk>/", views.JobSeekerRetrieveUpdateDeleteView.as_view()),
@@ -26,8 +26,12 @@ urlpatterns = [
     path("experience/detail/<int:pk>", views.ExperienceRetrieveUpdateDeleteView.as_view()),
     path("experience/create/", views.ExperienceCreateView.as_view()),
 
-    path("resume/list/<int:pk>/", views.ResumeListView.as_view()),
+    path("resume/list/", views.ResumeListView.as_view()),
     path("resume/detail/<int:pk>", views.ResumeRetrieveUpdateDeleteView.as_view()),
     path("resume/create/", views.ResumeCreateView.as_view()),
+
+    path("application/list/", views.ApplicationListView.as_view()),
+    path("application/detail/<int:pk>", views.ApplicationRetrieveUpdateDeleteView.as_view()),
+    path("application/create/", views.ApplicationCreateView.as_view()),
 
 ]

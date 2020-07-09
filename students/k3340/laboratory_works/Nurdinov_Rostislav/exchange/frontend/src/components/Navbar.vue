@@ -1,7 +1,7 @@
 <template>
   <div id="app">
 <mu-container>
-        <mu-appbar style="width: 100%;" color="indigo400">
+        <mu-appbar class="mu-navbar" style="width: 100%;" color="indigo400">
             <mu-menu slot="left">
                 <mu-button flat> Меню
                 </mu-button>
@@ -17,6 +17,12 @@
                     </mu-list-item>
                     <mu-list-item button href="/employer">
                         <mu-list-item-title>Работодатели</mu-list-item-title>
+                    </mu-list-item>
+                    <mu-list-item button href="/resume_reg">
+                        <mu-list-item-title>Создать резюме</mu-list-item-title>
+                    </mu-list-item>
+                    <mu-list-item button href="/application">
+                        <mu-list-item-title>Заявки</mu-list-item-title>
                     </mu-list-item>
                 </mu-list>
             </mu-menu>
@@ -40,7 +46,7 @@
     },
     computed: {
       auth() {
-        if (sessionStorage.getItem("auth_token")) {
+        if (sessionStorage.getItem("access")) {
           return true
         }
       }
@@ -50,7 +56,7 @@
         this.$router.push({name: "login"})
       },
       logout() {
-        sessionStorage.removeItem("auth_token")
+        sessionStorage.removeItem("access")
         document.location.href = "http://localhost:8080/login";
       },
     }
@@ -58,4 +64,9 @@
 </script>
 
 <style scoped>
+  .mu-navbar {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 </style>

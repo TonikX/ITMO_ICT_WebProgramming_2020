@@ -24,14 +24,14 @@
     </mu-form-item>
     <mu-form-item prop="education" label="Select">
       <mu-select v-model="resume.education">
-        <mu-option v-for="option,index in options" :key="option" :label="option" :value="option"></mu-option>
+        <mu-option v-for="option,index in options" :key="index" :label="option" :value="index"></mu-option>
       </mu-select>
     </mu-form-item>
     <mu-form-item prop="description" label="Описание">
       <mu-text-field multi-line :rows="3" :rows-max="6" v-model="resume.description"></mu-text-field>
     </mu-form-item>
   </mu-form>
-  <h2 align="center"><mu-button v-on:click="createJobseeker()" color="success">Зарегистрироваться</mu-button></h2>
+  <h2 align="center"><mu-button v-on:click="createJobseeker" color="success">Зарегистрироваться</mu-button></h2>
 </mu-container>
 </template>
 
@@ -58,40 +58,51 @@ export default {
       resume: {
         education: '',
         description: '',
-        jobseeker: 10
       }
     }
+  },
+  created() {
+    auth();
   },
   methods : {
     async createJobseeker() {
       const response = await fetch('http://127.0.0.1:8000/api/v1/jobseeker/create/', {
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + sessionStorage.getItem("access"),
         },
         method: "POST",
         body: JSON.stringify(this.jobseek)
       });
       this.createResume();
-      // this.$router.push({name: 'login'});
       if (response.status !== 201) {
         alert(JSON.stringify(await response.json(), null, 2));
+      await this.$router.push({name: 'home'});
       }
     },
     async createResume() {
       const response = await fetch('http://127.0.0.1:8000/api/v1/resume/create/', {
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + sessionStorage.getItem("access")
         },
         method: "POST",
         body: JSON.stringify(this.resume)
       });
-      this.$router.push({name: 'login'});
+      await this.$router.push({name: 'home'});
       if (response.status !== 201) {
         alert(JSON.stringify(await response.json(), null, 2));
       }
     },
+    auth() {
+        if (sessionStorage.getItem("auth_token")) {
+          console.log(sessionStorage);
+        } else {
+            console.log('NOOOO');
+        }
+  },
   }
 };
 </script>

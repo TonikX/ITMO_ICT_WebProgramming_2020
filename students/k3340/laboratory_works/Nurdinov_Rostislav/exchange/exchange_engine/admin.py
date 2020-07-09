@@ -7,4 +7,5 @@ admin.site.register(Experience)
 admin.site.register(Employer)
 admin.site.register(Vacancy)
 admin.site.register(Application)
+admin.site.register(User)
 # Register your models here.

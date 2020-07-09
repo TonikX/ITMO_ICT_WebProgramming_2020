@@ -8,6 +8,9 @@ import Jobseeker from "../components/Jobseeker";
 import VacancySingle from "../components/VacancySingle";
 import JobseekerSingle from "../components/JobseekerSingle";
 import ResumeReg from '../components/ResumeReg'
+import Employer from "../components/Employer";
+import EmployerSingle from "../components/EmploerSingle";
+import Application from "../components/Application"
 
 
 Vue.use(Router);
@@ -58,6 +61,23 @@ export default new Router({
       path: '/resume_reg/',
       name: 'resumeReg',
       component: ResumeReg,
+    },
+      {
+      path: '/employer',
+      name: 'employer',
+      component: Employer,
+      props: true,
+    },
+    {
+      path: '/employer/:id',
+      name: 'employerSingle',
+      component: EmployerSingle,
+      props: true,
+    },
+      {
+      path: '/application',
+      name: 'application',
+      component: Application,
     },
   ]
 })

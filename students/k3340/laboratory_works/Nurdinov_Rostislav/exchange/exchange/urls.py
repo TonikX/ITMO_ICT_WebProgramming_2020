@@ -17,13 +17,16 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+
+from exchange_engine.views import UserView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls')),
-    path('auth/', include('djoser.urls')),
-    path('auth/', include('djoser.urls.authtoken')),
-    path('api/v1/', include('exchange_engine.urls'))
+    path('api/v1/', include('exchange_engine.urls')),
+    path('register', UserView.as_view(), name='user-register'),
+    path('auth', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/refresh', TokenRefreshView.as_view(), name='token_refresh'),
 ]
 
 if settings.DEBUG:

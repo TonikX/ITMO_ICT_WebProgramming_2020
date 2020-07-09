@@ -1,41 +1,23 @@
-
 <template>
-<!--    <mu-container>-->
-<!--        <mu-appbar style="width: 100%;" color="indigo400">-->
-<!--            <mu-menu slot="left">-->
-<!--                <mu-button flat> Меню-->
-<!--                </mu-button>-->
-<!--                <mu-list slot="content">-->
-<!--                    <mu-list-item button href="/">-->
-<!--                        <mu-list-item-title>Главная страница</mu-list-item-title>-->
-<!--                    </mu-list-item>-->
-<!--                    <mu-list-item button href="/vacancy">-->
-<!--                        <mu-list-item-title>Вакансии</mu-list-item-title>-->
-<!--                    </mu-list-item>-->
-<!--                    <mu-list-item button href="/klass">-->
-<!--                        <mu-list-item-title>Классы</mu-list-item-title>-->
-<!--                    </mu-list-item>-->
-<!--                    <mu-list-item button href="/pupils">-->
-<!--                        <mu-list-item-title>Ученики школы</mu-list-item-title>-->
-<!--                    </mu-list-item>-->
-<!--                    <mu-list-item button href="/subjects">-->
-<!--                        <mu-list-item-title>Дисциплины</mu-list-item-title>-->
-<!--                    </mu-list-item>-->
-<!--                    <mu-list-item button href="/cabinets">-->
-<!--                        <mu-list-item-title>Кабинеты</mu-list-item-title>-->
-<!--                    </mu-list-item>-->
-<!--                    <mu-list-item button href="/query">-->
-<!--                        <mu-list-item-title>Запросы</mu-list-item-title>-->
-<!--                    </mu-list-item>-->
-<!--                </mu-list>-->
-<!--            </mu-menu>-->
-<!--            SchoolWeb-->
-<!--            <mu-button flat slot="right" v-if="!auth" @click="goLogin">LOGIN</mu-button>-->
-<!--            <mu-button flat slot="right" v-else @click="logout">LOGOUT</mu-button>-->
-<!--        </mu-appbar>-->
-<!--    </mu-container>-->
+  <mu-container>
+  <div id="app">
+    <Navbar/>
+    <router-view/>
+  </div>
+  </mu-container>
 </template>
 
+
+<script>
+  import Navbar from '../components/Navbar';
+  export default {
+      name: "Home",
+    components: {
+        Navbar,
+    }
+
+  }
+</script>
 <!--<script>-->
 <!--  export default {-->
 <!--    name: "Home",-->

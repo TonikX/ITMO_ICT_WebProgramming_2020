@@ -4,24 +4,32 @@
         <Navbar/>
         <router-view/>
         <div class="block1">
+            <h3 align="center">Соискатель</h3>
         <mu-card style="width: 100%; max-width: 600px; margin: 0 auto;">
           <mu-card-header :title="jobseeker_single" :sub-title="jobseeker_single">
           </mu-card-header>
           <mu-card-title title="Описание" :sub-title="jobseeker_single.surname"></mu-card-title>
           <mu-card-text>
-<!--              <p>Имя работодателя: {{ vacancy_single.employer }}</p>-->
-<!--              <p>Образование: {{ vacancy_single.education }}</p>-->
-<!--              <p>Необходимый разряд: {{ vacancy_single.rank }}</p>-->
-<!--              <p>Минимальный опыт работы: {{ vacancy_single.employer }}</p>-->
-<!--              <p>Зарплата: {{ vacancy_single.salary }}</p>-->
+              <p>Фамилия: {{ jobseeker_single.surname }}</p>
+              <p>Имя: {{ jobseeker_single.name }}</p>
+              <p>Отчество: {{ jobseeker_single.second_name }}</p>
+              <p>Дата рождения: {{ jobseeker_single.date_birth }}</p>
+              <p>Адресс: {{ jobseeker_single.address }}</p>
+              <p>Последняя зарплата: {{ jobseeker_single.last_salary }}</p>
           </mu-card-text>
-          <mu-card-text>
-          </mu-card-text>
-          <mu-card-actions>
-            <mu-button color="success">Подать заявку</mu-button>
-          </mu-card-actions>
         </mu-card>
     </div>
+    <h1> {{ resume_single.education }} </h1>
+    <div class="block3">
+            <h3 align="center">Резюме</h3>
+        <mu-card style="width: 100%; max-width: 600px; margin: 0 auto;">
+          <mu-card-text>
+              <p>Образование: {{ resume_single.education }}</p>
+              <p>Описание: {{ resume_single.description }}</p>
+          </mu-card-text>
+        </mu-card>
+    </div>
+
     <div class="block2">
         <h3 align="center">Опыт работы</h3>
         <table class="table_exp">
@@ -32,8 +40,6 @@
           <th>Позиция</th>
           <th>Date start</th>
           <th>Date end</th>
-<!--          <th></th>-->
-<!--          <th></th>-->
         </tr>
         <tr v-for="experience in experiences">
           <td>{{experience.profession}}</td>
@@ -58,47 +64,67 @@ export default {
         return {
             jobseeker_single: '',
             experiences: '',
+            resume_single: '',
         }
     },
+
     components: {
         Navbar,
     },
     created() {
+            this.auth();
             this.loadJobseeker();
+            this.loadResume();
             this.loadExperience();
     },
     methods: {
         async loadJobseeker() {
-            console.log('11ппцз');
+            console.log();
             this.jobseeker_single = await fetch(
                 `${this.$store.getters.getServerUrl}/jobseeker/detail/${this.id}`, {
                     method: 'GET',
                     headers: {
                         'Accept': 'application/json',
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + sessionStorage.getItem("access"),
                     },
-                    body: JSON.stringify(this.form)
                 }
             ).then(response => response.json());
-            console.log('GGWP');
-            console.log(this.jobseeker_single);
+
         },
         async loadExperience() {
-            console.log('???');
-            // console.log(${this.id});
             this.experiences = await fetch(
-                `${this.$store.getters.getServerUrl}/experience/list/${this.id}`, {
+                `${this.$store.getters.getServerUrl}/experience/list/2`, {
                     method: 'GET',
                     headers: {
                         'Accept': 'application/json',
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + sessionStorage.getItem("access"),
                     },
-                    body: JSON.stringify(this.form)
                 }
             ).then(response => response.json());
-            console.log('!!!!');
             console.log(this.experiences);
         },
+    async loadResume() {
+            console.log('!!!!');
+            this.resume_single = await fetch(
+                `${this.$store.getters.getServerUrl}/resume/list/?jobseeker=${this.id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + sessionStorage.getItem("access"),
+                    },
+                });
+            console.log(this.resume_single);
+        },
+      auth() {
+        if (sessionStorage.getItem("auth_token")) {
+          console.log(sessionStorage)
+        } else {
+            console.log('NOOOO')
+        }
+    },
     },
 
 }

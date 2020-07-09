@@ -42,6 +42,15 @@ export default {
         {title: 'Последняя зарплата', name: 'last_salary', width: 126, align: 'center', sortable: true},
       ],
       list: '',
+      form: {
+        surname: '',
+        name: '',
+        second_name: '',
+        date_birth: '',
+        address: '',
+        status: false,
+        status_work: ''
+      }
     }
   },
   components:{

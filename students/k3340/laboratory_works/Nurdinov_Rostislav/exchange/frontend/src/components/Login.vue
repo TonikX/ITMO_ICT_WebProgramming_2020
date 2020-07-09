@@ -1,16 +1,16 @@
-<template xmlns="http://www.w3.org/1999/html">
+<template>
 
   <mu-container>
 
-    <mu-appbar style="width: 100%;"  color="primary" >
+    <mu-appbar style="width: 100%;"  color="indigo400" align="center">
 
-      Твоя любимая шарага
+      Биржа труда
 
     </mu-appbar>
  <mu-paper class="demo-paper" :z-depth="5">
-    <mu-form class="mu-demo-form" model="">
+    <mu-form class="mu-demo-form">
       <mu-form-item prop="username">
-        <mu-text-field style="margin-top: 20px;" v-model="login" type="text" placeholder="Логин"></mu-text-field>
+        <mu-text-field style="margin-top: 20px;" v-model="username" type="text" placeholder="Логин"></mu-text-field>
       </mu-form-item>
       <mu-form-item prop="username">
         <mu-text-field v-model="password" type="password" placeholder="Пароль"></mu-text-field>
@@ -27,21 +27,21 @@
     name: "Login",
     data() {
       return {
-        login: '',
+        username: '',
         password: '',
       }
     },
     methods: {
       setLogin() {
         $.ajax({
-          url: "http://127.0.0.1:8000/auth/token/login/",
+          url: "http://127.0.0.1:8000/auth",
           type: "POST",
           data: {
-            username: this.login,
+            username: this.username,
             password: this.password
           },
           success: (response) => {
-            sessionStorage.setItem("auth_token", response.auth_token)
+            sessionStorage.setItem("access", response.access);
             this.$router.push({name: "home"})
           },
           error: (response) => {

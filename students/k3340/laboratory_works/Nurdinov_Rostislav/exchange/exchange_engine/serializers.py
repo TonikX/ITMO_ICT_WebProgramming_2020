@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import JobSeeker, Vacancy, Resume, Experience, Profession, Employer
+from .models import JobSeeker, Vacancy, Resume, Experience, Profession, Employer, User, Application
 
 
 class ResumeDetailSerializer(serializers.ModelSerializer):
@@ -8,6 +8,7 @@ class ResumeDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Resume
         fields = "__all__"
+        read_only_fields = ['jobseeker']
 
 
 class ResumeListSerializer(serializers.ModelSerializer):
@@ -17,6 +18,7 @@ class ResumeListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Resume
         fields = "__all__"
+        read_only_fields = ['jobseeker']
 
 
 class ResumeCreateSerializer(serializers.ModelSerializer):
@@ -25,6 +27,7 @@ class ResumeCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Resume
         fields = '__all__'
+        read_only_fields = ['jobseeker']
 
 
 class JobSeekerListSerializer(serializers.ModelSerializer):
@@ -44,12 +47,28 @@ class JobSeekerDetailSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'password']
+        extra_kwargs = {
+            'password': {'write_only': True}
+        }
+
+    def create(self, validated_data):
+        return User.objects.create_user(
+            username=validated_data['username'],
+            password=validated_data['password']
+        )
+
+
 class JobSeekerCreateSerializer(serializers.ModelSerializer):
     """Добавление соискателя"""
 
     class Meta:
         model = JobSeeker
         fields = '__all__'
+        read_only_fields = ['user']
 
 
 class VacancyListSerializer(serializers.ModelSerializer):
@@ -78,11 +97,11 @@ class VacancyCreateSerializer(serializers.ModelSerializer):
         ('4', 'Высшее (магистратура)'),
     ]
 
-    profession = serializers.SlugRelatedField(slug_field='prof', read_only=True)
+    # profession = serializers.SlugRelatedField(slug_field='prof', read_only=True)
     # education = serializers.SlugRelatedField(slug_field='education', read_only=True)
-    employer = serializers.SlugRelatedField(slug_field='name', read_only=True)
-    rank = serializers.ChoiceField(choices=RANK_TYPES, source='get_rank_display')
-    education = serializers.ChoiceField(choices=EDUCATION_TYPES, source='get_education_display')
+    # employer = serializers.SlugRelatedField(slug_field='name', read_only=True)
+    # rank = serializers.ChoiceField(choices=RANK_TYPES, source='get_rank_display')
+    # education = serializers.ChoiceField(choices=EDUCATION_TYPES, source='get_education_display')
 
     class Meta:
         model = Vacancy
@@ -144,7 +163,7 @@ class EmployerListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Employer
-        fields = ("id", "name", "surname", "second_name", "firm")
+        fields = "__all__"
 
 
 class EmployerCreateSerializer(serializers.ModelSerializer):
@@ -188,7 +207,7 @@ class ExperienceCreateSerializer(serializers.ModelSerializer):
         ('4', 'Высшее (магистратура)'),
     ]
 
-    profession = serializers.SlugRelatedField(slug_field='prof', read_only=True)
+    # profession = serializers.SlugRelatedField(slug_field='prof', read_only=True)
 
     class Meta:
         model = Experience
@@ -210,4 +229,30 @@ class ExperienceDetailSerializer(serializers.ModelSerializer):
         model = Experience
         fields = "__all__"
 
+
+class ApplicationListSerializer(serializers.ModelSerializer):
+    """Список работодателей"""
+
+    class Meta:
+        model = Application
+        fields = "__all__"
+
+
+class ApplicationCreateSerializer(serializers.ModelSerializer):
+    """Добавление работодателей"""
+
+    # vacancy = serializers.SlugRelatedField(slug_field='vacancy', read_only=True)
+
+    class Meta:
+        model = Application
+        fields = "__all__"
+        read_only_fields = ['resume', 'vacancy']
+
+
+class ApplicationDetailSerializer(serializers.ModelSerializer):
+    """Работодатель"""
+
+    class Meta:
+        model = Application
+        fields = "__all__"
 

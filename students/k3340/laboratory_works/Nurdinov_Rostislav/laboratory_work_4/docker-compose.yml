@@ -8,7 +8,7 @@ services:
                 environment:
                         - POSTGRES_USER=postgres
                         - POSTGRES_PASSWORD=123456
-                        - POSTGRES_DB=college
+                        - POSTGRES_DB=work
                 volumes:
                         - ./dbs/postgres-data:/var/lib/postgresql
         backend:

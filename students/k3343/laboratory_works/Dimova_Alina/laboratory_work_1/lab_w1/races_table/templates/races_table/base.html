@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>
+        {% block title %}
+            Основная страница
+        {% endblock %}
+    </title>
+</head>
+<body>
+<div class="justify-content-center">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{% url "table_url" %}">Таблица участников автогонок</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      {% if request.user.is_authenticated %}
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="{% url "logout" %}">Выход</a>
+          <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Вы вошли! </a>
+        </div>
+          {% else %}
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="{% url "login" %}">Вход</a>
+          <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Вы не вошли</a>
+        </div>
+      {% endif %}
+  </div>
+</nav>
+</div>
+{% block content %}
+    This is content
+{% endblock %}
+</body>
+</html>

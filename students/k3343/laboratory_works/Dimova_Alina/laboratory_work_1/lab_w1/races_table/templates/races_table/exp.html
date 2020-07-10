@@ -1,0 +1,22 @@
+{% extends 'races_table/base.html' %}
+
+{% block title %}
+    Опыт участника {{ driver.fio }}
+{% endblock %}
+
+{% block content %}
+    <h2 class="ml-5"> Таблица гонок участника {{ driver.fio }} </h2>
+    <br>
+    {% for p in part %}
+       <div class="card" style="background-color: darkturquoise">
+       <div class="card-header" >
+           <b>Гонка</b>
+       </div>
+        <ul class="list-group list-group-flush">
+        <li class="list-group-item">Место: {{ p.race }}</li>
+        <li class="list-group-item">Результат: {{ p.result }}</li>
+        </ul>
+        </div>
+    {% endfor %}
+
+{% endblock %}

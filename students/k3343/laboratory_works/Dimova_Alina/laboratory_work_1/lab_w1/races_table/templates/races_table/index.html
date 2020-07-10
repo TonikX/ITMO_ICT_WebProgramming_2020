@@ -1,0 +1,26 @@
+{% extends 'races_table/base.html' %}
+
+{% block title %}
+    Таблица
+{% endblock %}
+
+{% block content %}
+    <h1 class="ml-5"> Таблица гонок </h1>
+    {% for dr in drivers %}
+        <div class="card w-75">
+          <div class="card-body">
+            <h5 class="card-title">Участник: {{ dr.fio }}</h5>
+              <p class="card-text">Команда: {{ dr.command_name }}</p>
+              <p class="card-text">Класс участника: {{ dr.dr_class }}</p><hr>
+              {% for c in cars %}
+                  {% if c.driver == dr %}
+                    <p>Автомобиль: {{ c.brand_name}}, {{ c.model_name}}</p>
+                    <p>Год выпуска: {{ c.year_made }}</p><hr>
+                    {% endif %}
+                {% endfor %}
+              <a href="{% url 'driver_exp_url' dr_id=dr.id %}" class="btn btn-primary">Опыт</a>
+            <a href="{% url 'all_comm_url' dr_id=dr.id%}" class="btn btn-primary">Комментарии</a>
+          </div>
+        </div>
+    {% endfor %}
+{% endblock %}

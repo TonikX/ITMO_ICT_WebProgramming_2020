@@ -1,0 +1,23 @@
+{% extends 'races_table/base.html' %}
+
+{% block title %}
+    Комментарии к участнику {{ driver.fio }}
+{% endblock %}
+
+{% block content %}
+    <div class="card" style="width: 18rem; margin-left: 450px">
+        <div>
+        {% for c in comms %}
+          <div class="card-header">
+            Автор  {{ c.author }}
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Дата публикации {{ c.date }}</li>
+            <li class="list-group-item">{{ c.text }}</li>
+            <li class="list-group-item">Тип комментария {{ c.type }}</li>
+          </ul>
+            {% endfor %}
+        <a href="{% url 'add_comm_url' dr_id=driver.id %}" class="btn btn-primary" style="margin-left: 40px">Добавить комментарий</a>
+        </div>
+    </div>
+{% endblock %}

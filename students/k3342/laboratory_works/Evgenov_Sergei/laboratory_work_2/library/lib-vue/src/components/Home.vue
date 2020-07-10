@@ -30,8 +30,6 @@
 
 <script>
 import Reader from '../components/readers/Reader'
-// eslint-disable-next-line
-// import Reader_books from '../components/readers/Reader_books'
 
 export default {
   name: 'Home',

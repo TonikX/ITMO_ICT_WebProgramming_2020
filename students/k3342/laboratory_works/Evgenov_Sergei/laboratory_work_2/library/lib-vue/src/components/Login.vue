@@ -54,7 +54,6 @@ export default {
           if (response.status === 400) {
             alert('Логин или пароль не верен')
           }
-          console.log(response)
         }
       })
     }

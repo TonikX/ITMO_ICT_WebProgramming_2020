@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+        alpinism_db:
+                image: postgres
+                ports:
+                        - "5432:5432"
+                environment:
+                        - POSTGRES_DB=alpinism
+                        - POSTGRES_USER=uninadia
+                        - POSTGRES_PASSWORD=kitten
+
+        backend:
+                container_name: alpinism_backend
+                build:
+                        context: ./alpinism-server
+                        dockerfile: Dockerfile
+
+                command: bash -c "sleep 3 &&
+                        python manage.py makemigrations && python manage.py migrate &&
+                        python manage.py runserver 0.0.0.0:8000";
+                volumes:
+                        - ./alpinism-server:/alpinism-server
+                ports:
+                        - "8000:8000"
+                depends_on:
+                        - alpinism_db
+
+        frontend:
+                container_name: alpinism_frontend
+                build:
+                        context: ./alpinism-vue
+                        dockerfile: Dockerfile
+
+                command: npm run dev
+                volumes:
+                        - ./alpinism-vue:/alpinism-vue
+                ports:
+                        - "8080:8080"
+                depends_on:
+                        - backend 

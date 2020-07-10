@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+        db:
+                image: postgres
+                ports:
+                        - "5436:5432"
+                environment:
+                        - POSTGRES_USER=postgres
+                        - POSTGRES_PASSWORD=postgres
+                        - POSTGRES_DB=college
+                volumes:
+                        - ./dbs/postgres-data:/var/lib/postgresql
+        backend:
+                container_name: college_backend
+                build: ./django-college/django_college
+                command: bash -c "
+                        sleep 3 &&
+                        python3 manage.py makemigrations && python3 manage.py migrate &&
+                        python3 manage.py runserver --insecure 0.0.0.0:8000";
+                volumes:
+                        - ./django-college/django_college:/django_college
+                ports:
+                        - "8005:8000"
+                depends_on:
+                        - db
+        frontend:
+                container_name: college_frontend
+                build:
+                        context: ./college-frontend
+                        dockerfile: Dockerfile
+                command: npm start --start;
+                volumes:
+                        - ./college-frontend:/college-frontend
+                        - /college-frontend/node_modules
+                ports:
+                        - "8080:8080"
+                depends_on:
+                        - backend
+

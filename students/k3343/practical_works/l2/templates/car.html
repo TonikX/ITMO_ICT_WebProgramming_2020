@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Car</title>
+</head>
+<body>
+	<div>
+
+	{% for Car in Cars %}
+
+		<p><b>Car:</b> {{ Car }}</p>
+        <p><b>Make:</b> {{ Car.make }}</p>
+        <p><b>Model:</b> {{ Car.model }}</p>
+		<p><b>Color:</b> {{ Car.color }}</p>
+		<p><b>Gos number:</b> {{ Car.gos_number }}</p>
+		<hr>
+
+	{% endfor %}
+    
+	</div>
+</body>
+</html>

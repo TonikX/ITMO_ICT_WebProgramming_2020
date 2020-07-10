@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ hotel }}</title>
+    <style>
+    .hotel, .comment {
+        border: solid #f7f7f7 1em;
+        border-radius: 1em;
+        padding: 1em;
+        margin: 1em auto;
+        width: 800px
+    } 
+
+    .errorlist {
+        display: none;
+    }
+    </style>
+</head>
+
+<body>
+    <a href="./list">На главную</a>
+    <div class="hotel">
+        <h1>Отель:</h1>
+        <p>{{ hotel }}</p>
+        <h4>Типы номеров:</h4>
+        <div>
+            {% for room in rooms %}
+            <p>{{ room.get_type_of_room_display }}</p>
+            {% endfor %}
+        </div>
+    </div>
+    {% for comment in comments %}
+    <div class="comment">
+        <p><u>Комментарий номер {{ comment.id }}</u></p>
+        <p><u>Автор:</u> {{ comment.user }} (<span>{{ comment.rating }}/10</span>)</p>
+        <p><u>Период проживания:</u> {{ comment.start_date }} - {{ comment.end_date }}</p>
+        <p>{{ comment.text }}</p>
+    </div>
+    {% endfor %}
+    <div class="comment">
+        <h2>Оставить комментарий:</h2>
+        <form action="./{{ hotel.id }}" method="post">
+            {% csrf_token %}
+            <input type="text" name="user" hidden value="{{ user.id }}">
+            {{ form.as_p }}
+            <input type="submit" value="Отправить">
+        </form>
+    </div>
+</body>
+
+</html>

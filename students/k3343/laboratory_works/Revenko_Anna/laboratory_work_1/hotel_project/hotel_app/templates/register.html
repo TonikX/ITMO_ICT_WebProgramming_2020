@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <style>
+    body {
+        border: solid #f7f7f7 1em;
+        border-radius: 1em;
+        padding: 1em;
+        margin: 1em auto;
+        width: 800px
+    }
+
+    .errorlist {
+        display: none;
+    }
+    </style>
+</head>
+
+<body>
+    {% if not is_registered %}
+    <form method="post">
+        {% csrf_token %}
+        {{ reg_data.as_p }}
+        <input type="submit" name="" value="Зарегистрироваться">
+    </form>
+    <p>Уже есть аккаунт? <a href="/login">Вход</a></p>
+    {% else %}
+    Спасибо за регистрацию! <a href="/login">Вход</a>
+    {% endif %}
+</body>
+
+</html>

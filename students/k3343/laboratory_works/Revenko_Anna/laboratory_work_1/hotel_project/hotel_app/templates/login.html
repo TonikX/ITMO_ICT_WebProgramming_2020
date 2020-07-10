@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+    <style>
+    body {
+        border: solid #f7f7f7 1em;
+        border-radius: 1em;
+        padding: 1em;
+        margin: 1em auto;
+        width: 800px
+    }
+
+    .errorlist {
+        display: none;
+    }
+    </style>
+</head>
+
+<body>
+    <form method="post" action="/login/">
+        {% csrf_token %}
+        <div>
+            <p><label for="username">Имя пользователя:</label></p>
+            <input type="text" name="username" placeholder="Имя пользователя">
+        </div>
+        <div>
+            <P><label for="password">Пароль:</label></P>
+            <input type="password" name="password" placeholder="Пароль">
+        </div>
+        <p></p>
+        <input type="submit" name="" value="Вход">
+    </form>
+    <p></p>
+    Ещё нет аккаунта? <a href="/register">Регистрация</a>
+</body>
+
+</html>

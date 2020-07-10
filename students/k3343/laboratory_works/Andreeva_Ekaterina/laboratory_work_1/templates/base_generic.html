@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+
+  {% block title %}<title>Hotel</title>{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.js"></script>
+    {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <nav class="navbar sticky-top navbar-dark bg-dark">
+      <h1><a class="navbar-brand" href="{% url 'all_hotels' %}">Hotels</a></h1>
+      {% if user.is_active %}
+        <div align="center">
+            <p style="color:whitesmoke;">Добро пожаловать, {{ user.username }}</br>
+            <a href="../accounts/logout">Выйти</a></p>
+          {% else %}
+            <p><a href="../accounts/login">Войти</a></p>
+          {% endif %}
+            </div>
+        <div>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+              <a href="{% url 'all_hotels' %}">Список отелей</a>
+          </li>
+        </ul>
+      </div>
+  </nav>
+    <div class="col-sm-10 " align="center">
+      {% block content %}{% endblock %}
+      </div>
+</body>
+</html>

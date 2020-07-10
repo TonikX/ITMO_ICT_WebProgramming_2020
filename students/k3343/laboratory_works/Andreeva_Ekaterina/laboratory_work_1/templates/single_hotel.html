@@ -1,0 +1,62 @@
+{% extends 'base_generic.html' %}
+{% block desc %}{{ new.description }}{% endblock desc %}
+{% block keywords %}{{ new.keywords }}{% endblock keywords %}
+{% block title %}{{ new.title }}{% endblock title %}
+
+{% block content %}
+<table class="table table-hover">
+       <tr class="table-info">
+           <td colspan="2"><H2>{{hotel.name}}</H2></td>
+       </tr>
+        <tr>
+            <td>Адрес</td>
+            <td>{{hotel.address}}</td>
+        </tr>
+        <tr>
+            <td>Описание</td>
+            <td>{{hotel.description}}</td>
+        </tr>
+        <tr>
+            <td>Вместимость</td>
+            <td>{{hotel.capacity}}</td>
+        </tr>
+        <tr>
+            <td>Типы номеров</td>
+            <td>{{hotel.room_types}}</td>
+        </tr>
+        <tr>
+            <td>Удобства</td>
+            <td>{{hotel.facilities}}</td>
+        </tr>
+        <tr>
+            <td>Имя владельца</td>
+            <td>{{hotel.owner}}</td>
+        </tr>
+    </table>
+<h4>Комментарии</h4>
+{% for comment in comments %}
+Пользователь - {{ comment.username }}<br>
+Оценка отеля - {{ comment.rating }}<br>
+Дата заселения: {{comment.check_in}}<br>
+Дата выселения: {{comment.check_out}}<br>
+<p style="color:dodgerblue;">{{ comment.text }}</p>
+Добавлен - {{ comment.post_date }}
+<hr/>
+{% endfor %}
+{#    {% for comment in hotel.comments_set.all %}#}
+{#        Пользователь - {{ comment.username }}<br>#}
+{#        {{ comment.text }} <br>#}
+{#        Добавлен - {{ comment.post_date }}<br><br>#}
+{#    {% endfor %}#}
+{% if user.is_active %}
+<form action="" method="post">
+    <div class="form-group">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Отправить</button>
+    </div>
+</form>
+{% else %}
+<h4>Чтобы оставить комментарий авторизуйтесь</h4>
+{% endif %}
+{% endblock content %}

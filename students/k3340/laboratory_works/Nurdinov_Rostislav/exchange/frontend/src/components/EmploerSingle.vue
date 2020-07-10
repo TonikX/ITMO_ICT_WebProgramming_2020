@@ -8,13 +8,13 @@
         <mu-card style="width: 100%; max-width: 600px; margin: 0 auto;">
 <!--          <mu-card-header :title="vacancy_single.profession" :sub-title="vacancy_single.date_start">-->
 <!--          </mu-card-header>-->
-          <mu-card-title title="Описание" :sub-title="employer_single.firm"></mu-card-title>
+          <mu-card-title title="Фирма" :sub-title="employer_single.firm"></mu-card-title>
           <mu-card-text>
-              <p>Имя работодателя: {{ employer_single.surname }}</p>
-              <p>Образование: {{ employer_single.name }}</p>
-              <p>Необходимый разряд: {{ employer_single.second_name }}</p>
-              <p>Минимальный опыт работы: {{ employer_single.email }}</p>
-              <p>Зарплата: {{ employer_single.number }}</p>
+              <p>Фамилия: {{ employer_single.surname }}</p>
+              <p>Имя: {{ employer_single.name }}</p>
+              <p>Отчество: {{ employer_single.second_name }}</p>
+              <p>Почта: {{ employer_single.email }}</p>
+              <p>Номер: {{ employer_single.number }}</p>
           </mu-card-text>
         </mu-card>
     </div>
@@ -45,7 +45,8 @@ export default {
                     method: 'GET',
                     headers: {
                         'Accept': 'application/json',
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + sessionStorage.getItem("access"),
                     },
                     body: JSON.stringify(this.form)
                 }

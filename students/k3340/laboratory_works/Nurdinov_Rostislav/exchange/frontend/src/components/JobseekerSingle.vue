@@ -24,8 +24,8 @@
             <h3 align="center">Резюме</h3>
         <mu-card style="width: 100%; max-width: 600px; margin: 0 auto;">
           <mu-card-text>
-              <p>Образование: {{ resume_single.education }}</p>
-              <p>Описание: {{ resume_single.description }}</p>
+              <p>Образование: {{ resume_single.education }} </p>
+              <p>Описание: {{ resume_single.description }} </p>
           </mu-card-text>
         </mu-card>
     </div>
@@ -94,7 +94,7 @@ export default {
         },
         async loadExperience() {
             this.experiences = await fetch(
-                `${this.$store.getters.getServerUrl}/experience/list/2`, {
+                `${this.$store.getters.getServerUrl}/experience/list/${this.id}`, {
                     method: 'GET',
                     headers: {
                         'Accept': 'application/json',
@@ -106,9 +106,8 @@ export default {
             console.log(this.experiences);
         },
     async loadResume() {
-            console.log('!!!!');
             this.resume_single = await fetch(
-                `${this.$store.getters.getServerUrl}/resume/list/?jobseeker=${this.id}`, {
+                `${this.$store.getters.getServerUrl}/resume/detail/${this.id}`, {
                     method: 'GET',
                     headers: {
                         'Accept': 'application/json',
@@ -116,13 +115,12 @@ export default {
                         'Authorization': 'Bearer ' + sessionStorage.getItem("access"),
                     },
                 });
-            console.log(this.resume_single);
         },
       auth() {
         if (sessionStorage.getItem("auth_token")) {
           console.log(sessionStorage)
         } else {
-            console.log('NOOOO')
+            console.log('None')
         }
     },
     },

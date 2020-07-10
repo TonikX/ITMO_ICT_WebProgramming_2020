@@ -1,8 +1,0 @@
-.DS_Store
-idea/
-__init__.py
-venv/
-db.sqlite3
-__pycache__/
-config.py
-*.*~

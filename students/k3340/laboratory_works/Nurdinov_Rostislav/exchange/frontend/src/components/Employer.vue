@@ -4,7 +4,7 @@
     <Navbar/>
     <router-view/>
   </div>
-  <mu-dialog title="Добавление абитуриента" width="560" scrollable :open.sync="isOpenAddForm">
+  <mu-dialog title="Добавление работодателя" width="560" scrollable :open.sync="isOpenAddForm">
         <mu-form :model="form" class="mu-demo-form" label-position="top" label-width="100">
           <mu-form-item prop="surname" label="Фамилия">
             <mu-text-field v-model="form.surname"></mu-text-field>
@@ -12,7 +12,7 @@
           <mu-form-item prop="name" label="Имя">
             <mu-text-field v-model="form.name"></mu-text-field>
           </mu-form-item>
-          <mu-form-item prop="secon_dname" label="Отчество">
+          <mu-form-item prop="second_name" label="Отчество">
             <mu-text-field v-model="form.second_name"></mu-text-field>
           </mu-form-item>
           <mu-form-item prop="email" label="Email">
@@ -144,7 +144,8 @@ export default {
         },
         body: JSON.stringify(this.form)
       });
-
+      this.loadListEmployer();
+      this.CloseAddForm();
       if (response.status === 200) {
         alert("Пользователь обновлен!");
       }
@@ -159,7 +160,7 @@ export default {
             },
             body: JSON.stringify(this.form)
         });
-
+        this.loadListEmployer();
         if (response.status === 200) {
             alert("Пользователь удален!");
         }
@@ -186,6 +187,8 @@ export default {
         },
         body: JSON.stringify(this.form)
       });
+      this.loadListEmployer();
+      this.CloseAddForm();
       if (response.status !== 201) {
         alert(JSON.stringify(await response.json(), null, 2));
       }

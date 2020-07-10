@@ -98,7 +98,7 @@ export default {
     async loadListVacancy() {
             console.log(111);
             this.list = await fetch(
-                `${this.$store.getters.getServerUrl}/vacancy/list/?min_exp=${this.filters.min_exp}&profession=${this.filters.profession}&from_s=${this.filters.from_s}&from_to=${this.filters.from_to}`
+                `${this.$store.getters.getServerUrl}/vacancy/list/?min_exp=${this.filters.min_exp}&profession=${this.filters.profession}&from_s=${this.filters.from_s}&to_s=${this.filters.from_to}`
             ).then(response => response.json());
             this.closeFilter()
     },

@@ -42,7 +42,7 @@
             password: this.password
           },
           success: (response) => {
-                this.$router.push({name: "ResumeReg"})
+                this.$router.push({name: "login"})
           },
           error: (response) => {
             if (response.status === 400) {

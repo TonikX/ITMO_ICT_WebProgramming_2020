@@ -106,7 +106,7 @@ class VacancyListView(generics.ListAPIView):
             queryset = queryset.filter(salary__lte=to_s)
 
         if min_exp:
-            queryset = queryset.filter(min_exp__lte=min_exp)
+            queryset = queryset.filter(min_exp__gte=min_exp)
 
         return queryset
 
@@ -208,6 +208,5 @@ class ApplicationCreateView(generics.CreateAPIView):
     def perform_create(self, serializer):
         jobseeker = JobSeeker.objects.get(user=self.request.user)
         resume = Resume.objects.get(jobseeker=jobseeker)
-        print(self.args)
-        vacancy = Vacancy.objects.get(id=self.args['vacancy_id'])
+        vacancy = Vacancy.objects.get(id=self.kwargs['vacancy_id'])
         serializer.save(resume=resume, vacancy=vacancy, **self.kwargs)

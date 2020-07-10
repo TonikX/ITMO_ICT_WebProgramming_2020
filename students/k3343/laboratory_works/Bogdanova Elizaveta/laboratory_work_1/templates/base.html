@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  {% block title %}<title>База тургагентств</title>{% endblock %}
+   <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  {% load static %}
+  <body>
+    
+    <div class="wrapper d-flex align-items-stretch">
+      <nav id="sidebar-nav">
+        <div class="row">
+      <div class="col-sm-2">
+      {% block sidebar %}
+        <ul class="sidebar-nav">
+          <li class="active">
+            <a href="{% url 'index' %}"><span class="fa fa-home mr-3"></span> Главная</a>
+          </li>
+          <li>
+              <a href="{% url 'tours' %}"><span class="fa fa-user mr-3"></span> Туры</a>
+          </li>
+          <li>
+            <a href="{% url 'comments' %}"><span class="fa fa-sticky-note mr-3"></span> Комментарии</a>
+          </li>
+          <li>
+            <a href="{% url 'new_comment' %}"><span class="fa fa-sticky-note mr-3"></span> Новый комментарий</a>
+          </li>
+          <li>
+            <a href="{% url 'login' %}"><span class="fa fa-paper-plane mr-3"></span> Вход</a>
+          </li>
+          <li>
+            <a href="{% url 'logout' %}"><span class="fa fa-paper-plane mr-3"></span> Выход</a>
+          </li>
+        </ul>
+        {% endblock %}
+</div>
+</div>
+      </nav>
+
+<body>
+      <div class="col-sm-8 ">
+      {% block content %}{% endblock %}
+      </div>
+</body>
+</html>

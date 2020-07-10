@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+        django_climber_db:
+                image: postgres
+                ports:
+                        - "5436:5432"
+                environment:
+                        - POSTGRES_USER=postgres
+                        - POSTGRES_PASSWORD=postgres
+                        - POSTGRES_DB=django_climber_db
+                volumes:
+                        - ./dbs/postgres-data:/var/lib/postgresql
+        backend:
+                container_name: django_climber_backend
+                build: ./climber_django
+                command: bash -c "
+                        sleep 5 &&
+                        python3 manage.py makemigrations && python3 manage.py migrate &&
+                        python3 manage.py runserver --insecure 0.0.0.0:8000";
+                volumes:
+                        - ./climber_django:/climber_django
+                ports:
+                        - "8000:8000"
+                depends_on:
+                        - django_climber_db
+        frontend:
+                container_name: django_climber_frontend
+                build:
+                        context: ./climber_vue
+                        dockerfile: Dockerfile
+                command: npm start --start;
+                volumes:
+                        - ./climber_vue:/django_vue
+                        - /climber_vue/node_modules
+                ports:
+                        - "8080:8080"
+                depends_on:
+                        - backend

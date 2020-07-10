@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Driver</title>
+</head>
+<body>
+	<ul>
+		{% for driver in drivers %}
+		<li><b>Driver:</b> {{ driver }}</li>
+		<li><b>Birthdate:</b> {{ driver.birthdate }}</li>
+		{% endfor %}
+	</ul>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flight list</title>
+</head>
+
+<body style="padding: 0.75rem 1.25rem">
+    {% if user.is_authenticated %}
+    <h1>Flights:</h1>
+    <small>Just click on flight for adding your comment</small>
+    <ul style="list-style-type: none; padding: 0; margin: 1rem 0">
+        {% for flight in flights %}
+        <li>
+            <a href="/flights/{{ flight.id }}">{{ flight }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <h1><a href="/accounts/register">Register</a> or <a href="/accounts/login">Login</a></h1>
+    {% endif %}
+</body>
+
+</html>

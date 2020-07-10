@@ -18,13 +18,8 @@ class ReaderAdmin(admin.ModelAdmin):
 
     list_display = ("library_card_num", "full_name", "passport_data",
                     "birth_date", "home_address", "phone_num",
-                    "education", "degree", "hall"#, "attached_book"
+                    "education", "degree", "hall"
                     )
-
-"""
-    def attached_book(self, obj):
-        return "\n".join(['единица №'+book.id+' экземпляр книги "'+book.title+'"' for book in obj.books.all()])
-"""
 
 
 class AttachmentAdmin(admin.ModelAdmin):

@@ -346,8 +346,13 @@ export default {
       this.$router.push({'name': 'home'})
     },
     handleSortChange ({name, order}) {
-      this.bookList = this.bookList.sort((a, b) =>
-        order === 'asc' ? parseFloat(a[name]) - parseFloat(b[name]) : parseFloat(b[name]) - parseFloat(a[name]))
+      this.finalBooksList = this.finalBooksList.sort(function (a, b) {
+        if (order === 'asc') {
+          return parseFloat(a[name]) + 0.0001 * parseInt(a[name].split('/')[1]) - parseFloat(b[name]) - 0.0001 * parseInt(b[name].split('/')[1])
+        } else {
+          return parseFloat(b[name]) + 0.0001 * parseInt(b[name].split('/')[1]) - parseFloat(a[name]) - 0.0001 * parseInt(a[name].split('/')[1])
+        }
+      })
     },
     loadBooks () {
       // eslint-disable-next-line
@@ -356,7 +361,13 @@ export default {
         type: 'GET',
         success: (response) => {
           this.bookList = response.data
-          for (let m = 0; m < 100; m++) {
+          this.i = 0
+          let idList = []
+          for (let p = 0; p < this.bookList.length; p++) {
+            idList.push(this.bookList[p].id)
+          }
+          let maxNum = Math.max(...idList)
+          for (let m = 0; m < maxNum + 1; m++) {
             this.add_form.push({
               id: m,
               hall: '',
@@ -365,7 +376,6 @@ export default {
               date: ''
             })
           }
-          this.i = 0
           this.bookList.forEach(function () {
             let newVal = {}
             for (let key in this.bookList[this.i].attributes) {
@@ -392,6 +402,8 @@ export default {
             this.form[key] = ''
           }
           this.loadBooks()
+          this.checkAttachments()
+          this.finalBooksList = this.bookList
           this.active = 0
         },
         error: (response) => {
@@ -482,16 +494,24 @@ export default {
         this.ii++
       }.bind(this))
       // Ищу последний экземпляр данной книги
-      for (let n = this.bookList.length - 1; n > -1; n--) {
+      let numList = []
+      let numBookList = []
+      for (let n = 0; n < this.bookList.length; n++) {
         if (this.bookList[n].title === this.goalBook.title) {
-          this.goalBook = this.bookList[n]
-          break
+          let cipherTempList = this.bookList[n].cipher.split('/')
+          let numTemp = parseInt(cipherTempList[1])
+          numList.push(numTemp)
+          numBookList.push(this.bookList[n])
         }
       }
+      let maxNum = Math.max(...numList)
+      let maxNumId = numList.indexOf(maxNum)
+      this.goalBook = numBookList[maxNumId]
+      maxNum += 1
       // Формирую шифр
       let cipherList = this.goalBook.cipher.split('/')
-      let newNum = parseInt(cipherList[1]) + 1
-      let newCipher = cipherList[0] + '/' + newNum
+      let newCipher = cipherList[0] + '/' + maxNum
+      // Формирую данные для отправки POST-запросом
       let data = {
         cipher: newCipher,
         title: this.goalBook.title,

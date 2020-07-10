@@ -35,7 +35,8 @@
           <mu-flex>Зал: {{book.book.hall}}</mu-flex>
           <mu-flex>Дата закрепления: {{book.attachment_starting_date}}</mu-flex>
           <mu-flex justify-content="end">
-            <mu-form :model="detachment_form[book.book.id]" class="detachment-form" :label-position="labelPosition" label-width="150">
+            <mu-form :model="detachment_form[book.book.id]" class="detachment-form"
+                     :label-position="labelPosition" label-width="150">
               <mu-form-item prop="date" label="Дата открепления" help-text="В формате: год(4 цифры)-месяц-день">
                 <mu-text-field v-model="detachment_form[book.book.id].date"></mu-text-field>
               </mu-form-item>
@@ -103,11 +104,15 @@ export default {
           reader: this.id
         },
         success: (response) => {
-          let i
-          for (i = 0; i < 100; i++) {
-            this.detachment_form[i] = {attachment: '', date: ''}
-          }
           this.person_books = response.data
+          let idList = []
+          for (let j = 0; j < this.person_books.books.length; j++) {
+            idList.push(this.person_books.books[j].book.id)
+          }
+          let maxNum = Math.max(...idList)
+          for (let i = 0; i < maxNum + 1; i++) {
+            this.detachment_form.push({attachment: '', date: ''})
+          }
         }
       })
     },

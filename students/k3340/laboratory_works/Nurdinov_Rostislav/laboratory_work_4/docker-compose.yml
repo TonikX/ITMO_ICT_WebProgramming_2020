@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+        db:
+                image: postgres
+                ports:
+                        - "5436:5432"
+                environment:
+                        - POSTGRES_USER=postgres
+                        - POSTGRES_PASSWORD=123456
+                        - POSTGRES_DB=work
+                volumes:
+                        - ./dbs/postgres-data:/var/lib/postgresql
+        backend:
+                container_name: backend_container
+                build: ./backend
+                command: bash -c "
+                        sleep 3 &&
+                        python3 manage.py makemigrations && python3 manage.py migrate &&
+                        python3 manage.py runserver --insecure 0.0.0.0:8000";
+                volumes:
+                        - ./backend:/backend
+                ports:
+                        - "8000:8000"
+                depends_on:
+                        - db
+        frontend:
+                container_name: frontend_container
+                build:
+                        context: ./frontend
+                        dockerfile: Dockerfile
+                command: npm start --start;
+                volumes:
+                        - ./frontend:/frontend
+                        - /frontend/node_modules
+                ports:
+                        - "8080:8080"
+                depends_on:
+                        - backend

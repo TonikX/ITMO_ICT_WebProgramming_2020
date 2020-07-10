@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Auto</title>
+</head>
+<body>
+	<div>
+	{% for auto in autos %}
+		<p><b>Auto:</b> {{ auto }}</p>
+		<p><b>Color:</b> {{ auto.color }}</p>
+		<p><b>Government number:</b> {{ auto.gosnumber }}</p>
+		<hr>
+	{% endfor %}
+	</div>
+</body>
+</html>

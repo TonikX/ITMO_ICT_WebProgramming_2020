@@ -2,9 +2,9 @@
     <div style="margin:auto;">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
-<mu-paper :z-depth="2" style="padding:2%;width:100%">
+<mu-container>
         <mu-flex justify-content="center" style="background:#e0ebff;
-            border-radius: 8px;
+            border-radius:8px 8px 0 0;
             margin:1px;
             padding:1px;
             ">
@@ -157,7 +157,7 @@
                 </mu-expansion-panel>
             </mu-card>
           </mu-dialog>
-</mu-paper>
+</mu-container>
 
     </div>
 </template>

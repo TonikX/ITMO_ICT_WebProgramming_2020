@@ -71,9 +71,10 @@
 <br>
 
 <mu-container >
-    <mu-paper :z-depth="1">
-        <mu-paper style="background:lightGrey;border-radius:8px 8px 0 0; ">
+    <mu-paper style="background:lightGrey;border-radius:8px 8px 0 0; ">
             Next</mu-paper>
+    <mu-paper :z-depth="1">
+
         <mu-paper v-if="schedRepNext == null" style="padding:1%; background:#ededed">
             No next schedules</mu-paper>
 

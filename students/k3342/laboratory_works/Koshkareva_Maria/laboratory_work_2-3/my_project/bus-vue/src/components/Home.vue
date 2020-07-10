@@ -75,7 +75,7 @@
             <mu-container v-else>
                     <mu-card class="card" style="width:55%; max-width:375px; margin:0 auto;">
                          <mu-card-header class="card_head">
-                             <h1>No Strangers</h1>
+                             <h1>Only for <br>a trafic controller!</h1>
                              Please, log in!
                          </mu-card-header>
                         <br>

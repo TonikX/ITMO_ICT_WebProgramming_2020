@@ -2,15 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0e1d62f6-8b44-492e-86d9-9f300099d573" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../.idea/k3342.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Koshkareva_Maria.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus-vue/src/assets/images/driver10.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus-vue/src/assets/images/driver11.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus-vue/src/assets/images/driver14.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus-vue/src/assets/images/driver17.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus-vue/src/assets/images/driver17.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus-vue/src/assets/images/driver18.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus-vue/src/assets/images/driver18.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus-vue/src/assets/images/driver19.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus-vue/src/assets/images/driver19.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus-vue/src/assets/images/driver20.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus-vue/src/assets/images/driver20.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus-vue/src/assets/images/driver8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus-vue/src/assets/images/driver9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus-vue/src/components/BusMals.vue" beforeDir="false" afterPath="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus-vue/src/components/BusMals.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus-vue/src/components/Buses/Schedule.vue" beforeDir="false" afterPath="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus-vue/src/components/Buses/Schedule.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus-vue/src/components/Drivers.vue" beforeDir="false" afterPath="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus-vue/src/components/Drivers.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus-vue/src/components/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus-vue/src/components/Home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus-vue/src/components/SchedReport.vue" beforeDir="false" afterPath="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus-vue/src/components/SchedReport.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +50,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/laboratory_work_2-3/my_project/bus-vue/src/components" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -126,10 +135,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="141" y="136" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1593913234951" />
-    <state x="11" y="70" width="981" height="707" key="SettingsEditor" timestamp="1593264298361">
+    <state x="230" y="70" width="981" height="707" key="SettingsEditor" timestamp="1594311660045">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="11" y="70" width="981" height="707" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1593264298361" />
+    <state x="230" y="70" width="981" height="707" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1594311660045" />
     <state x="46" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1594214972804">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

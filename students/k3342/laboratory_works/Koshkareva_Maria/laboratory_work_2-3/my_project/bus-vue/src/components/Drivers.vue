@@ -68,7 +68,6 @@
     <div style="position:relative;">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
-
         <mu-container>
 
             <mu-snackbar position="bottom" :open.sync="snackbar.open">
@@ -108,12 +107,14 @@
                     <mu-card-header v-bind:title="form.name+' '+form.surname"
                                     :sub-title="form.passport">
                         <mu-avatar slot="avatar">
-                          <img v-if="img_link" :src="img_link" />
+                          <img v-if="img_link" v-bind:src="require('@/assets/images/driver'
+                     +max_id+'.jpg')" />
                           <img v-else src="@/assets/images/man0.png">
                         </mu-avatar>
                       </mu-card-header>
                       <mu-card-media>
-                        <img v-if="img_link" :src="img_link" />
+                        <img v-if="img_link" v-bind:src="require('@/assets/images/driver'
+                     +max_id+'.jpg')" />
                         <img v-else src="@/assets/images/man0.png">
                     </mu-card-media>
                 </mu-card></mu-col>
@@ -194,9 +195,12 @@
                     <mu-col span="1" >
                         <mu-col >
 
-                            <input style="background:grey; padding:10%; border-radius:0 0 6px 6px"
+                            <!--<input style="background:grey; padding:10%; border-radius:0 0 6px 6px"
                                    type="file" id="myFile"
-                                   accept=".jpg" @change="onFileChange">
+                                   accept=".jpg" @change="onFileChange">-->
+                            <mu-button color="grey" @click="showImage">
+                                Show
+                            </mu-button>
                         </mu-col>
                     </mu-col>
                     <mu-col span="1" offset="8">
@@ -232,9 +236,6 @@
                           <mu-list-item-sub-title>Passport: {{oneDriver.passport}}</mu-list-item-sub-title>
                       </mu-list-item-content>
                       <mu-list-item-action>
-                          <!--<mu-button icon color="info" @click="editDriver(oneDriver.id.toString())">
-                              <mu-icon value="edit"></mu-icon>
-                          </mu-button>-->
                           <mu-button icon color="red" @click="deleteDriver(oneDriver.id)">
                               <mu-icon value="clear"></mu-icon>
                           </mu-button>
@@ -337,11 +338,12 @@
             maxDate.setFullYear(maxDate.getFullYear()-14);
             maxDate.setDate(0);
             return {
+                max_id:'',
                 snackbar: {
                     open: false,
                     timeout: 3000,
                   },
-                img_link: '',
+                img_link: false,
                 maxDate,
                 form: {
                     surname:'',
@@ -386,6 +388,9 @@
             }
         },
         methods: {
+            showImage(){
+                this.img_link = true;
+            },
             deleteDriver(the_id) {
                     $.ajax({
                         url: "http://127.0.0.1:8000/api/v1/bus_info/driver/"
@@ -418,6 +423,7 @@
 
                         },
                         success: (response) => {
+                            this.img_link = false;
                             this.loadDrivers();
                         }
                 });
@@ -426,7 +432,6 @@
             onFileChange(e) {
               const file = e.target.files[0];
               this.img_link = URL.createObjectURL(file);
-              console.log(this.img_link);
             },
             submit() {
 
@@ -508,14 +513,23 @@
                 this.$router.push({name:"schedreport"})
             },
             loadDrivers(){
+
                 $.ajax({
                     url: "http://127.0.0.1:8000/api/v1/bus_info/all_drivers/",
                     type: "GET",
                     success:(response) => {
                         this.drivers = response.data.data;
+
                         for (let i = 0; i < this.drivers.length; i++){
                             this.edit[this.drivers[i].id.toString()] = true;
+
                         };
+                        var ids = [];
+                        for(let i = 0; i < this.drivers.length; i++) {
+                            ids.push(this.drivers[i].id);
+                        };
+                        this.max_id = Math.max(...ids)+1;
+
                     }
                 });
 

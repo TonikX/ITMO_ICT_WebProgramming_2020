@@ -9,10 +9,8 @@ from multiselectfield import MultiSelectField
 
 class Bus(models.Model):
     TYPES = (
-        (1,'very little'),
-        (2,'little'),
-        (3,'average'),
-        (4,'big'),
+        (1,'very little'),(2,'little'),
+        (3,'average'), (4,'big'),
         (5,'articulated')
     )
 
@@ -48,7 +46,7 @@ class Route(models.Model):
 
 class Driver(models.Model):
     CLASSES = (
-        (3,3),(2,2),(1,1)
+        (3, 3), (2, 2), (1, 1)
     )
 
     passport = models.CharField(max_length=10, unique=True)
@@ -57,19 +55,19 @@ class Driver(models.Model):
     surname = models.CharField(max_length=30)
     job_class = models.IntegerField(choices=CLASSES)
     date_begin = models.DateField()
-    work_exp = models.IntegerField(default=0,
-                                   help_text='fills in based on "Date begin"')
-    salary = models.IntegerField(default=0,
-                                 help_text='fills in based on "Work exp" and "Job class"')
+    work_exp = models.IntegerField(default=0, help_text='fills in based on '
+                                             '"Date begin"')
+    salary = models.IntegerField(default=0, help_text='fills in based on '
+                                           '"Work exp" and "Job class"')
     bus = models.ForeignKey(Bus, on_delete=models.CASCADE)
     route = models.ForeignKey(Route, on_delete=models.CASCADE)
-    #img = CharField(max_length = 400,null=True)
 
     def __str__(self):
         return str(self.passport)
 
     def save(self,*args,**kwargs):
-        self.work_exp = int((datetime.datetime.now().date()-self.date_begin).days/365.25)
+        self.work_exp = int((datetime.datetime.now().date()-
+                             self.date_begin).days/365.25)
 
         if self.work_exp > 30:
             pre_salary = 65000
@@ -113,10 +111,8 @@ class Schedule(models.Model):
 
 class Report(models.Model):
     REASON_LIST = (
-        (0,"OK"),
-        (1,'Broken bus'),
-        (2,'Sick driver'),
-        (3,'No driver'),
+        (0,"OK"), (1,'Broken bus'),
+        (2,'Sick driver'), (3,'No driver'),
         (4,'Other'),
     )
     schedule_line = models.OneToOneField(Schedule, on_delete=models.CASCADE)
@@ -133,22 +129,11 @@ class Report(models.Model):
 
 
 class Malfunction(models.Model):
-    PIECE_LIST = (
-        (1,'engine'),
-        (2,'tyres'),
-        (3,'oil filter'),
-        (4,'lights'),
-        (5,'turn signals'),
-        (6,'steering wheel'),
-        (7,'rear-view mirrors'),
-        (8,'other'),
-    )
-
+    # piece: engine, tyres, oil filter, lights, turn signals,
+    #           steering wheel, rear-view mirrors, other
     bus = models.ForeignKey(Bus, on_delete=models.CASCADE)
     date_start = models.DateField()
-    #piece = MultiSelectField(choices=PIECE_LIST)
     piece = models.CharField(max_length=100)
-    #piece_now = MultiSelectField(choices=PIECE_LIST, null=True, blank=True)
     piece_now = models.CharField(null=True, blank=True, max_length=100)
     date_close = models.DateField(null=True, blank=True)
 

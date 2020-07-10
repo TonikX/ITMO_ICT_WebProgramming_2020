@@ -91,7 +91,7 @@
                     padding:3%;">
                 <mu-row>
                 <mu-col span="2" >{{line.bus.reg_plate}}</mu-col>
-                <mu-col span="2" offset="8" style="margin:-10%;left:+220%">
+                <mu-col span="2" offset="8" style="margin:-10%;left:+230%">
                     <mu-button v-if="Object.values(schedules).filter(s => s.bus.id == line.bus.id).length > 0"
                                icon
                                style="margin:-20%" color="red500"
@@ -660,7 +660,7 @@
             goHome(){
                 this.$router.push({name:"home"})
             },
-            goBusMals(){
+            goBusMal(){
                 this.$router.push({name:"busmals"})
             },
             goSchedReport(){

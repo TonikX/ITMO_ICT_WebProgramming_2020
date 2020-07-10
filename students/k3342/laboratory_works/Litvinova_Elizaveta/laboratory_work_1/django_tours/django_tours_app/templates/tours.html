@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Все туры</title>
+</head>
+
+<body>
+    {% if user.is_authenticated %}
+    <h1>Туры:</h1>
+    <hr>
+    {% for tour in tours %}
+    <p>
+        {{ tour }}
+        <p></p>
+        <a href="/tours/{{ tour.id }}">Подробнее</a>
+    </p>
+    <hr>
+    {% endfor %}
+    {% else %}
+    Вот незадача :( Вам следует <a href="/register">Зарегистрироваться</a> или <a href="/auth">Войти</a> перед тем, как вы сможете получить доступ.
+    {% endif %}
+</body>
+
+</html>

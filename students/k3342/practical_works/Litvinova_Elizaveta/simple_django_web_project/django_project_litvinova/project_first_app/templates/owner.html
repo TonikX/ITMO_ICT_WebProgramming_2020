@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Владелец</title>
+</head>
+
+<body>
+    <ul>
+        <li>Владелец: {{ owner.first_name }} {{ owner.last_name }}</li>
+        <li>Пол: {{ owner.get_gender_display }}</li>
+        <li>Дата рождения: {{ owner.birthdate }}</li>
+        <li>Возраcт: {{ owner.age }}</li>
+        <li>Национальность: {{ owner.nationality }}</li>
+        <li>Паспорт: {{ owner.passport }}</li>
+        <li>Адрес: {{ owner.address }}</li>
+    </ul>
+</body>
+
+</html>

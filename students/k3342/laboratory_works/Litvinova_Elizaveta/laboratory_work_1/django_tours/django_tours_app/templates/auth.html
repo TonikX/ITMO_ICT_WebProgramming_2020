@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+
+<body>
+    <form method="post" action="/auth/">
+        {% csrf_token %}
+        <div>
+            <p><label for="username">Имя пользователя:</label></p>
+            <input type="text" name="username" placeholder="Имя пользователя">
+        </div>
+        <br>
+        <div>
+            <P><label for="password">Пароль:</label></P>
+            <input type="password" name="password" placeholder="Пароль">
+        </div>
+        <br>
+        <input type="submit" name="" value="Login">
+    </form>
+
+    Ещё нет аккаунта? <a href="/register">Зарегистрируйтесь сейчас</a>
+</body>
+
+</html>

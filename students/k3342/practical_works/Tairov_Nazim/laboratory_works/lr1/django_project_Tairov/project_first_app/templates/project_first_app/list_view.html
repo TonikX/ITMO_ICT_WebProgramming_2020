@@ -1,0 +1,19 @@
+{% extends 'project_first_app/base.html' %}
+<div class="main">
+
+{% block content %}
+  <h3>Данные о всех владельцах</h3>
+  <hr/>
+  {% if owners %}
+    {% for owner in owners %}
+      {{ owner.name }}<br/>
+      {{ owner.surname }}<br/>
+      {{ owner.date_of_birth }}<br/>
+      <hr/>
+    {% endfor %}
+  {% else %}
+  <p> Владельцы с автомобилями не найдены ! </p>
+  {% endif %}
+
+</div>
+{% endblock %}

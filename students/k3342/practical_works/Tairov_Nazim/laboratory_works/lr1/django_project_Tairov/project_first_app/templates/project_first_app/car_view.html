@@ -1,0 +1,15 @@
+{% extends 'project_first_app/base.html' %}
+{% block content %}
+  <ul>
+      {% for car in cars %}
+      <!-- Display cars -->
+      <li>{{car.car_brand}}</li>
+      <li>{{car.car_model}}</li>
+      <li>{{car.car_color}}</li>
+      <li>{{car.state_number}}</li>
+      <hr/>
+      {% empty %}}
+      <li>Пока что нет машин.</li>
+      {% endfor %}
+  </ul>
+{% endblock %}

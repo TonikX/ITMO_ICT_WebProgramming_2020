@@ -1,0 +1,18 @@
+{%  extends 'project_first_app/base_page.html' %}
+
+<p>
+    {{ authors }}
+</p>
+
+{% block title %}
+    Authors list
+{% endblock %}
+
+{% block content %}
+    <h1 class="mb-5">Authors:</h1>
+    {% for author in authors %}
+        <p><a href="{% url 'author_detail_url' slug=author.slug %}">
+            {{ author.fullName }}
+        </a></p>
+    {% endfor %}
+{% endblock %}

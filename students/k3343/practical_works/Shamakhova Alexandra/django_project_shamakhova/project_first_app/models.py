@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+from django.conf import settings
 
 
 class Car(models.Model):
@@ -8,15 +10,17 @@ class Car(models.Model):
     car_number = models.CharField(max_length=6)
 
 
-class CarOwner(models.Model):
+class CarOwner(AbstractUser):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     date_of_birth = models.DateField()
     cars = models.ManyToManyField(Car, through='Ownership')
-
+    passport = models.PositiveIntegerField(blank=True, null=True)
+    address = models.CharField(max_length=100, blank=True, null=True)
+    ethnicity = models.CharField(max_length=30, blank=True, null=True)
 
 class Ownership(models.Model):
-    car_owner = models.ForeignKey(CarOwner, on_delete=models.CASCADE)
+    car_owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     car = models.ForeignKey(Car, on_delete=models.CASCADE)
     first_date = models.DateField()
     last_date = models.DateField()
@@ -32,4 +36,4 @@ class DriverLicense(models.Model):
     lic_number = models.PositiveIntegerField()
     lic_issue_date = models.DateField()
     lic_type = models.CharField(max_length=1, choices=LIC_TYPES)
-    lic_owner = models.ForeignKey(CarOwner, on_delete=models.CASCADE)
+    lic_owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

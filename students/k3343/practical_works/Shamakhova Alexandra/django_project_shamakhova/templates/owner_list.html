@@ -8,6 +8,10 @@
     {% for data in dataset %}
 
     {{ data.first_name }} {{ data.last_name }}<br/>
+        Дата рождения: {{ data.date_of_birth }} <br/>
+        Паспорт: {{ data.passport }} <br/>
+        Адрес: {{ data.address }} <br/>
+        Национальность: {{ data.ethnicity }} <br/>
     <hr/>
 
     {% endfor %}

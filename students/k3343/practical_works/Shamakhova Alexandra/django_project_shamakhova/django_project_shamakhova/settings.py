@@ -121,4 +121,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-AUTH_USER_MODEL = 'project_first_app.CarOwner'
+AUTH_USER_MODEL = 'project_first_app.User'

@@ -1,0 +1,32 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path("schedule/", views.ScheduleViewSet.as_view({'get': 'list'})),
+    path("schedule/<int:pk>/", views.ScheduleViewSet.as_view({'get': 'retrieve'})),
+    path("schedule/create", views.ScheduleViewSet.as_view({'post': 'create'})),
+    path("schedule/<int:pk>/delete", views.ScheduleViewSet.as_view({'delete': 'destroy'})),
+    path("schedule/<int:pk>/update", views.ScheduleViewSet.as_view({'post': 'update'})),
+    path("driver/", views.DriverViewSet.as_view({'get': 'list'})),
+    path("driver/<int:pk>/", views.DriverViewSet.as_view({'get': 'retrieve'})),
+    path("driver/create", views.DriverViewSet.as_view({'post': 'create'})),
+    path("driver/<int:pk>/delete", views.DriverViewSet.as_view({'delete': 'destroy'})),
+    path("driver/<int:pk>/update", views.DriverViewSet.as_view({'post': 'update'})),
+    path("bus_type/", views.BusTypeViewSet.as_view({'get': 'list'})),
+    path("bus_type/<int:pk>/", views.BusTypeViewSet.as_view({'get': 'retrieve'})),
+    path("journal/", views.JournalViewSet.as_view({'get': 'list'})),
+    path("journal/<int:pk>/", views.JournalViewSet.as_view({'get': 'retrieve'})),
+    path("journal/<int:pk>/delete", views.JournalViewSet.as_view({'delete': 'destroy'})),
+    path("journal/create", views.JournalViewSet.as_view({'post': 'create'})),
+    path("bus/", views.BusViewSet.as_view({'get': 'list'})),
+    path("bus/<int:pk>/", views.BusViewSet.as_view({'get': 'retrieve'})),
+    path("bus/create", views.BusViewSet.as_view({'post': 'create'})),
+    path("bus/<int:pk>/delete", views.BusViewSet.as_view({'delete': 'destroy'})),
+    path("route/", views.RouteViewSet.as_view({'get': 'list'})),
+    path("route/<int:pk>/", views.RouteViewSet.as_view({'get': 'retrieve'})),
+    path("route/create", views.RouteViewSet.as_view({'post': 'create'})),
+    path("route/<int:pk>/delete", views.RouteViewSet.as_view({'delete': 'destroy'})),
+    path("route/<int:pk>/update", views.RouteViewSet.as_view({'post': 'update'})),
+    path('query3/', views.Query3.as_view()),
+    path('query5/', views.Query5.as_view()),
+]

@@ -1,0 +1,14 @@
+{% extends 'project_first_app/base_page.html' %}
+
+{% block title %}
+    {{ author.fullName }} - {{ blog.super }}
+{% endblock %}
+
+{% block content %}
+    <h1>
+        {{ author.fullName }}
+    </h1>
+    <p>
+        {{ author.birth }}
+    </p>
+{%  endblock %}

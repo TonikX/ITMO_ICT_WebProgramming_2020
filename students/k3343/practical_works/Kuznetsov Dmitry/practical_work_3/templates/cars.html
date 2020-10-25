@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+
+<head>
+
+
+    <meta charset="UTF-8">
+
+
+    <title>Car</title>
+
+
+</head>
+
+
+<body>
+
+
+    <div>
+
+
+	{% for car in cars %}
+
+
+		
+
+
+        <p><b>Марка:</b> {{car.name}}</p>
+
+
+        <p><b>Модель:</b> {{car.type}}</p>
+
+
+		<p><b>Цвет:</b> {{car.colour}}</p>
+
+
+		<p><b>Номер:</b> {{car.number}}</p>
+
+
+		<hr>
+
+
+	{% endfor %}
+
+
+	</div>
+
+
+</body>
+
+
+</html>

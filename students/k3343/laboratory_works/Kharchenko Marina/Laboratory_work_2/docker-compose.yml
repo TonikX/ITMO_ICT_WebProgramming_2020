@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+        db:
+                image: postgres
+                ports:
+                        - "5436:5432"
+                environment:
+                        - POSTGRES_USER=postgres
+                        - POSTGRES_PASSWORD=postgres
+                        - POSTGRES_DB=airport
+                volumes:
+                        - ./dbs/postgres-data:/var/lib/postgresql
+        backend:
+                container_name: airport_backend
+                build: ./django-airport/djangoairport
+                command: bash -c "
+                        sleep 3 &&
+                        python3 manage.py makemigrations && python3 manage.py migrate &&
+                        python3 manage.py runserver --insecure 0.0.0.0:8000";
+                volumes:
+                        - ./django-airport/djangoairport:/djangoairport
+                ports:
+                        - "8000:8000"
+                depends_on:
+                        - db
+        frontend:
+                container_name: airport_frontend
+                build:
+                        context: ./vue-airport/airport
+                        dockerfile: Dockerfile
+                command: npm start --start;
+                volumes:
+                        - ./vue-airport/airport:/airport
+                        - /airport/node_modules
+                ports:
+                        - "8080:8080"
+                depends_on:
+                        - backend
+

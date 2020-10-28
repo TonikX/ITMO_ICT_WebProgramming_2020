@@ -1,0 +1,13 @@
+{% extends 'base_page.html' %}
+
+{% block content %}
+    <a>This is main_page</a>
+    <div class="main">
+    {% for data in dataset %}
+        {{ data.full_name }}<br/>
+        {{ data.website }}<br/>
+    <hr/>
+    {% endfor %}
+    </div>
+
+{% endblock %}

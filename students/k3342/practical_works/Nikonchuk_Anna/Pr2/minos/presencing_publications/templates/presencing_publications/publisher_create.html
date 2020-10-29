@@ -49,7 +49,10 @@
         {% elif field.label == 'Foundation date' or field.label == 'foundation_date' or field.label == 'foundation date' %}
             here
             {{ field.label }}
-            {{ field.media }}
+            {% load bootstrap4%} {# import bootstrap4 / bootstrap3 #}
+            {% bootstrap_css%} {# Embed Bootstrap CSS #}
+            {% bootstrap_javascript jquery = 'full'%} {# Вставить Bootstrap JS + jQuery #}
+            {{form.media}} {# Добавляет средство выбора даты, требуемый JS и CSS #}
         {% elif field.label == 'Director' %}
             {{ field.label }}<br>
             {{ field }}

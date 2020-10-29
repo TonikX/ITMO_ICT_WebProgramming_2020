@@ -25,7 +25,7 @@ class PublisherForm(forms.Form):
     full_another_name = forms.CharField(max_length=240)
     parent = forms.CharField(max_length=300)
     founder = forms.CharField(max_length=300)
-    foundation_date = forms.TextInput(attrs={"class": "form-control"})
+    foundation_date = forms.DateField()
     #director = forms.CheckboxSelectMultiple()
     director = forms.ModelChoiceField(queryset=Director.objects.all())
     p_slug = forms.CharField(max_length=120)

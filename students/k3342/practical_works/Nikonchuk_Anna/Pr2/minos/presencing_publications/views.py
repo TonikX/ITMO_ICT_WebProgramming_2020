@@ -64,9 +64,26 @@ class PublisherCreate(View):
         return django.shortcuts.render(request, 'presencing_publications/publisher_create.html', context={'form': form})
 
     def post(self, request):
-        bound_form = PublisherForm(request.POST)
+        bound_form = PublisherForm(request.POST)  # получаем связанную форму (заполненные поля)
 
         if bound_form.is_valid():
             new_publisher = bound_form.save()
-            return django.shortcuts.redirect(new_publisher)
+            return django.shortcuts.redirect(new_publisher)  # переходим на страницу созданного объекта
+        # отображаем невалидную форму с ошибками
         return django.shortcuts.render(request, 'presencing_publications/publisher_create.html', {'form': bound_form})
+
+
+class DirectorCreate(View):
+    def get(self, request):
+        form = DirectorForm()
+        return django.shortcuts.render(request, 'presencing_publications/director_create.html', context={'form': form})
+
+    def post(self, request):
+        bound_form = DirectorForm(request.POST)
+
+        if bound_form.is_valid():
+            new_director = bound_form.save()
+            return django.shortcuts.redirect(new_director)
+        return django.shortcuts.render(request, 'presencing_publications/director_create.html', context={'form': bound_form})
+
+

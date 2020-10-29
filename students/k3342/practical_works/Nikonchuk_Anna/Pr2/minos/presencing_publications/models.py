@@ -150,6 +150,20 @@ LANGS = (
 )
 
 
+TYPE_COVER = (
+        ('NC', 'None cover'),
+        ('SC', 'Soft cover'),
+        ('PB', 'Paperback'),
+        ('OC', 'Ordinary'),
+        ('HC', 'Hard cover'),
+        ('AC', 'Audio CD'),
+        ('AB', 'Audiobook'),
+        ('AA', 'Audible Audio'),
+        ('EB', 'Ebook'),
+        ('KE', 'Kindle Edition'),
+    )
+
+
 class Director(models.Model):
     full_name = models.CharField(max_length=240)
     short_name = models.CharField(max_length=120)
@@ -228,18 +242,6 @@ class Book(models.Model):
     authors = models.ManyToManyField(Author, blank=True, null=True)
     publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE, blank=True, null=True)
     publication_date = models.DateField(blank=True, null=True)
-    TYPE_COVER = (
-        ('NC', 'None cover'),
-        ('SC', 'Soft cover'),
-        ('PB', 'Paperback'),
-        ('OC', 'Ordinary'),
-        ('HC', 'Hard cover'),
-        ('AC', 'Audio CD'),
-        ('AB', 'Audiobook'),
-        ('AA', 'Audible Audio'),
-        ('EB', 'Ebook'),
-        ('KE', 'Kindle Edition'),
-    )
     type_cover = models.CharField(max_length=2, choices=TYPE_COVER, blank=True, null=True)
     cover = models.ImageField(upload_to='books', blank=True, null=True)
     b_slug = models.SlugField()

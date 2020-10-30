@@ -1,0 +1,33 @@
+{% extends 'hotels/base.html' %}
+
+{% block content %}
+        <div class="card-container">
+          <div class="card u-clearfix">
+          <div class="card-body">
+      <h2 class="card-title">{{ hotel.name }}</h2>
+      <h1>{{ hotel.adress }}</h1>
+      <span class="card-description subtle">{{ hotel.description }}</span>
+      <span>Вместимость: {{ hotel.capacity }} человек</span><br>
+      <span>Типы номеров: {{ hotel.room_types }}</span><br>
+      <span>Удобства: {{ hotel.facilities }}</span><br>
+      <span>Владелец отеля: {{ hotel.hotel_owner }}</span>
+    </div>
+    <img src="{{hotel.image.url}}" width="282" height="361" class="card-media"/>
+  </div>
+</div>
+
+        <div class="card-container">
+          <div class="card u-clearfix">
+          <div class="card-body">
+      <h1>Отзывы:</h1>   
+    </div>
+    <big><a href="/add_comment" class="card-media">Оставить отзыв</a></big>
+    {% for comments in comment_list %}
+      <br><br><br><br><hr><big>Автор: {{comments.contact_info}}</big><br>
+      <big>Оценка: {{comments.rating}}/10</big><br>
+      <big>Период пребывания: {{comments.start_period}} - {{comments.end_period}}</big><br><br>
+      <big class=" subtle">{{comments.comment_text}}</big>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

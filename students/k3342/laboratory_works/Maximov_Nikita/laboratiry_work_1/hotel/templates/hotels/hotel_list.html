@@ -1,0 +1,18 @@
+{% extends 'hotels/base.html' %}
+
+{% block content %}
+    {% for hotel in hotel_list %}
+        <div class="card-container">
+          <div class="card u-clearfix">
+          <div class="card-body">
+      <h2 class="card-title">{{ hotel.name }}</h2>
+      <span class="card-description subtle">{{ hotel.description }}</span>
+      <div class="card-read">
+        <a href="{% url 'hotel_detail' pk=hotel.pk %}">Подробнее</a>
+      </div>
+    </div>
+    <img src="{{hotel.image.url}}" width="282" height="361" class="card-media"/>
+  </div>
+</div>
+    {% endfor %}
+{% endblock %}

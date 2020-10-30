@@ -1,0 +1,169 @@
+/* Style the header with a grey background and some padding */
+.header {
+  overflow: hidden;
+  background-color: #8f8f8f;
+  padding: 20px 10px;
+}
+
+/* Style the header links */
+.header a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+.header a.logo {
+  font-size: 35px;
+  font-family: "Oswald", sans-serif;
+  font-weight: bold;
+}
+
+/* Change the background color on mouse-over */
+.header a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Style the active/current link*/
+.header a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+/* Float the link section to the right */
+.header-right {
+  float: right;
+}
+
+.content {
+    margin-left: 40px;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'bitter';
+}
+
+.save {
+    float: right;
+}
+
+.post-form textarea, .post-form input {
+    width: 100%;
+}
+
+.top-menu, .top-menu:hover, .top-menu:visited {
+    color: #ffffff;
+    float: right;
+    font-size: 26pt;
+    margin-right: 20px;
+}
+
+.post {
+    margin-bottom: 70px;
+}
+
+.post h1 a, .post h1 a:visited {
+    color: #000000;
+}
+
+html {
+  background: #FAF7F2;
+  background-image: url(https://s3.postimg.org/s1n3ji1ur/paper_fibers_2_X.png);
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.u-clearfix:before,
+.u-clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.u-clearfix:after {
+  clear: both;
+}
+
+.u-clearfix {
+  *zoom: 1;
+}
+
+.subtle {
+  color: #aaa;
+}
+
+.card-container {
+  margin: 25px auto 0;
+  position: relative;
+  width: 900px;
+}
+
+.card {
+  background-color: #fff;
+  padding: 30px;
+  position: relative;
+  box-shadow: 0 0 5px rgba(75, 75, 75, .07);
+  z-index: 1;
+}
+
+.card-body {
+  display: inline-block;
+  float: left;
+  width: 500px;
+}
+
+.card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 50px;
+  font-weight: 300;
+  line-height: 60px;
+  margin: -10px 0;
+}
+
+.card-description {
+  display: inline-block;
+  font-weight: 300;
+  line-height: 22px;
+  margin: 30px 0;
+}
+
+.card-read {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  margin: 5px 0 20px;
+  position: relative;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.card-read:after {
+  background-color: #b8bddd;
+  content: "";
+  display: block;
+  height: 1px;
+  position: absolute;
+  top: 9px;
+  width: 70%;
+}
+
+.card-tag {
+  float: right;
+  margin: 5px 0 0;
+}
+
+.card-media {
+  float: right;
+}

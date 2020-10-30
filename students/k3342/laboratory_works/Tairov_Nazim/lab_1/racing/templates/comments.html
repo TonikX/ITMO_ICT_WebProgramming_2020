@@ -1,0 +1,33 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Comments board</h2>
+{% with comments.count as total %}
+<p> Total {{ total }} comment{{ total|pluralize }}</p>
+{% endwith %}
+<ul>
+{% for c in comments %}
+	<li><b>Type: </b>{{ c.comment_type }}</li>
+	<li><b>Text: </b>{{ c.text }}</li>
+	<li><b>Date: </b>{{ c.date }}</li>
+	<li><b>User: </b>{{ c.racer }}</li>
+	<ul></ul>
+	<br>
+{% endfor %}
+</ul>
+
+<h2>Add comment</h2>
+{% if user.is_active %}
+	<form method='POST' enctype='multipart/form-data'>
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input type='submit' value='Submit comment'>
+	</form>
+{% else %}
+	<p><a href="{% url 'login' %}">Log in</a> to leave a comment.</p>
+{% endif %}
+<br><br><br>
+
+{% endblock %}

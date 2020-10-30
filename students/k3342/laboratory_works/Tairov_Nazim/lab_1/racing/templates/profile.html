@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Profile for {{ selecteduser.username }}
+{% endblock %}
+
+{% block content %}
+  <div class="jumbotron p-4">
+    <div class="container">
+      <h1 class="jumbotron-heading">{{ selecteduser.username }}'s Profile</h1>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <img src="{{ MEDIA_URL }}{{ userprofile.picture }}" width="300"
+           height="300" alt="{{ selecteduser.username }}'s profile image" />
+      <br/>
+      <div>
+        {% if selecteduser == user %}
+          <form method="post" action="." enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Update" />
+          </form>
+        {% else %}
+          <p><strong>Website:</strong>
+          <a href="{{ userprofile.website }}">{{ userprofile.website }}</a>
+          </p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

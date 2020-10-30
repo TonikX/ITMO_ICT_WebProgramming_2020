@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+{% block title %}<title>Flight: комментарии к авиперелетам</title>{% endblock %}
+{% block content %}
+<h1>Табло авирейсов</h1>
+    <table class="table table-bordered">
+        {% for flight in flights %}
+       <tr>
+           <td colspan="2" bgcolor="#ffebcd"><a href="{% url 'single_flight' pk=flight.id %}">Рейс номер: {{flight.flight_number}}</a></td>
+       </tr>
+        <tr>
+            <td>Отправление из</td>
+            <td>{{flight.departure_from}}</td>
+        </tr>
+        <tr>
+            <td>Прибытие в</td>
+            <td>{{flight.arrival_to}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock%}

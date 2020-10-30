@@ -1,0 +1,22 @@
+version: '3'
+ 
+services:
+  server:
+    build: .
+    container_name: django
+    command: bash -c "sleep 3 && python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+     - .:/application
+    ports:
+     - "8000:8000"
+ 
+  client:
+    build: ./vuedog
+    container_name: front
+    command: npm run serve
+    volumes:
+     - ./vuedog:/application
+      - /application/node_modules
+    ports:
+     - "8080:8080"
+ 

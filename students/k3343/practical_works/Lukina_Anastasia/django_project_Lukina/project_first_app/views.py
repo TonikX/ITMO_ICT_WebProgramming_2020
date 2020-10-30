@@ -14,10 +14,11 @@ from .forms import CarOwnerForm
 
 def detail(request, owner_id):
     try:
-        owner = CarOwner.objects.get(pk = owner_id)
+        owner = CarOwner.objects.get(pk=owner_id)
     except CarOwner.DoesNotExist:
         raise Http404("Car owner does not exist")
     return render(request, 'detail.html', {'owner': owner})
+
 
 def list_view(request):
     # dictionary for initial data with
@@ -29,13 +30,16 @@ def list_view(request):
 
     return render(request, "list_view.html", context)
 
+
 def all_owners_output(request):
     context = {}
     context["dataset"] = CarOwner.objects.all()
     return render(request, "all_owners_output.html", context)
 
+
 class GeeksList(ListView):
     model = GeeksModel
+
 
 class CarsList(ListView):
     model = Car
@@ -53,6 +57,7 @@ def create_view(request):
         form.save()
     context['form'] = form
     return render(request, "create_view.html", context)
+
 
 def add_car_owners(request):
     context = {}
@@ -72,6 +77,7 @@ class GeeksCreate(CreateView):
 
     fields = ['title', 'description']
     success_url = '/geekcreate/'
+
 
 class add_cars(CreateView):
     model = Car

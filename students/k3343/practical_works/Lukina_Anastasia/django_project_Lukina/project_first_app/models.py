@@ -1,6 +1,9 @@
 from django.db import models
+from django.db import models
+from django.contrib.auth.models import AbstractUser
+from django.conf import settings
+from django.contrib.auth import get_user_model
 
-# Create your models here.
 
 class Car(models.Model):
     car_brand = models.CharField(max_length=30)
@@ -8,17 +11,36 @@ class Car(models.Model):
     color = models.CharField(max_length=30)
     state_number = models.CharField(max_length=30)
 
-class CarOwner(models.Model):
+
+# class CarOwner(models.Model):
+#     first_name = models.CharField(max_length=30)
+#     last_name = models.CharField(max_length=30)
+#     birth_date = models.DateField()
+#     cars = models.ManyToManyField(Car, through='Owning')
+
+
+class CarOwner(AbstractUser):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    birth_date = models.DateField()
+    birth_date = models.DateField(default="2000-01-01")
     cars = models.ManyToManyField(Car, through='Owning')
 
+    passport = models.CharField(max_length=10, default="default")
+    address = models.CharField(max_length=100, default="default")
+    nation_type = (
+        ('1', 'russian'),
+        ('2', 'american'),
+        ('3', 'ukrainian')
+    )
+    nation = models.CharField(max_length=3, choices=nation_type, default="default")
+
+
 class Owning(models.Model):
-    owner = models.ForeignKey(CarOwner, on_delete=models.CASCADE)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     car = models.ForeignKey(Car, on_delete=models.CASCADE)
     start_date_owning = models.DateField()
     end_date_owning = models.DateField()
+
 
 class DrivingLicense(models.Model):
     number_license = models.IntegerField()
@@ -30,7 +52,7 @@ class DrivingLicense(models.Model):
     )
 
     type = models.CharField(max_length=6, choices=license_type)
-    owner = models.ForeignKey(CarOwner, on_delete=models.CASCADE)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
 
 class GeeksModel(models.Model):

@@ -1,4 +1,5 @@
 {% extends 'base_page.html' %}
+{% load static %}
 
 <!-- 1. Подключить CSS-файл Bootstrap 3 -->
 <!--
@@ -48,15 +49,13 @@
             {{ field }}
         {% elif field.label == 'Foundation date' or field.label == 'foundation_date' or field.label == 'foundation date' %}
             here
-            {{ field.label }}
-            {% load bootstrap4%} {# import bootstrap4 / bootstrap3 #}
-            {% bootstrap_css%} {# Embed Bootstrap CSS #}
-            {% bootstrap_javascript jquery = 'full'%} {# Вставить Bootstrap JS + jQuery #}
-            {{form.media}} {# Добавляет средство выбора даты, требуемый JS и CSS #}
+
+            {{ form.media }} {# Добавляет средство выбора даты, требуемый JS и CSS #}
         {% elif field.label == 'Director' %}
             {{ field.label }}<br>
-            {{ field }}
-            <button type="submit">Upload new director</button>
+
+            <div class="mb-2">{{ field }}</div>
+            <a href="{% url 'director_create_url' %}" class="btn btn-outline-primary" tabindex="-1" role="button">Upload new director</a>
         {% elif field.label == 'Email' %}
             {{ field.label }}
             <div class="input-group mb-3">

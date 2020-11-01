@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ hotel.hotel_name }}</title>
+</head>
+<body>
+    <h3>{{ hotel.hotel_name }}</h3>
+    Владелец: {{ hotel.hotel_owner }}<br>
+    Адрес: {{ hotel.hotel_address }}<br>
+    Вместимость: {{ hotel.hotel_capacity }}<br>
+    Класс: {{ hotel.hotel_class }}<br>
+    <p>{{ hotel.hotel_description }}</p>
+    <hr>
+    <h5>Номера</h5>
+    {% for room in rooms %}
+        &#10003; Гостей: {{ room.room_type }}<br>
+        {{ room.room_price }}<br>
+    {% endfor %}
+    <hr>
+    {% for review in reviews %}
+        Клиент: {{ review.review_user }}<br>
+        Рейтинг: {{ review.review_rank }}<br>
+        Сезон: {{ review.review_period }}<br>
+        {{ review.review_text }}<br>
+        {{ review.review_created }}<br>
+        <hr>
+    {% endfor %}
+    {% if user.is_active %}
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Отправить</button>
+        </form>
+    {% else %}
+        <h4>Для добавления комментария авторизируйтесь!</h4>
+    {% endif %}
+</body>
+</html>

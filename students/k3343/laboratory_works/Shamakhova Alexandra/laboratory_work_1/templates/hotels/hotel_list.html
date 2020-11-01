@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Отели</title>
+</head>
+<body>
+    {% for hotel in hotels %}
+        <h3><a href="{% url 'hotel_single' pk=hotel.id %}">{{ hotel.hotel_name }}</a></h3>
+        <p>{{ hotel.hotel_address }}</p>
+        <hr/>
+    {% endfor %}
+</body>
+</html>

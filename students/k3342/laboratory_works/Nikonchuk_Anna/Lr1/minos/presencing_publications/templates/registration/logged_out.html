@@ -1,0 +1,8 @@
+{% extends 'main_page.html' %}
+{% load crispy_forms_tags %}
+{% block main %}
+
+<p>You logged out from the service</p>
+<a  href="{% url 'login' %}">Log in again</a>
+
+{% endblock %}

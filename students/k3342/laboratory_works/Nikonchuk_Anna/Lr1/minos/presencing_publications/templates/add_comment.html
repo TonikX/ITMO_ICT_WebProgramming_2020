@@ -1,0 +1,22 @@
+{% extends "base_.page.html" %}
+{% block title %}
+    <title>
+        Add comment
+    </title>
+{% endblock %}
+
+{% block content %}
+<h1>Add new comment</h1>
+    <div align="left">
+    <form method="POST" enctype="multipart/form-data">
+
+    <!-- Security token -->
+    {% csrf_token %}
+
+    <!-- Using the formset -->
+    {{ form.as_p }}
+
+    <input type="submit" value="Add the comment" >
+    </form>
+    </div>
+{% endblock %}

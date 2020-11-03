@@ -1,0 +1,63 @@
+{% extends 'base_page.html' %}
+
+{% block content %}
+    <div style="width: 455px;"><nav class="mt-3 ml-4 mb-3">
+        <div style="font-family: Lato, Helvetica Neue, Helvetica, sans-serif; font-size: 12px; color:lightgray"><p>This is book_detail page</p></div>
+
+        <div style="font-family: Georgia, serif; font-size: 24px;">
+            {% if book.trans_lang != None and book.title != None %}
+
+                <span>{{ book.title }}</span>
+            {% else %}
+                <span>{{ book.orig_lang_title }}</span>
+            {% endif %}
+
+            {% if book.get_type_cover_display != None %}
+                (
+                <span>{{ book.get_type_cover_display }}</span>
+                )
+            {% endif %}
+        </div>
+        <div style="font-family: Georgia, serif; font-size: 18px;">
+            <span>
+            {% if authors != None %}
+                {% for author in authors %}
+                    <a href="{% url 'author_detail_url' a_slug=author.a_slug %}">
+                    {{ author.short_name }}
+                    </a>
+                {% endfor %}
+            {% endif %}
+            </span>
+        </div>
+        <div style="font-family: Georgia, serif; font-size: 18px;">
+            {% if book.descr %}
+                <div><span>{{ book.descr }}</span></div>
+            {% endif %}
+        </div>
+        <hr>
+        <div style="font-family: Lato, Helvetica Neue, Helvetica, sans-serif; font-size: 12px">
+            {% if book.publication_date %}
+                <span>Published {{ book.publication_date }}
+            {% endif %}
+            {% if book.publisher != None %}
+                by <a href="{% url 'publisher_detail_url' p_slug=publisher.p_slug %}">{{ book.publisher }}</a>
+                </span>
+            {% endif %}
+        </div>
+    </nav></div>
+    <nav class="mt-3 ml-4 mb-3">
+        <div style="font-family: Lato, Helvetica Neue, Helvetica, sans-serif; font-size: 12px">
+            <div><span><b>Edition lang:</b> {{ book.get_orig_lang_display }}</span></div>
+        {% if book.get_trans_lang_display != None %}
+            <div><span><b>Translated on:</b> {{ book.get_trans_lang_display }}</span></div>
+            <div><span><b>Original Title:</b> {{ book.orig_lang_title }}</span></div>
+        {% endif %}
+
+        {% if book.b_ganre %}
+            <div><span><b>Ganre:</b> {{ book.b_ganre }}</span></div>
+        {% endif %}
+
+        </div>
+    </nav>
+
+{% endblock %}

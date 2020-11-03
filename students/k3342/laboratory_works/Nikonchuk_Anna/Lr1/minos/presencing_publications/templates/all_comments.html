@@ -1,0 +1,42 @@
+{% extends "base_page.html" %}
+{% block title %}<title>HometaskDesk: комментарии</title>{% endblock %}
+{% block content %}
+<h1>Comments</h1>
+    {% for comment in comments %}
+    <table class="table table-striped" >
+       <tr>
+           <td colspan="2"><H3>Comment to:
+           {% if comment.type == 'Author' %}
+               {{ comment.place_author.a_slug }}
+           {% elif comment.typr == 'Book' %}
+               {{ comment.place_book.orig_lang_title }}
+           {% elif comment.type == 'Publisher' %}
+               {{ comment.place_publisher.name }}
+           {% else comment.type == 'Shop' %}
+               {{ comment.place_shop.location }}
+           {% endif %}
+           </H3></td>
+       </tr>
+        <tr>
+            <td>The author of comment</td>
+            <td>{{ comment.user.userprofile }}, {{ comment.user.userprofile.group }}</td>
+        </tr>
+        <tr>
+            <td>The text of comment</td>
+            <td><h4>{{ comment.context }}</h4></td>
+        </tr>
+        <tr>
+            <td>Date</td>
+            <td>{{ comment.comment_date }}</td>
+        </tr>
+        <tr>
+            <td>Comment type</td>
+            <td>{{ comment.type }}</td>
+        </tr>
+        <tr>
+            <td>Comment importance</td>
+            <td>{{ comment.importance }}</td>
+        </tr>
+    </table>
+{% endfor %}
+{% endblock %}

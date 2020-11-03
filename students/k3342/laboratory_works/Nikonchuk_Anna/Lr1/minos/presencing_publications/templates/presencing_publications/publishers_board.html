@@ -1,0 +1,15 @@
+{% extends 'base_page.html' %}
+
+{% block content %}
+    <div class="mb-4" style="font-family: Lato, Helvetica Neue, Helvetica, sans-serif; font-size: 12px; color:lightgray">
+        <p class="mt-3 mb-4 ml-4">This is publisher_board page</p>
+    </div>
+    <div style="font-family: Georgia, serif; font-size: 16px;">
+    {% for publisher in publishers %}
+        <p><a href="{% url 'publisher_detail_url' p_slug=publisher.p_slug %}">
+            {{ publisher.name }}</a></p>
+    <hr/>
+    {% endfor %}
+    </div>
+{% endblock %}
+

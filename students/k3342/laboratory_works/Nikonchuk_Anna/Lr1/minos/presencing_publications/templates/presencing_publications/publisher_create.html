@@ -1,0 +1,100 @@
+{% extends 'base_page.html' %}
+{% load static %}
+
+<!-- 1. Подключить CSS-файл Bootstrap 3 -->
+<!--
+<link rel="stylesheet" href="css/bootstrap.min.css"/>
+-->
+<!-- 2. Подключить CSS-файл библиотеки Bootstrap 3 DateTimePicker -->
+<!--
+<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css" />
+-->
+
+<!-- 3. Подключить библиотеку jQuery -->
+<!--
+<script src="js/jquery.min.js"></script>
+-->
+<!-- 4. Подключить библиотеку moment -->
+<!--
+<script src="js/moment-with-locales.min.js"></script>
+-->
+<!-- 5. Подключить js-файл фреймворка Bootstrap 3 -->
+<!--
+<script src="js/bootstrap.min.js"></script>
+-->
+<!-- 6. Подключить js-файл библиотеки Bootstrap 3 DateTimePicker -->
+<!--
+<script src="js/bootstrap-datetimepicker.min.js"></script>
+-->
+
+{% block title %}
+    Publisher Create - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+    {% csrf_token %}
+
+
+    {% for field in form %}
+        <div class="form-group">
+        {% if field.errors %}
+            <div class="alert alert-danger">
+                {{ field.errors }}
+            </div>
+        {% endif %}
+
+        {% if field.label == 'P slug' or field.label == 'B slug' or field.label == 'A slug' or field.label == 'p slug' or field.label == 'a slug' or field.label == 'b slug' or field.label == 'p_slug' or field.label == 'a_slug' or field.label == 'b_slug' %}
+            {{ 'Slug' }}<br>
+            {{ field }}
+        {% elif field.label == 'Foundation date' or field.label == 'foundation_date' or field.label == 'foundation date' %}
+            here
+
+            {{ form.media }} {# Добавляет средство выбора даты, требуемый JS и CSS #}
+        {% elif field.label == 'Director' %}
+            {{ field.label }}<br>
+
+            <div class="mb-2">{{ field }}</div>
+            <a href="{% url 'director_create_url' %}" class="btn btn-outline-primary" tabindex="-1" role="button">Upload new director</a>
+        {% elif field.label == 'Email' %}
+            {{ field.label }}
+            <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">@</span>
+            {{ field }}
+            </div>
+        {% elif field.label == 'Website' %}
+            {{ field.label }}
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+                </div>
+                {{ field }}
+            </div>
+        {% elif field.label == 'About' %}
+            {{ field.label }}
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">textarea</span>
+                </div>
+                {{ field }}
+            </div>
+        {% elif field.label == 'Logo' %}
+            {{ field.label }}
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                </div>
+                <div class="custom-file">
+                    {{ field }}
+                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                </div>
+            </div>
+        {% else %}
+            {{ field.label }}
+            {{ field }}
+        {% endif %}
+    </div>
+    {% endfor %}
+
+<button type="submit" class="btn btn-primary">Create</button>
+{% endblock %}

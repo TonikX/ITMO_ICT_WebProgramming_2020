@@ -6,28 +6,14 @@
 
 {% block content %}
 
-    <form action="{% url 'publisher_delete_url' p_slug=publisher.p_slug %}">
+    <form action="{% url 'publisher_delete_url' p_slug=publisher.p_slug %}" method="post">
         {% csrf_token %}
-        <h3>Are you sure you want to delete <b>{{ publisher.name }}</b> publisher?</h3>
-        <a href="{% url 'publisher_detail_url' p_slug=publisher.p_slug %}">Cancel</a>
-        <button type="submit" name="button" class="btn btn-danger">
-            <?xml version="1.0"?>
-            <svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" enable-background="new 0 0 512.074 512.074"
-                 height="512px" viewBox="0 0 512.074 512.074" width="512px" class="hovered-paths"><g>
-                <g><path d="m55.84 347.017c0 96.914 92.732 159.849 96.68 162.481 11.574 7.715 26.571-3.204
-                22.743-16.602-23.519-82.315-20.855-167.831 42.611-225.83-7.736 28.508-5.681 51.722 6.139
-                69.082 22.761 33.43 73.333 32.617 113.188 26.632 30.847 27.212 8.84 90.296-9.776 127.528-6.867
-                13.735 9.056 27.642 21.737 19.189 67.218-44.812 103.146-101.065 106.788-167.197
-                6.657-120.96-104.308-262.304-195.47-338.775-9.735-8.167-24.641-1.235-24.641 11.492 0 84.27-43.886
-                125.436-90.348 169.02-44.075 41.345-89.651 84.097-89.651 162.98zm207.943-299.943c76.017 72.537
-                167.998 189.022 162.207 293.627-2.229 40.28-19.037 76.565-50.096 108.354
-                24.33-87.765-25.813-114.188-28.347-115.455-2.836-1.418-6.049-1.9-9.174-1.379-47.415 7.902-78.379
-                3.431-89.546-12.931-15.495-22.701 6.082-69.818 14.875-84.556 7.375-12.29-5.133-26.961-18.433-21.645-45.746
-                18.301-134.068 91.939-109.142 242.719-23.267-24.257-50.287-62.413-50.287-108.791 0-65.891 37.155-100.744
-                80.176-141.1 41.35-38.788 87.577-82.158 97.767-158.843z"
-                         class="hovered-path active-path" >
-
-                </path></g></g>
+        <p>Are you sure you want to delete <b>{{ publisher.name }}</b> publisher?</p>
+        <a href="{% url 'publisher_detail_url' p_slug=publisher.p_slug %}" class="btn btn-outline-secondary" tabindex="-1" role="button">Cancel</a>
+        <button type="submit" name="button" class="btn btn-outline-danger">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
+              <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
             </svg>
         </button>
 

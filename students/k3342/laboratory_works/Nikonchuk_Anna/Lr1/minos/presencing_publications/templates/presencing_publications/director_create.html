@@ -17,8 +17,17 @@
                     {{ field.errors }}
                 </div>
             {% endif %}
-            {{ field.label }}
-            {{ field }}
+
+            {% if field.label == 'Original language' or field.label == 'Translation language' or field.label == 'Authors' or field.label == 'Publisher' or field.label == 'Type cover' %}
+                {{ field.label }}
+            {% elif field.label == 'Slug' %}
+                {{ field.label }}
+            {% elif field.label == 'Description' %}
+                {{ field.label }}
+            {% else %}
+                {{ field.label }}
+                {{ field }}
+            {% endif %}
         </div>
     {% endfor %}
     </form>

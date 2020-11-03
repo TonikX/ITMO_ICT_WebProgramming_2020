@@ -2,7 +2,7 @@
 
 
 {% block title %}
-    Edit Author {{ author.short_name }} - {{ block.super }}
+    Author Create - {{ block.super }}
 {% endblock %}
 
 {% block content %}
@@ -40,17 +40,6 @@
                     </div>
                     {{ field }}
                 </div>
-            {% elif field.label == 'Photo' %}
-                {{ field.label }}
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-                    </div>
-                    <div class="custom-file">
-                        {{ field }}
-                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                    </div>
-                </div>
             {% else %}
                 {{ field.label }}
                 {{ field }}
@@ -58,6 +47,6 @@
         </div>
     {% endfor %}
 
-    <button type="submit" class="btn btn-primary">Update Author</button>
+    <button type="submit" class="btn btn-primary">Update</button>
     </form>
 {% endblock %}

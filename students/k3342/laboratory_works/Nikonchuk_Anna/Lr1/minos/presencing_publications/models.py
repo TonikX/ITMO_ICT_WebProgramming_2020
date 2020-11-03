@@ -153,16 +153,16 @@ LANGS = (
 )
 
 COVER_TYPE = (
-    ('NC', 'None cover'),
-    ('SC', 'Soft cover'),
-    ('PB', 'Paperback'),
-    ('OC', 'Ordinary'),
-    ('HC', 'Hard cover'),
-    ('AC', 'Audio CD'),
-    ('AB', 'Audiobook'),
-    ('AA', 'Audible Audio'),
-    ('EB', 'Ebook'),
-    ('KE', 'Kindle Edition'),
+    ('NC', 'None cover (NC)'),
+    ('SC', 'Soft cover (SC)'),
+    ('PB', 'Paperback (PB)'),
+    ('OC', 'Ordinary (OC)'),
+    ('HC', 'Hard cover (HC)'),
+    ('AC', 'Audio CD (AC)'),
+    ('AB', 'Audiobook (AB)'),
+    ('AA', 'Audible Audio (AA)'),
+    ('EB', 'Ebook (EB)'),
+    ('KE', 'Kindle Edition (KE)'),
 )
 
 USER_TYPE = (  

@@ -17,12 +17,16 @@
                     {{ field.errors }}
                 </div>
             {% endif %}
+
             {{ field.label }}
             {{ field }}
+            {% if field.label == 'Slug' %}
+                <p>* where NC - is a cover type</p>
+            {% endif %}
         </div>
     {% endfor %}
 
-    </form>
+    <button type="submit" class="btn btn-primary">Create</button>
 
-<button type="submit" class="btn btn-primary">Create</button>
+    </form>
 {% endblock %}

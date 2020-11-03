@@ -98,7 +98,7 @@ class PublisherUpdate(View):
         publisher = Publisher.objects.get(p_slug__iexact=p_slug)
         bound_form = PublisherForm(instance=publisher)
         return django.shortcuts.render(request,
-                                       'presencing_publications/author_update.html',
+                                       'presencing_publications/publisher_update.html',
                                        context={'form': bound_form, 'publisher': publisher})
 
     def post(self, request, p_slug):
@@ -121,7 +121,7 @@ class PublisherDelete(View):
                                        context={'publisher': publisher})
 
     def post(self, request, p_slug):
-        publisher = Publisher.objects.get(p_slug__exact=p_slug)
+        publisher = Publisher.objects.get(p_slug__iexact=p_slug)
         publisher.delete()
         return django.shortcuts.redirect(reverse('publishers_board_url'))
 
@@ -136,7 +136,7 @@ class DirectorCreate(View):
 
         if bound_form.is_valid():
             new_director = bound_form.save()
-            return django.shortcuts.redirect(new_director)
+            return django.shortcuts.redirect('about_people_url')
         return django.shortcuts.render(request, 'presencing_publications/director_create.html',
                                        context={'form': bound_form})
 
@@ -152,7 +152,7 @@ class AuthorCreate(View):
 
         if bound_form.is_valid():
             new_author = bound_form.save()
-            return django.shortcuts.redirect(new_author)
+            return django.shortcuts.redirect('author_detail_url', new_author.a_slug)
         return django.shortcuts.render(request, 'presencing_publications/author_create.html', {'form': bound_form})
 
 
@@ -170,7 +170,8 @@ class AuthorUpdate(View):
 
         if bound_form.is_valid():
             new_author = bound_form.save()
-            return django.shortcuts.redirect(new_author)
+            # return django.shortcuts.redirect(new_author)
+            return django.shortcuts.redirect('author_detail_url', new_author.a_slug)
         return django.shortcuts.render(request,
                                        'presencing_publications/author_update.html',
                                        context={'form': bound_form, 'author': author})
@@ -185,15 +186,24 @@ class AuthorDelete(View):
                                        context={'author': author})
 
     def post(self, request, a_slug):
-        author = Author.objects.get(a_slug__exact=a_slug)
+        author = Author.objects.get(a_slug__iexact=a_slug)
         author.delete()
-        return django.shortcuts.redirect(reverse('author_board_url'))
+        return django.shortcuts.redirect(reverse('authors_board_url'))
 
 
-class BookCreate(CreateView):
-    model = Book
-    fields = ['orig_lang_title', 'orig_lang', 'trans_lang', 'title', 'editor', 'translator', 'narrator', 'illustrator',
-              'authors', 'publisher', 'publication_date', 'type_cover', 'cover', 'b_slug', 'b_ganre', 'descr']
+class BookCreate(View):
+
+    def get(self, request):
+        form = BookForm()
+        return django.shortcuts.render(request, 'presencing_publications/book_create.html', context={'form': form})
+
+    def post(self, request):
+        bound_form = BookForm(request.POST)
+
+        if bound_form.is_valid():
+            new_book = bound_form.save()
+            return django.shortcuts.redirect('book_detail_url', new_book.b_slug)
+        return django.shortcuts.render(request, 'presencing_publications/book_create.html', {'form': bound_form})
 
 
 class BookUpdate(View):
@@ -210,7 +220,7 @@ class BookUpdate(View):
 
         if bound_form.is_valid():
             new_book = bound_form.save()
-            return django.shortcuts.redirect(new_book)
+            return django.shortcuts.redirect('book_detail_url', new_book.b_slug)
         return django.shortcuts.render(request,
                                        'presencing_publications/book_update.html',
                                        context={'form': bound_form, 'book': book})
@@ -225,9 +235,9 @@ class BookDelete(View):
                                        context={'book': book})
 
     def post(self, request, b_slug):
-        book = Book.objects.get(b_slug__exact=b_slug)
+        book = Book.objects.get(b_slug__iexact=b_slug)
         book.delete()
-        return django.shortcuts.redirect(reverse('book_board_url'))
+        return django.shortcuts.redirect(reverse(''))
 
 
 @login_required

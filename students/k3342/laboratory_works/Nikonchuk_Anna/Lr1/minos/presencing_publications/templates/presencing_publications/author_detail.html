@@ -16,3 +16,9 @@
     </div>
     </form>
 {% endblock %}
+
+{% block admin-panel %}
+    <a href="{% url 'author_create_url' %}" class="btn btn-light">Create</a>
+    <a href="{% url 'author_update_url' a_slug=author.a_slug %}" class="btn btn-light">Edit</a>
+    <a href="{% url 'author_delete_url' a_slug=author.a_slug %}" class="btn btn-danger">Delete</a>
+{% endblock %}

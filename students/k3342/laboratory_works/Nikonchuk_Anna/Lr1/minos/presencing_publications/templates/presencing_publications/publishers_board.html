@@ -13,3 +13,8 @@
     </div>
 {% endblock %}
 
+{% if request.user.is_authrnticated and request.user.is_stuff %}
+{% block admin-panel %}
+    <a href="{% url 'publisher_create_url' %}" class="btn btn-light">Create</a>
+{% endblock %}
+{% endif %}

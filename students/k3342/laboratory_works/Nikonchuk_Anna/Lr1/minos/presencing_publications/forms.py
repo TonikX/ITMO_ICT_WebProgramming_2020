@@ -168,7 +168,7 @@ class AddCommentForm(forms.ModelForm):
             'content': forms.Textarea(attrs={'cols': 70, 'rows': 10}),
         }
 
-
+"""
 class UserForm(forms.ModelForm):
     first_name = forms.CharField()
     last_name = forms.CharField()
@@ -190,8 +190,8 @@ class UserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'type_user', 'photo', 'uniq_num', 'location', 'nationality']
-
-
+"""
+"""
 class RegisterUserForm(forms.ModelForm):
     class Meta:
         model = User
@@ -223,3 +223,33 @@ class Registration(UserCreationForm):
     email = forms.CharField(required=True, label='Enter e-mail')
     password1 = forms.CharField(required=True, label='Enter password', widget=forms.PasswordInput)
     password2 = forms.CharField(required=True, label='Repeat password', widget=forms.PasswordInput)
+"""
+
+
+class RegisterUserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('username', 'password')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs['class'] = 'form-control'
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.set_password(self.cleaned_data["password"])
+        if commit:
+            user.save()
+        return user
+
+
+class UserRegistrationForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = [
+            "surname",
+            "name",
+            "second_name",
+            "group",
+        ]

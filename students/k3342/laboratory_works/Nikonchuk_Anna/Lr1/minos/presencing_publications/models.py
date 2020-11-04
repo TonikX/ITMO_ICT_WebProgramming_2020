@@ -190,8 +190,10 @@ COMMENT_TYPE = (
 
 class UserProfile(models.Model):
     isu = models.OneToOneField(User, on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=120, blank=True, null=True)
-    last_name = models.CharField(max_length=120, blank=True, null=True)
+    surname = models.CharField('last_name', max_length=50)
+    name = models.CharField('first_name', max_length=50)
+    second_name = models.CharField(max_length=50)
+    group = models.CharField(max_length=5)
     type_user = models.CharField(max_length=2, choices=USER_TYPE, blank=True, null=True)
     photo = models.ImageField(upload_to='users', blank=True, null=True)
     uniq_num = models.IntegerField(unique=True, blank=True, null=True)
@@ -203,10 +205,11 @@ class UserProfile(models.Model):
         verbose_name_plural = 'Пользователи'
 
     def __str__(self):
-        first_name = self.first_name
-        last_name = self.last_name
-        type_user = self.get_type_user_display
-        return type_user + ' ' + first_name + ' ' + last_name
+        surname = self.surname
+        name = self.name
+        second_name = self.second_name
+        sn_user = surname + ' ' + name + ' ' + second_name
+        return sn_user
 
 
 class Director(models.Model):
@@ -225,7 +228,7 @@ class Publisher(models.Model):
     parent = models.CharField(max_length=300, blank=True, null=True)
     founder = models.CharField(max_length=300, blank=True, null=True)
     foundation_date = models.DateField(blank=True, null=True)
-    director = models.ManyToManyField(Director, through='DirectorDuties', blank=True, null=True)
+    director = models.ManyToManyField(Director, through='DirectorDuties')
     p_slug = models.SlugField('Slug', max_length=120, unique=True, null=True)
     email = models.EmailField(blank=True, null=True)
     website = models.URLField(blank=True, null=True)
@@ -287,7 +290,7 @@ class Book(models.Model):
     translator = models.CharField(max_length=300, blank=True, null=True)
     narrator = models.CharField(max_length=300, blank=True, null=True)
     illustrator = models.CharField(max_length=300, blank=True, null=True)
-    authors = models.ManyToManyField(Author, blank=True, null=True)
+    authors = models.ManyToManyField(Author)
     publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE, blank=True, null=True)
     publication_date = models.DateField(blank=True, null=True)
     type_cover = models.CharField(max_length=2, choices=COVER_TYPE, blank=True, null=True)
@@ -317,7 +320,7 @@ class Series(models.Model):
 class Shelf(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=120)
-    books = models.ManyToManyField(Book, blank=True, null=True)
+    books = models.ManyToManyField(Book)
     shelf_slug = models.SlugField(verbose_name='Slug')
 
     def __str__(self):

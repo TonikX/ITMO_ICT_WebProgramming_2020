@@ -61,3 +61,9 @@
     </nav>
 
 {% endblock %}
+
+{% block admin-panel %}
+    <a href="{% url 'book_create_url' %}" class="btn btn-light">Create</a>
+    <a href="{% url 'book_update_url' b_slug=book.b_slug %}" class="btn btn-light">Edit</a>
+    <a href="{% url 'book_delete_url' b_slug=book.b_slug %}" class="btn btn-danger">Delete</a>
+{% endblock %}

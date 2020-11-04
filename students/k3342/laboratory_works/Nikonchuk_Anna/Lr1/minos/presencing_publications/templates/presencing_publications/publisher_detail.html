@@ -22,3 +22,9 @@
         {% endif %}
     </div>
 {% endblock %}
+
+{% block admin-panel %}
+    <a href="{% url 'publisher_create_url' %}" class="btn btn-light">Create</a>
+    <a href="{% url 'publisher_update_url' p_slug=publisher.p_slug %}" class="btn btn-light">Edit</a>
+    <a href="{% url 'publisher_delete_url' p_slug=publisher.p_slug %}" class="btn btn-danger">Delete</a>
+{% endblock %}

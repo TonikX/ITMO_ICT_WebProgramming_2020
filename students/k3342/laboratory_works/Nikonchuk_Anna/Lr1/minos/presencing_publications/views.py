@@ -9,15 +9,12 @@ from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, FormView
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth import authenticate, login, logout
+from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 
-'''
-# doesn't work
-class AuthorDetail(View):
-    def get(self, request, a_slug):
-        author = Author.objects.get(a_slug__iexact=a_slug)
-        return django.shortcuts.render(request, 'presencing_publications/author_detail.html', {'author': author})
-'''
+from .utils import *
+from django.http import HttpResponseRedirect
+from django.contrib.auth.forms import UserCreationForm
 
 
 class AboutList(ListView):
@@ -35,11 +32,11 @@ def author_detail(request, a_slug):
     return django.shortcuts.render(request, 'presencing_publications/author_detail.html', {'author': author})
 
 
-class AuthorDetail(View):
+class AuthorDetail(ObjectDetailMixin, View):
     def get(self, request, a_slug):
         author = get_object_or_404(Author, a_slug__iexact=a_slug)
         return django.shortcuts.render(request, 'presencing_publications/author_detail.html',
-                                       context={'author': author})
+                                       context={'author': author, 'admin_object': author})
 
 
 def books_list(request):
@@ -58,13 +55,7 @@ def book_detail(request, b_slug):
     except:
         authors = [None]
     return django.shortcuts.render(request, 'presencing_publications/book_detail.html',
-                                   {'book': book, 'publisher': publisher, 'authors': authors})
-
-
-class BookDetail(View):
-    def get(self, request, b_slug):
-        book = get_object_or_404(Book, a_slug__iexact=b_slug)
-        return django.shortcuts.render(request, 'presencing_publications/book_detail.html', context={'book': book})
+                                   {'book': book, 'publisher': publisher, 'authors': authors, 'admin_object': book})
 
 
 def publishers_list(request):
@@ -74,7 +65,17 @@ def publishers_list(request):
 
 def publisher_detail(request, p_slug):
     publisher = Publisher.objects.get(p_slug__iexact=p_slug)
-    return django.shortcuts.render(request, 'presencing_publications/publisher_detail.html', {'publisher': publisher})
+    return django.shortcuts.render(request,
+                                   'presencing_publications/publisher_detail.html',
+                                   {'publisher': publisher, 'admin_object': publisher})
+
+
+class PublisherDetail(View):
+    def get(self, request, p_slug):
+        publisher = get_object_or_404(Publisher, p_slug__iexact=p_slug)
+        return django.shortcuts.render(request,
+                                       'presencing_publications/publisher_detail.html',
+                                       context={'publisher': publisher, 'admin_object': publisher})
 
 
 class PublisherCreate(View):
@@ -269,16 +270,24 @@ class RegisterUserView(CreateView):
     model = User
     template_name = 'registration/registration.html'
     form_class = RegisterUserForm
-    success_url = reverse_lazy('profile_page')
+    success_url = reverse_lazy('user_registration_url')
     success_msg = 'User was successfully created'
 
-    def form_valid(self, form):
+    def form_valid(self,  form):
         form_valid = super().form_valid(form)
         username = form.cleaned_data["username"]
         password = form.cleaned_data["password"]
-        aut_user = authenticate(username=username, password=password)
+        aut_user = authenticate(username=username,password=password)
         login(self.request, aut_user)
         return form_valid
+
+
+"""
+# Изменить пароль
+u = User.objects.get(username='john')
+u.set_password('new password')
+u.save()
+"""
 
 
 class UserRegistrationView(CreateView):
@@ -298,21 +307,33 @@ class UserRegistrationView(CreateView):
         return django.shortcuts.render(request, 'registration/profile_page.html', sn_user)
 
 
-def reg(request):
-
-    form = Registration(request.POST)
-    if form.is_valid():
-        form.save()
-        username = form.cleaned_data['username']
-        password = form.cleaned_data['password1']
-        user = authenticate(username=username, password=password)
+# login поставляемый используется
+def authView(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
         login(request, user)
-        return django.shortcuts.redirect('/')
-    return django.shortcuts.render(request, 'registration/registration.html', {'form': form})
+        # Redirect to a success page.
+        ...
+    else:
+        # Return an 'invalid login' error message.
+        ...
+
+"""
+def logout(request):
+    auth.logout(request)
+    # Перенаправление на страницу.
+    return HttpResponseRedirect("/account/loggedout/")
+
+# то же самое без перенаправление требует перенаправления
+def logout_view(request):
+    logout(request)
+    # Redirect to a success page.
 
 
 class LogoutView(FormView):
-
     def get(self, request):
         logout(request)
         return django.shortcuts.redirect('/')
+"""

@@ -16,3 +16,7 @@
     {%  endfor %}
     </div>
 {% endblock %}
+
+{% block admin-panel %}
+    <a href="{% url 'author_create_url' %}" class="btn btn-light">Create</a>
+{% endblock %}

@@ -1,7 +1,7 @@
-{% extends  'main_page.html' %}
+{% extends  'base_page.html' %}
 {% load crispy_forms_tags %}
 
-{% block main %}
+{% block content %}
 <div class="card">
 <div class="card-body">
 <h4 class="card-title">Login into your account</h4>
@@ -14,7 +14,7 @@
 
 <button type="submit" class="btn btn-primary btn-block">Login</button>
 </form>
-    <h6 class="card-title">Are you unregistered user?<a href="{% url 'register_page' %}">Registrate</a></h6>
+    <h6 class="card-title">Are you unregistered user? <a href="{% url 'user_registration_url' %}"> Registrate</a></h6>
 </div>
 </div>
 {% endblock %}

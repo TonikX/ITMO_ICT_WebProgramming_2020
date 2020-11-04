@@ -22,7 +22,7 @@ class AuthorDetail(View):
 
 class AboutList(ListView):
     model = DirectorDuties
-
+    # directorduties_list.html
 
 def authors_list(request):
     context = {"authors": Author.objects.all()}
@@ -270,7 +270,7 @@ class RegisterUserView(CreateView):
     template_name = 'registration/registration.html'
     form_class = RegisterUserForm
     success_url = reverse_lazy('profile_page')
-    success_msg = 'Пользователь успешно создан'
+    success_msg = 'User was successfully created'
 
     def form_valid(self, form):
         form_valid = super().form_valid(form)
@@ -280,23 +280,22 @@ class RegisterUserView(CreateView):
         login(self.request, aut_user)
         return form_valid
 
-"""
+
 class UserRegistrationView(CreateView):
     model = UserProfile
     fields = ['first_name', 'last_name', 'type_user', 'photo', 'uniq_num', 'location', 'nationality']
-    success_msg = 'Профиль пользователя успешно заполнен'
+    success_msg = 'The user profile is successfully completed'
 
     def as_view(request):
-        students = {}
+        sn_user = {}
         form = RegisterUserForm(request.POST or None)
         if form.is_valid():
             form = form.save(commit=False)
             form.isu = request.user
             form.save()
             return django.shortcuts.HttpResponseRedirect(reverse_lazy('index'))
-        students['form'] = form
-        return django.shortcuts.render(request, 'registration/profile_page.html', students)
-"""
+        sn_user['form'] = form
+        return django.shortcuts.render(request, 'registration/profile_page.html', sn_user)
 
 
 def reg(request):

@@ -1,21 +1,25 @@
-{% extends  'main_page.html' %}
+{% extends  'base_page.html' %}
 {% load crispy_forms_tags %}
 
-{% block main %}
-<h2>Create new user</h2>
-<div class="card">
-<div class="card-body">
-<h5 class="card-title">Please fill in all fields</h5>
+{% block title %}
+    Publisher Create - {{ block.super }}
+{% endblock %}
 
-<form method="POST" enctype="multipart/form-data">
-{% csrf_token %}
-<input type="hidden" name="next" value="{{ next }}">
+{% block content %}
+    <h2>Create new user</h2>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Please fill in all fields</h5>
 
-    <!-- Using the formset -->
-    {{ form.as_p }}
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}">
 
-    <button type="submit" class="btn btn-primary btn-block" href="{% url 'index' %}">Подтвердить</button>
-</form>
-</div>
-</div>
+                <!-- Using the formset -->
+                {{ form.as_p }}
+
+                <button type="submit" class="btn btn-primary btn-block" href="{% url 'index' %}">Confirm</button>
+            </form>
+        </div>
+    </div>
 {% endblock %}

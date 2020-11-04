@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Comment Board{% endblock %}
+{% block content %}
+<h1>Comment Board for {{flight.id}}</h1>
+{% for comment in comments %}
+    <table>
+        <tr>
+            <td>&nbsp;&nbsp;Author:{{user.id}}</td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;Flight number:{{comment.name_flight}}</td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;Registration rating: {{comment.registration_evaluation}} </td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;Flight rating: {{comment.flight_evaluation}} </td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;Personnel rating: {{comment.personnel_assessment}}</td>
+        <tr>
+            <td><h2>{{comment.comment}}</h2></td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;Departure date:{{comment.departure_date}}</td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;Posted on:{{comment.post_date}}</td>
+        </tr>
+    </table>
+    <hr>
+    <hr>
+{% endfor %}
+<a class="btn btn-primary" href="/new_comment" role="button">Add Comment</a>
+{% endblock %}

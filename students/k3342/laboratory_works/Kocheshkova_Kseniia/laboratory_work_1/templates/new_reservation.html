@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}New Reservation{% endblock %}
+{% block content %}
+<h1>New reservation</h1>
+    <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Send">
+    </form>
+</body>
+{% endblock %}

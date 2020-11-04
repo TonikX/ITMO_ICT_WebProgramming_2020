@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Reservation Info{% endblock %}
+{% block content %}
+<h1>Reservation Info {{flight.id}}</h1>
+{% for reservation in reservations %}
+    <table>
+        <tr>
+            <td>Author:{{user.id}}</td>
+        </tr>
+        <tr>
+            <td>Flight:{{flight.id}}</td>
+        </tr>
+        <tr>
+            <td>Full name:{{ reservation.full_name }} </td>
+        </tr>
+        <tr>
+            <td>Passport number:{{ reservation.passport_number }} </td>
+        </tr>
+        <tr>
+            <td>Phone number:{{ reservation.phone_number }} </td>
+        </tr><tr>
+            <td>Category:{{ reservation.category }} </td>
+        </tr>
+        <tr>
+            <td>Row:{{ reservation.row }}</td>
+        </tr>
+        <tr>
+            <td>Place:{{ reservation.place }}</td>
+        </tr>
+        <tr>
+            <td>Date of departure:{{ reservation.date_of_departure }}</td>
+        </tr>
+    </table>
+    <hr>
+    <hr>
+{% endfor %}
+<a class="btn btn-primary" href="/new_reservation" role="button">New reservation</a>
+{% endblock %}

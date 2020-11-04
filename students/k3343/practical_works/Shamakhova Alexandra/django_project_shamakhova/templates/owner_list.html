@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Владельцы автомобилей</title>
+</head>
+<body>
+    {% for data in dataset %}
+
+    {{ data.first_name }} {{ data.last_name }}<br/>
+        Дата рождения: {{ data.date_of_birth }} <br/>
+        Паспорт: {{ data.passport }} <br/>
+        Адрес: {{ data.address }} <br/>
+        Национальность: {{ data.ethnicity }} <br/>
+    <hr/>
+
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,34 @@
+version: '3.7'
+services:
+  backend:
+    build: ./project_library
+    command: bash -c "
+            sleep 3 &&
+            python3 manage.py makemigrations && python3 manage.py migrate &&
+            python3 manage.py runserver --insecure 0.0.0.0:8000";
+    volumes:
+      - ./project_library:/project_library
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+  db:
+    image: postgres:13
+    volumes:
+      - post_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=dockerlibrary
+  frontend:
+    build: ./library-vue
+    command: npm start --start;
+    volumes:
+      - ./library-vue:/library-vue
+      - /library-vue/node_modules
+    ports:
+      - 8080:8080
+    depends_on:
+      - backend
+volumes:
+  post_data:

@@ -1,0 +1,24 @@
+{% extends 'homeworks/base.html' %}
+{% block title %}{{ new.title }}{% endblock title %}
+
+{% block content %}
+
+    <h4>Комментарии</h4>
+     {% for comment in comments %}
+        Пользователь - {{ comment.user }}<br>
+        {{ comment.text }} <br>
+        Важность - {{ comment.importance }}<br>
+        Тип - {{ comment.type }} <br>
+        Добавлен - {{ comment.created }}<br><br>
+     {% endfor %}
+
+    {% if user.is_active %}
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Отправить</button>
+        </form>
+    {% else %}
+        <h4>Что бы оставить комментарий авторизуйтесь</h4>
+    {% endif %}
+{% endblock content %}

@@ -1,0 +1,12 @@
+{% extends 'homeworks/base.html' %}
+
+{% block content %}
+    {% for hm in homeworks %}
+        <h2> {{ hm.title }}</h2>
+        <p>Описание задания: {{ hm.text|safe }}</p>
+        <p>Дата выдачи: {{ hm.created }}</p>
+        <p>Срок выполнения: {{ hm.duration }}</p>
+        <p>Информация о штрафах: {{ hm.fines }}</p>
+        <a href="{% url 'homework_single' pk=hm.id %}">комментарии</a>
+    {% endfor %}
+{% endblock content %}

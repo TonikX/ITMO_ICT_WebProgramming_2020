@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+        college_comission_db:
+                image: postgres
+                ports:
+                        - "5436:5432"
+                environment:
+                        - POSTGRES_USER=postgres
+                        - POSTGRES_PASSWORD=postgres
+                        - POSTGRES_DB=college_comission
+                volumes:
+                        - ./dbs/postgres-data:/var/lib/postgresql
+        backend:
+                container_name: college_comission_backend
+                build: ./college_comission_project
+                command: bash -c "
+                        sleep 5 &&
+                        python3 manage.py makemigrations && python3 manage.py migrate &&
+                        python3 manage.py runserver --insecure 0.0.0.0:8000";
+                volumes:
+                        - ./college_comission_project:/college_comission_project
+                ports:
+                        - "8000:8000"
+                depends_on:
+                        - college_comission_db
+        frontend:
+                container_name: college_comission_frontend
+                build:
+                        context: ./college_comission_frontend
+                        dockerfile: Dockerfile
+                command: npm start --start;
+                volumes:
+                        - ./college_comission_frontend:/college_comission_frontend
+                        - /college_comission/node_modules
+                ports:
+                        - "8080:8080"
+                depends_on:
+                        - backend
+

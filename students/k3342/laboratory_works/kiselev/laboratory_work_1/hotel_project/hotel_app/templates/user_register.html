@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+</head>
+
+<body style="border: solid 1px; padding: 20px; margin: 20px auto; width: 600px">
+    {% if not registered %}
+    <form method="post">
+        {% csrf_token %}
+        {{ user_register_user.as_p }}
+        <input type="submit" name="" value="Зарегистрироваться">
+    </form>
+    {% else %}
+    Спасибо за регистрацию! <a href="../login">Вход</a>
+    {% endif %}
+</body>
+
+</html>

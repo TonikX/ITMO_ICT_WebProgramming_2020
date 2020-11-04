@@ -43,7 +43,7 @@
             </mu-flex>
             <mu-flex v-if="hall_full" direction="column" >
                 <mu-flex justify-content="start">
-                    <h2>В "{{hall_name}}" находятся:</h2>
+                    <h2>В зале {{hall_name}} находятся:</h2>
                 </mu-flex >
                 <mu-flex class="flex-halls-take"  direction="column" v-for="take in fixes "v-bind:key="take.id" >
                     <mu-flex class="flex-button" justify-content="start">
@@ -121,7 +121,6 @@
                     },
                     success: (response) => {
                         this.fixes = response.data.fixes
-                        this.hall_name = response.data.place[0].name
                         this.hall_full = true
                     }
                 })

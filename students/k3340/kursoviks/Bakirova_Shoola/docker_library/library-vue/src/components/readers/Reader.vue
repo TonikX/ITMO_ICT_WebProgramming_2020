@@ -20,7 +20,7 @@
                     <mu-button color="deepPurpleA100" @click="openReaderUpdate()" small>
                         Изменить
                     </mu-button>
-                    <mu-dialog title="Изменение данных" :open.sync="showReader" width="1300">
+                    <mu-dialog title="Изменение данные" :open.sync="showReader" width="1300">
                         <reader-update :form_reader="person"></reader-update>
                         <mu-button slot="actions" flat color="deepPurpleA100" @click="closeReaderUpdate">Закрыть</mu-button>
                     </mu-dialog>

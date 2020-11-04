@@ -1,6 +1,5 @@
 <template>
     <mu-row>
-        Введите те данные, которые хотите изменить, в соответствующих полях
         <mu-form :model="form" class="reader-form" :label-position="labelPosition" >
             <mu-flex>
                 <mu-flex direction="column" class="flex-form" >
@@ -126,8 +125,5 @@ export default {
 <style scoped>
     .flex-form {
         width: 50%;
-    }
-    .reader-form {
-        margin-top: 15px;
     }
 </style>

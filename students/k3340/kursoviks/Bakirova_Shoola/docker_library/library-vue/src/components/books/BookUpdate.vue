@@ -1,6 +1,5 @@
 <template>
     <mu-row>
-        Введите те данные, которые хотите изменить, в соответствующих полях
         <mu-form :model="form" class="book-form" :label-position="labelPosition" >
             <mu-flex>
                 <mu-flex direction="column" class="flex-form" >

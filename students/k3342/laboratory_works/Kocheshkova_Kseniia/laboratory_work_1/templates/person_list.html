@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Persons list{% endblock %}
+{% block content %}
+    <h1>&nbsp;&nbsp;Persons list{{flight.id}}</h1>
+{%for data in dataset%}
+        <b>&nbsp;&nbsp;Full name: </b> {{data.full_name }} <br>
+        <b>&nbsp;&nbsp;Birth date: </b> {{ data.birth_date }} <br>
+        <b>&nbsp;&nbsp;Phone number: </b> {{ data.phone_number}} <br> <br>
+{% endfor %}
+{% endblock %}

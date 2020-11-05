@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}Flights{% endblock %}
+{% block content %}
+<h1>List of Flights</h1>
+{% for flight in flights %}
+<table>
+       <tr>
+           <td><H3>Flight code:</H3></td>
+           <td><H3>{{flight.id}}</H3></td>
+       </tr>
+       <tr>
+           <td>Airline:</td>
+           <td>{{flight.company}}</td>
+       </tr>
+        <tr>
+            <td>Direction:</td>
+            <td>{{flight.type}}</td>
+        </tr>
+        <tr>
+            <td>The duration of time:</td>
+            <td>{{flight.flight_duration}}</td>
+        </tr>
+        <tr>
+            <td>Days of the week when the flight operates:</td>
+            <td>{{flight.flight_days}}</td>
+        </tr>
+        <tr>
+            <td>Hotel name:</td>
+            <td>{{flight.hotel_name}}</td>
+        </tr>
+        <tr>
+            <td>The city where the hotel is located:</td>
+            <td>{{flight.city}}</td>
+        </tr>
+        <tr>
+            <td>Number of stars in the hotel:</td>
+            <td>{{flight.number_of_stars}}</td>
+        </tr>
+        <tr>
+            <td>Number_of_rooms:</td>
+            <td>{{flight.number_of_rooms}}</td>
+        </tr>
+        <tr>
+            <td>Availability of family rooms in the hotel:</td>
+            <td>{{flight.family_room}}</td>
+        </tr>
+        <tr>
+            <td>Model airplane:</td>
+            <td>{{flight.plane_model}}</td>
+        </tr>
+        <tr>
+            <td>Maximum number of passengers:</td>
+            <td>{{flight.number_of_passengers}}</td>
+        </tr>
+</table>
+</br>
+<div>{{flight.description}}</div>
+<a class="btn btn-primary" href="{% url 'comments' key=flight.id %}" role="button">Comments</a>
+</br>
+{% endfor %}
+{% endblock %}

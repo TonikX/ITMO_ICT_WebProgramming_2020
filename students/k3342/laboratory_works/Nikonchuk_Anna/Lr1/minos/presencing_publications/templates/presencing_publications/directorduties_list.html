@@ -1,0 +1,23 @@
+{% extends 'base_page.html' %}
+
+{% block title %}
+    About People - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <p>There is will be something about this resource</p>
+    <p>Now you can see the most successful directors of publishing houses:</p>
+    <ul>
+    {% for object in object_list %}
+        <div class="mb=2 mt=2 ">
+            {{ object.director }}
+            {{ object.place }}<br>
+        </div>
+            {% empty %}
+            <li>No objects yet.</li>
+    {% endfor %}
+</ul>
+    <div class="mb-4" style="font-family: Lato, Helvetica Neue, Helvetica, sans-serif; font-size: 16px; color:lightgray">
+        <p>The next block will be about ours newest or most popular authors</p>
+    </div>
+{% endblock %}

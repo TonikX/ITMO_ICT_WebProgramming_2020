@@ -1,0 +1,57 @@
+{% extends 'base_page.html' %}
+{% load static %}
+
+
+{% block title %}
+    Publisher Create - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+    <form action="{% url 'publisher_update_url' p_slug=publisher.p_slug %}" method="post">
+    {% csrf_token %}
+
+    {% for field in form %}
+        <div class="form-group">
+            {% if field.errors %}
+                <div class="alert alert-danger">
+                    {{ field.errors }}
+                </div>
+            {% endif %}
+
+            {% if field.label == 'A slug' %}
+                Slug
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon3">Available _- spec.symbols</span>
+                    </div>
+                    {{ field }}
+                </div>
+            {% elif field.label == 'Email' %}
+                {{ field.label }}
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                    {{ field }}
+                </div>
+            {% elif field.label == 'Website' %}
+                {{ field.label }}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+                    </div>
+                    {{ field }}
+                </div>
+            {% else %}
+                {{ field.label }}
+                {{ field }}
+            {% endif %}
+
+
+        </div>
+    {% endfor %}
+
+    <button type="submit" class="btn btn-info">Update</button>
+
+    </form>
+
+{% endblock %}

@@ -1,0 +1,6 @@
+﻿Director.objects.create(full_name="Rix Kramlich",short_name="Rix Kramlich",first_name="Rix",last_name="Kramlich")
+Director.objects.create(full_name="Arnaud Nourry",short_name="Arnaud Nourry",first_name="Arnaud",last_name="Nourry")
+Director.objects.create(full_name="Brian Murray",short_name="Brian Murray",first_name="Brian",last_name="Murray")
+Director.objects.create(full_name="Markus Dohle",short_name="Markus Dohle",first_name="Markus",last_name="Dohle")
+Director.objects.create(full_name="Jonathan Karp",short_name="Jonathan Karp",first_name="Jonathan",last_name="Karp")
+Director.objects.create(full_name="Oleg Novikov",short_name="Oleg Novikov",first_name="Oleg",last_name="Novikov")

@@ -1,0 +1,38 @@
+{% extends 'base_page.html' %}
+
+
+{% block title %}
+    Director Create - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+    <form action="{% url 'director_create_url' %}" method="post">
+    {% csrf_token %}
+
+    {% for field in form %}
+        <div class="form-group">
+            {% if field.errors %}
+                <div class="alert alert-danger">
+                    {{ field.errors }}
+                </div>
+            {% endif %}
+
+            {% if field.label == 'Original language' or field.label == 'Translation language' or field.label == 'Authors' or field.label == 'Publisher' or field.label == 'Type cover' %}
+                {{ field.label }}
+            {% elif field.label == 'Slug' %}
+                {{ field.label }}
+            {% elif field.label == 'Description' %}
+                {{ field.label }}
+            {% else %}
+                {{ field.label }}
+                {{ field }}
+            {% endif %}
+        </div>
+    {% endfor %}
+
+    <button type="submit" class="btn btn-info">Create</button>
+
+    </form>
+
+{% endblock %}

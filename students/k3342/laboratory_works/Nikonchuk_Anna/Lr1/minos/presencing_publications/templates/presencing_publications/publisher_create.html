@@ -1,0 +1,85 @@
+{% extends 'base_page.html' %}
+{% load static %}
+
+<!-- 1. Подключить CSS-файл Bootstrap 3 -->
+<!--
+<link rel="stylesheet" href="css/bootstrap.min.css"/>
+-->
+<!-- 2. Подключить CSS-файл библиотеки Bootstrap 3 DateTimePicker -->
+<!--
+<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css" />
+-->
+
+<!-- 3. Подключить библиотеку jQuery -->
+<!--
+<script src="js/jquery.min.js"></script>
+-->
+<!-- 4. Подключить библиотеку moment -->
+<!--
+<script src="js/moment-with-locales.min.js"></script>
+-->
+<!-- 5. Подключить js-файл фреймворка Bootstrap 3 -->
+<!--
+<script src="js/bootstrap.min.js"></script>
+-->
+<!-- 6. Подключить js-файл библиотеки Bootstrap 3 DateTimePicker -->
+<!--
+<script src="js/bootstrap-datetimepicker.min.js"></script>
+-->
+
+{% block title %}
+    Publisher Create - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+    <form action="{% url 'publisher_create_url' %}" method="post">
+    {% csrf_token %}
+
+    {% for field in form %}
+        <div class="form-group">
+            {% if field.errors %}
+                <div class="alert alert-danger">
+                    {{ field.errors }}
+                </div>
+            {% endif %}
+
+            {% if field.label == 'A slug' %}
+                Slug
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon3">Available _- spec.symbols</span>
+                    </div>
+                    {{ field }}
+                </div>
+            {% elif field.label == 'Email' %}
+                {{ field.label }}
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                    {{ field }}
+                </div>
+            {% elif field.label == 'Website' %}
+                {{ field.label }}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+                    </div>
+                    {{ field }}
+                </div>
+            {% else %}
+                {{ field.label }}
+                {{ field }}
+            {% endif %}
+
+            {% if field.label == 'Director' %}
+                <a href="{% url 'director_create_url' %}" class="btn btn-outline-primary" tabindex="-1" role="button">Upload new director</a>
+            {% endif %}
+
+        </div>
+    {% endfor %}
+
+    <button type="submit" class="btn btn-info">Create</button>
+
+    </form>
+
+{% endblock %}

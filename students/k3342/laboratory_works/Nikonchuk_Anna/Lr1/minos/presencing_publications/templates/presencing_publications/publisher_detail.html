@@ -1,0 +1,30 @@
+{% extends 'base_page.html' %}
+
+{% block content %}
+    <div class="mb-4" style="font-family: Lato, Helvetica Neue, Helvetica, sans-serif; font-size: 12px; color:lightgray">
+        <p class="mt-3 mb-4 ml-4">This is publisher_detail page {{ reques.path }}</p>
+    </div>
+    <div style="font-family: Georgia, serif; font-size: 16px;">
+        <div><span>{{ publisher.name }}
+        {% if publisher.full_another_name != None %}
+            ({{ publisher.full_another_name }})</span>
+        {% endif %}
+        {% if publisher.parent != None %}
+            - the daughter of <span>{{ publisher.parent }}</span>
+        {% endif %}
+        </div>
+        <p>{{ publisher.get_director.director.full_name }}</p>
+        {% if publisher.get_director != None %}
+            directed by {{ publisher.get_director }}
+        {% endif %}
+        {%  if publisher.website != None %}
+            <div><span><a href="{{ publisher.website }}">{{ publisher.website }}</a></span></div>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block admin-panel %}
+    <a href="{% url 'publisher_create_url' %}" class="btn btn-light">Create</a>
+    <a href="{% url 'publisher_update_url' p_slug=publisher.p_slug %}" class="btn btn-light">Edit</a>
+    <a href="{% url 'publisher_delete_url' p_slug=publisher.p_slug %}" class="btn btn-danger">Delete</a>
+{% endblock %}

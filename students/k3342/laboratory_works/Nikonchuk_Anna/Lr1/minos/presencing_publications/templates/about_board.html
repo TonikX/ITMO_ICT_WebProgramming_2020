@@ -1,0 +1,9 @@
+{% extends 'base_page.html' %}
+
+<div class="main">
+    {% for data in dataset %}
+        <div>{{ data.full_name }}</div>
+        <div>{{ data.website }}</div>
+    <hr/>
+    {% endfor %}
+</div>

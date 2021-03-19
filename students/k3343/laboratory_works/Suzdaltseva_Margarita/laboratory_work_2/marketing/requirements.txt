@@ -2,7 +2,7 @@ asgiref==3.2.7
 Django==3.0.6
 django-cors-headers==3.3.0
 django-templated-mail==1.1.1
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 djoser==2.0.3
 pkg-resources==0.0.0
 psycopg2-binary==2.8.5

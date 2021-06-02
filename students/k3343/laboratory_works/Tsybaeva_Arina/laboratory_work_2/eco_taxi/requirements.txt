@@ -103,7 +103,7 @@ timedelta==2019.4.13
 tornado==6.0.3
 traitlets==4.3.3
 uritemplate==3.0.1
-urllib3==1.25.9
+urllib3==1.26.5
 virtualenv==20.0.23
 virtualenv-clone==0.5.4
 wcwidth==0.1.8

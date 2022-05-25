@@ -34,7 +34,7 @@ Pillow==7.1.2
 pipenv==2018.11.26
 psycopg2==2.8.5
 psycopg2-binary==2.8.5
-PyJWT==1.6.4
+PyJWT==2.4.0
 python3-openid==3.1.0
 pytz==2018.5
 requests==2.19.1

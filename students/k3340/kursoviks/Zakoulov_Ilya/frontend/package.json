@@ -13,7 +13,7 @@
     "es6-promise": "^4.2.8",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
-    "vuetify": "^2.3.3"
+    "vuetify": "^2.6.10"
   },
   "devDependencies": {
     "@nuxtjs/vuetify": "^1.11.2",
